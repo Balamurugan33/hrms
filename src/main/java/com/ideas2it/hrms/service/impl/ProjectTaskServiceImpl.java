@@ -6,6 +6,7 @@ import com.ideas2it.hrms.dao.ProjectTaskDao;
 import com.ideas2it.hrms.dao.impl.ProjectTaskDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.ProjectTask;
+import com.ideas2it.hrms.service.ProjectTaskService;
 
 /**
  * <p>

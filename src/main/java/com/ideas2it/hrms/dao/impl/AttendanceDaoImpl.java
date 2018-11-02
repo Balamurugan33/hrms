@@ -36,9 +36,9 @@ public class AttendanceDaoImpl implements AttendanceDao {
                 transaction.rollback();
             }
             AppLogger.error(AttendanceConstants.ERROR_CREATE_ATTENDANCE 
-                + attendance.getName(), e);
+                + attendance.getId(), e);
             throw new AppException(AttendanceConstants.ERROR_CREATE_ATTENDANCE +
-                attendance.getName());
+                attendance.getId());
         }
         return attendance;
     }
@@ -57,15 +57,15 @@ public class AttendanceDaoImpl implements AttendanceDao {
                 transaction.rollback();
             }  
             AppLogger.error(AttendanceConstants.ERROR_RETRIEVE_ATTENDANCE 
-                + attendance.getName(), e);
+                + attendance.getId(), e);
             throw new AppException(AttendanceConstants.ERROR_RETRIEVE_ATTENDANCE +
-                attendance.getName());
+                attendance.getId());
         }
         return attendance;
     }
     
     @Override
-    public List<Attendance> getAllAttendance() throws AppException {
+    public List<Attendance> getAllAttendances() throws AppException {
         Transaction transaction = null;
         List<Attendance> attendance = new ArrayList<Attendance>();
         
@@ -93,9 +93,9 @@ public class AttendanceDaoImpl implements AttendanceDao {
                 transaction.rollback();
             }
             AppLogger.error(AttendanceConstants.ERROR_UPDATE_ATTENDANCE 
-                    + attendance.getName(), e);
+                    + attendance.getId(), e);
                 throw new AppException(AttendanceConstants.ERROR_UPDATE_ATTENDANCE +
-                    attendance.getName());
+                    attendance.getId());
         } 
         return attendance;
     }
@@ -113,9 +113,9 @@ public class AttendanceDaoImpl implements AttendanceDao {
                 transaction.rollback();
             }
             AppLogger.error(AttendanceConstants.ERROR_DELETE_ATTENDANCE 
-                + attendance.getName(), e);
+                + attendance.getId(), e);
             throw new AppException(AttendanceConstants.ERROR_DELETE_ATTENDANCE +
-                attendance.getName());
+                attendance.getId());
         } 
         return attendance;
     }        
