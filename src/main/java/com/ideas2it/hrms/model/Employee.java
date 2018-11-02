@@ -19,13 +19,13 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name="name=name")
+    @Column(name="name")
     private String name;
     
-    @Column(name="name=email_id")
+    @Column(name="email_id")
     private String emailId;
     
-    @Column(name="name=mobile_number")
+    @Column(name="mobile_number")
     private String mobileNo;
     
     @OneToMany(mappedBy="Employee", fetch=FetchType.EAGER)

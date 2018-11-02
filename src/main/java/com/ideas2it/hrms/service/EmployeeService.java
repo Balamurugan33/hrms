@@ -45,8 +45,15 @@ public interface EmployeeService {
    
    /**
     * Used check the employee is exist or not
-    * @param email
+    * @param emailId
     *        Get the employee mail id
     */
-   Boolean isEmployeeExist(String email) throws AppException;
+   Boolean isEmployeeExist(String emailId) throws AppException;
+   
+   /**
+    * Used get the existing employee
+    * @param emailId
+    *        Get the employee mail id
+    */
+   Employee searchEmployee(String emailId) throws AppException;
 }

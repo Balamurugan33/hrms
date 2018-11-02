@@ -23,7 +23,7 @@ import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
  */
 public class EmployeeController {
     
-    private String EMPLOYEE_VIEW = "employeeDisplay";
+    private String EMPLOYEE_MENU = "employeeDisplay";
     private String ADMINMENU = "adminMenu";
     private String ERROR_PAGE = "error";
     private EmployeeService employeeService = new EmployeeServiceImpl();
@@ -92,7 +92,7 @@ public class EmployeeController {
     @GetMapping("/displayEmployee")
     public ModelAndView displayEmployees(ModelMap model) {
         try {
-            return new ModelAndView(EMPLOYEE_VIEW, EmpConstants.LABEL_EMPLOYEES, 
+            return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_EMPLOYEES, 
                 employeeService.displayEmployees());
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 

@@ -35,7 +35,11 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     
     /** {@inheritDoc}*/
-    public Boolean isEmployeeExist(String email) throws AppException {
-        return (null == employeeDao.searchEmployee(email));
+    public Boolean isEmployeeExist(String emailId) throws AppException {
+        return (null == employeeDao.searchEmployee(emailId));
+    }
+    
+    public Employee searchEmployee(String emailId) throws AppException {
+        return employeeDao.searchEmployee(emailId);
     }
 }
