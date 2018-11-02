@@ -7,116 +7,116 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ideas2it.hrms.common.ProjectConstants;
-import com.ideas2it.hrms.dao.ProjectDao;
+import com.ideas2it.hrms.common.ProjectTaskConstants;
+import com.ideas2it.hrms.dao.ProjectTaskDao;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.logger.AppLogger;
-import com.ideas2it.hrms.model.Project;
+import com.ideas2it.hrms.model.ProjectTask;
 import com.ideas2it.hrms.session.HibernateSession;
 
 /**
  * <p>
- * Implements ProjectDao interface
+ * Implements ProjectTaskDao interface
  * </p>
  *
  * @author Ganesh Venkat S
  */
-public class ProjectDaoImpl implements ProjectDao {
+public class ProjectTaskDaoImpl implements ProjectTaskDao {
     
     @Override
-    public Project createProject(Project project) throws AppException {
+    public ProjectTask createTask(ProjectTask task) throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            session.save(project);
+            session.save(task);
             transaction.commit();
         } catch (HibernateException e) {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ProjectConstants.ERROR_CREATE_PROJECT 
-                + project.getName(), e);
-            throw new AppException(ProjectConstants.ERROR_CREATE_PROJECT +
-                project.getName());
+            AppLogger.error(ProjectTaskConstants.ERROR_CREATE_TASK
+                + task.getName(), e);
+            throw new AppException(ProjectTaskConstants.ERROR_CREATE_TASK 
+                + task.getName());
         }
-        return project;
+        return task;
     }
     
     @Override
-    public Project getProjectById(Integer id) throws AppException {
+    public ProjectTask getTaskById(Integer id) throws AppException {
         Transaction transaction = null;
-        Project project = null;
+        ProjectTask task = null;
         
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            project = (Project) session.get(Project.class, id);            
+            task = (ProjectTask) session.get(ProjectTask.class, id);            
             transaction.commit();
         } catch (HibernateException e) {
             if (null != transaction) {
                 transaction.rollback();
             }  
-            AppLogger.error(ProjectConstants.ERROR_RETRIEVE_PROJECT 
-                + project.getName(), e);
-            throw new AppException(ProjectConstants.ERROR_RETRIEVE_PROJECT +
-                project.getName());
+            AppLogger.error(ProjectTaskConstants.ERROR_RETRIEVE_TASK
+                + task.getName(), e);
+            throw new AppException(ProjectTaskConstants.ERROR_RETRIEVE_TASK +
+                task.getName());
         }
-        return project;
+        return task;
     }
     
     @Override
-    public List<Project> getAllProjects() throws AppException {
+    public List<ProjectTask> getAllTasks() throws AppException {
         Transaction transaction = null;
-        List<Project> projects = new ArrayList<Project>();
+        List<ProjectTask> tasks = new ArrayList<ProjectTask>();
         
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            projects = session.createQuery("from Project").list();
+            tasks = session.createQuery("from ProjectTask").list();
             transaction.commit();
         } catch (HibernateException e) {
-            AppLogger.error(ProjectConstants.ERROR_RETRIEVE_PROJECTS, e);
-            throw new AppException(ProjectConstants.ERROR_RETRIEVE_PROJECTS);
+            AppLogger.error(ProjectTaskConstants.ERROR_RETRIEVE_TASKS, e);
+            throw new AppException(ProjectTaskConstants.ERROR_RETRIEVE_TASKS);
         } 
-        return projects;
+        return tasks;
     }
     
     @Override
-    public Project updateProject(Project project) throws AppException {
+    public ProjectTask updateTask(ProjectTask task) throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            session.update(project);
+            session.update(task);
             transaction.commit();
         } catch (HibernateException e) {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ProjectConstants.ERROR_UPDATE_PROJECT 
-                    + project.getName(), e);
-                throw new AppException(ProjectConstants.ERROR_UPDATE_PROJECT +
-                    project.getName());
+            AppLogger.error(ProjectTaskConstants.ERROR_UPDATE_TASK
+                    + task.getName(), e);
+                throw new AppException(ProjectTaskConstants.ERROR_UPDATE_TASK
+                    + task.getName());
         } 
-        return project;
+        return task;
     }
     
     @Override
-    public Project removeProject(Project project) throws AppException {
+    public ProjectTask removeTask(ProjectTask task) throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            session.delete(project);
+            session.delete(task);
             transaction.commit();
         } catch (HibernateException e) {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ProjectConstants.ERROR_DELETE_PROJECT 
-                + project.getName(), e);
-            throw new AppException(ProjectConstants.ERROR_DELETE_PROJECT +
-                project.getName());
+            AppLogger.error(ProjectTaskConstants.ERROR_DELETE_TASK
+                + task.getName(), e);
+            throw new AppException(ProjectTaskConstants.ERROR_DELETE_TASK 
+                + task.getName());
         } 
-        return project;
+        return task;
     }        
 }

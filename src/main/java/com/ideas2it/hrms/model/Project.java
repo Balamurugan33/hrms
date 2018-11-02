@@ -1,12 +1,25 @@
 package com.ideas2it.hrms.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Project model
+ * 
+ * @author Ganesh Venkat S
+ *
+ */
 @Entity
 @Table(name="project")
 public class Project {
@@ -18,6 +31,11 @@ public class Project {
     private String name;
     @Column(name="budget")
     private Integer budget;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+    @OneToMany(mappedBy = "project", fetch=FetchType.EAGER)
+    private List<ProjectTask> projectTasks = new ArrayList<ProjectTask>();
     
     public Integer getId() {
         return id;
@@ -42,4 +60,12 @@ public class Project {
     public void setBudget(Integer budget) {
         this.budget = budget;
     }    
+    
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }
