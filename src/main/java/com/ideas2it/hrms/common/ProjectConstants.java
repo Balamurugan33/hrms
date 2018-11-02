@@ -1,6 +1,7 @@
 package com.ideas2it.hrms.common;
 
 public class ProjectConstants {
+    
     // Error messages to display to the user
     public static String ERROR_CREATE_PROJECT
         = "The project could not be created: ";

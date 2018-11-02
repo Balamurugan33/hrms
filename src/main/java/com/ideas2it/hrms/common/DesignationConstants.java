@@ -1,22 +1,22 @@
 package com.ideas2it.hrms.common;
 
 /**
- * Used to define the constants used in the employee model
+ * Used to define the constants used in the designation model
  * 
  * @version 1
  * @author Balamurugan M
  */
-public class EmpConstants {
+public class DesignationConstants {
     
     // Error messages
-    public static String ERROR_CREATE_EMPLOYEE 
-        = "The employee could not be created->";
-    public static String ERROR_UPDATE_EMPLOYEE 
-        = "The employee could not be updated->";
-    public static String ERROR_DELETE_EMPLOYEE 
-        = "The employee could not be deleted->";
-    public static String ERROR_RETRIEVE_EMPLOYEE 
-        = "The employee could not be retrieved";
+    public static String ERROR_CREATE_DESIGNATION 
+        = "The client could not be created->";
+    public static String ERROR_UPDATE_DESIGNATION 
+        = "The client could not be updated->";
+    public static String ERROR_DELETE_DESIGNATION 
+        = "The client could not be deleted->";
+    public static String ERROR_RETRIEVE_DESIGNATION 
+        = "The client could not be retrieved";
     
     // Result message
     public static String MSG_CREATE_SUCCESS = "Successfully created";
@@ -29,6 +29,6 @@ public class EmpConstants {
     
     // Labels
     public static String LABEL_MESSAGE = "message";
-    public static String LABEL_EMPLOYEES = "employees";
+    public static String LABEL_DESIGNATIONS = "designations";
     
 }
