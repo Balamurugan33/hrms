@@ -1,6 +1,7 @@
 package com.ideas2it.hrms.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,6 @@ import javax.persistence.Table;
  * @author Ganesh Venkat S
  *
  */
-
 @Entity
 @Table(name="project")
 public class Project {
