@@ -7,12 +7,17 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ideas2it.hrms.common.AttendanceConstants;
 import com.ideas2it.hrms.dao.AttendanceDao;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.session.HibernateSession;
+
+import static com.ideas2it.hrms.common.AttendanceConstants.ERROR_CREATE_ATTENDANCE;
+import static com.ideas2it.hrms.common.AttendanceConstants.ERROR_DELETE_ATTENDANCE;
+import static com.ideas2it.hrms.common.AttendanceConstants.ERROR_RETRIEVE_ATTENDANCE;
+import static com.ideas2it.hrms.common.AttendanceConstants.ERROR_RETRIEVE_ATTENDANCES;
+import static com.ideas2it.hrms.common.AttendanceConstants.ERROR_UPDATE_ATTENDANCE;
 
 /**
  * <p>
@@ -24,7 +29,8 @@ import com.ideas2it.hrms.session.HibernateSession;
 public class AttendanceDaoImpl implements AttendanceDao {
     
     @Override
-    public Attendance createAttendance(Attendance attendance) throws AppException {
+    public Attendance createAttendance(Attendance attendance) 
+            throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
@@ -35,10 +41,9 @@ public class AttendanceDaoImpl implements AttendanceDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(AttendanceConstants.ERROR_CREATE_ATTENDANCE 
-                + attendance.getId(), e);
-            throw new AppException(AttendanceConstants.ERROR_CREATE_ATTENDANCE +
-                attendance.getId());
+            AppLogger.error(ERROR_CREATE_ATTENDANCE + attendance.getId(), e);
+            throw new AppException(ERROR_CREATE_ATTENDANCE 
+                + attendance.getId());
         }
         return attendance;
     }
@@ -56,10 +61,9 @@ public class AttendanceDaoImpl implements AttendanceDao {
             if (null != transaction) {
                 transaction.rollback();
             }  
-            AppLogger.error(AttendanceConstants.ERROR_RETRIEVE_ATTENDANCE 
-                + attendance.getId(), e);
-            throw new AppException(AttendanceConstants.ERROR_RETRIEVE_ATTENDANCE +
-                attendance.getId());
+            AppLogger.error(ERROR_RETRIEVE_ATTENDANCE + attendance.getId(), e);
+            throw new AppException(ERROR_RETRIEVE_ATTENDANCE 
+                + attendance.getId());
         }
         return attendance;
     }
@@ -74,14 +78,15 @@ public class AttendanceDaoImpl implements AttendanceDao {
             attendance = session.createQuery("from Attendance").list();
             transaction.commit();
         } catch (HibernateException e) {
-            AppLogger.error(AttendanceConstants.ERROR_RETRIEVE_ATTENDANCES, e);
-            throw new AppException(AttendanceConstants.ERROR_RETRIEVE_ATTENDANCES);
+            AppLogger.error(ERROR_RETRIEVE_ATTENDANCES, e);
+            throw new AppException(ERROR_RETRIEVE_ATTENDANCES);
         } 
         return attendance;
     }
     
     @Override
-    public Attendance updateAttendance(Attendance attendance) throws AppException {
+    public Attendance updateAttendance(Attendance attendance) 
+        throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
@@ -92,16 +97,16 @@ public class AttendanceDaoImpl implements AttendanceDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(AttendanceConstants.ERROR_UPDATE_ATTENDANCE 
-                    + attendance.getId(), e);
-                throw new AppException(AttendanceConstants.ERROR_UPDATE_ATTENDANCE +
-                    attendance.getId());
+            AppLogger.error(ERROR_UPDATE_ATTENDANCE + attendance.getId(), e);
+            throw new AppException(ERROR_UPDATE_ATTENDANCE 
+                + attendance.getId());
         } 
         return attendance;
     }
     
     @Override
-    public Attendance removeAttendance(Attendance attendance) throws AppException {
+    public Attendance removeAttendance(Attendance attendance) 
+        throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
@@ -112,10 +117,9 @@ public class AttendanceDaoImpl implements AttendanceDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(AttendanceConstants.ERROR_DELETE_ATTENDANCE 
-                + attendance.getId(), e);
-            throw new AppException(AttendanceConstants.ERROR_DELETE_ATTENDANCE +
-                attendance.getId());
+            AppLogger.error(ERROR_DELETE_ATTENDANCE + attendance.getId(), e);
+            throw new AppException(ERROR_DELETE_ATTENDANCE 
+                + attendance.getId());
         } 
         return attendance;
     }        

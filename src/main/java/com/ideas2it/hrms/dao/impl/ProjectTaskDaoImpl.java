@@ -7,12 +7,17 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ideas2it.hrms.common.ProjectTaskConstants;
 import com.ideas2it.hrms.dao.ProjectTaskDao;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.ProjectTask;
 import com.ideas2it.hrms.session.HibernateSession;
+
+import static com.ideas2it.hrms.common.ProjectTaskConstants.ERROR_CREATE_TASK;
+import static com.ideas2it.hrms.common.ProjectTaskConstants.ERROR_DELETE_TASK;
+import static com.ideas2it.hrms.common.ProjectTaskConstants.ERROR_RETRIEVE_TASK;
+import static com.ideas2it.hrms.common.ProjectTaskConstants.ERROR_RETRIEVE_TASKS;
+import static com.ideas2it.hrms.common.ProjectTaskConstants.ERROR_UPDATE_TASK;
 
 /**
  * <p>
@@ -35,10 +40,8 @@ public class ProjectTaskDaoImpl implements ProjectTaskDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ProjectTaskConstants.ERROR_CREATE_TASK
-                + task.getName(), e);
-            throw new AppException(ProjectTaskConstants.ERROR_CREATE_TASK 
-                + task.getName());
+            AppLogger.error(ERROR_CREATE_TASK + task.getName(), e);
+            throw new AppException(ERROR_CREATE_TASK + task.getName());
         }
         return task;
     }
@@ -56,10 +59,8 @@ public class ProjectTaskDaoImpl implements ProjectTaskDao {
             if (null != transaction) {
                 transaction.rollback();
             }  
-            AppLogger.error(ProjectTaskConstants.ERROR_RETRIEVE_TASK
-                + task.getName(), e);
-            throw new AppException(ProjectTaskConstants.ERROR_RETRIEVE_TASK +
-                task.getName());
+            AppLogger.error(ERROR_RETRIEVE_TASK + task.getName(), e);
+            throw new AppException(ERROR_RETRIEVE_TASK + task.getName());
         }
         return task;
     }
@@ -74,8 +75,8 @@ public class ProjectTaskDaoImpl implements ProjectTaskDao {
             tasks = session.createQuery("from ProjectTask").list();
             transaction.commit();
         } catch (HibernateException e) {
-            AppLogger.error(ProjectTaskConstants.ERROR_RETRIEVE_TASKS, e);
-            throw new AppException(ProjectTaskConstants.ERROR_RETRIEVE_TASKS);
+            AppLogger.error(ERROR_RETRIEVE_TASKS, e);
+            throw new AppException(ERROR_RETRIEVE_TASKS);
         } 
         return tasks;
     }
@@ -92,10 +93,8 @@ public class ProjectTaskDaoImpl implements ProjectTaskDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ProjectTaskConstants.ERROR_UPDATE_TASK
-                    + task.getName(), e);
-                throw new AppException(ProjectTaskConstants.ERROR_UPDATE_TASK
-                    + task.getName());
+            AppLogger.error(ERROR_UPDATE_TASK + task.getName(), e);
+            throw new AppException(ERROR_UPDATE_TASK + task.getName());
         } 
         return task;
     }
@@ -112,10 +111,8 @@ public class ProjectTaskDaoImpl implements ProjectTaskDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ProjectTaskConstants.ERROR_DELETE_TASK
-                + task.getName(), e);
-            throw new AppException(ProjectTaskConstants.ERROR_DELETE_TASK 
-                + task.getName());
+            AppLogger.error(ERROR_DELETE_TASK + task.getName(), e);
+            throw new AppException(ERROR_DELETE_TASK + task.getName());
         } 
         return task;
     }        

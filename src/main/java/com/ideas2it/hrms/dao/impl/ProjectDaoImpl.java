@@ -7,12 +7,17 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ideas2it.hrms.common.ProjectConstants;
 import com.ideas2it.hrms.dao.ProjectDao;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.session.HibernateSession;
+
+import static com.ideas2it.hrms.common.ProjectConstants.ERROR_CREATE_PROJECT;
+import static com.ideas2it.hrms.common.ProjectConstants.ERROR_DELETE_PROJECT;
+import static com.ideas2it.hrms.common.ProjectConstants.ERROR_RETRIEVE_PROJECT;
+import static com.ideas2it.hrms.common.ProjectConstants.ERROR_RETRIEVE_PROJECTS;
+import static com.ideas2it.hrms.common.ProjectConstants.ERROR_UPDATE_PROJECT;
 
 /**
  * <p>
@@ -35,10 +40,8 @@ public class ProjectDaoImpl implements ProjectDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ProjectConstants.ERROR_CREATE_PROJECT 
-                + project.getName(), e);
-            throw new AppException(ProjectConstants.ERROR_CREATE_PROJECT +
-                project.getName());
+            AppLogger.error(ERROR_CREATE_PROJECT + project.getName(), e);
+            throw new AppException(ERROR_CREATE_PROJECT + project.getName());
         }
         return project;
     }
@@ -56,10 +59,8 @@ public class ProjectDaoImpl implements ProjectDao {
             if (null != transaction) {
                 transaction.rollback();
             }  
-            AppLogger.error(ProjectConstants.ERROR_RETRIEVE_PROJECT 
-                + project.getName(), e);
-            throw new AppException(ProjectConstants.ERROR_RETRIEVE_PROJECT +
-                project.getName());
+            AppLogger.error(ERROR_RETRIEVE_PROJECT + project.getName(), e);
+            throw new AppException(ERROR_RETRIEVE_PROJECT + project.getName());
         }
         return project;
     }
@@ -74,8 +75,8 @@ public class ProjectDaoImpl implements ProjectDao {
             projects = session.createQuery("from Project").list();
             transaction.commit();
         } catch (HibernateException e) {
-            AppLogger.error(ProjectConstants.ERROR_RETRIEVE_PROJECTS, e);
-            throw new AppException(ProjectConstants.ERROR_RETRIEVE_PROJECTS);
+            AppLogger.error(ERROR_RETRIEVE_PROJECTS, e);
+            throw new AppException(ERROR_RETRIEVE_PROJECTS);
         } 
         return projects;
     }
@@ -92,10 +93,8 @@ public class ProjectDaoImpl implements ProjectDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ProjectConstants.ERROR_UPDATE_PROJECT 
-                    + project.getName(), e);
-                throw new AppException(ProjectConstants.ERROR_UPDATE_PROJECT +
-                    project.getName());
+            AppLogger.error(ERROR_UPDATE_PROJECT + project.getName(), e);
+            throw new AppException(ERROR_UPDATE_PROJECT + project.getName());
         } 
         return project;
     }
@@ -112,10 +111,8 @@ public class ProjectDaoImpl implements ProjectDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ProjectConstants.ERROR_DELETE_PROJECT 
-                + project.getName(), e);
-            throw new AppException(ProjectConstants.ERROR_DELETE_PROJECT +
-                project.getName());
+            AppLogger.error(ERROR_DELETE_PROJECT + project.getName(), e);
+            throw new AppException(ERROR_DELETE_PROJECT + project.getName());
         } 
         return project;
     }        
