@@ -2,10 +2,6 @@ package com.ideas2it.hrms.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import org.hibernate.HibernateException; 
 import org.hibernate.Session; 
@@ -95,6 +91,21 @@ public class ClientDaoImpl implements ClientDao {
             }
             AppLogger.error(ClientConstants.ERROR_DELETE_CLIENT+id, e);
             throw new AppException(ClientConstants.ERROR_DELETE_CLIENT+id);
+        } finally {
+            session.close(); 
+        }
+    }
+    
+    /** {@inheritDoc} */
+    public Client searchClient(String email) throws AppException {
+        try {
+            session = HibernateSession.getSession();
+            String query = "FROM Client WHERE email = :email";
+            return (Client)session.createQuery(query).
+                setParameter("email", email ).uniqueResult();
+        } catch (HibernateException e) {
+            AppLogger.error(ClientConstants.ERROR_RETRIEVE_CLIENT, e);
+            throw new AppException(ClientConstants.ERROR_RETRIEVE_CLIENT);
         } finally {
             session.close(); 
         }
