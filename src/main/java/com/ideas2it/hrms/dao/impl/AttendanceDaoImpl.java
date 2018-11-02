@@ -86,7 +86,7 @@ public class AttendanceDaoImpl implements AttendanceDao {
     
     @Override
     public Attendance updateAttendance(Attendance attendance) 
-        throws AppException {
+            throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
@@ -106,7 +106,7 @@ public class AttendanceDaoImpl implements AttendanceDao {
     
     @Override
     public Attendance removeAttendance(Attendance attendance) 
-        throws AppException {
+            throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
