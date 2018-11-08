@@ -31,7 +31,7 @@ public class Employee {
     private String mobileNo;
     
     @OneToMany(mappedBy="Employee", fetch=FetchType.EAGER)
-    private List<ProjectTask> projectTask = new ArrayList<ProjectTask>();
+    private List<ProjectTask> projectTasks = new ArrayList<ProjectTask>();
     
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(
@@ -41,12 +41,12 @@ public class Employee {
     )
     private List<Attendance> attendance = new ArrayList<Attendance>();
     
-    public List<ProjectTask> getProjectTask() {
-        return projectTask;
+    public List<ProjectTask> getProjectTasks() {
+        return projectTasks;
     }
 
-    public void setProjectTask(List<ProjectTask> projectTask) {
-        this.projectTask = projectTask;
+    public void setProjectTasks(List<ProjectTask> projectTasks) {
+        this.projectTasks = projectTasks;
     }
 
     public List<Attendance> getAttendance() {

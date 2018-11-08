@@ -20,8 +20,8 @@ public class Designation {
     @Column(name="name")
     private String name;
     
-    @Column(name="base_pay")
-    private Integer basePay;
+    @Column(name="hourly_rate")
+    private Integer hourlyRate;
     
     @Column(name="salary")
     private Integer salary;
@@ -53,12 +53,12 @@ public class Designation {
         this.name = name;
     }
 
-    public Integer getBasePay() {
-        return basePay;
+    public Integer getHourlyRate() {
+        return hourlyRate;
     }
 
-    public void setBasePay(Integer basePay) {
-        this.basePay = basePay;
+    public void setHourlyRate(Integer hourlyRate) {
+        this.hourlyRate = hourlyRate;
     }
 
     public Integer getSalary() {

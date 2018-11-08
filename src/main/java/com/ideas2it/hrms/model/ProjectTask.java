@@ -1,6 +1,7 @@
 package com.ideas2it.hrms.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,10 +27,12 @@ public class ProjectTask {
     private Integer id;
     @Column(name="name")
     private String name;
-    @Column(name="starting_date")
-    private LocalDate startDate;
-    @Column(name="ending_date")
-    private LocalDate endDate;
+    @Column(name="task_date")
+    private LocalDate taskDate;
+    @Column(name="start_time")
+    private LocalTime startTime;
+    @Column(name="end_time")
+    private LocalTime endTime;
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
@@ -48,19 +51,25 @@ public class ProjectTask {
     }
     public void setName(String name) {
         this.name = name;
+    }    
+    public LocalDate getTaskDate() {
+        return taskDate;
     }
-    public LocalDate getStartDate() {
-        return startDate;
+    public void setTaskDate(LocalDate taskDate) {
+        this.taskDate = taskDate;
+    }    
+    public LocalTime getStartTime() {
+        return startTime;
     }
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
     }
-    public LocalDate getEndDate() {
-        return endDate;
+    public LocalTime getEndTime() {
+        return endTime;
     }
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }   
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
     public Project getProject() {
         return project;
     }
