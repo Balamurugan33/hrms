@@ -65,7 +65,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     public Integer calculateNetProfit(Employee employee) {
         List<ProjectTask> tasks = new ArrayList<ProjectTask>();
         Integer totalHoursWorked = 0;
-        for(ProjectTask task : employee.getProjectTask()) {
+        for(ProjectTask task : employee.getProjectTasks()) {
             if(task.getTaskDate().getMonth() == LocalDate.now().getMonth() && 
                     LocalDate.now().getYear() == task.getTaskDate().getYear()) {
                 tasks.add(task);

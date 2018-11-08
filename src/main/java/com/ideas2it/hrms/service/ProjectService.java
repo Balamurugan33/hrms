@@ -3,6 +3,7 @@ package com.ideas2it.hrms.service;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
 
 /**
@@ -48,7 +49,7 @@ public interface ProjectService {
      * Updates a project's details
      * 
      * @param project
-     *       project to update
+     *        project to update
      */
     Project updateProject(Project project) throws AppException;
     
@@ -56,7 +57,25 @@ public interface ProjectService {
      * Removes a project
      * 
      * @param project
-     *       project to remove
+     *        project to remove
      */
     Project removeProject(Project project) throws AppException;
+    
+    /**
+     * Calculates the total billable amount for a project
+     * 
+     * @param project
+     *        billable project 
+     */
+    Integer calculateBudget(Project project);
+    
+    /**
+     * Calculates the total billable amount for a project, for a single employee
+     * 
+     * @param project
+     *        billable project 
+     * @param employee
+     *        employee working on the project
+     */
+    Integer calculateBillableAmount(Project project, Employee employee);
 }
