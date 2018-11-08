@@ -75,7 +75,7 @@ public class DesignationController {
             ModelMap model) {
         try {
             if (designationService.deleteDesignation(Integer.parseInt(
-                    request.getParameter(id)))) {
+                    request.getParameter("id")))) {
                 model.addAttribute(DesignationConstants.LABEL_MESSAGE, 
                     DesignationConstants.MSG_DELETE_SUCCESS);
             } else {

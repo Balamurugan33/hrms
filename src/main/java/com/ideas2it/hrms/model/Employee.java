@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -37,8 +39,24 @@ public class Employee {
         joinColumns = { @JoinColumn(name = "emp_id") }, 
         inverseJoinColumns = { @JoinColumn(name = "attendance_id") }
     )
-    private List<Attendance> attendance = ArrayList<Attendance>();
+    private List<Attendance> attendance = new ArrayList<Attendance>();
     
+    public List<ProjectTask> getProjectTask() {
+        return projectTask;
+    }
+
+    public void setProjectTask(List<ProjectTask> projectTask) {
+        this.projectTask = projectTask;
+    }
+
+    public List<Attendance> getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(List<Attendance> attendance) {
+        this.attendance = attendance;
+    }
+
     @ManyToOne
     @JoinColumn(name="designation_id")
     private Designation designation;

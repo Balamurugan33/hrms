@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Employee;
+import com.ideas2it.hrms.model.Project;
+import com.ideas2it.hrms.model.ProjectTask;
 
 /**
  * It's act as the intermediate between the controller and dao
@@ -56,4 +58,11 @@ public interface EmployeeService {
     *        Get the employee mail id
     */
    Employee searchEmployee(String emailId) throws AppException;
+   
+   /**
+    * Used get the employee assigned projects
+    * @param tasks
+    *        Get the employee tasks
+    */
+   List<Project> getEmpProjects(List<ProjectTask> tasks);
 }

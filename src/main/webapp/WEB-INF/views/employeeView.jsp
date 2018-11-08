@@ -1,19 +1,9 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <body>
+<jsp:include page='empHeader.jsp'/>
 
-<form action="/dvdstore/employee/viewCustomers-admin" method="get" align="left">
-<button type="submit" style = "margin-right: 10px;" > Back </button><br>
-</form>
-
-<c:if test="${not empty message}">
-<script>
-    alert ("${message}");
-</script>
-</c:if>
-
-<form action="employee" method="get" align="center">  
-    <table style="float:center">
+<table style="float:center">
     <tr>
         <td>Employee ID:</td> 
         <td>${employee.employeeId}</td>  
@@ -29,65 +19,78 @@
     <tr>  
         <td>Mail:</td>
         <td>${employee.mailId}</td>
-    </table>
-    <button type="button" Onclick="visibleAddress()" style= "text-align:left;">Update</button>
-    <button type="button" Onclick="visibleOrders()" style= "text-align:right">View Orders</button>
+    </tr>
+    <tr>
+         <td>Designation</td>
+         <td>${employee.designation.name}</td>
+    </tr>
+    <tr>
+         <td>Designation</td>
+         <td>${employee.designation.salary}</td>
+    </tr>
+</table>
 
-    <div id="addressInfo" style="display:none">
-    <table style= style="float:left" cellspacing="8">
+<div id="taskInfo" style="display:none">
+    <table>
     <tr>
-        <th>Address Line:</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Country</th>
-        <th>Pincode</th>
+        <th>Project</th>
+        <th>Task</th>
+        <th>Start Time</th>
+        <th>End Time</th>
     </tr>
-    <c:forEach var= "address" items= "${employee.address}">
+    <c:forEach var= "projectTask" items= "${employee.projectTask}">
     <tr>
-        <td>${address.addressLine}</td>
-        <td>${address.city}</td>
-        <td>${address.state}</td>
-        <td>${address.country}</td>
-        <td>${address.pincode}</td>
+        <td>${projectTask.project.name}</td>
+        <td>${projectTask.name}</td>
+        <td>${projectTask.startTime}</td>
+        <td>${projectTask.endTime}</td>
+    </tr>
+    </c:forEach>
+    </table>
+</div>
+    
+<c:if test="&{not empty projects}">
+    <div id=projectInfo>
+    <table>
+    <tr>
+        <th>Project</th>
+        <th>Client</th>
+    </tr>
+    <c:forEach var= "project" items= "${projects}">
+    <tr>
+        <td>${project.name}</td>
+        <td>${project.clint}</td>
     </tr>
     </c:forEach>
     </table>
     </div>
+</c:if>
     
-    <div id=orderInfo style="display:none">
-    <table style= style="float:right" cellspacing=8>
+<div id=attendanceInfo style="display:none">
+    <table align="center">
     <tr>
-        <th>Order Id</th>
-        <th>Dvd Name</th>
-        <th>Language</th>
-        <th>Price</th>
-        <th>Order Date</th>
+        <th>Date</th>
+        <th>Attendance</th>
     </tr>
-    <c:forEach var= "order" items= "${employee.orders}">
+    <c:forEach(var="attendance" items="${employee.attendance}")>
     <tr>
-        <td>${order.orderId}</td>
-        <td>${order.dvd.dvdName}</td>
-        <td>${order.dvd.language}</td>
-        <td>${order.dvd.price}</td>
-        <td>${order.orderDate}</td>
+        <td>${attendance.date}</td>
+        <c:if test="${attendance.status} == 1">
+        <td>Present</td>
+        </c:if>
+        <c:if test="${attendance.status} == 0">
+        <td>Absent</td>
+        </c:if>
     </tr>
     </c:forEach>
     </table>
-    </div>
-    
-</form> 
+</div>
 </body>
+
+<c:if test="${not empty message}">
 <script>
-function visibleAddress() {
-    document.getElementById("addressInfo").style.display='block';
-    document.getElementById("orderInfo").style.display='none';
-}
-
-function visibleOrders() {
-    document.getElementById("orderInfo").style.display='block';
-    document.getElementById("addressInfo").style.display='none';
-}
-
+    alert ("${message}");
 </script>
+</c:if>
 
 </html>

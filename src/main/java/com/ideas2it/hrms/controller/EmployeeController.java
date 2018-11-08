@@ -1,7 +1,9 @@
 package com.ideas2it.hrms.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.hibernate.Session;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,10 +25,15 @@ import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
  */
 public class EmployeeController {
     
-    private String EMPLOYEE_MENU = "employeeDisplay";
+    private String EMPLOYEE_MENU = "employeeView";
     private String ADMINMENU = "adminMenu";
     private String ERROR_PAGE = "error";
     private EmployeeService employeeService = new EmployeeServiceImpl();
+    
+    @GetMapping("/viewProfile")
+    public String viewProfile() {
+        return EMPLOYEE_MENU;
+    }
     
     @PostMapping("/createEmployee")
     public ModelAndView createEmployee(@ModelAttribute("employee") 
@@ -75,7 +82,7 @@ public class EmployeeController {
             ModelMap model) {
         try {
             if (employeeService.deleteEmployee(Integer.parseInt(
-                    request.getParameter(id)))) {
+                    request.getParameter("id")))) {
                 model.addAttribute(EmpConstants.LABEL_MESSAGE, 
                     EmpConstants.MSG_DELETE_SUCCESS);
             } else {
@@ -98,5 +105,13 @@ public class EmployeeController {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
                 appException.getMessage());
         }
+    }
+    
+    @GetMapping("/empProjects")
+    public ModelAndView employeesProjects(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        Employee employee = (Employee) session.getAttribute("employee");
+        return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_PROJECTS, 
+            employeeService.getEmpProjects(employee.getProjectTask()));
     }
 }

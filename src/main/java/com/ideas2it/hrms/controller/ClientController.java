@@ -74,7 +74,7 @@ public class ClientController {
             ModelMap model) {
         try {
             if (clientService.deleteClient(Integer.parseInt(
-                    request.getParameter(id)))) {
+                    request.getParameter("id")))) {
                 model.addAttribute(ClientConstants.LABEL_MESSAGE, 
                     ClientConstants.MSG_DELETE_SUCCESS);
             } else {

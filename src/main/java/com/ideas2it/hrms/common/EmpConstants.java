@@ -30,5 +30,6 @@ public class EmpConstants {
     // Labels
     public static String LABEL_MESSAGE = "message";
     public static String LABEL_EMPLOYEES = "employees";
+    public static String LABEL_PROJECTS = "projects";
     
 }
