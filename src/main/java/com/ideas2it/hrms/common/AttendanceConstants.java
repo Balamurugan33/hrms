@@ -11,5 +11,11 @@ public class AttendanceConstants {
     public static String ERROR_UPDATE_ATTENDANCE 
         = "The attendance could not be updated: ";
     public static String ERROR_DELETE_ATTENDANCE 
-        = "The attendance could not be deleted: ";    
+        = "The attendance could not be deleted: ";   
+    
+    // Result message
+    public static String MSG_CREATED = "New attendance entry has been created";
+    public static String MSG_UPDATED = "Attendance entry has been updated";
+    public static String MSG_DELETED = "Attendance entry has been deleted";
+    public static String MSG_ALREADY_EXIST = "Already exists: ";
 }

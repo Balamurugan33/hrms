@@ -13,4 +13,10 @@ public class ProjectTaskConstants {
     public static String ERROR_DELETE_TASK 
         = "The task could not be deleted: ";
     
+    // Result message
+    public static String MSG_CREATED = "New task has been created";
+    public static String MSG_UPDATED = "Task has been updated";
+    public static String MSG_DELETED = "Task has been deleted";
+    public static String MSG_ALREADY_EXIST = "Already exists: ";
+    
 }

@@ -14,4 +14,10 @@ public class ProjectConstants {
     public static String ERROR_DELETE_PROJECT 
         = "The project could not be deleted: ";
     
+    // Result message
+    public static String MSG_CREATED = "New project has been created";
+    public static String MSG_UPDATED = "Project has been updated";
+    public static String MSG_DELETED = "Project has been deleted";
+    public static String MSG_ALREADY_EXIST = "Already exists: ";
+
 }
