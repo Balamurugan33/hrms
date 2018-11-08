@@ -1,86 +1,90 @@
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-.tablink {
-    background-color: #555;
-    color: white;
+.navbar a {
     float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    text-align: center;
     padding: 14px 16px;
-    font-size: 10px;
-    width: 25%
-}
-
-.tablink:hover {
-    background-color: #777;
-}
-
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidebtn {
-    padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
-    color: white;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
     border: none;
     outline: none;
-    cursor: pointer;
-    display: block;
-    transition: 0.3s;
-    background-color: #111;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
 }
 
-.sidebtn:hover {
-    color: #777;
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
 }
 
-.sidenav .closebtn {
+.dropdown-content {
+    display: none;
     position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
     text-decoration: none;
-    color: white;
-    border: none;
-    outline: none;
-    cursor: pointer;
     display: block;
-    background-color: #111;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 </style>
 </head>
 <body>
-<button class="tablink"  onclick="openNav()">&#9776; open</button>
-<h2 class="tablink">HRMS</h2>
-<h2 class="tablink">HRMS</h2>
-<button class="tablink" formaction="/HRMS/user/logout">LogOut</button>
 
-<div id="mySidenav" class="sidenav">
-  <button class="closebtn" onclick="closeNav()">&times;</button><br>
-  <form method="get">
-  <button class="sidebtn" formaction="/HRMS/employee/viewProfile">Edit Profile</button><br>
-  <button class="sidebtn" formaction="/HRMS/employee/empProjects">Projects</button><br>
-  </form>
-  <button class="sidebtn" onclick="viewTask()">Time Sheet</button><br>
-  <button class="sidebtn" onclick="viewAttendance()">Attendance</button><br>
+<div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn">&#9776;</button>
+    <div class="dropdown-content">
+      <a href="/HRMS/employee/viewProfile">Edit Profile</a>
+      <a href="/HRMS/employee/empProjects">Projects</a>
+      <a href="#" onclick="viewTask()">Time Sheet</a>
+      <a href="/HRMS/user/logout">Attendance</a>
+    </div>
+  </div> 
+  <div style="float:center">
+      <a href="#" >Welcome ${employee.name}</a>
+  <div>
+  <div style="float:right">
+      <a href="#" onclick="viewAttendance()">LogOut</a>
+  <div>
 </div>
-<script>
 
+<script>
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }

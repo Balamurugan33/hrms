@@ -3,6 +3,7 @@ package com.ideas2it.hrms.service;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.ProjectTask;
@@ -65,4 +66,18 @@ public interface EmployeeService {
     *        Get the employee tasks
     */
    List<Project> getEmpProjects(List<ProjectTask> tasks);
+   
+   /**
+    * Calculates the net profit of the company from an employee
+    * @param employee
+    *        Get the employee detail
+    */
+   Integer calculateNetProfit(Employee employee);
+   
+   /**
+    * Calculates leave days of employee
+    * @param employee
+    *        Get the employee detail
+    */
+   List<Attendance> getEmpLeaves(Employee employee);
 }

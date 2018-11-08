@@ -44,7 +44,7 @@ public class Attendance {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
     public void setStatus(boolean status) {
