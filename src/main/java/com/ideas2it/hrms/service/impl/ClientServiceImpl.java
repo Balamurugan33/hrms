@@ -35,6 +35,7 @@ public class ClientServiceImpl implements ClientService {
         return clientDao.deleteClient(id);
     }
     
+    /** {@inheritDoc}*/
     public Boolean isClientExist(String email) throws AppException {
         return (null == clientDao.searchClient(email));
     }
@@ -50,4 +51,5 @@ public class ClientServiceImpl implements ClientService {
         
         return netProfit;
     }    
+
 }
