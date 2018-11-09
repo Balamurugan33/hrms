@@ -51,9 +51,9 @@ public interface ClientService {
     Boolean isClientExist(String email) throws AppException;
     
     /**
-     * Calculates the net profit of the company from an client
-     * @param client
-     *        Get the client detail
+     * Calculates net profit for company from this client, for current month
+     * @param email
+     *        client
      */
     Integer calculateNetProfit(Client client);
 }

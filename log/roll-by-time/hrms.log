@@ -424,3 +424,11 @@
 2018-11-09 19:34:14 INFO HHH000397: Using ASTQueryTranslatorFactory
 2018-11-09 19:35:48 INFO Initializing Servlet 'spring'
 2018-11-09 19:35:48 INFO Completed initialization in 648 ms
+2018-11-09 19:35:56 INFO Initializing Servlet 'spring'
+2018-11-09 19:35:57 INFO Completed initialization in 637 ms
+2018-11-09 19:36:31 INFO Initializing Servlet 'spring'
+2018-11-09 19:36:32 INFO Completed initialization in 634 ms
+2018-11-09 19:36:57 INFO Initializing Servlet 'spring'
+2018-11-09 19:36:58 INFO Completed initialization in 626 ms
+2018-11-09 19:37:09 INFO Initializing Servlet 'spring'
+2018-11-09 19:37:10 INFO Completed initialization in 671 ms

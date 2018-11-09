@@ -3,8 +3,8 @@ package com.ideas2it.hrms.service;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
+import com.ideas2it.hrms.model.ProjectTask;
 
 /**
  * <p>
@@ -62,20 +62,34 @@ public interface ProjectService {
     Project removeProject(Project project) throws AppException;
     
     /**
-     * Calculates the total billable amount for a project
-     * 
-     * @param project
-     *        billable project 
+     * Calculates the net profit of the company, for current month,
+     * from a single project
+     * @param employee
+     *        company project
      */
-    Integer calculateBudget(Project project);
+    Integer calculateNetProfit(Project project);
     
     /**
-     * Calculates the total billable amount for a project, for a single employee
+     * Calculates the total billable amount for a project, for current month
      * 
      * @param project
      *        billable project 
-     * @param employee
-     *        employee working on the project
      */
-    Integer calculateBillableAmount(Project project, Employee employee);
+    Integer calculateBillableAmount(Project project);
+    
+    /**
+     * Calculates the total bill for tasks, for a project, for current month
+     * 
+     * @param curMonthTasks
+     *        list of all tasks for this project, in current month
+     */
+    Integer calculateBillAllTasks(List<ProjectTask> curMonthTasks);
+    
+    /**
+     * Calculates the total amount paid to employees, working on a project, for current month
+     * 
+     * @param project
+     *        project
+     */
+    Integer calculateCostToCompany(Project project);
 }

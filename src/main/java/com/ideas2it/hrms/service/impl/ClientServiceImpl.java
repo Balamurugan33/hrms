@@ -8,7 +8,6 @@ import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.service.ClientService;
-import com.ideas2it.hrms.service.ProjectService;
 
 public class ClientServiceImpl implements ClientService {
     
@@ -41,15 +40,15 @@ public class ClientServiceImpl implements ClientService {
         return (null == clientDao.searchClient(email));
     }
     
-    /** {@inheritDoc}*/
     public Integer calculateNetProfit(Client client) {
-        ProjectService projectService = new ProjectServiceImpl();
-        Integer billableAmount = 0;
-        for(Project project : client.getProjects()) {
-            /*billableAmount 
-                = billableAmount + projectService.calculateNetProfit(project);*/
-            
+        ProjectServiceImpl projectService = new ProjectServiceImpl();
+        List<Project> clientProjects = client.getProjects();
+        Integer netProfit = 0;
+        
+        for (Project project: clientProjects) {
+            netProfit = netProfit + projectService.calculateNetProfit(project); 
         }
-        return billableAmount;
-    }
+        return netProfit;
+    }    
+
 }
