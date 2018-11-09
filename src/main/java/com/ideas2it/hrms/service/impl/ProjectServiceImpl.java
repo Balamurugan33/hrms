@@ -1,6 +1,5 @@
 package com.ideas2it.hrms.service.impl;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,50 +44,66 @@ public class ProjectServiceImpl implements ProjectService {
         ProjectDao projectDao = new ProjectDaoImpl();
         return projectDao.removeProject(project);
     }
-    
-    public Integer calculateBudget(Project project) {
-        List<ProjectTask> projectTasks = project.getProjectTasks();
-        List<Employee> projectEmployees = new ArrayList<Employee>();
-        Integer budget = 0;
         
+    public Integer calculateNetProfit(Project project) {
+        Integer billableAmount = 0;
+        Integer costToCompany = 0;
+        Integer netProfit = 0;
+        
+        billableAmount = calculateBillableAmount(project);            
+        costToCompany = calculateCostToCompany(project);
+        
+        netProfit = billableAmount - costToCompany;
+
+        return netProfit;
+    }
+    
+    public Integer calculateBillableAmount(Project project) {
+        ProjectTaskServiceImpl taskService = new ProjectTaskServiceImpl();
+        List<ProjectTask> projectTasks = project.getProjectTasks();  
+        List<ProjectTask> curMonthTasks = new ArrayList<ProjectTask>();
+        Integer billableAmount = 0;
+
+        curMonthTasks = taskService.getCurrentMonthTasks(projectTasks);
+        billableAmount = calculateBillAllTasks(curMonthTasks);
+                
+        return billableAmount;
+    }
+    
+    public Integer calculateBillAllTasks(List<ProjectTask> curMonthTasks) {
+        ProjectTaskServiceImpl taskService = new ProjectTaskServiceImpl();
+        Integer billAllTasks = 0;
+        
+        for (ProjectTask task: curMonthTasks) {
+            Integer hourlyRate = task.getEmployee().getDesignation().getHourlyRate();            
+            Integer numHoursWorkedTask = 0;
+            Integer taskBill = 0;
+
+            numHoursWorkedTask = taskService.calculateTaskDuration(task);
+            taskBill = hourlyRate * numHoursWorkedTask;
+            billAllTasks = billAllTasks + taskBill;
+        }        
+
+        return billAllTasks;
+    }
+    
+    public Integer calculateCostToCompany(Project project) {
+        EmployeeServiceImpl empService = new EmployeeServiceImpl();
+        List<ProjectTask> projectTasks = project.getProjectTasks();  
+        List<Employee> projectEmployees = new ArrayList<Employee>();
+        Integer costToCompany = 0;
+
         // Get the list of unique employees working on this project
-        for(ProjectTask task: projectTasks) {
-            if(!projectEmployees.contains(task.getEmployee())) {
+        for (ProjectTask task: projectTasks) {
+            if (!projectEmployees.contains(task.getEmployee())) {
                 projectEmployees.add(task.getEmployee());
             }
         }
-        // Iterate through the list of employees working on this project
-        for(Employee employee: projectEmployees) {
-            // Calculate the billable amount for a single employee
-            budget = budget + calculateBillableAmount(project, employee);
+        
+        for (Employee employee: projectEmployees) {
+            costToCompany = costToCompany + empService.calculateCostToCompany(employee);
         }
         
-        return budget;
-    }
-    
-    public Integer calculateBillableAmount(Project project, Employee employee) {
-        List<ProjectTask> empTasks = employee.getProjectTasks();
-        List<ProjectTask> projectTasks = new ArrayList<ProjectTask>();
-        Integer billableAmount = 0;
-        Integer numHoursWorkedTask = 0;
-        Integer totalHoursWorked = 0;
-        
-        // Get the list of tasks done by employee for this project
-        for(ProjectTask task: empTasks) {
-            if(task.getProject() == project) {
-                projectTasks.add(task);
-            }
-        }
-        // Iterate through the list of tasks done by employee for this project
-        for(ProjectTask task: projectTasks) {
-            Duration duration 
-                = Duration.between(task.getEndTime(), task.getStartTime());
-            numHoursWorkedTask = (int) duration.toHours();
-            totalHoursWorked = totalHoursWorked + numHoursWorkedTask;
-        }        
-        billableAmount 
-            = totalHoursWorked * employee.getDesignation().getHourlyRate();
-        
-        return billableAmount;
+        return costToCompany;
     }
 }

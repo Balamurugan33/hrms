@@ -26,8 +26,8 @@ public class Attendance {
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name="date")
-    private LocalDate date;
+    @Column(name="attend_date")
+    private LocalDate attendDate;
     @Column(name="status")
     private boolean status;
     @ManyToMany(mappedBy="attendance", fetch=FetchType.EAGER)
@@ -38,11 +38,11 @@ public class Attendance {
     public void setId(Integer id) {
         this.id = id;
     }
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getAttendDate() {
+        return attendDate;
     }
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setAttendDate(LocalDate attendDate) {
+        this.attendDate = attendDate;
     }
     public boolean getStatus() {
         return status;

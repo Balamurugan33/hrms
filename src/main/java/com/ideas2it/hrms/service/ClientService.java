@@ -49,4 +49,12 @@ public interface ClientService {
      *        Get the client mail id
      */
     Boolean isClientExist(String email) throws AppException;
+    
+    /**
+     * Calculates net profit for company from this client, for current month
+     * @param email
+     *        client
+     */
+    Integer calculateNetProfit(Client client);
+
 }

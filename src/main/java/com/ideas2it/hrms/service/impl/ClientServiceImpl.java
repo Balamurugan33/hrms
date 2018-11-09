@@ -6,6 +6,7 @@ import com.ideas2it.hrms.dao.ClientDao;
 import com.ideas2it.hrms.dao.impl.ClientDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Client;
+import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.service.ClientService;
 
 public class ClientServiceImpl implements ClientService {
@@ -37,4 +38,16 @@ public class ClientServiceImpl implements ClientService {
     public Boolean isClientExist(String email) throws AppException {
         return (null == clientDao.searchClient(email));
     }
+    
+    public Integer calculateNetProfit(Client client) {
+        ProjectServiceImpl projectService = new ProjectServiceImpl();
+        List<Project> clientProjects = client.getProjects();
+        Integer netProfit = 0;
+
+        for (Project project: clientProjects) {
+            netProfit = netProfit + projectService.calculateNetProfit(project); 
+        }
+        
+        return netProfit;
+    }    
 }

@@ -20,9 +20,9 @@ public interface ProjectTaskService {
      * Creates a new task 
      * 
      * @param task
-     *       new task
+     *        new task
      * @return 
-     *       new task, if added, null otherwise
+     *        new task, if added, null otherwise
      */
     ProjectTask createTask(ProjectTask task) throws AppException;
     
@@ -48,7 +48,7 @@ public interface ProjectTaskService {
      * Updates a task's details
      * 
      * @param task
-     *       task to update
+     *        task to update
      */
     ProjectTask updateTask(ProjectTask task) throws AppException;
     
@@ -56,7 +56,31 @@ public interface ProjectTaskService {
      * Removes a task
      * 
      * @param task
-     *       task to remove
+     *        task to remove
      */
     ProjectTask removeTask(ProjectTask task) throws AppException;
+    
+    /**
+     * Gets the tasks done this month
+     * 
+     * @param tasks
+     *        list of project tasks
+     */
+    List<ProjectTask> getCurrentMonthTasks(List<ProjectTask> tasks);
+    
+    /**
+     * Returns true if task was done in current month, otherwise false
+     * 
+     * @param task
+     *        project task
+     */
+    boolean isCurrentMonthTask(ProjectTask task);
+    
+    /**
+     * Calculates the number of hours worked on a task
+     * 
+     * @param task
+     *        project task
+     */
+    public Integer calculateTaskDuration(ProjectTask task);
 }
