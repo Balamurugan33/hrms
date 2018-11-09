@@ -4,7 +4,7 @@
 
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="<c:url value = '/resources/dvdStore.css' />">
+<link rel="stylesheet" type="text/css" href="<c:url value = '/resources/hrms.css' />">
 </head>
 
 <body class="background" style="margin:200px">
@@ -13,14 +13,6 @@
 <div id="login">
  <table align="center">
         <tr>
-            <td>
-                <form:select path="role" style="width:193px;">
-                        <form:option value="admin">Admin</form:option>
-                        <form:option value="customer" selected="selected">Customer</form:option>
-                </form:select>
-            </td>
-        </tr>
-        <tr>
             <td><form:input type="text" path="userName" class="input" placeholder="User Name"/></td>
         </tr>
         <tr>
@@ -28,7 +20,7 @@
             <button type="button" onclick="showPassword(this.form)"><i id ="eye" class="fa fa-eye-slash"></i></button></td>
         </tr>
         <tr>
-            <td><button type="submit" formaction="/dvdstore/user/login" onclick="setRequired(this.form)" class="login" >Login</button></td>
+            <td><button type="submit" formaction="/hrms/user/login" onclick="setRequired(this.form)" class="login" >Login</button></td>
         </tr>
         <tr/><tr/>
         <tr>
@@ -52,9 +44,9 @@
             <td><input type="password" name="confirmpassword" class="input" placeholder="Confirm Password"/></td>
         </tr>
         <tr>
-            <td><button type="submit" style="width:193px;border-radius: 20px;margin: 8px 0;height:25px" formaction="/dvdstore/user/register" onclick="return(checkPassword(this.form) && setRequired(this.form))">Register</button></td>
+            <td><button type="submit" style="width:193px;border-radius: 20px;margin: 8px 0;height:25px" formaction="/hrms/user/register" onclick="return(checkPassword(this.form) && setRequired(this.form))">Register</button></td>
         </tr>
-        <input type="hidden" name="role" value="customer">
+        <input type="hidden" name="role" value="Employee">
  </table>
  </form:form>
  </div>

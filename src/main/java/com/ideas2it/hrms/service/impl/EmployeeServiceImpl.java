@@ -87,8 +87,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     public List<Attendance> getEmpLeaves(Employee employee) {
         List<Attendance> leaves = new ArrayList<Attendance>();
         for(Attendance attendance : employee.getAttendance()) {
-            if(attendance.getDate().getMonth() == LocalDate.now().getMonth() && 
-                    LocalDate.now().getYear() == attendance.getDate().getYear() 
+            if(attendance.getAttendDate().getMonth() == 
+                    LocalDate.now().getMonth() && LocalDate.now().getYear() == 
+                    attendance.getAttendDate().getYear() 
                     && !attendance.getStatus()) {
                 leaves.add(attendance);
             }

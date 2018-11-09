@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+@Entity
+@Table(name="employee")
 public class Employee {
     
     @Id
@@ -30,16 +37,21 @@ public class Employee {
     @Column(name="mobile_number")
     private String mobileNo;
     
-    @OneToMany(mappedBy="Employee", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="employee")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<ProjectTask> projectTasks = new ArrayList<ProjectTask>();
     
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(
-        name="emp_attendance",
+        name="employee_attendance",
         joinColumns = { @JoinColumn(name = "emp_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "attendance_id") }
+        inverseJoinColumns = { @JoinColumn(name = "attend_id") }
     )
     private List<Attendance> attendance = new ArrayList<Attendance>();
+    
+    @ManyToOne
+    @JoinColumn(name="designation_id")
+    private Designation designation;
     
     public List<ProjectTask> getProjectTasks() {
         return projectTasks;
@@ -56,10 +68,6 @@ public class Employee {
     public void setAttendance(List<Attendance> attendance) {
         this.attendance = attendance;
     }
-
-    @ManyToOne
-    @JoinColumn(name="designation_id")
-    private Designation designation;
 
     public Integer getId() {
         return id;

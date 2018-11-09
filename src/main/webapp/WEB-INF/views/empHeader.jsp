@@ -70,41 +70,19 @@
   <div class="dropdown">
     <button class="dropbtn">&#9776;</button>
     <div class="dropdown-content">
-      <a href="/HRMS/employee/viewProfile">Edit Profile</a>
-      <a href="/HRMS/employee/empProjects">Projects</a>
-      <a href="#" onclick="viewTask()">Time Sheet</a>
-      <a href="/HRMS/user/logout">Attendance</a>
+      <a id="edit" href="/hrms/employee/viewProfile">My Profile</a>
+      <a id="edit" href="/hrms/employee/createProfile">Edit Profile</a>
+      <a href="/hrms/employee/empProjects">Projects</a>
+      <a href="/hrms/employee/empTasks">Time Sheet</a>
+      <a href="/hrms/employee/empAttendance">Attendance</a>
     </div>
   </div> 
-  <div style="float:center">
+  <div style="margin-left:40%">
       <a href="#" >Welcome ${employee.name}</a>
-  <div>
+  </div>
   <div style="float:right">
-      <a href="#" onclick="viewAttendance()">LogOut</a>
-  <div>
+      <a href="/hrms/user/logout">logout</a>
+  </div>
 </div>
-
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-
-function viewTask() {
-    document.getElementById("taskInfo").style.display='block';
-    document.getElementById("projectInfo").style.display='none';
-    document.getElementById("attendanceInfo").style.display='none';
-}
-
-function viewAttendance() {
-    document.getElementById("taskInfo").style.display='none';
-    document.getElementById("projectInfo").style.display='none';
-    document.getElementById("attendanceInfo").style.display='block';
-}
-</script>
-     
 </body>
 </html> 

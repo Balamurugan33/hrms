@@ -4,9 +4,9 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/dvdstore</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hrms</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">ganesh007</property>
+        <property name="connection.password">root</property>
 
         <!-- JDBC connection pool (use the built-in) 
         <property name="connection.pool_size">1</property>-->
@@ -27,13 +27,13 @@
 
 
         <!-- Names the annotated entity class -->
-        <mapping class="com.ideas2it.dvdstore.model.Dvd"/>
-        <mapping class="com.ideas2it.dvdstore.model.Genre"/>
-        <mapping class="com.ideas2it.dvdstore.model.LineItem"/>
-        <mapping class="com.ideas2it.dvdstore.model.PurchaseOrder"/>
-        <mapping class="com.ideas2it.dvdstore.model.Customer"/>
-        <mapping class="com.ideas2it.dvdstore.model.Address"/>
-        <mapping class="com.ideas2it.dvdstore.model.User"/>
+        <mapping class="com.ideas2it.hrms.model.Attendance"/>
+        <mapping class="com.ideas2it.hrms.model.Client"/>
+        <mapping class="com.ideas2it.hrms.model.Designation"/>
+        <mapping class="com.ideas2it.hrms.model.Employee"/>
+        <mapping class="com.ideas2it.hrms.model.Project"/>
+        <mapping class="com.ideas2it.hrms.model.ProjectTask"/>
+        <mapping class="com.ideas2it.hrms.model.User"/>
 
     </session-factory>
 

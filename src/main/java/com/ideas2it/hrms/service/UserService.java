@@ -24,11 +24,10 @@ public interface UserService {
     /**
      * Used to find the user in the hrms
      *
-     * @param userName, password, role
+     * @param userName, password
      *        Used to find the unique user
      */
-    User searchUser(String userName, String password, String role) 
-            throws AppException;
+    User searchUser(String userName, String password) throws AppException;
     
     /**
      * Used to check the user user name is already exist

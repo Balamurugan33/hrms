@@ -46,8 +46,8 @@ public class ClientServiceImpl implements ClientService {
         ProjectService projectService = new ProjectServiceImpl();
         Integer billableAmount = 0;
         for(Project project : client.getProjects()) {
-            billableAmount 
-                = billableAmount + projectService.calculateNetProfit(project);
+            /*billableAmount 
+                = billableAmount + projectService.calculateNetProfit(project);*/
             
         }
         return billableAmount;

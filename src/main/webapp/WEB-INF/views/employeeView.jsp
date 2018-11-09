@@ -1,16 +1,19 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
-<body>
+<head/>
 <jsp:include page='empHeader.jsp'/>
+<body>
 
-<table style="float:center">
+<c:if test="${not empty employeeDetail}">
+ <div align="center">
+  <table style="float:center">
     <tr>
         <td>Employee ID:</td> 
-        <td>${employee.employeeId}</td>  
+        <td>${employee.id}</td>  
     </tr>
     <tr>
         <td>Name:</td> 
-        <td>${name}</td>  
+        <td>${employee.name}</td>  
     </tr>
     <tr>
         <td>MobileNo:</td>
@@ -18,7 +21,7 @@
     </tr>
     <tr>  
         <td>Mail:</td>
-        <td>${employee.mailId}</td>
+        <td>${employee.emailId}</td>
     </tr>
     <tr>
          <td>Designation</td>
@@ -28,9 +31,12 @@
          <td>Designation</td>
          <td>${employee.designation.salary}</td>
     </tr>
-</table>
+   </table>
+ </div>
+</c:if>
 
-<div id="taskInfo" style="display:none">
+<c:if test="${not empty tasks}">
+ <div id="taskInfo" align="center">
     <table>
     <tr>
         <th>Project</th>
@@ -38,7 +44,7 @@
         <th>Start Time</th>
         <th>End Time</th>
     </tr>
-    <c:forEach var= "projectTask" items= "${employee.projectTask}">
+    <c:forEach var= "projectTask" items= "${tasks}">
     <tr>
         <td>${projectTask.project.name}</td>
         <td>${projectTask.name}</td>
@@ -47,10 +53,11 @@
     </tr>
     </c:forEach>
     </table>
-</div>
+ </div>
+</c:if>
     
-<c:if test="&{not empty projects}">
-    <div id=projectInfo>
+<c:if test="${not empty projects}">
+    <div id=projectInfo align="center">
     <table>
     <tr>
         <th>Project</th>
@@ -59,32 +66,34 @@
     <c:forEach var= "project" items= "${projects}">
     <tr>
         <td>${project.name}</td>
-        <td>${project.clint}</td>
+        <td>${project.client.name}</td>
     </tr>
     </c:forEach>
     </table>
     </div>
 </c:if>
     
-<div id=attendanceInfo style="display:none">
-    <table align="center">
+<c:if test="${not empty attendance}">
+ <div id=attendanceInfo align="center">
+    <table>
     <tr>
         <th>Date</th>
         <th>Attendance</th>
     </tr>
-    <c:forEach(var="attendance" items="${employee.attendance}")>
+    <c:forEach var="attendance" items="${attendance}">
     <tr>
-        <td>${attendance.date}</td>
-        <c:if test="${attendance.status} == 1">
+        <td>${attendance.attendDate}</td>
+        <c:if test="${attendance.status}">
         <td>Present</td>
         </c:if>
-        <c:if test="${attendance.status} == 0">
+        <c:if test="! ${attendance.status}">
         <td>Absent</td>
         </c:if>
     </tr>
     </c:forEach>
     </table>
-</div>
+ </div>
+</c:if>
 </body>
 
 <c:if test="${not empty message}">

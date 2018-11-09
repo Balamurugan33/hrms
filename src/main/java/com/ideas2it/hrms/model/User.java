@@ -1,10 +1,11 @@
 package com.ideas2it.hrms.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
 
 /**
  * <p>
@@ -14,8 +15,10 @@ import javax.persistence.Id;
  * </p>
  *
  * @version 1
- * @author Balamurugan
+ * @author Balamurugan M
  */
+@Entity
+@Table(name="user")
 public class User {
     
     @Id
@@ -23,7 +26,7 @@ public class User {
     @Column(name="id")
     private Integer Id;
     
-    @Column(name="user_name")
+    @Column(name="username")
     private String userName;
     
     @Column(name="password")

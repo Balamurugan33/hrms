@@ -29,9 +29,6 @@ public class Project {
     private Integer id;
     @Column(name="name")
     private String name;
-    // Total Amount to Bill the Client for this project
-    @Column(name="budget")
-    private Integer budget;
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
@@ -54,14 +51,6 @@ public class Project {
         this.name = name;
     }
 
-    public Integer getBudget() {
-        return budget;
-    }
-
-    public void setBudget(Integer budget) {
-        this.budget = budget;
-    }    
-    
     public Client getClient() {
         return client;
     }

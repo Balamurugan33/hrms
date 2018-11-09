@@ -100,7 +100,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public Employee searchEmployee(String email) throws AppException {
         try {
             session = HibernateSession.getSession();
-            String query = "FROM Employee WHERE email = :email";
+            String query = "FROM Employee WHERE emailId = :email";
             return (Employee)session.createQuery(query).
                 setParameter("email", email ).uniqueResult();
         } catch (HibernateException e) {

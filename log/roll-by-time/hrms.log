@@ -1,0 +1,426 @@
+2018-11-09 12:23:26 INFO Initializing Servlet 'spring'
+2018-11-09 12:23:28 INFO Completed initialization in 1480 ms
+2018-11-09 12:23:31 INFO Initializing Servlet 'spring'
+2018-11-09 12:23:32 INFO Completed initialization in 841 ms
+2018-11-09 12:23:53 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 12:23:53 INFO HHH000206: hibernate.properties not found
+2018-11-09 12:23:53 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 12:23:53 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 12:23:53 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 12:23:53 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 12:23:53 INFO HHH10001003: Autocommit mode: false
+2018-11-09 12:23:53 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 12:23:54 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 12:23:55 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 12:27:40 INFO Initializing Servlet 'spring'
+2018-11-09 12:27:40 INFO Completed initialization in 654 ms
+2018-11-09 12:27:54 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 12:27:54 INFO HHH000206: hibernate.properties not found
+2018-11-09 12:27:54 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 12:27:54 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 12:27:54 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 12:27:54 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 12:27:54 INFO HHH10001003: Autocommit mode: false
+2018-11-09 12:27:54 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 12:27:54 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 12:27:55 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 12:30:51 INFO Initializing Servlet 'spring'
+2018-11-09 12:30:51 INFO Completed initialization in 726 ms
+2018-11-09 12:31:10 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 12:31:10 INFO HHH000206: hibernate.properties not found
+2018-11-09 12:31:10 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 12:31:11 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 12:31:11 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 12:31:11 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 12:31:11 INFO HHH10001003: Autocommit mode: false
+2018-11-09 12:31:11 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 12:31:11 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 12:31:12 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 12:38:21 INFO Initializing Servlet 'spring'
+2018-11-09 12:38:22 INFO Completed initialization in 913 ms
+2018-11-09 12:38:25 INFO Initializing Servlet 'spring'
+2018-11-09 12:38:25 INFO Completed initialization in 862 ms
+2018-11-09 12:38:36 INFO Initializing Servlet 'spring'
+2018-11-09 12:38:37 INFO Completed initialization in 1563 ms
+2018-11-09 12:44:06 INFO Initializing Servlet 'spring'
+2018-11-09 12:44:07 INFO Completed initialization in 890 ms
+2018-11-09 12:45:33 INFO Initializing Servlet 'spring'
+2018-11-09 12:45:34 INFO Completed initialization in 824 ms
+2018-11-09 12:48:23 INFO Initializing Servlet 'spring'
+2018-11-09 12:48:24 INFO Completed initialization in 712 ms
+2018-11-09 12:48:55 INFO Initializing Servlet 'spring'
+2018-11-09 12:48:56 INFO Completed initialization in 715 ms
+2018-11-09 12:49:18 INFO Initializing Servlet 'spring'
+2018-11-09 12:49:18 INFO Completed initialization in 775 ms
+2018-11-09 12:50:01 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 12:50:01 INFO HHH000206: hibernate.properties not found
+2018-11-09 12:50:02 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 12:50:02 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 12:50:02 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 12:50:02 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 12:50:02 INFO HHH10001003: Autocommit mode: false
+2018-11-09 12:50:02 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 12:50:02 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 12:50:03 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 12:52:00 INFO Initializing Servlet 'spring'
+2018-11-09 12:52:00 INFO Completed initialization in 647 ms
+2018-11-09 12:54:42 INFO Initializing Servlet 'spring'
+2018-11-09 12:54:43 INFO Completed initialization in 1090 ms
+2018-11-09 12:55:10 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 12:55:10 INFO HHH000206: hibernate.properties not found
+2018-11-09 12:55:10 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 12:55:10 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 12:55:10 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 12:55:10 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 12:55:10 INFO HHH10001003: Autocommit mode: false
+2018-11-09 12:55:10 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 12:55:11 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 12:55:12 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 12:56:34 INFO Initializing Servlet 'spring'
+2018-11-09 12:56:35 INFO Completed initialization in 1005 ms
+2018-11-09 13:03:36 INFO Initializing Servlet 'spring'
+2018-11-09 13:03:37 INFO Completed initialization in 983 ms
+2018-11-09 13:04:07 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 13:04:07 INFO HHH000206: hibernate.properties not found
+2018-11-09 13:04:08 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 13:04:08 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 13:04:08 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 13:04:08 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 13:04:08 INFO HHH10001003: Autocommit mode: false
+2018-11-09 13:04:08 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 13:04:08 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 13:04:10 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 13:04:42 WARN Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2018-11-09 13:06:07 INFO Initializing Servlet 'spring'
+2018-11-09 13:06:08 INFO Completed initialization in 834 ms
+2018-11-09 15:42:26 INFO Initializing Servlet 'spring'
+2018-11-09 15:42:26 INFO Completed initialization in 961 ms
+2018-11-09 15:42:44 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 15:42:44 INFO HHH000206: hibernate.properties not found
+2018-11-09 15:42:44 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 15:42:44 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 15:42:44 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 15:42:44 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 15:42:44 INFO HHH10001003: Autocommit mode: false
+2018-11-09 15:42:44 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 15:42:44 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 15:42:46 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 15:42:46 WARN SQL Error: 1054, SQLState: 42S22
+2018-11-09 15:42:46 ERROR Unknown column 'email' in 'where clause'
+2018-11-09 15:45:20 WARN Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2018-11-09 15:45:22 WARN Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2018-11-09 15:45:28 WARN SQL Error: 1054, SQLState: 42S22
+2018-11-09 15:45:28 ERROR Unknown column 'email' in 'where clause'
+2018-11-09 15:47:46 INFO Initializing Servlet 'spring'
+2018-11-09 15:47:47 INFO Completed initialization in 875 ms
+2018-11-09 15:48:28 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 15:48:28 INFO HHH000206: hibernate.properties not found
+2018-11-09 15:48:28 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 15:48:28 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 15:48:28 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 15:48:28 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 15:48:28 INFO HHH10001003: Autocommit mode: false
+2018-11-09 15:48:28 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 15:48:28 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 15:48:29 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 15:48:29 WARN SQL Error: 1146, SQLState: 42S02
+2018-11-09 15:48:29 ERROR Table 'hrms.emp_attendance' doesn't exist
+2018-11-09 15:48:29 INFO HHH000327: Error performing load command : org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+2018-11-09 15:49:53 INFO Initializing Servlet 'spring'
+2018-11-09 15:49:53 INFO Completed initialization in 647 ms
+2018-11-09 15:50:00 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 15:50:00 INFO HHH000206: hibernate.properties not found
+2018-11-09 15:50:00 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 15:50:00 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 15:50:00 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 15:50:00 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 15:50:00 INFO HHH10001003: Autocommit mode: false
+2018-11-09 15:50:00 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 15:50:00 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 15:50:01 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 15:50:01 WARN SQL Error: 1054, SQLState: 42S22
+2018-11-09 15:50:01 ERROR Unknown column 'attendance3_.date' in 'field list'
+2018-11-09 15:50:01 INFO HHH000327: Error performing load command : org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+2018-11-09 15:52:04 INFO Initializing Servlet 'spring'
+2018-11-09 15:52:04 INFO Completed initialization in 732 ms
+2018-11-09 15:53:04 INFO Initializing Servlet 'spring'
+2018-11-09 15:53:05 INFO Completed initialization in 922 ms
+2018-11-09 15:53:29 INFO Initializing Servlet 'spring'
+2018-11-09 15:53:29 INFO Completed initialization in 627 ms
+2018-11-09 15:53:46 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 15:53:46 INFO HHH000206: hibernate.properties not found
+2018-11-09 15:53:46 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 15:53:46 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 15:53:46 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 15:53:46 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 15:53:46 INFO HHH10001003: Autocommit mode: false
+2018-11-09 15:53:46 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 15:53:47 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 15:53:48 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 15:53:48 WARN SQL Error: 1054, SQLState: 42S22
+2018-11-09 15:53:48 ERROR Unknown column 'attendance3_.attend_attendDate' in 'field list'
+2018-11-09 15:53:48 INFO HHH000327: Error performing load command : org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+2018-11-09 15:54:33 INFO Initializing Servlet 'spring'
+2018-11-09 15:54:34 INFO Completed initialization in 850 ms
+2018-11-09 15:54:49 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 15:54:49 INFO HHH000206: hibernate.properties not found
+2018-11-09 15:54:49 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 15:54:49 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 15:54:49 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 15:54:49 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 15:54:49 INFO HHH10001003: Autocommit mode: false
+2018-11-09 15:54:49 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 15:54:50 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 15:54:51 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 15:54:51 WARN SQL Error: 1054, SQLState: 42S22
+2018-11-09 15:54:51 ERROR Unknown column 'attendance2_.attendance_id' in 'on clause'
+2018-11-09 15:54:51 INFO HHH000327: Error performing load command : org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+2018-11-09 15:57:46 INFO Initializing Servlet 'spring'
+2018-11-09 15:57:47 INFO Completed initialization in 672 ms
+2018-11-09 15:57:52 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 15:57:52 INFO HHH000206: hibernate.properties not found
+2018-11-09 15:57:53 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 15:57:53 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 15:57:53 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 15:57:53 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 15:57:53 INFO HHH10001003: Autocommit mode: false
+2018-11-09 15:57:53 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 15:57:53 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 15:57:54 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 15:57:54 WARN SQL Error: 1054, SQLState: 42S22
+2018-11-09 15:57:54 ERROR Unknown column 'project1_.budget' in 'field list'
+2018-11-09 15:58:36 INFO Initializing Servlet 'spring'
+2018-11-09 15:58:37 INFO Completed initialization in 836 ms
+2018-11-09 15:59:05 INFO Initializing Servlet 'spring'
+2018-11-09 15:59:05 INFO Completed initialization in 933 ms
+2018-11-09 15:59:12 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 15:59:12 INFO HHH000206: hibernate.properties not found
+2018-11-09 15:59:12 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 15:59:12 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 15:59:12 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 15:59:12 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 15:59:12 INFO HHH10001003: Autocommit mode: false
+2018-11-09 15:59:12 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 15:59:12 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 15:59:14 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 15:59:14 WARN SQL Error: 1054, SQLState: 42S22
+2018-11-09 15:59:14 ERROR Unknown column 'client2_.moblie_number' in 'field list'
+2018-11-09 16:00:06 INFO Initializing Servlet 'spring'
+2018-11-09 16:00:07 INFO Completed initialization in 1183 ms
+2018-11-09 16:00:23 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 16:00:23 INFO HHH000206: hibernate.properties not found
+2018-11-09 16:00:23 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 16:00:23 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 16:00:23 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 16:00:23 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 16:00:23 INFO HHH10001003: Autocommit mode: false
+2018-11-09 16:00:23 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 16:00:23 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 16:00:24 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 16:02:09 INFO Initializing Servlet 'spring'
+2018-11-09 16:02:10 INFO Completed initialization in 809 ms
+2018-11-09 16:02:31 INFO Initializing Servlet 'spring'
+2018-11-09 16:02:32 INFO Completed initialization in 795 ms
+2018-11-09 16:02:39 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 16:02:39 INFO HHH000206: hibernate.properties not found
+2018-11-09 16:02:39 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 16:02:39 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 16:02:39 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 16:02:39 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 16:02:39 INFO HHH10001003: Autocommit mode: false
+2018-11-09 16:02:39 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 16:02:39 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 16:02:40 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 16:27:12 WARN No mapping for GET /hrms/employee/viewProfile
+2018-11-09 16:29:55 WARN No mapping for GET /hrms/user/viewAttendance()
+2018-11-09 16:31:15 WARN No mapping for GET /hrms/employee/empProjects
+2018-11-09 16:36:28 INFO Initializing Servlet 'spring'
+2018-11-09 16:36:29 INFO Completed initialization in 932 ms
+2018-11-09 16:36:43 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 16:36:43 INFO HHH000206: hibernate.properties not found
+2018-11-09 16:36:43 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 16:36:43 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 16:36:43 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 16:36:43 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 16:36:43 INFO HHH10001003: Autocommit mode: false
+2018-11-09 16:36:43 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 16:36:44 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 16:36:45 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 16:36:48 WARN No mapping for GET /hrms/employee/viewProfile
+2018-11-09 16:38:00 INFO Initializing Servlet 'spring'
+2018-11-09 16:38:01 INFO Completed initialization in 840 ms
+2018-11-09 16:38:08 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 16:38:08 INFO HHH000206: hibernate.properties not found
+2018-11-09 16:38:08 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 16:38:08 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 16:38:08 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 16:38:08 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 16:38:08 INFO HHH10001003: Autocommit mode: false
+2018-11-09 16:38:08 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 16:38:09 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 16:38:10 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 16:40:59 INFO Initializing Servlet 'spring'
+2018-11-09 16:41:00 INFO Completed initialization in 769 ms
+2018-11-09 16:41:12 INFO Initializing Servlet 'spring'
+2018-11-09 16:41:13 INFO Completed initialization in 627 ms
+2018-11-09 16:44:49 INFO Initializing Servlet 'spring'
+2018-11-09 16:44:50 INFO Completed initialization in 638 ms
+2018-11-09 16:45:23 INFO Initializing Servlet 'spring'
+2018-11-09 16:45:23 INFO Completed initialization in 782 ms
+2018-11-09 16:46:11 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 16:46:11 INFO HHH000206: hibernate.properties not found
+2018-11-09 16:46:11 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 16:46:11 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 16:46:11 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 16:46:11 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 16:46:11 INFO HHH10001003: Autocommit mode: false
+2018-11-09 16:46:11 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 16:46:11 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 16:46:12 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 16:47:55 WARN No mapping for GET /hrms/employee/empProjects
+2018-11-09 16:50:03 INFO Initializing Servlet 'spring'
+2018-11-09 16:50:04 INFO Completed initialization in 623 ms
+2018-11-09 16:51:01 INFO Initializing Servlet 'spring'
+2018-11-09 16:51:01 INFO Completed initialization in 675 ms
+2018-11-09 16:54:26 WARN No mapping for GET /hrms/employee/empProjects
+2018-11-09 16:56:39 INFO Initializing Servlet 'spring'
+2018-11-09 16:56:40 INFO Completed initialization in 909 ms
+2018-11-09 16:56:59 INFO Initializing Servlet 'spring'
+2018-11-09 16:57:00 INFO Completed initialization in 598 ms
+2018-11-09 16:58:07 WARN No mapping for GET /hrms/employee/empProjects
+2018-11-09 16:58:52 INFO Initializing Servlet 'spring'
+2018-11-09 16:58:53 INFO Completed initialization in 792 ms
+2018-11-09 16:59:16 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 16:59:16 INFO HHH000206: hibernate.properties not found
+2018-11-09 16:59:16 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 16:59:16 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 16:59:16 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 16:59:16 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 16:59:16 INFO HHH10001003: Autocommit mode: false
+2018-11-09 16:59:16 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 16:59:16 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 16:59:17 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 17:04:40 INFO Initializing Servlet 'spring'
+2018-11-09 17:04:41 INFO Completed initialization in 1206 ms
+2018-11-09 17:04:54 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 17:04:54 INFO HHH000206: hibernate.properties not found
+2018-11-09 17:04:55 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 17:04:55 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 17:04:55 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 17:04:55 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 17:04:55 INFO HHH10001003: Autocommit mode: false
+2018-11-09 17:04:55 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 17:04:55 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 17:04:56 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 17:04:59 ERROR check[com.ideas2it.hrms.model.Project@57d81b7]
+2018-11-09 17:05:01 ERROR check[com.ideas2it.hrms.model.Project@57d81b7]
+2018-11-09 17:06:26 ERROR check[com.ideas2it.hrms.model.Project@313a180c]
+2018-11-09 17:06:55 ERROR check[com.ideas2it.hrms.model.Project@313a180c]
+2018-11-09 17:07:16 ERROR check[com.ideas2it.hrms.model.Project@313a180c]
+2018-11-09 17:08:04 ERROR check[com.ideas2it.hrms.model.Project@313a180c]
+2018-11-09 17:08:06 ERROR check[com.ideas2it.hrms.model.Project@313a180c]
+2018-11-09 17:08:08 ERROR check[com.ideas2it.hrms.model.Project@313a180c]
+2018-11-09 17:09:07 ERROR check[com.ideas2it.hrms.model.Project@313a180c]
+2018-11-09 17:09:10 ERROR check[com.ideas2it.hrms.model.Project@313a180c]
+2018-11-09 17:09:24 ERROR check[com.ideas2it.hrms.model.Project@2b6b0ea4]
+2018-11-09 17:09:29 ERROR check[com.ideas2it.hrms.model.Project@2b6b0ea4]
+2018-11-09 18:20:58 ERROR check[com.ideas2it.hrms.model.Project@81ab8b2]
+2018-11-09 18:24:31 ERROR check[com.ideas2it.hrms.model.Project@43c56d1b]
+2018-11-09 18:24:44 ERROR check[com.ideas2it.hrms.model.Project@43c56d1b]
+2018-11-09 18:29:13 ERROR check[com.ideas2it.hrms.model.Project@33c1af8a]
+2018-11-09 18:31:37 ERROR check[com.ideas2it.hrms.model.Project@665e8217]
+2018-11-09 18:47:41 ERROR check[com.ideas2it.hrms.model.Project@64d8eb74]
+2018-11-09 18:48:09 ERROR check[com.ideas2it.hrms.model.Project@64d8eb74]
+2018-11-09 18:49:21 ERROR check[com.ideas2it.hrms.model.Project@64d8eb74]
+2018-11-09 18:49:24 ERROR check[com.ideas2it.hrms.model.Project@64d8eb74]
+2018-11-09 18:49:25 ERROR check[com.ideas2it.hrms.model.Project@64d8eb74]
+2018-11-09 18:49:29 ERROR check[com.ideas2it.hrms.model.Project@64d8eb74]
+2018-11-09 18:50:15 ERROR check[com.ideas2it.hrms.model.Project@64d8eb74]
+2018-11-09 18:52:25 ERROR check[com.ideas2it.hrms.model.Project@5ca1efab]
+2018-11-09 19:11:09 INFO Initializing Servlet 'spring'
+2018-11-09 19:11:10 INFO Completed initialization in 660 ms
+2018-11-09 19:14:10 INFO Initializing Servlet 'spring'
+2018-11-09 19:14:10 INFO Completed initialization in 736 ms
+2018-11-09 19:15:57 INFO Initializing Servlet 'spring'
+2018-11-09 19:15:58 INFO Completed initialization in 945 ms
+2018-11-09 19:18:22 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 19:18:22 INFO HHH000206: hibernate.properties not found
+2018-11-09 19:18:22 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 19:18:22 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 19:18:22 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 19:18:22 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 19:18:22 INFO HHH10001003: Autocommit mode: false
+2018-11-09 19:18:22 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 19:18:23 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 19:18:24 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 19:20:49 WARN No mapping for POST /hrms/employee/updateEmployee
+2018-11-09 19:23:10 INFO Initializing Servlet 'spring'
+2018-11-09 19:23:11 INFO Completed initialization in 655 ms
+2018-11-09 19:24:33 INFO Initializing Servlet 'spring'
+2018-11-09 19:24:34 INFO Completed initialization in 808 ms
+2018-11-09 19:26:32 INFO Initializing Servlet 'spring'
+2018-11-09 19:26:33 INFO Completed initialization in 790 ms
+2018-11-09 19:28:23 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 19:28:23 INFO HHH000206: hibernate.properties not found
+2018-11-09 19:28:23 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 19:28:23 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 19:28:23 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 19:28:23 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 19:28:23 INFO HHH10001003: Autocommit mode: false
+2018-11-09 19:28:23 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 19:28:24 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 19:28:25 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 19:30:24 INFO Initializing Servlet 'spring'
+2018-11-09 19:30:25 INFO Completed initialization in 879 ms
+2018-11-09 19:30:36 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 19:30:36 INFO HHH000206: hibernate.properties not found
+2018-11-09 19:30:36 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 19:30:36 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 19:30:36 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 19:30:36 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 19:30:36 INFO HHH10001003: Autocommit mode: false
+2018-11-09 19:30:36 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 19:30:36 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 19:30:37 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 19:31:57 INFO Initializing Servlet 'spring'
+2018-11-09 19:31:58 INFO Completed initialization in 673 ms
+2018-11-09 19:32:13 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 19:32:13 INFO HHH000206: hibernate.properties not found
+2018-11-09 19:32:13 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 19:32:13 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 19:32:13 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 19:32:13 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 19:32:13 INFO HHH10001003: Autocommit mode: false
+2018-11-09 19:32:13 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 19:32:14 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 19:32:15 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 19:32:40 INFO Initializing Servlet 'spring'
+2018-11-09 19:32:41 INFO Completed initialization in 829 ms
+2018-11-09 19:32:53 INFO Initializing Servlet 'spring'
+2018-11-09 19:32:54 INFO Completed initialization in 616 ms
+2018-11-09 19:33:12 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 19:33:12 INFO HHH000206: hibernate.properties not found
+2018-11-09 19:33:12 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 19:33:12 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 19:33:12 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 19:33:12 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 19:33:12 INFO HHH10001003: Autocommit mode: false
+2018-11-09 19:33:12 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 19:33:12 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 19:33:13 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 19:33:44 INFO Initializing Servlet 'spring'
+2018-11-09 19:33:45 INFO Completed initialization in 762 ms
+2018-11-09 19:33:57 INFO Initializing Servlet 'spring'
+2018-11-09 19:33:58 INFO Completed initialization in 610 ms
+2018-11-09 19:34:12 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 19:34:12 INFO HHH000206: hibernate.properties not found
+2018-11-09 19:34:13 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 19:34:13 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 19:34:13 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 19:34:13 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 19:34:13 INFO HHH10001003: Autocommit mode: false
+2018-11-09 19:34:13 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 19:34:13 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 19:34:14 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-09 19:35:48 INFO Initializing Servlet 'spring'
+2018-11-09 19:35:48 INFO Completed initialization in 648 ms

@@ -19,7 +19,7 @@
     </tr>
     <tr>  
         <td>Mail:</td>
-        <td><input type="email" value="${employee.mailId}" name="mailId" required/></td>
+        <td><input type="email" value="${employee.emailId}" name="mailId" required/></td>
     </tr> 
     <tr>  
         <td>Designation:</td>
@@ -33,10 +33,10 @@
         </c:forEach>
     <tr>
         <c:if test="${empty employee}">
-        <td><button type="submit" formaction="/HRMS/employee/createEmployee" value="create">Save</button></td>
+        <td><button type="submit" formaction="/hrms/employee/createEmployee" value="create">Save</button></td>
         </c:if>
         <c:if test="${not empty employee}">
-        <td><button type="submit" formaction="/HRMS/employee/updateEmployee" value="updateCustomer">Update</button></td>
+        <td><button type="submit" formaction="/hrms/employee/updateEmployee" value="updateCustomer">Update</button></td>
         </c:if>
     </tr>
     </table>

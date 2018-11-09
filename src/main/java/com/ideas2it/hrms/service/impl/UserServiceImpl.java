@@ -1,6 +1,7 @@
 package com.ideas2it.hrms.service.impl;
 
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.dao.UserDao;
 import com.ideas2it.hrms.dao.impl.UserDaoImpl;
 import com.ideas2it.hrms.model.Employee;
@@ -21,16 +22,7 @@ import com.ideas2it.hrms.service.UserService;
  */
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
-    private EmployeeService employeeService;
-    
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
-    
-    public void setEmployeeService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+    private UserDao userDao = new UserDaoImpl();
     
     /** {@inheritDoc}*/
     public Boolean createUser(User user) throws AppException {
@@ -38,9 +30,9 @@ public class UserServiceImpl implements UserService {
     }
     
     /** {@inheritDoc}*/
-    public User searchUser(String userName, String password, String role) 
+    public User searchUser(String userName, String password) 
             throws AppException {
-        return userDao.searchUser(userName, password, role);
+        return userDao.searchUser(userName, password);
     }
     
     /** {@inheritDoc}*/
@@ -50,6 +42,7 @@ public class UserServiceImpl implements UserService {
     
     /** {@inheritDoc}*/
     public Employee checkEmployeeDetail(String mailId) throws AppException {
+        EmployeeService employeeService = new EmployeeServiceImpl();
         return employeeService.searchEmployee(mailId);
     }
 }

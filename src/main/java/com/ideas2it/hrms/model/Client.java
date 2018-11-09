@@ -26,7 +26,7 @@ public class Client {
     @Column(name="email_id")
     private String emailId;
     
-    @Column(name="moblie_number")
+    @Column(name="mobile_number")
     private String mobileNo;
     
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)

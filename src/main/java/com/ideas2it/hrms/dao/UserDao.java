@@ -26,8 +26,7 @@ public interface UserDao {
      * @param userName, password, role
      *        Used to find the unique user
      */
-    User searchUser(String userName, String password, String role) 
-            throws AppException;
+    User searchUser(String userName, String password) throws AppException;
     
     /**
      * Used to check the user name is already there 
