@@ -11,7 +11,7 @@
     <table align="center">
     <tr>
         <td>Name:</td> 
-        <td><input type="text" value="${employee.name}" name="customerName" pattern="[A-Za-z\s]+" maxlength=30 required/></td>  
+        <td><input type="text" value="${employee.name}" name="name" pattern="[A-Za-z\s]+" maxlength=30 required/></td>  
     </tr>
     <tr>
         <td>MobileNo:</td>
@@ -19,18 +19,22 @@
     </tr>
     <tr>  
         <td>Mail:</td>
-        <td><input type="email" value="${employee.emailId}" name="mailId" required/></td>
+        <td><input type="email" value="${employee.emailId}" name="emailId" required/></td>
     </tr> 
+    
+    
+    <c:if test="${empty employee}">
     <tr>  
         <td>Designation:</td>
     </tr>
     
-        <c:forEach var="designation" items="${designation}">
+        <c:forEach var="designation" items="${designations}">
     <tr></td>
-        <td><input type="radio" name="designation" value="designation.name" <c:if test = "${employee.designation.name.equals('designation.name')}"> checked </c:if> /> ${designation.name} &nbsp
+        <td><input type="radio" name="designationId" value="${designation.id}" <c:if test = "${employee.designation.name.equals('designation.name')}"> checked </c:if> /> ${designation.name} &nbsp
         </td>
     </tr>
         </c:forEach>
+    </c:if>
     <tr>
         <c:if test="${empty employee}">
         <td><button type="submit" formaction="/hrms/employee/createEmployee" value="create">Save</button></td>
@@ -40,6 +44,7 @@
         </c:if>
     </tr>
     </table>
+    <input type="hidden" name="id" value="${employee.id}">
 </form> 
 </body>
 

@@ -8,9 +8,11 @@ import com.ideas2it.hrms.dao.EmployeeDao;
 import com.ideas2it.hrms.dao.impl.EmployeeDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Attendance;
+import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.ProjectTask;
+import com.ideas2it.hrms.service.DesignationService;
 import com.ideas2it.hrms.service.EmployeeService;
 
 public class EmployeeServiceImpl implements EmployeeService{
@@ -47,6 +49,12 @@ public class EmployeeServiceImpl implements EmployeeService{
     /** {@inheritDoc}*/
     public Employee searchEmployee(String emailId) throws AppException {
         return employeeDao.searchEmployee(emailId);
+    }
+    
+    /** {@inheritDoc}*/
+    public List<Designation> getDesignations() throws AppException {
+        DesignationService designationService = new DesignationServiceImpl();
+        return designationService.displayDesignations();
     }
     
     /** {@inheritDoc}*/

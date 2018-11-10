@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Attendance;
+import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.ProjectTask;
@@ -59,6 +60,11 @@ public interface EmployeeService {
     *        Get the employee mail id
     */
    Employee searchEmployee(String emailId) throws AppException;
+   
+   /**
+    * Used get the all the designations
+    */
+   List<Designation> getDesignations() throws AppException;
    
    /**
     * Used get the employee assigned projects
