@@ -225,3 +225,9 @@ Caused by: java.lang.ArrayIndexOutOfBoundsException: 6
 2018-11-12 14:17:06 ERROR Column 'employee_id' cannot be null
 2018-11-12 14:43:19 INFO Initializing Servlet 'spring'
 2018-11-12 14:43:19 INFO Completed initialization in 486 ms
+2018-11-12 14:43:44 INFO Initializing Servlet 'spring'
+2018-11-12 14:43:44 INFO Completed initialization in 488 ms
+2018-11-12 14:47:57 INFO Initializing Servlet 'spring'
+2018-11-12 14:47:57 INFO Completed initialization in 541 ms
+2018-11-12 14:51:57 INFO Initializing Servlet 'spring'
+2018-11-12 14:51:58 INFO Completed initialization in 511 ms
