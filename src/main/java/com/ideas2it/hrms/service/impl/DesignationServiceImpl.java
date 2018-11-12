@@ -2,10 +2,14 @@ package com.ideas2it.hrms.service.impl;
 
 import java.util.List;
 
+import com.ideas2it.hrms.dao.ClientDao;
 import com.ideas2it.hrms.dao.DesignationDao;
+import com.ideas2it.hrms.dao.impl.ClientDaoImpl;
 import com.ideas2it.hrms.dao.impl.DesignationDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Designation;
+import com.ideas2it.hrms.service.ClientService;
 import com.ideas2it.hrms.service.DesignationService;
 
 public class DesignationServiceImpl implements DesignationService{

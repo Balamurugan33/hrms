@@ -3,6 +3,7 @@ package com.ideas2it.hrms.service;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.ProjectTask;
 
@@ -92,4 +93,9 @@ public interface ProjectService {
      *        project
      */
     Integer calculateCostToCompany(Project project);
+    
+    /**
+     * Used to get all clients
+     */
+    List<Client> displayClients() throws AppException;
 }
