@@ -6,6 +6,57 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    .toggle {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 68px;
+      height: 32px;
+      display: inline-block;
+      position: relative;
+      border-radius: 50px;
+      overflow: hidden;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      background-color: #707070;
+      transition: background-color ease 0.3s;
+    }
+
+    .toggle:before {
+      content: "In Out";
+      display: block;
+      position: absolute;
+      z-index: 2;
+      width: 28px;
+      height: 28px;
+      background: #fff;
+      left: 2px;
+      top: 2px;
+      border-radius: 50%;
+      font: 10px/28px Helvetica;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-indent: -22px;
+      word-spacing: 37px;
+      color: #fff;
+      text-shadow: -1px -1px rgba(0,0,0,0.15);
+      white-space: nowrap;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+    }
+
+    .toggle:checked {
+      background-color: #4CD964;
+    }
+
+    .toggle:checked:before {
+      left: 42px;
+    }
+    </style>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <jsp:include page='empHeader.jsp'/>
 <body>
 
@@ -81,6 +132,20 @@
 <c:if test="${not empty attendance}">
  <div id=attendanceInfo align="center">
     <table class="table table-striped text-center">
+  <c:choose>
+    <c:when test="${isChecked=='true'}">
+      <input class="toggle" type="checkbox" name="checkAttendance" checked="checked" onclick="checkAttendance(this)" />
+    </c:when>    
+    <c:when test="${isChecked=='false'}">
+      <input class="toggle" type="checkbox" name="checkAttendance" onclick="checkAttendance(this)" />
+    </c:when>  
+    <c:otherwise>
+      <input class="toggle" type="checkbox" name="checkAttendance" onclick="checkAttendance(this)" />
+    </c:otherwise>
+  </c:choose>
+    <br>
+    <br>
+    <table>
     <tr>
         <th>Date</th>
         <th>Attendance</th>
@@ -88,10 +153,10 @@
     <c:forEach var="attendance" items="${attendance}">
     <tr>
         <td>${attendance.attendDate}</td>
-        <c:if test="${attendance.status}">
+        <c:if test="${attendance.status == true}">
         <td>Present</td>
         </c:if>
-        <c:if test="! ${attendance.status}">
+        <c:if test="${attendance.status == false}">
         <td>Absent</td>
         </c:if>
     </tr>
@@ -153,4 +218,16 @@ function closeUpdate(event) {
     $("#Update").modal("hide");
 }
 </script>
+  <script>
+    function checkAttendance(checkbox)
+    {
+      if (checkbox.checked)
+      {        
+          window.location = "/hrms/employee/markPresent";
+      }
+      else {
+          window.location = "/hrms/employee/markAbsent";    
+      }
+    }
+  </script>
 </html>

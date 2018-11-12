@@ -1,16 +1,14 @@
 package com.ideas2it.hrms.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -30,8 +28,9 @@ public class Attendance {
     private LocalDate attendDate;
     @Column(name="status")
     private boolean status;
-    @ManyToMany(mappedBy="attendance", fetch=FetchType.EAGER)
-    private List<Employee> employees = new ArrayList<Employee>();
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
     public Integer getId() {
         return id;
     }
@@ -50,10 +49,10 @@ public class Attendance {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    public List<Employee> getEmployees() {
-        return employees;
+    public Employee getEmployee() {
+        return employee;
     }
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2018-11-09 12:23:26 INFO Initializing Servlet 'spring'
 2018-11-09 12:23:28 INFO Completed initialization in 1480 ms
 2018-11-09 12:23:31 INFO Initializing Servlet 'spring'
@@ -1911,3 +1912,5 @@ Field error in object 'project' on field 'client': rejected value [4]; codes [ty
 2018-11-12 14:37:25 INFO Completed initialization in 627 ms
 2018-11-12 14:37:57 INFO Initializing Servlet 'spring'
 2018-11-12 14:37:58 INFO Completed initialization in 608 ms
+=======
+>>>>>>> 8d12212e8a322ed0166837cf413c48ad91039a86

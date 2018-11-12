@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Attendance;
+import com.ideas2it.hrms.model.Employee;
 
 /**
  * <p>
@@ -17,6 +18,26 @@ import com.ideas2it.hrms.model.Attendance;
 public interface AttendanceService {
     
     /**
+     * Marks employee as present for today
+     * 
+     * @param employee
+     *       employee
+     * @return 
+     *       employee's entire attendance history
+     */
+    List<Attendance> markPresent(Employee employee) throws AppException;
+    
+    /**
+     * Marks employee as absent for today
+     * 
+     * @param employee
+     *       employee
+     * @return 
+     *       employee's entire attendance history
+     */
+    List<Attendance> markAbsent(Employee employee) throws AppException;
+    
+    /**
      * Creates a new attendance 
      * 
      * @param attendance
@@ -27,17 +48,26 @@ public interface AttendanceService {
     Attendance createAttendance(Attendance attendance) throws AppException;
     
     /**
-     * Gets a attendance 
+     * Gets a today's attendance entry of an employee
      *
      * @param id
-     *        id of the requested attendance
+     *        employee
      * @return
      *        requested attendance, if exists, null otherwise
      */
-    Attendance getAttendanceById(Integer id) throws AppException;
+    Attendance getAttendance(Employee employee) throws AppException;
     
     /**
-     * Gets all the attendances allocated to company
+     * Gets the attendance sheet of an employee
+     * 
+     * @return
+     *        attendance sheet
+     */
+    List<Attendance> getAttendanceSheet(Employee employee) throws AppException;
+
+     
+    /**
+     * Gets the attendances of all employees in company
      * 
      * @return
      *        list of all attendances
@@ -51,12 +81,4 @@ public interface AttendanceService {
      *       attendance to update
      */
     Attendance updateAttendance(Attendance attendance) throws AppException;
-    
-    /**
-     * Removes a attendance
-     * 
-     * @param attendance
-     *       attendance to remove
-     */
-    Attendance removeAttendance(Attendance attendance) throws AppException;
 }
