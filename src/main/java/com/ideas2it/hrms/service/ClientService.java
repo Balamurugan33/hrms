@@ -56,4 +56,9 @@ public interface ClientService {
      *        client
      */
     Integer calculateNetProfit(Client client);
+    
+    /**
+     * Find an existing client 
+     */
+    Client searchClient(String email) throws AppException;
 }

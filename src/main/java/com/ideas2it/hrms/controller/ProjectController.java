@@ -99,10 +99,10 @@ public class ProjectController {
 
         try {
             List<Project> allProjects = projectService.getAllProjects();
-            modelAndView.addObject("allProjects", allProjects);
+            modelAndView.addObject("projects", allProjects);
             // redirect him to the same page; the projects must also be sent
             // alert box is optional for now
-            modelAndView.setViewName("projects");
+            modelAndView.setViewName("adminHome");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
         }

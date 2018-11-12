@@ -7,9 +7,9 @@
 <body>
 <div class="navbar" id="main">
   <a href="#" onclick="openNav()">&#9776;</a>
-  <div style="margin-left:40%">
-      <a href="#" >Welcome ${employee.name}</a>
-  </div>
+  <a href="/hrms/employee/displayEmployee">Employees</a>
+  <a href="/hrms/project/displayAll">Projects</a>
+  <a href="/hrms/client/displayClient">Clients</a>
   <div style="float:right">
       <a href="/hrms/user/logout">logout</a>
   </div>
@@ -35,4 +35,4 @@ function closeNav() {
     document.getElementById("main").style.marginLeft= "0";
 }
 </script>
-</html>
+</html> 

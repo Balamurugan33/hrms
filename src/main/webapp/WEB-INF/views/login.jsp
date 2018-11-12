@@ -1,96 +1,64 @@
-<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
-
+<body>
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="<c:url value = '/resources/hrms.css' />">
+<link rel="stylesheet" type="text/css" href="<c:url value = '/resources/login.css' />">
 </head>
 
-<body class="background" style="margin:200px">
-
-<form:form method="post" align="center"> 
-<div id="login">
- <table align="center">
-        <tr>
-            <td><form:input type="text" path="userName" class="input" placeholder="User Name"/></td>
-        </tr>
-        <tr>
-            <td><form:input type="password" path="password" class="input" placeholder="Password" />
-            <button type="button" onclick="showPassword(this.form)"><i id ="eye" class="fa fa-eye-slash"></i></button></td>
-        </tr>
-        <tr>
-            <td><button type="submit" formaction="/hrms/user/login" onclick="setRequired(this.form)" class="login" >Login</button></td>
-        </tr>
-        <tr/><tr/>
-        <tr>
-            <td><button type="button" style="width:193px;border-radius: 20px;margin-top:120px;height:25px" onclick="setVisible()">Register</botton></td>
-        </tr>
- </table>
- </form:form>
+<div class="login-wrap">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+        <div class="login-form">
+            <div class="sign-in-htm">
+                
+                <form method="post">
+                <div class="group">
+                    <label for="user" class="label">Email Address</label>
+                    <input type="text" name="userName" class="input" required>
+                </div>
+                <div class="group">
+                    <label for="pass" class="label">Password</label>
+                    <input type="password" name="password" class="input" data-type="password" required>
+                </div>
+                <div class="group">
+                    <input type="submit" class="button" formaction="/hrms/user/login" value="Sign In">
+                </div>
+                </form>
+                
+                <div class="hr"></div>
+            </div>
+            
+            <div class="sign-up-htm">
+                <form method="post">
+                <div class="group">
+                    <label for="user" class="label">Email Address</label>
+                    <input type="text" name="userName" class="input" required>
+                </div>
+                <div class="group">
+                    <label for="pass" class="label">Password</label>
+                    <input type="password" name="password" class="input" data-type="password" required>
+                </div>
+                <div class="group">
+                    <label for="pass" class="label">Repeat Password</label>
+                    <input type="password" class="input" data-type="password">
+                </div>
+                <div class="group">
+                    <input type="submit" formaction="/hrms/user/register" class="button" value="Sign Up">
+                </div>
+                </form>
+                <div class="hr"></div>
+                <div class="foot-lnk">
+                    <label for="tab-1">Already Member?</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div id="register" style="display:none">
- <form:form action="user" method="post" align="center" > 
- <table align="center">
-        <tr>
-            <td><form:input type="text" path="userName" class="input" placeholder="User Name"/></td>
-        </tr>
-        <tr>
-            <td><form:input type="password" path="password" class="input" placeholder="Password" />
-            <button type="button" onclick="showPassword(this.form)"><i id ="eyeslash" class="fa fa-eye-slash"></i></button></td>
-        </tr>
-        <tr>
-            <td><input type="password" name="confirmpassword" class="input" placeholder="Confirm Password"/></td>
-        </tr>
-        <tr>
-            <td><button type="submit" style="width:193px;border-radius: 20px;margin: 8px 0;height:25px" formaction="/hrms/user/register" onclick="return(checkPassword(this.form) && setRequired(this.form))">Register</button></td>
-        </tr>
-        <input type="hidden" name="role" value="Employee">
- </table>
- </form:form>
- </div>
- </body>
- 
+</body>
 <c:if test="${not empty message}">
 <script>
     alert ("${message}");
 </script>
-<c:remove var="message" scope="session" />
 </c:if>
- 
- <script>
-function showPassword(form) {
-    var password = form.password;
-    if (password.type === "password") {
-        password.type = "text";
-        document.getElementById('eye').className='fa fa-eye';
-        document.getElementById('eyeslash').className='fa fa-eye';
-    } else {
-        password.type = "password";
-        document.getElementById("eye").className='fa fa-eye-slash';
-        document.getElementById("eyeslash").className='fa fa-eye-slash';
-    }
-}
-
-function checkPassword(form) {
-    if (form.password.value === form.confirmpassword.value) {
-        return true;
-    } else {
-        alert ("the password is not matched");
-        return false;
-    }
-}
-
-function setVisible() {
-    document.getElementById("register").style.display="block";
-    document.getElementById("login").style.display="none";
-}
-
-function setRequired(form) {
-    form.username.required = true;
-    form.password.required = true;
-    form.confirmpassword.required = true;
-}
- </script>
- </html>
+</html>

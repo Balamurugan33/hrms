@@ -40,6 +40,11 @@ public class ClientServiceImpl implements ClientService {
         return (null == clientDao.searchClient(email));
     }
     
+    /** {@inheritDoc}*/
+    public Client searchClient(String email) throws AppException {
+        return clientDao.searchClient(email);
+    }
+    
     public Integer calculateNetProfit(Client client) {
         ProjectServiceImpl projectService = new ProjectServiceImpl();
         List<Project> clientProjects = client.getProjects();

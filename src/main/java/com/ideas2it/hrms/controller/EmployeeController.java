@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.common.EmpConstants;
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Attendance;
+import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
@@ -34,7 +36,7 @@ public class EmployeeController {
     
     private String EMPLOYEE_MENU = "employeeView";
     private String EMPLOYEE_CREATE = "empCreate";
-    private String ADMINMENU = "adminMenu";
+    private String ADMINMENU = "adminHome";
     private String ERROR_PAGE = "error";
     private EmployeeService employeeService = new EmployeeServiceImpl();
     
@@ -48,26 +50,36 @@ public class EmployeeController {
     
     @GetMapping("employee/createProfile")
     public ModelAndView viewCreateForm() {
-        return new ModelAndView(EMPLOYEE_CREATE, "command", new Employee());
+        try {
+            ModelAndView modelAndView 
+                = new ModelAndView(EMPLOYEE_CREATE, "command", new Employee());
+            return modelAndView.addObject("designations", 
+                employeeService.getDesignations());
+        } catch (AppException appException) {
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
+                appException.getMessage());
+       }
     }
     
-    @PostMapping("/createEmployee")
+    @PostMapping("employee/createEmployee")
     public ModelAndView createEmployee(@ModelAttribute("employee") 
-            Employee employee) {
-        ModelMap model = null;
+            Employee employee, HttpServletRequest request) {
         try {
-            if(!employeeService.isEmployeeExist(employee.getEmailId())) {
+            Integer id = Integer.parseInt(request.getParameter("designationId"));
+            Designation designation = new Designation();
+            designation.setId(id);
+            employee.setDesignation(designation);
+            if(employeeService.isEmployeeExist(employee.getEmailId())) {
                 if (employeeService.createEmployee(employee)) {
-                    model.addAttribute(EmpConstants.LABEL_MESSAGE,
-                        EmpConstants.MSG_CREATE_SUCCESS);
+                    return new ModelAndView(ADMINMENU, EmpConstants.
+                        LABEL_MESSAGE, EmpConstants.MSG_CREATE_SUCCESS);
                 } else {
-                    model.addAttribute(EmpConstants.LABEL_MESSAGE, 
-                        EmpConstants.MSG_CREATE_FAIL);
+                    return new ModelAndView(ADMINMENU, EmpConstants.
+                        LABEL_MESSAGE, EmpConstants.MSG_CREATE_FAIL);
                 }
             }
-            model.addAttribute(EmpConstants.LABEL_MESSAGE, 
-                EmpConstants.MSG_ALREADY_EXIST);
-            return displayEmployees(model);
+            return new ModelAndView(ADMINMENU, EmpConstants.
+                    LABEL_MESSAGE, EmpConstants.MSG_ALREADY_EXIST);
         } catch (AppException appException) {
              return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
                  appException.getMessage());
@@ -120,26 +132,29 @@ public class EmployeeController {
         return modelAndView;       
     }
     
-    @PostMapping("/updateEmployee")
+    @PostMapping("employee/updateEmployee")
     public ModelAndView updateEmployee(@ModelAttribute("employee") 
-            Employee employee) {
-        ModelMap model = null;
+            Employee employee, HttpServletRequest request) {
         try {
+            HttpSession session = request.getSession(false);
+            Employee oldEmployee = (Employee) session.getAttribute("employee");
+            employee.setDesignation(oldEmployee.getDesignation());
+            AppLogger.error("check3"+employee.getEmailId());
             if (employeeService.updateEmployee(employee)) {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE,
-                    EmpConstants.MSG_UPDATE_SUCCESS);
+                ModelAndView modelAndView = new ModelAndView(EMPLOYEE_MENU, 
+                    EmpConstants.LABEL_MESSAGE, EmpConstants.MSG_UPDATE_SUCCESS);
+                return modelAndView.addObject("employeeDetail", employee);
             } else {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
-                    EmpConstants.MSG_UPDATE_FAIL);
+                return new ModelAndView("createProfile", 
+                    EmpConstants.LABEL_MESSAGE, EmpConstants.MSG_UPDATE_FAIL);
             }
-            return displayEmployees(model);
         } catch (AppException appException) {
              return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
                  appException.getMessage());
         }
     }
     
-    @PostMapping("/deleteEmployee")
+    @PostMapping("employee/deleteEmployee")
     public ModelAndView deleteEmployee(HttpServletRequest request, 
             ModelMap model) {
         try {
@@ -158,10 +173,10 @@ public class EmployeeController {
         }
     }
     
-    @GetMapping("/displayEmployee")
+    @GetMapping("employee/displayEmployee")
     public ModelAndView displayEmployees(ModelMap model) {
         try {
-            return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_EMPLOYEES, 
+            return new ModelAndView(ADMINMENU, EmpConstants.LABEL_EMPLOYEES, 
                 employeeService.displayEmployees());
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 

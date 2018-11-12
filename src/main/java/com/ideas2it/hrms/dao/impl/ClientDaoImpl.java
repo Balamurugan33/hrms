@@ -100,7 +100,7 @@ public class ClientDaoImpl implements ClientDao {
     public Client searchClient(String email) throws AppException {
         try {
             session = HibernateSession.getSession();
-            String query = "FROM Client WHERE email = :email";
+            String query = "FROM Client WHERE emailId = :email";
             return (Client)session.createQuery(query).
                 setParameter("email", email ).uniqueResult();
         } catch (HibernateException e) {
