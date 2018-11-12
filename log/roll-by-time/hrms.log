@@ -2139,3 +2139,15 @@ org.hibernate.TransientObjectException: The given object has a null identifier: 
 2018-11-12 11:56:44 INFO Completed initialization in 488 ms
 2018-11-12 11:57:23 INFO Initializing Servlet 'spring'
 2018-11-12 11:57:23 INFO Completed initialization in 488 ms
+2018-11-12 11:57:33 INFO Initializing Servlet 'spring'
+2018-11-12 11:57:34 INFO Completed initialization in 485 ms
+2018-11-12 11:57:38 INFO Initializing Servlet 'spring'
+2018-11-12 11:57:38 INFO Completed initialization in 498 ms
+2018-11-12 11:57:46 INFO Initializing Servlet 'spring'
+2018-11-12 11:57:46 INFO Completed initialization in 480 ms
+2018-11-12 11:58:14 INFO Initializing Servlet 'spring'
+2018-11-12 11:58:15 INFO Completed initialization in 476 ms
+2018-11-12 12:01:18 INFO Initializing Servlet 'spring'
+2018-11-12 12:01:18 INFO Completed initialization in 488 ms
+2018-11-12 12:01:22 INFO Initializing Servlet 'spring'
+2018-11-12 12:01:23 INFO Completed initialization in 562 ms
