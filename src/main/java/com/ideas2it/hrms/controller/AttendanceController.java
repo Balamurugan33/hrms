@@ -17,7 +17,6 @@ import com.ideas2it.hrms.service.AttendanceService;
 import com.ideas2it.hrms.service.impl.AttendanceServiceImpl;
 
 import static com.ideas2it.hrms.common.AttendanceConstants.MSG_CREATED;
-import static com.ideas2it.hrms.common.AttendanceConstants.MSG_DELETED;
 import static com.ideas2it.hrms.common.AttendanceConstants.MSG_UPDATED;
 
 
@@ -69,29 +68,7 @@ public class AttendanceController {
         }
         return modelAndView;
     }
-        
-    @PostMapping("delete")
-    public ModelAndView deleteAttendance(HttpServletRequest request) {
-        AttendanceService attendanceService = new AttendanceServiceImpl();
-        ModelAndView modelAndView = new ModelAndView(); 
-
-        try {
-            // Check if the attendance to be deleted exists 
-            Integer id = Integer.parseInt(request.getParameter("id"));
-            Attendance attendance = attendanceService.getAttendanceById(id);
-            if (null != attendance) {
-                attendance = attendanceService.removeAttendance(attendance);    
-            }
-            modelAndView.addObject("Success", MSG_DELETED);
-            // redirect him to the same page; the attendances must also be sent
-            // alert box is optional for now
-            modelAndView.setViewName("attendance");
-        } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());  
-        }
-        return modelAndView;
-    }
-    
+         
     // Check if this method is redundant
     @GetMapping("displayAll")
     public ModelAndView displayAllAttendances(HttpServletRequest request) {

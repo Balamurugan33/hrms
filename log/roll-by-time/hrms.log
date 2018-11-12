@@ -432,3 +432,1706 @@
 2018-11-09 19:36:58 INFO Completed initialization in 626 ms
 2018-11-09 19:37:09 INFO Initializing Servlet 'spring'
 2018-11-09 19:37:10 INFO Completed initialization in 671 ms
+2018-11-09 20:02:32 INFO Initializing Servlet 'spring'
+2018-11-09 20:02:33 INFO Completed initialization in 763 ms
+2018-11-09 20:06:19 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 20:06:19 INFO HHH000206: hibernate.properties not found
+2018-11-09 20:06:19 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 20:06:19 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 20:06:19 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 20:06:19 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 20:06:19 INFO HHH10001003: Autocommit mode: false
+2018-11-09 20:06:19 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 20:06:20 WARN HHH000342: Could not obtain connection to query metadata : null
+2018-11-09 20:06:20 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 20:06:20 INFO HHH000422: Disabling contextual LOB creation as connection was null
+2018-11-09 20:06:20 WARN SQL Error: 1045, SQLState: 28000
+2018-11-09 20:06:20 ERROR Access denied for user 'root'@'localhost' (using password: YES)
+2018-11-09 20:06:20 ERROR Failed to create Session factory
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:84) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:474) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at com.ideas2it.hrms.session.HibernateSession.getSession(HibernateSession.java:33) [classes/:?]
+	at com.ideas2it.hrms.dao.impl.UserDaoImpl.searchUser(UserDaoImpl.java:62) [classes/:?]
+	at com.ideas2it.hrms.service.impl.UserServiceImpl.searchUser(UserServiceImpl.java:35) [classes/:?]
+	at com.ideas2it.hrms.controller.UserController.login(UserController.java:82) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_181]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:857) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1655) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:215) [websocket-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1642) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548) [jetty-security-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.Server.handle(Server.java:503) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+Caused by: org.hibernate.exception.GenericJDBCException: Error calling Driver#connect
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:118) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:41) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 64 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1714) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1224) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2199) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2230) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2025) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:778) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:386) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:38) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 64 more
+2018-11-09 20:06:39 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 20:06:39 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 20:06:39 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 20:06:39 INFO HHH10001003: Autocommit mode: false
+2018-11-09 20:06:39 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 20:06:39 WARN HHH000342: Could not obtain connection to query metadata : null
+2018-11-09 20:06:39 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 20:06:39 INFO HHH000422: Disabling contextual LOB creation as connection was null
+2018-11-09 20:06:39 WARN SQL Error: 1045, SQLState: 28000
+2018-11-09 20:06:39 ERROR Access denied for user 'root'@'localhost' (using password: YES)
+2018-11-09 20:06:39 ERROR Failed to create Session factory
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:84) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:474) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at com.ideas2it.hrms.session.HibernateSession.getSession(HibernateSession.java:33) [classes/:?]
+	at com.ideas2it.hrms.dao.impl.UserDaoImpl.searchUser(UserDaoImpl.java:62) [classes/:?]
+	at com.ideas2it.hrms.service.impl.UserServiceImpl.searchUser(UserServiceImpl.java:35) [classes/:?]
+	at com.ideas2it.hrms.controller.UserController.login(UserController.java:82) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_181]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:857) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1655) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:215) [websocket-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1642) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548) [jetty-security-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.Server.handle(Server.java:503) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+Caused by: org.hibernate.exception.GenericJDBCException: Error calling Driver#connect
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:118) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:41) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 69 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1714) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1224) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2199) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2230) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2025) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:778) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:386) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:38) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 69 more
+2018-11-09 20:08:24 INFO Initializing Servlet 'spring'
+2018-11-09 20:08:25 INFO Completed initialization in 597 ms
+2018-11-09 20:09:26 INFO Initializing Servlet 'spring'
+2018-11-09 20:09:26 INFO Completed initialization in 608 ms
+2018-11-09 20:09:43 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 20:09:43 INFO HHH000206: hibernate.properties not found
+2018-11-09 20:09:43 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 20:09:43 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 20:09:43 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 20:09:43 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 20:09:43 INFO HHH10001003: Autocommit mode: false
+2018-11-09 20:09:43 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 20:09:43 WARN HHH000342: Could not obtain connection to query metadata : null
+2018-11-09 20:09:43 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 20:09:43 INFO HHH000422: Disabling contextual LOB creation as connection was null
+2018-11-09 20:09:43 WARN SQL Error: 1045, SQLState: 28000
+2018-11-09 20:09:43 ERROR Access denied for user 'root'@'localhost' (using password: YES)
+2018-11-09 20:09:43 ERROR Failed to create Session factory
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:84) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:474) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at com.ideas2it.hrms.session.HibernateSession.getSession(HibernateSession.java:33) [classes/:?]
+	at com.ideas2it.hrms.dao.impl.UserDaoImpl.searchUser(UserDaoImpl.java:62) [classes/:?]
+	at com.ideas2it.hrms.service.impl.UserServiceImpl.searchUser(UserServiceImpl.java:35) [classes/:?]
+	at com.ideas2it.hrms.controller.UserController.login(UserController.java:82) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_181]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:857) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:535) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548) [jetty-security-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.Server.handle(Server.java:503) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+Caused by: org.hibernate.exception.GenericJDBCException: Error calling Driver#connect
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:118) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:41) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 66 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1714) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1224) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2199) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2230) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2025) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:778) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:386) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:38) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 66 more
+2018-11-09 20:12:30 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 20:12:30 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 20:12:30 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 20:12:30 INFO HHH10001003: Autocommit mode: false
+2018-11-09 20:12:30 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 20:12:30 WARN HHH000342: Could not obtain connection to query metadata : null
+2018-11-09 20:12:30 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 20:12:30 INFO HHH000422: Disabling contextual LOB creation as connection was null
+2018-11-09 20:12:30 WARN SQL Error: 1045, SQLState: 28000
+2018-11-09 20:12:30 ERROR Access denied for user 'root'@'localhost' (using password: YES)
+2018-11-09 20:12:30 ERROR Failed to create Session factory
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:84) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:474) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at com.ideas2it.hrms.session.HibernateSession.getSession(HibernateSession.java:33) [classes/:?]
+	at com.ideas2it.hrms.dao.impl.UserDaoImpl.searchUser(UserDaoImpl.java:62) [classes/:?]
+	at com.ideas2it.hrms.service.impl.UserServiceImpl.searchUser(UserServiceImpl.java:35) [classes/:?]
+	at com.ideas2it.hrms.controller.UserController.login(UserController.java:82) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_181]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:857) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:535) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548) [jetty-security-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.Server.handle(Server.java:503) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+Caused by: org.hibernate.exception.GenericJDBCException: Error calling Driver#connect
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:118) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:41) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 66 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1714) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1224) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2199) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2230) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2025) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:778) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:386) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:38) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 66 more
+2018-11-09 20:17:50 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 20:17:50 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 20:17:50 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 20:17:50 INFO HHH10001003: Autocommit mode: false
+2018-11-09 20:17:50 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 20:17:50 WARN HHH000342: Could not obtain connection to query metadata : null
+2018-11-09 20:17:50 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 20:17:50 INFO HHH000422: Disabling contextual LOB creation as connection was null
+2018-11-09 20:17:50 WARN SQL Error: 1045, SQLState: 28000
+2018-11-09 20:17:50 ERROR Access denied for user 'root'@'localhost' (using password: YES)
+2018-11-09 20:17:50 ERROR Failed to create Session factory
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:84) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:474) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at com.ideas2it.hrms.session.HibernateSession.getSession(HibernateSession.java:33) [classes/:?]
+	at com.ideas2it.hrms.dao.impl.UserDaoImpl.searchUser(UserDaoImpl.java:62) [classes/:?]
+	at com.ideas2it.hrms.service.impl.UserServiceImpl.searchUser(UserServiceImpl.java:35) [classes/:?]
+	at com.ideas2it.hrms.controller.UserController.login(UserController.java:82) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_181]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:857) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:535) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548) [jetty-security-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.Server.handle(Server.java:503) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+Caused by: org.hibernate.exception.GenericJDBCException: Error calling Driver#connect
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:118) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:41) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 61 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1714) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1224) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2199) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2230) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2025) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:778) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:386) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:38) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 61 more
+2018-11-09 20:17:53 WARN Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2018-11-09 20:17:54 WARN Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2018-11-09 20:18:26 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 20:18:26 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 20:18:26 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 20:18:26 INFO HHH10001003: Autocommit mode: false
+2018-11-09 20:18:26 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 20:18:26 WARN HHH000342: Could not obtain connection to query metadata : null
+2018-11-09 20:18:26 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 20:18:26 INFO HHH000422: Disabling contextual LOB creation as connection was null
+2018-11-09 20:18:26 WARN SQL Error: 1045, SQLState: 28000
+2018-11-09 20:18:26 ERROR Access denied for user 'root'@'localhost' (using password: YES)
+2018-11-09 20:18:26 ERROR Failed to create Session factory
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:84) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:474) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at com.ideas2it.hrms.session.HibernateSession.getSession(HibernateSession.java:33) [classes/:?]
+	at com.ideas2it.hrms.dao.impl.UserDaoImpl.searchUser(UserDaoImpl.java:62) [classes/:?]
+	at com.ideas2it.hrms.service.impl.UserServiceImpl.searchUser(UserServiceImpl.java:35) [classes/:?]
+	at com.ideas2it.hrms.controller.UserController.login(UserController.java:82) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_181]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:857) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:535) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548) [jetty-security-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.Server.handle(Server.java:503) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+Caused by: org.hibernate.exception.GenericJDBCException: Error calling Driver#connect
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:118) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:41) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 66 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1714) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1224) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2199) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2230) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2025) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:778) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:386) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:38) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 66 more
+2018-11-09 20:32:06 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 20:32:06 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 20:32:06 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 20:32:06 INFO HHH10001003: Autocommit mode: false
+2018-11-09 20:32:06 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 20:32:06 WARN HHH000342: Could not obtain connection to query metadata : null
+2018-11-09 20:32:06 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 20:32:06 INFO HHH000422: Disabling contextual LOB creation as connection was null
+2018-11-09 20:32:06 WARN SQL Error: 1045, SQLState: 28000
+2018-11-09 20:32:06 ERROR Access denied for user 'root'@'localhost' (using password: YES)
+2018-11-09 20:32:06 ERROR Failed to create Session factory
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:84) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:474) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at com.ideas2it.hrms.session.HibernateSession.getSession(HibernateSession.java:33) [classes/:?]
+	at com.ideas2it.hrms.dao.impl.UserDaoImpl.searchUser(UserDaoImpl.java:62) [classes/:?]
+	at com.ideas2it.hrms.service.impl.UserServiceImpl.searchUser(UserServiceImpl.java:35) [classes/:?]
+	at com.ideas2it.hrms.controller.UserController.login(UserController.java:82) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_181]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:857) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:535) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548) [jetty-security-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.Server.handle(Server.java:503) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+Caused by: org.hibernate.exception.GenericJDBCException: Error calling Driver#connect
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:118) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:41) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 66 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1714) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1224) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2199) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2230) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2025) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:778) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:386) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:38) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:363) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:282) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:260) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:401) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:112) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	... 66 more
+2018-11-09 20:33:05 INFO Initializing Servlet 'spring'
+2018-11-09 20:33:06 INFO Completed initialization in 762 ms
+2018-11-09 20:33:09 INFO Initializing Servlet 'spring'
+2018-11-09 20:33:09 INFO Completed initialization in 504 ms
+2018-11-09 20:34:15 INFO Initializing Servlet 'spring'
+2018-11-09 20:34:16 INFO Initializing Servlet 'spring'
+2018-11-09 20:34:16 INFO Completed initialization in 1093 ms
+2018-11-09 20:34:16 INFO Completed initialization in 670 ms
+2018-11-09 20:34:53 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-09 20:34:53 INFO HHH000206: hibernate.properties not found
+2018-11-09 20:34:53 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-09 20:34:53 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-09 20:34:53 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-09 20:34:53 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-09 20:34:53 INFO HHH10001003: Autocommit mode: false
+2018-11-09 20:34:53 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-09 20:34:53 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-09 20:34:54 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 11:10:11 INFO Initializing Servlet 'spring'
+2018-11-10 11:10:12 INFO Completed initialization in 875 ms
+2018-11-10 11:10:24 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 11:10:24 INFO HHH000206: hibernate.properties not found
+2018-11-10 11:10:24 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 11:10:24 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 11:10:25 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 11:10:25 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 11:10:25 INFO HHH10001003: Autocommit mode: false
+2018-11-10 11:10:25 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 11:10:25 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 11:10:26 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 11:11:55 INFO Initializing Servlet 'spring'
+2018-11-10 11:11:56 INFO Completed initialization in 1117 ms
+2018-11-10 11:11:59 INFO Initializing Servlet 'spring'
+2018-11-10 11:12:00 INFO Completed initialization in 714 ms
+2018-11-10 11:12:29 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 11:12:29 INFO HHH000206: hibernate.properties not found
+2018-11-10 11:12:29 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 11:12:29 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 11:12:29 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 11:12:29 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 11:12:29 INFO HHH10001003: Autocommit mode: false
+2018-11-10 11:12:29 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 11:12:30 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 11:12:30 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 11:35:07 INFO Initializing Servlet 'spring'
+2018-11-10 11:35:08 INFO Completed initialization in 1060 ms
+2018-11-10 11:35:11 INFO Initializing Servlet 'spring'
+2018-11-10 11:35:11 INFO Completed initialization in 561 ms
+2018-11-10 11:35:28 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 11:35:28 INFO HHH000206: hibernate.properties not found
+2018-11-10 11:35:28 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 11:35:28 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 11:35:28 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 11:35:28 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 11:35:28 INFO HHH10001003: Autocommit mode: false
+2018-11-10 11:35:28 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 11:35:28 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 11:35:29 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 11:42:09 INFO Initializing Servlet 'spring'
+2018-11-10 11:42:10 INFO Completed initialization in 867 ms
+2018-11-10 11:42:13 INFO Initializing Servlet 'spring'
+2018-11-10 11:42:13 INFO Completed initialization in 527 ms
+2018-11-10 11:42:26 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 11:42:26 INFO HHH000206: hibernate.properties not found
+2018-11-10 11:42:26 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 11:42:26 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 11:42:26 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 11:42:26 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 11:42:26 INFO HHH10001003: Autocommit mode: false
+2018-11-10 11:42:26 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 11:42:27 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 11:42:27 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 11:44:31 INFO Initializing Servlet 'spring'
+2018-11-10 11:44:32 INFO Completed initialization in 688 ms
+2018-11-10 11:44:35 INFO Initializing Servlet 'spring'
+2018-11-10 11:44:35 INFO Completed initialization in 524 ms
+2018-11-10 11:44:41 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 11:44:41 INFO HHH000206: hibernate.properties not found
+2018-11-10 11:44:42 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 11:44:42 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 11:44:42 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 11:44:42 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 11:44:42 INFO HHH10001003: Autocommit mode: false
+2018-11-10 11:44:42 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 11:44:42 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 11:44:43 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 11:46:53 INFO Initializing Servlet 'spring'
+2018-11-10 11:46:54 INFO Completed initialization in 690 ms
+2018-11-10 11:48:08 INFO Initializing Servlet 'spring'
+2018-11-10 11:48:09 INFO Completed initialization in 758 ms
+2018-11-10 11:49:18 INFO Initializing Servlet 'spring'
+2018-11-10 11:49:19 INFO Completed initialization in 805 ms
+2018-11-10 11:50:40 INFO Initializing Servlet 'spring'
+2018-11-10 11:50:40 INFO Completed initialization in 681 ms
+2018-11-10 11:53:28 INFO Initializing Servlet 'spring'
+2018-11-10 11:53:28 INFO Completed initialization in 674 ms
+2018-11-10 11:53:39 INFO Initializing Servlet 'spring'
+2018-11-10 11:53:40 INFO Completed initialization in 823 ms
+2018-11-10 11:59:46 INFO Initializing Servlet 'spring'
+2018-11-10 11:59:47 INFO Completed initialization in 698 ms
+2018-11-10 12:00:03 INFO Initializing Servlet 'spring'
+2018-11-10 12:00:04 INFO Completed initialization in 731 ms
+2018-11-10 12:00:16 INFO Initializing Servlet 'spring'
+2018-11-10 12:00:17 INFO Completed initialization in 865 ms
+2018-11-10 12:11:43 INFO Initializing Servlet 'spring'
+2018-11-10 12:11:44 INFO Completed initialization in 671 ms
+2018-11-10 12:12:02 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 12:12:02 INFO HHH000206: hibernate.properties not found
+2018-11-10 12:12:03 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 12:12:03 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 12:12:03 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 12:12:03 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 12:12:03 INFO HHH10001003: Autocommit mode: false
+2018-11-10 12:12:03 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 12:12:03 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 12:12:04 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 12:13:10 INFO Initializing Servlet 'spring'
+2018-11-10 12:13:10 INFO Completed initialization in 577 ms
+2018-11-10 12:13:20 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 12:13:20 INFO HHH000206: hibernate.properties not found
+2018-11-10 12:13:20 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 12:13:20 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 12:13:20 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 12:13:20 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 12:13:20 INFO HHH10001003: Autocommit mode: false
+2018-11-10 12:13:20 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 12:13:20 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 12:13:21 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 14:27:21 INFO Initializing Servlet 'spring'
+2018-11-10 14:27:22 INFO Completed initialization in 584 ms
+2018-11-10 15:02:55 INFO Initializing Servlet 'spring'
+2018-11-10 15:02:56 INFO Completed initialization in 818 ms
+2018-11-10 15:04:40 INFO Initializing Servlet 'spring'
+2018-11-10 15:04:40 INFO Completed initialization in 522 ms
+2018-11-10 15:06:05 INFO Initializing Servlet 'spring'
+2018-11-10 15:06:06 INFO Completed initialization in 499 ms
+2018-11-10 15:06:38 INFO Initializing Servlet 'spring'
+2018-11-10 15:06:39 INFO Completed initialization in 710 ms
+2018-11-10 15:07:00 INFO Initializing Servlet 'spring'
+2018-11-10 15:07:01 INFO Completed initialization in 477 ms
+2018-11-10 15:32:05 INFO Initializing Servlet 'spring'
+2018-11-10 15:32:06 INFO Completed initialization in 504 ms
+2018-11-10 15:39:57 INFO Initializing Servlet 'spring'
+2018-11-10 15:39:57 INFO Completed initialization in 545 ms
+2018-11-10 15:54:17 INFO Initializing Servlet 'spring'
+2018-11-10 15:54:18 INFO Completed initialization in 760 ms
+2018-11-10 15:54:28 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 15:54:28 INFO HHH000206: hibernate.properties not found
+2018-11-10 15:54:29 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 15:54:29 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 15:54:29 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 15:54:29 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 15:54:29 INFO HHH10001003: Autocommit mode: false
+2018-11-10 15:54:29 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 15:54:29 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 15:54:30 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 15:58:06 INFO Initializing Servlet 'spring'
+2018-11-10 15:58:07 INFO Completed initialization in 714 ms
+2018-11-10 15:58:45 INFO Initializing Servlet 'spring'
+2018-11-10 15:58:45 INFO Completed initialization in 567 ms
+2018-11-10 15:59:11 INFO Initializing Servlet 'spring'
+2018-11-10 15:59:12 INFO Completed initialization in 514 ms
+2018-11-10 17:44:21 INFO Initializing Servlet 'spring'
+2018-11-10 17:44:21 INFO Completed initialization in 660 ms
+2018-11-10 17:45:19 INFO Initializing Servlet 'spring'
+2018-11-10 17:45:20 INFO Completed initialization in 834 ms
+2018-11-10 17:45:34 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 17:45:34 INFO HHH000206: hibernate.properties not found
+2018-11-10 17:45:34 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 17:45:34 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 17:45:34 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 17:45:34 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 17:45:34 INFO HHH10001003: Autocommit mode: false
+2018-11-10 17:45:34 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 17:45:34 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 17:45:35 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 17:45:39 WARN Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2018-11-10 17:45:49 WARN Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2018-11-10 17:50:19 INFO Initializing Servlet 'spring'
+2018-11-10 17:50:20 INFO Completed initialization in 509 ms
+2018-11-10 17:50:34 INFO Initializing Servlet 'spring'
+2018-11-10 17:50:35 INFO Completed initialization in 589 ms
+2018-11-10 17:51:19 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 17:51:19 INFO HHH000206: hibernate.properties not found
+2018-11-10 17:51:19 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 17:51:19 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 17:51:19 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 17:51:19 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 17:51:19 INFO HHH10001003: Autocommit mode: false
+2018-11-10 17:51:19 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 17:51:19 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 17:51:20 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 17:54:11 INFO Initializing Servlet 'spring'
+2018-11-10 17:54:11 INFO Completed initialization in 501 ms
+2018-11-10 17:57:01 INFO Initializing Servlet 'spring'
+2018-11-10 17:57:02 INFO Completed initialization in 486 ms
+2018-11-10 17:57:36 INFO Initializing Servlet 'spring'
+2018-11-10 17:57:37 INFO Completed initialization in 550 ms
+2018-11-10 17:58:11 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 17:58:11 INFO HHH000206: hibernate.properties not found
+2018-11-10 17:58:11 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 17:58:11 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 17:58:11 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 17:58:11 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 17:58:11 INFO HHH10001003: Autocommit mode: false
+2018-11-10 17:58:11 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 17:58:11 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 17:58:12 WARN SQL Error: 1048, SQLState: 23000
+2018-11-10 17:58:12 ERROR Column 'employee_id' cannot be null
+2018-11-10 17:58:41 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 18:12:38 INFO Initializing Servlet 'spring'
+2018-11-10 18:12:38 INFO Completed initialization in 553 ms
+2018-11-10 18:15:36 INFO Initializing Servlet 'spring'
+2018-11-10 18:15:37 INFO Completed initialization in 476 ms
+2018-11-10 18:17:07 INFO Initializing Servlet 'spring'
+2018-11-10 18:17:08 INFO Completed initialization in 581 ms
+2018-11-10 18:17:29 INFO Initializing Servlet 'spring'
+2018-11-10 18:17:30 INFO Completed initialization in 551 ms
+2018-11-10 18:19:34 INFO Initializing Servlet 'spring'
+2018-11-10 18:19:34 INFO Completed initialization in 514 ms
+2018-11-10 18:20:01 INFO Initializing Servlet 'spring'
+2018-11-10 18:20:01 INFO Completed initialization in 510 ms
+2018-11-10 18:20:44 INFO Initializing Servlet 'spring'
+2018-11-10 18:20:45 INFO Completed initialization in 512 ms
+2018-11-10 18:21:33 INFO Initializing Servlet 'spring'
+2018-11-10 18:21:33 INFO Completed initialization in 516 ms
+2018-11-10 18:21:51 INFO Initializing Servlet 'spring'
+2018-11-10 18:21:52 INFO Completed initialization in 533 ms
+2018-11-10 18:22:06 INFO Initializing Servlet 'spring'
+2018-11-10 18:22:07 INFO Completed initialization in 850 ms
+2018-11-10 18:24:14 INFO Initializing Servlet 'spring'
+2018-11-10 18:24:15 INFO Completed initialization in 478 ms
+2018-11-10 18:24:28 INFO Initializing Servlet 'spring'
+2018-11-10 18:24:28 INFO Completed initialization in 483 ms
+2018-11-10 18:26:46 INFO Initializing Servlet 'spring'
+2018-11-10 18:26:46 INFO Completed initialization in 508 ms
+2018-11-10 18:32:44 INFO Initializing Servlet 'spring'
+2018-11-10 18:32:44 INFO Completed initialization in 472 ms
+2018-11-10 18:32:54 INFO Initializing Servlet 'spring'
+2018-11-10 18:32:55 INFO Completed initialization in 511 ms
+2018-11-10 18:33:06 INFO Initializing Servlet 'spring'
+2018-11-10 18:33:07 INFO Completed initialization in 499 ms
+2018-11-10 18:33:43 INFO Initializing Servlet 'spring'
+2018-11-10 18:33:43 INFO Completed initialization in 524 ms
+2018-11-10 18:45:39 INFO Initializing Servlet 'spring'
+2018-11-10 18:45:40 INFO Completed initialization in 475 ms
+2018-11-10 18:46:20 INFO Initializing Servlet 'spring'
+2018-11-10 18:46:20 INFO Completed initialization in 530 ms
+2018-11-10 18:46:51 INFO Initializing Servlet 'spring'
+2018-11-10 18:46:52 INFO Completed initialization in 515 ms
+2018-11-10 18:50:02 INFO Initializing Servlet 'spring'
+2018-11-10 18:50:03 INFO Completed initialization in 495 ms
+2018-11-10 18:50:16 INFO Initializing Servlet 'spring'
+2018-11-10 18:50:17 INFO Completed initialization in 493 ms
+2018-11-10 18:51:26 INFO Initializing Servlet 'spring'
+2018-11-10 18:51:27 INFO Completed initialization in 534 ms
+2018-11-10 18:57:09 INFO Initializing Servlet 'spring'
+2018-11-10 18:57:09 INFO Completed initialization in 474 ms
+2018-11-10 18:58:35 INFO Initializing Servlet 'spring'
+2018-11-10 18:58:36 INFO Completed initialization in 489 ms
+2018-11-10 18:58:53 INFO Initializing Servlet 'spring'
+2018-11-10 18:58:53 INFO Completed initialization in 549 ms
+2018-11-10 19:05:12 INFO Initializing Servlet 'spring'
+2018-11-10 19:05:13 INFO Completed initialization in 550 ms
+2018-11-10 19:05:23 INFO Initializing Servlet 'spring'
+2018-11-10 19:05:24 INFO Completed initialization in 507 ms
+2018-11-10 19:05:33 INFO Initializing Servlet 'spring'
+2018-11-10 19:05:33 INFO Completed initialization in 476 ms
+2018-11-10 19:08:28 INFO Initializing Servlet 'spring'
+2018-11-10 19:08:29 INFO Completed initialization in 542 ms
+2018-11-10 19:08:45 INFO Initializing Servlet 'spring'
+2018-11-10 19:08:46 INFO Completed initialization in 503 ms
+2018-11-10 19:12:41 INFO Initializing Servlet 'spring'
+2018-11-10 19:12:41 INFO Completed initialization in 503 ms
+2018-11-10 19:13:06 INFO Initializing Servlet 'spring'
+2018-11-10 19:13:06 INFO Completed initialization in 493 ms
+2018-11-10 19:14:34 INFO Initializing Servlet 'spring'
+2018-11-10 19:14:34 INFO Completed initialization in 535 ms
+2018-11-10 19:14:48 INFO Initializing Servlet 'spring'
+2018-11-10 19:14:48 INFO Completed initialization in 571 ms
+2018-11-10 19:15:03 INFO Initializing Servlet 'spring'
+2018-11-10 19:15:03 INFO Completed initialization in 503 ms
+2018-11-10 19:19:32 INFO Initializing Servlet 'spring'
+2018-11-10 19:19:33 INFO Completed initialization in 562 ms
+2018-11-10 19:25:19 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 19:25:19 INFO HHH000206: hibernate.properties not found
+2018-11-10 19:25:19 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 19:25:19 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 19:25:19 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 19:25:19 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 19:25:19 INFO HHH10001003: Autocommit mode: false
+2018-11-10 19:25:19 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 19:25:20 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 19:25:20 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 19:27:58 INFO Initializing Servlet 'spring'
+2018-11-10 19:27:59 INFO Completed initialization in 507 ms
+2018-11-10 19:30:55 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 19:30:55 INFO HHH000206: hibernate.properties not found
+2018-11-10 19:30:55 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 19:30:55 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 19:30:55 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 19:30:55 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 19:30:55 INFO HHH10001003: Autocommit mode: false
+2018-11-10 19:30:55 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 19:30:55 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 19:30:56 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 19:58:02 WARN SQL Error: 1048, SQLState: 23000
+2018-11-10 19:58:02 ERROR Column 'employee_id' cannot be null
+2018-11-10 20:05:52 INFO Initializing Servlet 'spring'
+2018-11-10 20:05:52 INFO Completed initialization in 518 ms
+2018-11-10 20:07:54 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 20:07:54 INFO HHH000206: hibernate.properties not found
+2018-11-10 20:07:54 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 20:07:54 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 20:07:54 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 20:07:54 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 20:07:54 INFO HHH10001003: Autocommit mode: false
+2018-11-10 20:07:54 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 20:07:55 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 20:07:55 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 20:09:35 INFO Initializing Servlet 'spring'
+2018-11-10 20:09:35 INFO Completed initialization in 596 ms
+2018-11-10 20:09:40 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 20:09:40 INFO HHH000206: hibernate.properties not found
+2018-11-10 20:09:41 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 20:09:41 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 20:09:41 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 20:09:41 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 20:09:41 INFO HHH10001003: Autocommit mode: false
+2018-11-10 20:09:41 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 20:09:41 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 20:09:42 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 20:13:01 WARN SQL Error: 1048, SQLState: 23000
+2018-11-10 20:13:01 ERROR Column 'employee_id' cannot be null
+2018-11-10 20:25:31 INFO Initializing Servlet 'spring'
+2018-11-10 20:25:32 INFO Completed initialization in 546 ms
+2018-11-10 20:26:04 INFO Initializing Servlet 'spring'
+2018-11-10 20:26:04 INFO Completed initialization in 534 ms
+2018-11-10 20:29:14 INFO Initializing Servlet 'spring'
+2018-11-10 20:29:14 INFO Completed initialization in 493 ms
+2018-11-10 20:29:37 INFO Initializing Servlet 'spring'
+2018-11-10 20:29:38 INFO Completed initialization in 696 ms
+2018-11-10 20:45:53 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-10 20:45:53 INFO HHH000206: hibernate.properties not found
+2018-11-10 20:45:53 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-10 20:45:53 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-10 20:45:53 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-10 20:45:53 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-10 20:45:53 INFO HHH10001003: Autocommit mode: false
+2018-11-10 20:45:53 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-10 20:45:53 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-10 20:45:54 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-10 21:01:30 INFO Initializing Servlet 'spring'
+2018-11-10 21:01:31 INFO Completed initialization in 530 ms
+2018-11-10 21:27:14 INFO Initializing Servlet 'spring'
+2018-11-10 21:27:14 INFO Completed initialization in 530 ms
+2018-11-11 17:31:05 INFO Initializing Servlet 'spring'
+2018-11-11 17:31:06 INFO Completed initialization in 944 ms
+2018-11-11 17:35:20 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-11 17:35:20 INFO HHH000206: hibernate.properties not found
+2018-11-11 17:35:20 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-11 17:35:20 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-11 17:35:20 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-11 17:35:20 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-11 17:35:20 INFO HHH10001003: Autocommit mode: false
+2018-11-11 17:35:20 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-11 17:35:20 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-11 17:35:22 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 10:06:30 INFO Initializing Servlet 'spring'
+2018-11-12 10:06:31 INFO Completed initialization in 753 ms
+2018-11-12 10:06:48 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 10:06:48 INFO HHH000206: hibernate.properties not found
+2018-11-12 10:06:48 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 10:06:48 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 10:06:48 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 10:06:48 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 10:06:48 INFO HHH10001003: Autocommit mode: false
+2018-11-12 10:06:48 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 10:06:49 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 10:06:50 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 10:08:51 INFO Initializing Servlet 'spring'
+2018-11-12 10:08:51 INFO Completed initialization in 521 ms
+2018-11-12 10:09:13 INFO Initializing Servlet 'spring'
+2018-11-12 10:09:13 INFO Completed initialization in 492 ms
+2018-11-12 10:09:21 INFO Initializing Servlet 'spring'
+2018-11-12 10:09:21 INFO Completed initialization in 492 ms
+2018-11-12 10:11:37 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 10:11:37 INFO HHH000206: hibernate.properties not found
+2018-11-12 10:11:38 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 10:11:38 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 10:11:38 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 10:11:38 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 10:11:38 INFO HHH10001003: Autocommit mode: false
+2018-11-12 10:11:38 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 10:11:38 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 10:11:39 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 10:11:45 ERROR The attendance could not be created: null
+org.hibernate.TransientObjectException: The given object has a null identifier: com.ideas2it.hrms.model.Attendance
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.getUpdateId(DefaultSaveOrUpdateEventListener.java:255) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.event.internal.DefaultUpdateEventListener.getUpdateId(DefaultUpdateEventListener.java:53) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.entityIsDetached(DefaultSaveOrUpdateEventListener.java:222) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.event.internal.DefaultUpdateEventListener.performSaveOrUpdate(DefaultUpdateEventListener.java:38) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:73) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.internal.SessionImpl.fireUpdate(SessionImpl.java:733) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.internal.SessionImpl.update(SessionImpl.java:725) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.internal.SessionImpl.update(SessionImpl.java:720) ~[hibernate-core-5.3.5.Final.jar:5.3.5.Final]
+	at com.ideas2it.hrms.dao.impl.AttendanceDaoImpl.markAbsent(AttendanceDaoImpl.java:74) [classes/:?]
+	at com.ideas2it.hrms.service.impl.AttendanceServiceImpl.markAbsent(AttendanceServiceImpl.java:28) [classes/:?]
+	at com.ideas2it.hrms.service.impl.EmployeeServiceImpl.markAbsent(EmployeeServiceImpl.java:33) [classes/:?]
+	at com.ideas2it.hrms.controller.EmployeeController.markAbsent(EmployeeController.java:111) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_181]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137) [spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:890) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:857) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:535) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548) [jetty-security-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.Server.handle(Server.java:503) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118) [jetty-io-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+2018-11-12 10:15:42 INFO Initializing Servlet 'spring'
+2018-11-12 10:15:43 INFO Completed initialization in 539 ms
+2018-11-12 10:16:01 INFO Initializing Servlet 'spring'
+2018-11-12 10:16:02 INFO Completed initialization in 607 ms
+2018-11-12 10:25:12 INFO Initializing Servlet 'spring'
+2018-11-12 10:25:13 INFO Completed initialization in 552 ms
+2018-11-12 10:25:46 INFO Initializing Servlet 'spring'
+2018-11-12 10:25:46 INFO Completed initialization in 492 ms
+2018-11-12 10:26:24 INFO Initializing Servlet 'spring'
+2018-11-12 10:26:25 INFO Completed initialization in 499 ms
+2018-11-12 10:26:33 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 10:26:33 INFO HHH000206: hibernate.properties not found
+2018-11-12 10:26:33 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 10:26:33 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 10:26:33 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 10:26:33 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 10:26:33 INFO HHH10001003: Autocommit mode: false
+2018-11-12 10:26:33 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 10:26:34 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 10:26:34 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 10:27:37 INFO Initializing Servlet 'spring'
+2018-11-12 10:27:38 INFO Completed initialization in 511 ms
+2018-11-12 10:35:02 INFO Initializing Servlet 'spring'
+2018-11-12 10:35:03 INFO Completed initialization in 471 ms
+2018-11-12 10:36:33 INFO Initializing Servlet 'spring'
+2018-11-12 10:36:33 INFO Completed initialization in 485 ms
+2018-11-12 10:36:45 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 10:36:45 INFO HHH000206: hibernate.properties not found
+2018-11-12 10:36:46 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 10:36:46 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 10:36:46 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 10:36:46 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 10:36:46 INFO HHH10001003: Autocommit mode: false
+2018-11-12 10:36:46 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 10:36:46 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 10:36:47 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 10:42:37 INFO Initializing Servlet 'spring'
+2018-11-12 10:42:38 INFO Completed initialization in 502 ms
+2018-11-12 10:44:49 INFO Initializing Servlet 'spring'
+2018-11-12 10:44:49 INFO Completed initialization in 491 ms
+2018-11-12 10:45:28 INFO Initializing Servlet 'spring'
+2018-11-12 10:45:28 INFO Completed initialization in 597 ms
+2018-11-12 10:45:31 INFO Initializing Servlet 'spring'
+2018-11-12 10:45:32 INFO Completed initialization in 504 ms
+2018-11-12 10:45:38 INFO Initializing Servlet 'spring'
+2018-11-12 10:45:39 INFO Completed initialization in 971 ms
+2018-11-12 10:45:39 INFO Initializing Servlet 'spring'
+2018-11-12 10:45:39 INFO Completed initialization in 541 ms
+2018-11-12 10:45:44 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 10:45:44 INFO HHH000206: hibernate.properties not found
+2018-11-12 10:45:44 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 10:45:44 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 10:45:44 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 10:45:44 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 10:45:44 INFO HHH10001003: Autocommit mode: false
+2018-11-12 10:45:44 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 10:45:44 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 10:45:45 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 10:47:00 INFO Initializing Servlet 'spring'
+2018-11-12 10:47:01 INFO Completed initialization in 638 ms
+2018-11-12 10:47:34 INFO Initializing Servlet 'spring'
+2018-11-12 10:47:35 INFO Completed initialization in 528 ms
+2018-11-12 10:47:40 INFO Initializing Servlet 'spring'
+2018-11-12 10:47:41 INFO Completed initialization in 489 ms
+2018-11-12 10:48:43 INFO Initializing Servlet 'spring'
+2018-11-12 10:48:43 INFO Initializing Servlet 'spring'
+2018-11-12 10:48:43 INFO Completed initialization in 816 ms
+2018-11-12 10:48:43 INFO Completed initialization in 595 ms
+2018-11-12 10:48:51 INFO Initializing Servlet 'spring'
+2018-11-12 10:48:52 INFO Initializing Servlet 'spring'
+2018-11-12 10:48:52 INFO Completed initialization in 1337 ms
+2018-11-12 10:48:52 INFO Completed initialization in 641 ms
+2018-11-12 10:48:59 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 10:48:59 INFO HHH000206: hibernate.properties not found
+2018-11-12 10:48:59 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 10:48:59 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 10:48:59 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 10:48:59 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 10:48:59 INFO HHH10001003: Autocommit mode: false
+2018-11-12 10:48:59 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 10:48:59 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 10:49:00 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 10:53:58 INFO Initializing Servlet 'spring'
+2018-11-12 10:53:59 INFO Completed initialization in 564 ms
+2018-11-12 10:56:21 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 10:56:21 INFO HHH000206: hibernate.properties not found
+2018-11-12 10:56:21 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 10:56:21 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 10:56:21 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 10:56:21 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 10:56:21 INFO HHH10001003: Autocommit mode: false
+2018-11-12 10:56:21 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 10:56:21 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 10:56:22 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 11:00:33 INFO Initializing Servlet 'spring'
+2018-11-12 11:00:34 INFO Completed initialization in 511 ms
+2018-11-12 11:02:57 INFO Initializing Servlet 'spring'
+2018-11-12 11:02:57 INFO Completed initialization in 472 ms
+2018-11-12 11:03:24 INFO Initializing Servlet 'spring'
+2018-11-12 11:03:24 INFO Completed initialization in 531 ms
+2018-11-12 11:03:51 INFO Initializing Servlet 'spring'
+2018-11-12 11:03:52 INFO Completed initialization in 492 ms
+2018-11-12 11:03:58 INFO Initializing Servlet 'spring'
+2018-11-12 11:03:58 INFO Completed initialization in 512 ms
+2018-11-12 11:04:22 INFO Initializing Servlet 'spring'
+2018-11-12 11:04:22 INFO Completed initialization in 560 ms
+2018-11-12 11:04:36 INFO Initializing Servlet 'spring'
+2018-11-12 11:04:37 INFO Completed initialization in 482 ms
+2018-11-12 11:05:19 INFO Initializing Servlet 'spring'
+2018-11-12 11:05:20 INFO Completed initialization in 572 ms
+2018-11-12 11:05:30 INFO Initializing Servlet 'spring'
+2018-11-12 11:05:30 INFO Completed initialization in 539 ms
+2018-11-12 11:06:02 INFO Initializing Servlet 'spring'
+2018-11-12 11:06:02 INFO Completed initialization in 500 ms
+2018-11-12 11:06:30 INFO Initializing Servlet 'spring'
+2018-11-12 11:06:30 INFO Completed initialization in 577 ms
+2018-11-12 11:06:35 INFO Initializing Servlet 'spring'
+2018-11-12 11:06:36 INFO Completed initialization in 507 ms
+2018-11-12 11:07:07 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 11:07:07 INFO HHH000206: hibernate.properties not found
+2018-11-12 11:07:07 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 11:07:07 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 11:07:07 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 11:07:07 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 11:07:07 INFO HHH10001003: Autocommit mode: false
+2018-11-12 11:07:07 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 11:07:08 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 11:07:08 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 11:08:25 INFO Initializing Servlet 'spring'
+2018-11-12 11:08:26 INFO Completed initialization in 502 ms
+2018-11-12 11:12:25 INFO Initializing Servlet 'spring'
+2018-11-12 11:12:26 INFO Completed initialization in 560 ms
+2018-11-12 11:12:33 INFO Initializing Servlet 'spring'
+2018-11-12 11:12:33 INFO Completed initialization in 548 ms
+2018-11-12 11:12:56 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 11:12:56 INFO HHH000206: hibernate.properties not found
+2018-11-12 11:12:56 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 11:12:56 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 11:12:56 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 11:12:56 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 11:12:56 INFO HHH10001003: Autocommit mode: false
+2018-11-12 11:12:56 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 11:12:56 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 11:12:57 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 11:14:12 INFO Initializing Servlet 'spring'
+2018-11-12 11:14:13 INFO Completed initialization in 506 ms
+2018-11-12 11:14:33 INFO Initializing Servlet 'spring'
+2018-11-12 11:14:33 INFO Completed initialization in 588 ms
+2018-11-12 11:14:36 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 11:14:36 INFO HHH000206: hibernate.properties not found
+2018-11-12 11:14:36 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 11:14:36 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 11:14:36 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 11:14:36 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 11:14:36 INFO HHH10001003: Autocommit mode: false
+2018-11-12 11:14:36 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 11:14:36 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 11:14:36 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 11:14:36 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 11:14:36 INFO HHH10001003: Autocommit mode: false
+2018-11-12 11:14:36 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 11:14:36 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 11:14:36 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 11:14:37 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 11:14:37 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 11:14:37 WARN SQL Error: 1048, SQLState: 23000
+2018-11-12 11:14:37 ERROR Column 'employee_id' cannot be null
+2018-11-12 11:16:19 INFO Initializing Servlet 'spring'
+2018-11-12 11:16:20 INFO Completed initialization in 583 ms
+2018-11-12 11:16:25 INFO Initializing Servlet 'spring'
+2018-11-12 11:16:26 INFO Completed initialization in 535 ms
+2018-11-12 11:19:08 INFO Initializing Servlet 'spring'
+2018-11-12 11:19:08 INFO Completed initialization in 561 ms
+2018-11-12 11:20:18 INFO Initializing Servlet 'spring'
+2018-11-12 11:20:18 INFO Completed initialization in 543 ms
+2018-11-12 11:21:35 INFO Initializing Servlet 'spring'
+2018-11-12 11:21:35 INFO Completed initialization in 598 ms
+2018-11-12 11:22:39 INFO Initializing Servlet 'spring'
+2018-11-12 11:22:40 INFO Completed initialization in 529 ms
+2018-11-12 11:22:59 INFO Initializing Servlet 'spring'
+2018-11-12 11:23:00 INFO Completed initialization in 526 ms
+2018-11-12 11:23:29 INFO Initializing Servlet 'spring'
+2018-11-12 11:23:29 INFO Completed initialization in 593 ms
+2018-11-12 11:24:38 INFO Initializing Servlet 'spring'
+2018-11-12 11:24:38 INFO Completed initialization in 529 ms
+2018-11-12 11:25:05 INFO Initializing Servlet 'spring'
+2018-11-12 11:25:06 INFO Completed initialization in 564 ms
+2018-11-12 11:25:24 INFO Initializing Servlet 'spring'
+2018-11-12 11:25:25 INFO Completed initialization in 561 ms
+2018-11-12 11:26:12 INFO Initializing Servlet 'spring'
+2018-11-12 11:26:13 INFO Completed initialization in 593 ms
+2018-11-12 11:26:30 INFO Initializing Servlet 'spring'
+2018-11-12 11:26:31 INFO Completed initialization in 542 ms
+2018-11-12 11:27:00 INFO Initializing Servlet 'spring'
+2018-11-12 11:27:00 INFO Completed initialization in 508 ms
+2018-11-12 11:27:36 INFO Initializing Servlet 'spring'
+2018-11-12 11:27:37 INFO Completed initialization in 782 ms
+2018-11-12 11:28:08 INFO Initializing Servlet 'spring'
+2018-11-12 11:28:09 INFO Completed initialization in 719 ms
+2018-11-12 11:30:43 INFO Initializing Servlet 'spring'
+2018-11-12 11:30:44 INFO Completed initialization in 877 ms
+2018-11-12 11:31:13 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 11:31:13 INFO HHH000206: hibernate.properties not found
+2018-11-12 11:31:13 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 11:31:13 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 11:31:13 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 11:31:13 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 11:31:13 INFO HHH10001003: Autocommit mode: false
+2018-11-12 11:31:13 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 11:31:14 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 11:31:15 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 11:32:05 INFO Initializing Servlet 'spring'
+2018-11-12 11:32:06 INFO Completed initialization in 588 ms
+2018-11-12 11:32:19 INFO Initializing Servlet 'spring'
+2018-11-12 11:32:20 INFO Completed initialization in 538 ms
+2018-11-12 11:34:14 INFO Initializing Servlet 'spring'
+2018-11-12 11:34:15 INFO Completed initialization in 887 ms
+2018-11-12 11:34:30 INFO Initializing Servlet 'spring'
+2018-11-12 11:34:31 INFO Completed initialization in 598 ms
+2018-11-12 11:34:46 INFO Initializing Servlet 'spring'
+2018-11-12 11:34:46 INFO Completed initialization in 530 ms
+2018-11-12 11:37:27 INFO Initializing Servlet 'spring'
+2018-11-12 11:37:27 INFO Completed initialization in 591 ms
+2018-11-12 11:37:38 INFO Initializing Servlet 'spring'
+2018-11-12 11:37:39 INFO Completed initialization in 571 ms
+2018-11-12 11:38:21 INFO Initializing Servlet 'spring'
+2018-11-12 11:38:21 INFO Completed initialization in 524 ms
+2018-11-12 11:38:31 INFO Initializing Servlet 'spring'
+2018-11-12 11:38:32 INFO Completed initialization in 557 ms
+2018-11-12 11:39:12 INFO Initializing Servlet 'spring'
+2018-11-12 11:39:12 INFO Completed initialization in 504 ms
+2018-11-12 11:41:33 INFO Initializing Servlet 'spring'
+2018-11-12 11:41:34 INFO Completed initialization in 511 ms
+2018-11-12 11:42:00 INFO Initializing Servlet 'spring'
+2018-11-12 11:42:01 INFO Completed initialization in 506 ms
+2018-11-12 11:43:17 INFO Initializing Servlet 'spring'
+2018-11-12 11:43:17 INFO Completed initialization in 540 ms
+2018-11-12 11:43:26 INFO Initializing Servlet 'spring'
+2018-11-12 11:43:27 INFO Completed initialization in 535 ms
+2018-11-12 11:44:11 INFO Initializing Servlet 'spring'
+2018-11-12 11:44:11 INFO Completed initialization in 585 ms
+2018-11-12 11:44:21 INFO Initializing Servlet 'spring'
+2018-11-12 11:44:21 INFO Completed initialization in 490 ms
+2018-11-12 11:47:06 INFO Initializing Servlet 'spring'
+2018-11-12 11:47:06 INFO Completed initialization in 498 ms
+2018-11-12 11:47:22 INFO Initializing Servlet 'spring'
+2018-11-12 11:47:22 INFO Completed initialization in 528 ms
+2018-11-12 11:47:57 INFO Initializing Servlet 'spring'
+2018-11-12 11:47:58 INFO Completed initialization in 601 ms
+2018-11-12 11:48:04 INFO Initializing Servlet 'spring'
+2018-11-12 11:48:05 INFO Completed initialization in 526 ms
+2018-11-12 11:48:25 INFO Initializing Servlet 'spring'
+2018-11-12 11:48:25 INFO Completed initialization in 509 ms
+2018-11-12 11:52:58 INFO Initializing Servlet 'spring'
+2018-11-12 11:52:58 INFO Completed initialization in 530 ms
+2018-11-12 11:53:31 INFO Initializing Servlet 'spring'
+2018-11-12 11:53:31 INFO Completed initialization in 472 ms
+2018-11-12 11:54:03 INFO Initializing Servlet 'spring'
+2018-11-12 11:54:03 INFO Completed initialization in 503 ms
+2018-11-12 11:54:52 INFO Initializing Servlet 'spring'
+2018-11-12 11:54:52 INFO Completed initialization in 585 ms
+2018-11-12 11:55:23 INFO Initializing Servlet 'spring'
+2018-11-12 11:55:24 INFO Completed initialization in 937 ms
+2018-11-12 11:55:27 INFO Initializing Servlet 'spring'
+2018-11-12 11:55:27 INFO Completed initialization in 521 ms
+2018-11-12 11:55:34 INFO Initializing Servlet 'spring'
+2018-11-12 11:55:35 INFO Initializing Servlet 'spring'
+2018-11-12 11:55:35 INFO Completed initialization in 871 ms
+2018-11-12 11:55:35 INFO Completed initialization in 615 ms
+2018-11-12 11:55:43 WARN No mapping for GET /hrms/e
+2018-11-12 11:55:48 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 11:55:48 INFO HHH000206: hibernate.properties not found
+2018-11-12 11:55:48 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 11:55:48 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 11:55:48 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 11:55:48 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 11:55:48 INFO HHH10001003: Autocommit mode: false
+2018-11-12 11:55:48 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 11:55:48 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 11:55:49 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 11:56:37 INFO Initializing Servlet 'spring'
+2018-11-12 11:56:37 INFO Completed initialization in 484 ms

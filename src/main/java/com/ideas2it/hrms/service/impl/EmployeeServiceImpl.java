@@ -23,6 +23,16 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     }
     
+    public List<Attendance> markPresent(Employee employee) throws AppException {
+        AttendanceServiceImpl attendService = new AttendanceServiceImpl();
+        return attendService.markPresent(employee);
+    }
+    
+    public List<Attendance> markAbsent(Employee employee) throws AppException {
+        AttendanceServiceImpl attendService = new AttendanceServiceImpl();
+        return attendService.markAbsent(employee);
+    }
+    
     /** {@inheritDoc}*/
     public Boolean updateEmployee(Employee employee) throws AppException {
         return employeeDao.updateEmployee(employee);
@@ -66,8 +76,7 @@ public class EmployeeServiceImpl implements EmployeeService{
             Integer netProfit = 0;
             
             billableAmount = calculateBillableAmount(employee);            
-            costToCompany = calculateCostToCompany(employee);
-            
+            costToCompany = calculateCostToCompany(employee);            
             netProfit = billableAmount - costToCompany;
 
             return netProfit;
@@ -121,6 +130,7 @@ public class EmployeeServiceImpl implements EmployeeService{
                 numLeaves ++ ;
             }
         }
+        
         return numLeaves;
     }
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Attendance;
+import com.ideas2it.hrms.model.Employee;
 
 /**
  * <p>
@@ -19,6 +20,9 @@ public interface AttendanceDao {
     /**
      * Creates a new attendance 
      * 
+     * @param employee
+     *       employee
+     *       
      * @param attendance
      *       new attendance
      * @return 
@@ -27,17 +31,26 @@ public interface AttendanceDao {
     Attendance createAttendance(Attendance attendance) throws AppException; 
     
     /**
-     * Gets a attendance 
+     * Gets a today's attendance entry of an employee
      *
      * @param id
-     *        id of the requested attendance
+     *        employee
      * @return
      *        requested attendance, if exists, null otherwise
      */
-    Attendance getAttendanceById(Integer id) throws AppException;
+    Attendance getAttendance(Employee employee) throws AppException;
+    
+    /**
+     * Gets the attendance sheet of an employee
+     * 
+     * @return
+     *        attendance sheet
+     */
+    List<Attendance> getAttendanceSheet(Employee employee) throws AppException;
+
      
     /**
-     * Gets all the attendances allocated to company
+     * Gets the attendances of all employees in company
      * 
      * @return
      *        list of all attendances
@@ -50,13 +63,5 @@ public interface AttendanceDao {
      * @param attendance
      *       attendance to update
      */
-    Attendance updateAttendance(Attendance attendance) throws AppException;
-    
-    /**
-     * Removes a attendance
-     * 
-     * @param attendance
-     *       attendance to remove
-     */
-    Attendance removeAttendance(Attendance attendance) throws AppException;
+    Attendance updateAttendance(Attendance attendance) throws AppException;            
 }

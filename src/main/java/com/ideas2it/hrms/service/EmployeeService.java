@@ -25,6 +25,10 @@ public interface EmployeeService {
     */
    Boolean createEmployee(Employee employee) throws AppException;
    
+   List<Attendance> markPresent(Employee employee) throws AppException;
+   
+   List<Attendance> markAbsent(Employee employee) throws AppException;
+   
    /**
     * Update an existing employee 
     * 

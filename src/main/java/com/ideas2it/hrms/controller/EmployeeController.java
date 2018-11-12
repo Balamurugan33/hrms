@@ -1,5 +1,8 @@
 package com.ideas2it.hrms.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,13 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.common.EmpConstants;
-import com.ideas2it.hrms.common.UserConstants;
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.logger.AppLogger;
+import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Employee;
-import com.ideas2it.hrms.model.User;
 import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
+
+import static com.ideas2it.hrms.common.EmpConstants.MSG_CREATE_SUCCESS;
 
 /**
  * Used to perform the different action on employee 
@@ -69,6 +72,52 @@ public class EmployeeController {
              return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
                  appException.getMessage());
         }
+    }
+    
+    @GetMapping("/employee/markPresent")
+    public ModelAndView markPresent(HttpServletRequest request) {
+        HttpSession session = request.getSession();        
+        Employee employee = (Employee) session.getAttribute("employee");
+        List<Attendance> attendanceSheet = new ArrayList<Attendance>();
+        ModelAndView modelAndView = new ModelAndView(); 
+        
+        try {
+            // Check if already exists
+            // If Exists do nothing, else create new attendance entry
+            attendanceSheet = employeeService.markPresent(employee);   
+            modelAndView.addObject("Success", MSG_CREATE_SUCCESS);
+            modelAndView.addObject("attendance", attendanceSheet);
+            modelAndView.addObject("isChecked", true);
+            modelAndView.setViewName("employeeView");
+        } catch (AppException appException) {
+            modelAndView.addObject("Error", appException.getMessage());
+        }
+        
+        return modelAndView;       
+    }
+    
+    @GetMapping("/employee/markAbsent")
+    public ModelAndView markAbsent(HttpServletRequest request) {
+        HttpSession session = request.getSession();        
+        Employee employee = (Employee) session.getAttribute("employee");
+        // Check if there is an employee here
+        // Flow is
+        // Controller -> Attendance View -> Get request (w. session)
+        // New URL Another get request (same request or not)
+        List<Attendance> attendanceSheet = new ArrayList<Attendance>();
+        ModelAndView modelAndView = new ModelAndView(); 
+        
+        try {
+            attendanceSheet = employeeService.markAbsent(employee);   
+            modelAndView.addObject("Success", MSG_CREATE_SUCCESS);
+            modelAndView.addObject("attendance", attendanceSheet);
+            modelAndView.addObject("isChecked", false);
+            modelAndView.setViewName("employeeView");
+        } catch (AppException appException) {
+            modelAndView.addObject("Error", appException.getMessage());
+        }
+        
+        return modelAndView;       
     }
     
     @PostMapping("/updateEmployee")
