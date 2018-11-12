@@ -124,4 +124,14 @@ public interface EmployeeService {
     *        attendance of a day
     */
    boolean isEmpLeave(Attendance attendance);
+   
+   /**
+    * Used to gets the all projects
+    */
+   List<Project> getAllProjects() throws AppException;
+   
+   /**
+    * Used to create the task
+    */
+   boolean createTask(ProjectTask task) throws AppException;
 }

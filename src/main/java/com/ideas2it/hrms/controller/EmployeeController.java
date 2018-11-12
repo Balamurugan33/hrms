@@ -19,10 +19,15 @@ import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
+import com.ideas2it.hrms.model.Project;
+import com.ideas2it.hrms.model.ProjectTask;
 import com.ideas2it.hrms.service.EmployeeService;
+import com.ideas2it.hrms.service.ProjectTaskService;
 import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
+import com.ideas2it.hrms.service.impl.ProjectTaskServiceImpl;
 
 import static com.ideas2it.hrms.common.EmpConstants.MSG_CREATE_SUCCESS;
+import static com.ideas2it.hrms.common.ProjectConstants.MSG_CREATED;
 
 /**
  * Used to perform the different action on employee 
@@ -176,7 +181,10 @@ public class EmployeeController {
     @GetMapping("employee/displayEmployee")
     public ModelAndView displayEmployees(ModelMap model) {
         try {
-            return new ModelAndView(ADMINMENU, EmpConstants.LABEL_EMPLOYEES, 
+            ModelAndView modelAndView 
+                = new ModelAndView(ADMINMENU, "command", new ProjectTask());
+            modelAndView.addObject("allProjects", employeeService.getAllProjects());
+            return modelAndView.addObject(EmpConstants.LABEL_EMPLOYEES, 
                 employeeService.displayEmployees());
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
@@ -206,5 +214,25 @@ public class EmployeeController {
         Employee employee = (Employee) session.getAttribute("employee");
         return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_ATTENDANCE, 
            employee.getAttendance());
+    }
+    
+    @PostMapping("employee/createTask")
+    public ModelAndView createTask(@ModelAttribute("task") ProjectTask task, 
+            HttpServletRequest request, ModelMap model) {
+        try {
+            Project project = new Project();
+            project.setId(Integer.parseInt(request.getParameter("projectId")));
+            Employee employee = new Employee();
+            employee.setId(Integer.parseInt(request.getParameter("empId")));
+            task.setProject(project);
+            task.setEmployee(employee);
+            if (employeeService.createTask(task)) {
+                model.addAttribute(EmpConstants.LABEL_MESSAGE, MSG_CREATED);
+            }
+            return displayEmployees(model);
+        } catch (AppException appException) {
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
+                appException.getMessage());
+        }
     }
 }
