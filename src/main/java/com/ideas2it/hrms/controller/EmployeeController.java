@@ -95,8 +95,6 @@ public class EmployeeController {
         ModelAndView modelAndView = new ModelAndView(); 
         
         try {
-            // Check if already exists
-            // If Exists do nothing, else create new attendance entry
             attendanceSheet = employeeService.markPresent(employee);   
             modelAndView.addObject("Success", MSG_CREATE_SUCCESS);
             modelAndView.addObject("attendance", attendanceSheet);
@@ -113,10 +111,7 @@ public class EmployeeController {
     public ModelAndView markAbsent(HttpServletRequest request) {
         HttpSession session = request.getSession();        
         Employee employee = (Employee) session.getAttribute("employee");
-        // Check if there is an employee here
-        // Flow is
-        // Controller -> Attendance View -> Get request (w. session)
-        // New URL Another get request (same request or not)
+
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         ModelAndView modelAndView = new ModelAndView(); 
         

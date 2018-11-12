@@ -28,7 +28,7 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
 @Controller 
 @RequestMapping("task") 
 public class ProjectTaskController {
-            
+    
     @PostMapping("create")
     public ModelAndView createTask(
             @ModelAttribute("task") ProjectTask task, 

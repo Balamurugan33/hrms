@@ -93,19 +93,26 @@
 
 <c:if test="${not empty tasks}">
  <div id="taskInfo" align="center">
+    <br>
+    <br>
     <table class="table table-striped text-center">
     <tr>
-        <th>Project</th>
+        <th>Date</th>
         <th>Task</th>
-        <th>Start Time</th>
-        <th>End Time</th>
+        <th>Project</th>
+        <th> Action </th>
     </tr>
     <c:forEach var= "projectTask" items= "${tasks}">
     <tr>
-        <td>${projectTask.project.name}</td>
+        <td> ${projectTask.taskDate} </td>
         <td>${projectTask.name}</td>
-        <td>${projectTask.startTime}</td>
-        <td>${projectTask.endTime}</td>
+        <td>${projectTask.project.name}</td>    
+        <td> 
+          <form>
+            <button type="submit" name = "startTask" value="startTask" formaction="/hrms/task/startTask"> Start Task </button> 
+            <button type="submit" name = "endTask" value="endTask" formaction="/hrms/task/endTask"> End Task </button>                                    
+          </form>             
+        </td>  
     </tr>
     </c:forEach>
     </table>
@@ -131,7 +138,6 @@
     
 <c:if test="${not empty attendance}">
  <div id=attendanceInfo align="center">
-    <table class="table table-striped text-center">
   <c:choose>
     <c:when test="${isChecked=='true'}">
       <input class="toggle" type="checkbox" name="checkAttendance" checked="checked" onclick="checkAttendance(this)" />
@@ -145,7 +151,7 @@
   </c:choose>
     <br>
     <br>
-    <table>
+    <table class="table table-striped text-center">
     <tr>
         <th>Date</th>
         <th>Attendance</th>
