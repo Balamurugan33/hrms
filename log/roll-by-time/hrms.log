@@ -1903,3 +1903,11 @@ Field error in object 'project' on field 'client': rejected value [4]; codes [ty
 2018-11-12 13:26:21 ERROR HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute statement]
 2018-11-12 14:36:05 INFO Initializing Servlet 'spring'
 2018-11-12 14:36:05 INFO Completed initialization in 666 ms
+2018-11-12 14:36:31 INFO Initializing Servlet 'spring'
+2018-11-12 14:36:31 INFO Completed initialization in 654 ms
+2018-11-12 14:37:02 INFO Initializing Servlet 'spring'
+2018-11-12 14:37:03 INFO Completed initialization in 703 ms
+2018-11-12 14:37:25 INFO Initializing Servlet 'spring'
+2018-11-12 14:37:25 INFO Completed initialization in 627 ms
+2018-11-12 14:37:57 INFO Initializing Servlet 'spring'
+2018-11-12 14:37:58 INFO Completed initialization in 608 ms
