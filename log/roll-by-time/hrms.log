@@ -2135,3 +2135,7 @@ org.hibernate.TransientObjectException: The given object has a null identifier: 
 2018-11-12 11:55:49 INFO HHH000397: Using ASTQueryTranslatorFactory
 2018-11-12 11:56:37 INFO Initializing Servlet 'spring'
 2018-11-12 11:56:37 INFO Completed initialization in 484 ms
+2018-11-12 11:56:43 INFO Initializing Servlet 'spring'
+2018-11-12 11:56:44 INFO Completed initialization in 488 ms
+2018-11-12 11:57:23 INFO Initializing Servlet 'spring'
+2018-11-12 11:57:23 INFO Completed initialization in 488 ms
