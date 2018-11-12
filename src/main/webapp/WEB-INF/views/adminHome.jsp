@@ -134,7 +134,7 @@
 
 <c:if test="${not empty projects}">
     <div>
-        <button type="button" class="btn btn-outline-success btn-lg" 
+        <button type="button" class="btn btn-outline-success btn-lg pull-right" 
             data-toggle="modal" data-target="#ProjectCreate">Add Project</button>
         <table class="table table-striped text-center">
         <tr>
@@ -211,11 +211,47 @@
             <td>${employee.emailId}</td>
             <td>${employee.designation.name}</td>
             <td>${employee.designation.salary}</td>
-            <form method="post">
-            <td><button type="submit" class="btn btn-outline-success" >Add</button>
-                <button type="submit" class="btn btn-outline-danger">Remove</button></td>
-            </form>
+            <td><form method="post">
+                <button type="button"  data-toggle="modal" data-target="#${employee.id}" class="btn btn-outline-success" >Assign Task</button>
+                <button type="submit" class="btn btn-outline-danger">Remove</button>
+                <input type="hidden" name="id" value="${employee.id}">
+                </form></td>
         </tr>
+             <div class="modal fade" id="${employee.id}" >
+                 <div class="modal-dialog modal-sm">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h4>Enter Task Detail</h4>
+                         </div>
+                         <div class="modal-body">
+                             <form action="/hrms/employee/createTask" method="post">
+                                 <div class="form-group">
+                                     <label>Task Name</label>
+                                     <div class="input-group">
+                                         <input type="text" class="form-control" name="name"
+                                             required="required">
+                                     </div>
+                                 </div>
+                                 <div class="form-group">
+                                         <label>Project Name</label>
+                                         <select class="form-control" name="projectId">
+                                             <c:forEach var="project" items="${allProjects}">
+                                                  <option value="${project.id}">${project.name}</option>
+                                             </c:forEach>
+                                         </select>
+                                 </div>
+                                 <input type="hidden" name="empId" value="${employee.id}">
+                                 <input type="hidden" name="taskDate" value="<%= java.time.LocalDate.now() %>">
+                                 <div class="form-group">
+                                     <button type="submit" class="btn btn-primary btn-block btn-lg" >Assign</button>
+                                     <button type="button" class="btn btn-danger btn-block btn-lg" 
+                                         data-dismiss="modal">Cancel</button>
+                                 </div>
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+              </div>
         </c:forEach>
         </table>
         

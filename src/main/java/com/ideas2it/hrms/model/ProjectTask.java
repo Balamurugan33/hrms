@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * Project Task model
  * 
@@ -52,9 +54,11 @@ public class ProjectTask {
     public void setName(String name) {
         this.name = name;
     }    
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     public LocalDate getTaskDate() {
         return taskDate;
     }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     public void setTaskDate(LocalDate taskDate) {
         this.taskDate = taskDate;
     }    

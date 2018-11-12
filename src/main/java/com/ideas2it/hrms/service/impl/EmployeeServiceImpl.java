@@ -14,6 +14,8 @@ import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.ProjectTask;
 import com.ideas2it.hrms.service.DesignationService;
 import com.ideas2it.hrms.service.EmployeeService;
+import com.ideas2it.hrms.service.ProjectService;
+import com.ideas2it.hrms.service.ProjectTaskService;
 
 public class EmployeeServiceImpl implements EmployeeService{
 
@@ -164,5 +166,17 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
 
         return isAbsent;
+    }
+
+    /** {@inheritDoc}*/
+    public List<Project> getAllProjects() throws AppException {
+        ProjectService projectService = new ProjectServiceImpl();
+        return projectService.getAllProjects();
+    }
+
+    @Override
+    public boolean createTask(ProjectTask task) throws AppException {
+        ProjectTaskService taskService = new ProjectTaskServiceImpl();
+        return (null != taskService.createTask(task));
     }
 }
