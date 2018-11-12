@@ -1,0 +1,227 @@
+2018-11-12 12:13:48 INFO Initializing Servlet 'spring'
+2018-11-12 12:13:49 INFO Completed initialization in 933 ms
+2018-11-12 12:15:18 WARN Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2018-11-12 12:22:11 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 12:22:11 INFO HHH000206: hibernate.properties not found
+2018-11-12 12:22:12 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 12:22:12 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 12:22:12 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 12:22:12 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 12:22:12 INFO HHH10001003: Autocommit mode: false
+2018-11-12 12:22:12 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 12:22:12 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 12:22:13 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 12:38:53 INFO Initializing Servlet 'spring'
+2018-11-12 12:38:54 INFO Completed initialization in 587 ms
+2018-11-12 12:42:57 INFO Initializing Servlet 'spring'
+2018-11-12 12:42:57 INFO Completed initialization in 639 ms
+2018-11-12 12:44:13 INFO Initializing Servlet 'spring'
+2018-11-12 12:44:14 INFO Completed initialization in 635 ms
+2018-11-12 12:44:33 INFO Initializing Servlet 'spring'
+2018-11-12 12:44:34 INFO Completed initialization in 518 ms
+2018-11-12 12:44:56 INFO Initializing Servlet 'spring'
+2018-11-12 12:44:56 INFO Completed initialization in 646 ms
+2018-11-12 12:45:10 INFO Initializing Servlet 'spring'
+2018-11-12 12:45:11 INFO Completed initialization in 550 ms
+2018-11-12 12:46:40 INFO Initializing Servlet 'spring'
+2018-11-12 12:46:40 INFO Completed initialization in 508 ms
+2018-11-12 12:56:03 INFO Initializing Servlet 'spring'
+2018-11-12 12:56:03 INFO Completed initialization in 555 ms
+2018-11-12 12:57:04 INFO Initializing Servlet 'spring'
+2018-11-12 12:57:04 INFO Completed initialization in 824 ms
+2018-11-12 12:57:15 INFO Initializing Servlet 'spring'
+2018-11-12 12:57:15 INFO Completed initialization in 551 ms
+2018-11-12 12:57:25 INFO Initializing Servlet 'spring'
+2018-11-12 12:57:26 INFO Completed initialization in 885 ms
+2018-11-12 12:57:29 INFO Initializing Servlet 'spring'
+2018-11-12 12:57:29 INFO Completed initialization in 499 ms
+2018-11-12 12:57:41 INFO Initializing Servlet 'spring'
+2018-11-12 12:57:42 INFO Initializing Servlet 'spring'
+2018-11-12 12:57:42 INFO Completed initialization in 701 ms
+2018-11-12 12:57:42 INFO Completed initialization in 1038 ms
+2018-11-12 13:05:02 INFO Initializing Servlet 'spring'
+2018-11-12 13:05:03 INFO Completed initialization in 743 ms
+2018-11-12 13:05:19 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 13:05:19 INFO HHH000206: hibernate.properties not found
+2018-11-12 13:05:20 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 13:05:20 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 13:05:20 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 13:05:20 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 13:05:20 INFO HHH10001003: Autocommit mode: false
+2018-11-12 13:05:20 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 13:05:20 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 13:05:21 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 13:16:19 INFO Initializing Servlet 'spring'
+2018-11-12 13:16:19 INFO Completed initialization in 522 ms
+2018-11-12 13:21:39 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 13:21:39 INFO HHH000206: hibernate.properties not found
+2018-11-12 13:21:39 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 13:21:39 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 13:21:39 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 13:21:39 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 13:21:39 INFO HHH10001003: Autocommit mode: false
+2018-11-12 13:21:39 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 13:21:39 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 13:21:40 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 13:28:08 INFO Initializing Servlet 'spring'
+2018-11-12 13:28:09 INFO Completed initialization in 698 ms
+2018-11-12 13:28:14 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 13:28:14 INFO HHH000206: hibernate.properties not found
+2018-11-12 13:28:15 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 13:28:15 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 13:28:15 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 13:28:15 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 13:28:15 INFO HHH10001003: Autocommit mode: false
+2018-11-12 13:28:15 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 13:28:15 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 13:28:16 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 13:31:35 INFO Initializing Servlet 'spring'
+2018-11-12 13:31:35 INFO Completed initialization in 677 ms
+2018-11-12 13:31:59 INFO Initializing Servlet 'spring'
+2018-11-12 13:32:00 INFO Completed initialization in 623 ms
+2018-11-12 13:32:21 INFO Initializing Servlet 'spring'
+2018-11-12 13:32:22 INFO Completed initialization in 553 ms
+2018-11-12 13:32:37 INFO Initializing Servlet 'spring'
+2018-11-12 13:32:38 INFO Completed initialization in 572 ms
+2018-11-12 13:32:44 INFO Initializing Servlet 'spring'
+2018-11-12 13:32:44 INFO Completed initialization in 674 ms
+2018-11-12 13:32:47 INFO Initializing Servlet 'spring'
+2018-11-12 13:32:48 INFO Completed initialization in 620 ms
+2018-11-12 13:32:55 INFO Initializing Servlet 'spring'
+2018-11-12 13:32:56 INFO Initializing Servlet 'spring'
+2018-11-12 13:32:57 INFO Completed initialization in 1204 ms
+2018-11-12 13:32:57 INFO Completed initialization in 904 ms
+2018-11-12 13:33:08 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 13:33:08 INFO HHH000206: hibernate.properties not found
+2018-11-12 13:33:08 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 13:33:08 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 13:33:08 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 13:33:08 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 13:33:08 INFO HHH10001003: Autocommit mode: false
+2018-11-12 13:33:08 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 13:33:08 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 13:33:09 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 13:33:57 INFO Initializing Servlet 'spring'
+2018-11-12 13:33:58 INFO Completed initialization in 646 ms
+2018-11-12 13:34:24 INFO Initializing Servlet 'spring'
+2018-11-12 13:34:24 INFO Completed initialization in 546 ms
+2018-11-12 13:34:30 INFO Initializing Servlet 'spring'
+2018-11-12 13:34:31 INFO Completed initialization in 642 ms
+2018-11-12 13:34:34 INFO Initializing Servlet 'spring'
+2018-11-12 13:34:34 INFO Completed initialization in 489 ms
+2018-11-12 13:34:42 INFO Initializing Servlet 'spring'
+2018-11-12 13:34:42 INFO Initializing Servlet 'spring'
+2018-11-12 13:34:43 INFO Completed initialization in 954 ms
+2018-11-12 13:34:43 INFO Completed initialization in 666 ms
+2018-11-12 13:34:55 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 13:34:55 INFO HHH000206: hibernate.properties not found
+2018-11-12 13:34:55 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 13:34:55 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 13:34:55 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 13:34:55 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 13:34:55 INFO HHH10001003: Autocommit mode: false
+2018-11-12 13:34:55 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 13:34:55 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 13:34:56 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 13:35:26 INFO Initializing Servlet 'spring'
+2018-11-12 13:35:27 INFO Completed initialization in 896 ms
+2018-11-12 13:35:32 INFO Initializing Servlet 'spring'
+2018-11-12 13:35:32 ERROR Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [/home/ubuntu/Documents/HRMS/target/classes/com/ideas2it/hrms/service/EmployeeService.class]; nested exception is java.lang.ArrayIndexOutOfBoundsException: 6
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:454) ~[spring-context-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.findCandidateComponents(ClassPathScanningCandidateComponentProvider.java:316) ~[spring-context-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:275) ~[spring-context-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.context.annotation.ComponentScanBeanDefinitionParser.parse(ComponentScanBeanDefinitionParser.java:90) ~[spring-context-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.NamespaceHandlerSupport.parse(NamespaceHandlerSupport.java:74) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1366) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1352) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:179) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:149) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:96) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:513) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:393) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:224) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:195) ~[spring-beans-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125) ~[spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94) ~[spring-web-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:133) ~[spring-context-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:622) ~[spring-context-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:518) ~[spring-context-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:696) ~[spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:662) ~[spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:710) ~[spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:587) ~[spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:526) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:169) [spring-webmvc-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at javax.servlet.GenericServlet.init(GenericServlet.java:244) [javax.servlet-api-3.1.0.jar:3.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:670) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHolder.initialize(ServletHolder.java:427) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:760) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:374) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1497) [jetty-webapp-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.startWebapp(JettyWebAppContext.java:360) [jetty-maven-plugin-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1459) [jetty-webapp-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:847) [jetty-server-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:287) [jetty-servlet-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:545) [jetty-webapp-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:428) [jetty-maven-plugin-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo.restartWebApp(JettyRunMojo.java:517) [jetty-maven-plugin-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo$1.onPathWatchEvents(JettyRunMojo.java:369) [jetty-maven-plugin-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.PathWatcher.notifyEvents(PathWatcher.java:1366) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at org.eclipse.jetty.util.PathWatcher.run(PathWatcher.java:1190) [jetty-util-9.4.12.v20180830.jar:9.4.12.v20180830]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 6
+	at org.springframework.asm.ClassReader.readShort(ClassReader.java:3365) ~[spring-core-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.asm.ClassReader.<init>(ClassReader.java:182) ~[spring-core-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.asm.ClassReader.<init>(ClassReader.java:166) ~[spring-core-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.asm.ClassReader.<init>(ClassReader.java:152) ~[spring-core-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.asm.ClassReader.<init>(ClassReader.java:273) ~[spring-core-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:54) ~[spring-core-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:123) ~[spring-core-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:430) ~[spring-context-5.1.1.RELEASE.jar:5.1.1.RELEASE]
+	... 45 more
+2018-11-12 13:35:34 INFO Initializing Servlet 'spring'
+2018-11-12 13:35:35 INFO Completed initialization in 541 ms
+2018-11-12 13:35:41 INFO Initializing Servlet 'spring'
+2018-11-12 13:35:41 INFO Initializing Servlet 'spring'
+2018-11-12 13:35:42 INFO Completed initialization in 1100 ms
+2018-11-12 13:35:42 INFO Completed initialization in 810 ms
+2018-11-12 13:35:46 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 13:35:46 INFO HHH000206: hibernate.properties not found
+2018-11-12 13:35:46 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 13:35:46 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 13:35:46 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 13:35:46 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 13:35:46 INFO HHH10001003: Autocommit mode: false
+2018-11-12 13:35:46 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 13:35:46 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 13:35:47 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 14:04:30 INFO Initializing Servlet 'spring'
+2018-11-12 14:04:31 INFO Completed initialization in 561 ms
+2018-11-12 14:07:55 INFO Initializing Servlet 'spring'
+2018-11-12 14:07:56 INFO Completed initialization in 560 ms
+2018-11-12 14:09:36 INFO Initializing Servlet 'spring'
+2018-11-12 14:09:37 INFO Completed initialization in 552 ms
+2018-11-12 14:10:32 INFO Initializing Servlet 'spring'
+2018-11-12 14:10:33 INFO Completed initialization in 493 ms
+2018-11-12 14:11:18 INFO HHH000412: Hibernate Core {5.3.5.Final}
+2018-11-12 14:11:18 INFO HHH000206: hibernate.properties not found
+2018-11-12 14:11:18 INFO HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-12 14:11:18 WARN HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-11-12 14:11:18 INFO HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrms]
+2018-11-12 14:11:18 INFO HHH10001001: Connection properties: {user=root, password=****}
+2018-11-12 14:11:18 INFO HHH10001003: Autocommit mode: false
+2018-11-12 14:11:18 INFO HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-11-12 14:11:18 INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-12 14:11:19 INFO HHH000397: Using ASTQueryTranslatorFactory
+2018-11-12 14:15:42 WARN SQL Error: 1048, SQLState: 23000
+2018-11-12 14:15:42 ERROR Column 'employee_id' cannot be null
+2018-11-12 14:17:06 WARN SQL Error: 1048, SQLState: 23000
+2018-11-12 14:17:06 ERROR Column 'employee_id' cannot be null
+2018-11-12 14:43:19 INFO Initializing Servlet 'spring'
+2018-11-12 14:43:19 INFO Completed initialization in 486 ms

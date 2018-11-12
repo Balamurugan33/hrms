@@ -25,6 +25,16 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     }
     
+    public Attendance getAttendance(Employee employee) throws AppException {
+        AttendanceServiceImpl attendService = new AttendanceServiceImpl();
+        return attendService.getAttendance(employee);
+    }
+    
+    public List<Attendance> getAttendanceSheet(Employee employee) throws AppException {
+        AttendanceServiceImpl attendService = new AttendanceServiceImpl();
+        return attendService.getAttendanceSheet(employee);
+    }
+    
     public List<Attendance> markPresent(Employee employee) throws AppException {
         AttendanceServiceImpl attendService = new AttendanceServiceImpl();
         return attendService.markPresent(employee);

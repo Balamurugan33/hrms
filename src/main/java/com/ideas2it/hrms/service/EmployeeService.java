@@ -24,10 +24,46 @@ public interface EmployeeService {
     * @param employee
     *        Used get the employee details
     */
-   Boolean createEmployee(Employee employee) throws AppException;
+   Boolean createEmployee(Employee employee) throws AppException;   
    
+   /**
+    * Gets today's attendance entry of an employee
+    *
+    * @param id
+    *        employee
+    * @return
+    *        requested attendance, if exists, null otherwise
+    */
+   Attendance getAttendance(Employee employee) throws AppException;
+   
+   /**
+    * Get's an employee's entire attendance history
+    *
+    * @param id
+    *        employee
+    * @return
+    *        employee's entire attendance history
+    */
+   List<Attendance> getAttendanceSheet(Employee employee) throws AppException;
+   
+   /**
+    * Marks employee as present for today
+    * 
+    * @param employee
+    *       employee
+    * @return 
+    *       employee's entire attendance history
+    */
    List<Attendance> markPresent(Employee employee) throws AppException;
    
+   /**
+    * Marks employee as absent for today
+    * 
+    * @param employee
+    *       employee
+    * @return 
+    *       employee's entire attendance history
+    */
    List<Attendance> markAbsent(Employee employee) throws AppException;
    
    /**

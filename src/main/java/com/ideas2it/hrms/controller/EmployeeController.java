@@ -22,6 +22,7 @@ import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
 
+import static com.ideas2it.hrms.common.AttendanceConstants.MSG_CREATED;
 import static com.ideas2it.hrms.common.EmpConstants.MSG_CREATE_SUCCESS;
 
 /**
@@ -202,9 +203,22 @@ public class EmployeeController {
     
     @GetMapping("employee/empAttendance")
     public ModelAndView employeesAttendance(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(false);        
+        EmployeeService employeeService = new EmployeeServiceImpl();
         Employee employee = (Employee) session.getAttribute("employee");
-        return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_ATTENDANCE, 
-           employee.getAttendance());
+        List<Attendance> attendanceSheet = new ArrayList<Attendance>();
+        ModelAndView modelAndView = new ModelAndView(); 
+                
+        try {
+            attendanceSheet = employeeService.getAttendanceSheet(employee);
+            modelAndView.addObject("Success", MSG_CREATED);
+            modelAndView.setViewName(EMPLOYEE_MENU);
+        } catch (AppException e) {
+            // TODO Auto-generated catch block
+            modelAndView.addObject("Error", e.getMessage());
+        }   
+        modelAndView.addObject(EmpConstants.LABEL_ATTENDANCE, attendanceSheet);
+        
+        return modelAndView;        
     }
 }

@@ -48,7 +48,7 @@ public interface AttendanceService {
     Attendance createAttendance(Attendance attendance) throws AppException;
     
     /**
-     * Gets a today's attendance entry of an employee
+     * Gets today's attendance entry of an employee
      *
      * @param id
      *        employee
