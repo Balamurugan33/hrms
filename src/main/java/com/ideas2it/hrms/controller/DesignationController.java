@@ -2,6 +2,7 @@ package com.ideas2it.hrms.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.common.DesignationConstants;
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.service.DesignationService;
 import com.ideas2it.hrms.service.impl.DesignationServiceImpl;
@@ -21,19 +23,18 @@ import com.ideas2it.hrms.service.impl.DesignationServiceImpl;
  * @version 1
  * @author Balamurugan M
  */
+@Controller
 public class DesignationController {
     
-    private String DESIGNATION_VIEW = "designationDisplay";
-    private String ADMINMENU = "adminMenu";
+    private String ADMINMENU = "adminHome";
     private String ERROR_PAGE = "error";
     private DesignationService designationService = new DesignationServiceImpl();
     
-    @PostMapping("/createDesignation")
+    @PostMapping("designation/createDesignation")
     public ModelAndView createDesignation(@ModelAttribute("designation") 
-            Designation designation) {
-        ModelMap model = null;
+            Designation designation, ModelMap model) {
         try {
-            if(!designationService.isDesignationExist(designation.getName())) {
+            if(designationService.isDesignationExist(designation.getName())) {
                 if (designationService.createDesignation(designation)) {
                     model.addAttribute(DesignationConstants.LABEL_MESSAGE,
                         DesignationConstants.MSG_CREATE_SUCCESS);
@@ -41,9 +42,10 @@ public class DesignationController {
                     model.addAttribute(DesignationConstants.LABEL_MESSAGE, 
                         DesignationConstants.MSG_CREATE_FAIL);
                 }
+            } else {
+                model.addAttribute(DesignationConstants.LABEL_MESSAGE, 
+                    DesignationConstants.MSG_ALREADY_EXIST);
             }
-            model.addAttribute(DesignationConstants.LABEL_MESSAGE, 
-                DesignationConstants.MSG_ALREADY_EXIST);
             return displayDesignations(model);
         } catch (AppException appException) {
              return new ModelAndView(ERROR_PAGE, 
@@ -51,10 +53,9 @@ public class DesignationController {
         }
     }
     
-    @PostMapping("/updateDesignation")
+    @PostMapping("designation/updateDesignation")
     public ModelAndView updateDesignation(@ModelAttribute("designation") 
-            Designation designation) {
-        ModelMap model = null;
+            Designation designation, ModelMap model) {
         try {
             if (designationService.updateDesignation(designation)) {
                 model.addAttribute(DesignationConstants.LABEL_MESSAGE,
@@ -70,7 +71,7 @@ public class DesignationController {
         }
     }
     
-    @PostMapping("/deleteDesignation")
+    @PostMapping("designation/deleteDesignation")
     public ModelAndView deleteDesignation(HttpServletRequest request, 
             ModelMap model) {
         try {
@@ -89,10 +90,12 @@ public class DesignationController {
         }
     }
     
-    @GetMapping("/displayDesignation")
+    @GetMapping("designation/displayDesignation")
     public ModelAndView displayDesignations(ModelMap model) {
         try {
-            return new ModelAndView(DESIGNATION_VIEW, DesignationConstants.
+            ModelAndView modelAndView = new ModelAndView(ADMINMENU, 
+                "command", new Designation());
+            return modelAndView.addObject(DesignationConstants.
                 LABEL_DESIGNATIONS, designationService.displayDesignations());
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, 

@@ -1,6 +1,11 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
     .toggle {
       -webkit-appearance: none;
@@ -57,7 +62,7 @@
 
 <c:if test="${not empty employeeDetail}">
   <div align="center">
-  <table style="float:center" class="table table-striped table-dark">
+  <table style="float:center" class="table">
     <tr>
         <td>Employee ID:</td> 
         <td>${employee.id}</td>  
@@ -88,7 +93,7 @@
 
 <c:if test="${not empty tasks}">
  <div id="taskInfo" align="center">
-    <table>
+    <table class="table table-striped text-center">
     <tr>
         <th>Project</th>
         <th>Task</th>
@@ -109,7 +114,7 @@
     
 <c:if test="${not empty projects}">
     <div id=projectInfo align="center">
-    <table>
+    <table class="table table-striped text-center">
     <tr>
         <th>Project</th>
         <th>Client</th>
@@ -126,6 +131,7 @@
     
 <c:if test="${not empty attendance}">
  <div id=attendanceInfo align="center">
+    <table class="table table-striped text-center">
   <c:choose>
     <c:when test="${isChecked=='true'}">
       <input class="toggle" type="checkbox" name="checkAttendance" checked="checked" onclick="checkAttendance(this)" />
@@ -158,6 +164,44 @@
     </table>
  </div>
 </c:if>
+    <div class="modal fade" id="Update" >
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Enter Client Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="/hrms/employee/updateEmployee" method="post">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="name"
+                                    value= "${employee.name}" placeholder="Name" pattern="[A-Za-z\s]+" maxlength=30 required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="mobileNo"
+                                   value= "${employee.mobileNo}" placeholder="Mobile Number" pattern="[6789]{1}[0-9]{9}" maxlength=10 required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="emailId"
+                                   value= "${employee.emailId}" placeholder="Email Id" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Update</button>
+                            <button type="button" class="btn btn-danger btn-block btn-lg" onclick="closeUpdate()">
+                                Cancel</button>
+                            <input type="hidden" name="id" value = "${employee.id}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
+
 </body>
 
 <c:if test="${not empty message}">
@@ -165,7 +209,15 @@
     alert ("${message}");
 </script>
 </c:if>
-<footer>
+<script>
+function openUpdate(event) {
+    $("#Update").modal("show");
+}
+
+function closeUpdate(event) {
+    $("#Update").modal("hide");
+}
+</script>
   <script>
     function checkAttendance(checkbox)
     {
@@ -178,5 +230,4 @@
       }
     }
   </script>
-</footer>
 </html>

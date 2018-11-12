@@ -3,6 +3,7 @@ package com.ideas2it.hrms.service;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Designation;
 
 /**
@@ -49,4 +50,5 @@ public interface DesignationService {
     *        Get the designation name
     */
    Boolean isDesignationExist(String name) throws AppException;
+   
 }

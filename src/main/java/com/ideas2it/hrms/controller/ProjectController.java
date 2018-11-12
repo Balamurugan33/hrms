@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.service.ProjectService;
 import com.ideas2it.hrms.service.impl.ProjectServiceImpl;
@@ -39,15 +41,17 @@ public class ProjectController {
 
         try {
             // Check if duplicate project exists including deleted projects
+            Client client = new Client();
+            client.setId(Integer.parseInt(request.getParameter("clientId")));
+            project.setClient(client);
             project = projectService.createProject(project);   
             modelAndView.addObject("Success", MSG_CREATED);
             // redirect him to the same page; the projects must also be sent
             // alert box is optional for now
-            modelAndView.setViewName("projects");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
         }
-       return modelAndView;
+        return displayAllProjects(modelAndView);
     }
     
     @PostMapping("update")
@@ -58,6 +62,9 @@ public class ProjectController {
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
+            Client client = new Client();
+            client.setId(Integer.parseInt(request.getParameter("clientId")));
+            project.setClient(client);
             // Check if the project to be updated exists 
             project = projectService.updateProject(project);   
             // redirect him to the same page; the projects must also be sent
@@ -66,7 +73,7 @@ public class ProjectController {
         } catch (AppException appException) {
             modelAndView.addObject("Error", MSG_UPDATED);
         }
-        return modelAndView;
+        return displayAllProjects(modelAndView);
     }
         
     @PostMapping("delete")
@@ -88,16 +95,17 @@ public class ProjectController {
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());  
         }
-        return modelAndView;
+        return displayAllProjects(modelAndView);
     }
     
     // Check if this method is redundant
     @GetMapping("displayAll")
-    public ModelAndView displayAllProjects(HttpServletRequest request) {
+    public ModelAndView displayAllProjects(ModelAndView modelAndView) {
         ProjectService projectService = new ProjectServiceImpl();
-        ModelAndView modelAndView = new ModelAndView(); 
 
         try {
+            modelAndView.addObject("allClients", 
+                    projectService.displayClients());
             List<Project> allProjects = projectService.getAllProjects();
             modelAndView.addObject("projects", allProjects);
             // redirect him to the same page; the projects must also be sent

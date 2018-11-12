@@ -10,6 +10,7 @@
   <a href="/hrms/employee/displayEmployee">Employees</a>
   <a href="/hrms/project/displayAll">Projects</a>
   <a href="/hrms/client/displayClient">Clients</a>
+  <a href="/hrms/designation/displayDesignation">Designation</a>
   <div style="float:right">
       <a href="/hrms/user/logout">logout</a>
   </div>

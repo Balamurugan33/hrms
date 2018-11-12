@@ -45,9 +45,10 @@ public class ClientController {
                     model.addAttribute(ClientConstants.LABEL_MESSAGE, 
                         ClientConstants.MSG_CREATE_FAIL);
                 }
+            }else {
+                model.addAttribute(ClientConstants.LABEL_MESSAGE, 
+                    ClientConstants.MSG_ALREADY_EXIST);
             }
-            model.addAttribute(ClientConstants.LABEL_MESSAGE, 
-                ClientConstants.MSG_ALREADY_EXIST);
             return displayClients(model);
         } catch (AppException appException) {
              return new ModelAndView(ERROR_PAGE, ClientConstants.LABEL_MESSAGE, 
