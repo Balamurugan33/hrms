@@ -6,7 +6,6 @@ import java.util.List;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Project;
-import com.ideas2it.hrms.model.TimeSheet;
 
 /**
  * <p>
@@ -85,7 +84,7 @@ public interface ProjectService {
      * @param curMonthTasks
      *        list of all tasks for this project, in current month
      */
-    Integer calculateBillAllTasks(List<TimeSheet> curMonthTasks);
+    //Integer calculateBillAllTasks(List<TimeSheet> curMonthTasks);
     
     /**
      * Calculates the total amount paid to employees, working on a project, for current month

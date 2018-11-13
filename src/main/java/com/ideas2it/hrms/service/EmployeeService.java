@@ -31,6 +31,8 @@ public interface EmployeeService {
    
    List<Attendance> markAbsent(Employee employee) throws AppException;
    
+   List<Attendance> getAttendanceSheet(Employee employee) throws AppException;
+   
    /**
     * Update an existing employee 
     * 

@@ -10,6 +10,7 @@ import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
+import com.ideas2it.hrms.model.SalaryTracker;
 import com.ideas2it.hrms.model.TimeSheet;
 import com.ideas2it.hrms.service.ClientService;
 import com.ideas2it.hrms.service.ProjectService;
@@ -74,16 +75,21 @@ public class ProjectServiceImpl implements ProjectService {
     }
     
     public Integer calculateTotalBill(List<TimeSheet> timeSheetEntries) {
-        TimeSheetServiceImpl sheetService = new TimeSheetServiceImpl();
+        SalaryTrackerServiceImpl salaryService = new SalaryTrackerServiceImpl();
+        List<SalaryTracker> salaryTrackers = new ArrayList<SalaryTracker>();
         Integer totalBill = 0;
         
         for (TimeSheet entry: timeSheetEntries) {
-            //Integer hourlyRate = entry.getEmployee().getSalaryTracker().getHourlyRate();            
-            Integer numHoursWorkedEntry = 0;
-            Integer entryBill = 0;
-
-           // numHoursWorkedEntry = entry.getBillableHours();
-           // entryBill = hourlyRate * numHoursWorkedEntry;
+            Integer hourlyRate;
+            Integer numHoursWorkedEntry;
+            Integer entryBill;
+            
+            salaryTrackers = entry.getEmployee().getSalaryTrackers();
+            SalaryTracker entrySalary = salaryService.getSalaryTrackerOnDate(
+                entry.getEntryDate(), salaryTrackers);
+            hourlyRate = entrySalary.getHourlyRate();
+            numHoursWorkedEntry = entry.getWorkedHours();
+            entryBill = hourlyRate * numHoursWorkedEntry;
             totalBill = totalBill + entryBill;
         }        
 
@@ -104,7 +110,7 @@ public class ProjectServiceImpl implements ProjectService {
         }
         
         for (Employee employee: projectEmployees) {
-           // costToCompany = costToCompany + empService.calculateCostToCompany(employee, startDate, endDate);
+            costToCompany = costToCompany + empService.calculateCostToCompany(startDate, endDate, employee);
         }
         
         return costToCompany;

@@ -69,21 +69,5 @@ public interface TimeSheetService {
      */
     List<TimeSheet> getTimeSheetEntries(List<TimeSheet> tasks, LocalDate startDate, LocalDate endDate);
     
-    boolean isEntryBetweenPeriod(TimeSheet task, LocalDate startDate, LocalDate endDate);
-    
-    /**
-     * Returns true if task was done in current month, otherwise false
-     * 
-     * @param task
-     *        project task
-     */
-    //boolean isCurrentMonthTask(TimeSheet task);
-    
-    /**
-     * Calculates the number of hours worked on a task
-     * 
-     * @param task
-     *        project task
-     */
-    //public Integer calculateTaskDuration(TimeSheet task);
+    boolean isEntryBetweenPeriod(TimeSheet task, LocalDate startDate, LocalDate endDate);    
 }

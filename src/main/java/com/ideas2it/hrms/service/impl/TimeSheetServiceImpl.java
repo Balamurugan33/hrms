@@ -60,7 +60,8 @@ public class TimeSheetServiceImpl implements TimeSheetService {
         LocalDate entryDate = entry.getEntryDate();
         boolean isValidEntry = false;
 
-        if (entryDate.isAfter(startDate) && entryDate.isBefore(endDate)) {
+        if (entryDate.isAfter(startDate) && entryDate.isBefore(endDate) 
+                || entryDate.equals(startDate) || entryDate.equals(endDate)) {
             isValidEntry = true;
         }
         
