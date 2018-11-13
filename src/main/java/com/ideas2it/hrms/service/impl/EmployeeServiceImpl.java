@@ -103,34 +103,34 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     
     public Integer calculateBillableAmount(Employee employee) {
-        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
-        List<TimeSheet> empTasks = employee.getTimeSheet();
-        List<TimeSheet> curMonthTasks = new ArrayList<TimeSheet>();
+        TimeSheetServiceImpl sheetService = new TimeSheetServiceImpl();
+        List<TimeSheet> empTimeSheet = employee.getTimeSheet();
+        //List<TimeSheet> curMonthTasks = new ArrayList<TimeSheet>();
         Integer empHourlyRate = employee.getHourlyRate();
-        Integer curMonthHoursWorked = 0;
+        //Integer curMonthHoursWorked = 0;
         Integer billableAmount = 0;
         
-        curMonthTasks = taskService.getCurrentMonthTasks(empTasks);
-        curMonthHoursWorked = calculateHoursWorkedEmp(curMonthTasks);
-        billableAmount = curMonthHoursWorked * empHourlyRate;
+        //curMonthTasks = sheetService.getTimeSheetEntries(empTimeSheet);
+        //curMonthHoursWorked = calculateHoursWorkedEmp(curMonthTasks);
+        //billableAmount = curMonthHoursWorked * empHourlyRate;
         
         return billableAmount;        
     }
     
     public Integer calculateHoursWorkedEmp(List<TimeSheet> curMonthTasks) {
-        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
+        TimeSheetServiceImpl sheetService = new TimeSheetServiceImpl();
         Integer numHoursWorkedTask = 0;
         Integer totalHoursWorked = 0;
             
         for (TimeSheet task : curMonthTasks) {           
-            numHoursWorkedTask = taskService.calculateTaskDuration(task);
+            numHoursWorkedTask = sheetService.calculateTaskDuration(task);
             totalHoursWorked = totalHoursWorked + numHoursWorkedTask;
         }
         
         return totalHoursWorked;
     }
         
-    public Integer calculateCostToCompany(Employee employee) {
+    public Integer calculateCostToCompany(Employee employee, LocalDate startDate, LocalDate endDate) {
         Integer costToCompany = 0;
         Integer monthlySalary = employee.getSalary();
         Integer dailySalary = monthlySalary / 30; 
@@ -176,7 +176,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public boolean createTask(TimeSheet task) throws AppException {
-        TimeSheetService taskService = new TimeSheetServiceImpl();
-        return (null != taskService.createTask(task));
+        TimeSheetService sheetService = new TimeSheetServiceImpl();
+        return (null != sheetService.createTask(task));
     }
 }

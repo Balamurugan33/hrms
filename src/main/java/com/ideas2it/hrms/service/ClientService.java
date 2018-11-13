@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
@@ -55,7 +56,7 @@ public interface ClientService {
      * @param email
      *        client
      */
-    Integer calculateNetProfit(Client client);
+    Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate);
     
     /**
      * Find an existing client 

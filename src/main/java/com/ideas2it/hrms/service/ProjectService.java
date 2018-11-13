@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
@@ -68,7 +69,7 @@ public interface ProjectService {
      * @param employee
      *        company project
      */
-    Integer calculateNetProfit(Project project);
+    Integer calculateNetProfit(Project project, LocalDate startDate, LocalDate endDate);
     
     /**
      * Calculates the total billable amount for a project, for current month
@@ -76,7 +77,7 @@ public interface ProjectService {
      * @param project
      *        billable project 
      */
-    Integer calculateBillableAmount(Project project);
+    Integer calculateBillableAmount(Project project, LocalDate startDate, LocalDate endDate);
     
     /**
      * Calculates the total bill for tasks, for a project, for current month
@@ -92,7 +93,7 @@ public interface ProjectService {
      * @param project
      *        project
      */
-    Integer calculateCostToCompany(Project project);
+    Integer calculateCostToCompany(Project project, LocalDate startDate, LocalDate endDate);
     
     /**
      * Used to get all clients

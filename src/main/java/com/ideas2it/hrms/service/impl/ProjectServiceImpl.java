@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.service.impl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,63 +48,63 @@ public class ProjectServiceImpl implements ProjectService {
         return projectDao.removeProject(project);
     }
         
-    public Integer calculateNetProfit(Project project) {
+    public Integer calculateNetProfit(Project project, LocalDate startDate, LocalDate endDate) {
         Integer billableAmount = 0;
         Integer costToCompany = 0;
         Integer netProfit = 0;
         
-        billableAmount = calculateBillableAmount(project);            
-        costToCompany = calculateCostToCompany(project);
+        billableAmount = calculateBillableAmount(project, startDate, endDate);            
+        costToCompany = calculateCostToCompany(project, startDate, endDate);
         
         netProfit = billableAmount - costToCompany;
 
         return netProfit;
     }
     
-    public Integer calculateBillableAmount(Project project) {
-        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
-        List<TimeSheet> projectTasks = project.getTimeSheet();  
-        List<TimeSheet> curMonthTasks = new ArrayList<TimeSheet>();
+    public Integer calculateBillableAmount(Project project, LocalDate startDate, LocalDate endDate) {
+        TimeSheetServiceImpl sheetService = new TimeSheetServiceImpl();
+        List<TimeSheet> projectTimeSheet = project.getTimeSheet();  
+        List<TimeSheet> timeSheetEntries = new ArrayList<TimeSheet>();
         Integer billableAmount = 0;
 
-        curMonthTasks = taskService.getCurrentMonthTasks(projectTasks);
-        billableAmount = calculateBillAllTasks(curMonthTasks);
+        timeSheetEntries = sheetService.getTimeSheetEntries(projectTimeSheet, startDate, endDate);
+        billableAmount = calculateTotalBill(timeSheetEntries);
                 
         return billableAmount;
     }
     
-    public Integer calculateBillAllTasks(List<TimeSheet> curMonthTasks) {
-        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
-        Integer billAllTasks = 0;
+    public Integer calculateTotalBill(List<TimeSheet> timeSheetEntries) {
+        TimeSheetServiceImpl sheetService = new TimeSheetServiceImpl();
+        Integer totalBill = 0;
         
-        for (TimeSheet task: curMonthTasks) {
-            Integer hourlyRate = task.getEmployee().getHourlyRate();            
-            Integer numHoursWorkedTask = 0;
-            Integer taskBill = 0;
+        for (TimeSheet entry: timeSheetEntries) {
+            Integer hourlyRate = entry.getEmployee().getSalaryTracker().getHourlyRate();            
+            Integer numHoursWorkedEntry = 0;
+            Integer entryBill = 0;
 
-            numHoursWorkedTask = taskService.calculateTaskDuration(task);
-            taskBill = hourlyRate * numHoursWorkedTask;
-            billAllTasks = billAllTasks + taskBill;
+            numHoursWorkedEntry = entry.getBillableHours();
+            entryBill = hourlyRate * numHoursWorkedEntry;
+            totalBill = totalBill + entryBill;
         }        
 
-        return billAllTasks;
+        return totalBill;
     }
     
-    public Integer calculateCostToCompany(Project project) {
+    public Integer calculateCostToCompany(Project project, LocalDate startDate, LocalDate endDate) {
         EmployeeServiceImpl empService = new EmployeeServiceImpl();
-        List<TimeSheet> projectTasks = project.getTimeSheet();  
+        List<TimeSheet> projectTimeSheet = project.getTimeSheet();  
         List<Employee> projectEmployees = new ArrayList<Employee>();
         Integer costToCompany = 0;
 
         // Get the list of unique employees working on this project
-        for (TimeSheet task: projectTasks) {
-            if (!projectEmployees.contains(task.getEmployee())) {
-                projectEmployees.add(task.getEmployee());
+        for (TimeSheet entry: projectTimeSheet) {
+            if (!projectEmployees.contains(entry.getEmployee())) {
+                projectEmployees.add(entry.getEmployee());
             }
         }
         
         for (Employee employee: projectEmployees) {
-            costToCompany = costToCompany + empService.calculateCostToCompany(employee);
+            costToCompany = costToCompany + empService.calculateCostToCompany(employee, startDate, endDate);
         }
         
         return costToCompany;

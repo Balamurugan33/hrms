@@ -22,13 +22,9 @@ import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.TimeSheet;
 import com.ideas2it.hrms.service.EmployeeService;
-import com.ideas2it.hrms.service.TimeSheetService;
 import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
-import com.ideas2it.hrms.service.impl.TimeSheetServiceImpl;
 
-import static com.ideas2it.hrms.common.AttendanceConstants.MSG_CREATED;
 import static com.ideas2it.hrms.common.EmpConstants.MSG_CREATE_SUCCESS;
-import static com.ideas2it.hrms.common.ProjectConstants.MSG_CREATED;
 
 /**
  * Used to perform the different action on employee 
@@ -219,7 +215,7 @@ public class EmployeeController {
                 
         try {
             attendanceSheet = employeeService.getAttendanceSheet(employee);
-            modelAndView.addObject("Success", MSG_CREATED);
+            modelAndView.addObject("Success", "Attendance has been created");
             modelAndView.setViewName(EMPLOYEE_MENU);
         } catch (AppException e) {
             // TODO Auto-generated catch block
@@ -241,7 +237,7 @@ public class EmployeeController {
             task.setProject(project);
             task.setEmployee(employee);
             if (employeeService.createTask(task)) {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE, MSG_CREATED);
+                model.addAttribute(EmpConstants.LABEL_MESSAGE, "Attendance has been created");
             }
             return displayEmployees(model);
         } catch (AppException appException) {
