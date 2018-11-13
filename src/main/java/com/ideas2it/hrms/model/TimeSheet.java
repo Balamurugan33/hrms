@@ -29,7 +29,7 @@ public class TimeSheet {
     @Column(name="entry_date")
     private LocalDate entryDate;
     @Column(name="worked_hours")
-    private Integer billableHours;
+    private Integer workedHours;
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
@@ -51,11 +51,12 @@ public class TimeSheet {
     public void setEntryDate(LocalDate entryDate) {
         this.entryDate = entryDate;
     }
-    public Integer getBillableHours() {
-        return billableHours;
+
+    public Integer getWorkedHours() {
+        return workedHours;
     }
-    public void setBillableHours(Integer billableHours) {
-        this.billableHours = billableHours;
+    public void setWorkedHours(Integer workedHours) {
+        this.workedHours = workedHours;
     }
     public Project getProject() {
         return project;
