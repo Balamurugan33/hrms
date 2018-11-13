@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
@@ -83,47 +84,22 @@ public interface EmployeeService {
     * @param employee
     *        company employee
     */
-   Integer calculateNetProfit(Employee employee);
+   Integer calculateNetProfit(LocalDate stertDate, LocalDate endDate, 
+           Employee employee);
    
    /**
-    * Calculates the total billable amount, for current month,
-    * from a single employee
+    * Calculates the total amount paid to employee by company,
+    * between the two different date
+    * 
+    * @param stertDate
+    *        starting working date
+    * @param endDate
+    *        ending working date
     * @param employee
     *        company employee
     */
-   Integer calculateBillableAmount(Employee employee);
-   
-   /**
-    * Calculates the total hours worked on tasks, for current month
-    * 
-    * @param curMonthTasks
-    *        tasks done this month by an employee
-    */
-   Integer calculateHoursWorkedEmp(List<TimeSheet> curMonthTasks);
-
-   /**
-    * Calculates the total amount paid to employee by company, for current month
-    * 
-    * @param employee
-    *        company employee
-    */
-   Integer calculateCostToCompany(Employee employee);
-
-   /**
-    * Gets the num of leaves taken by employee, for current month
-    * 
-    * @param employee
-    *        company employee
-    */
-   Integer getNumLeaves(Employee employee);
-   
-   /**
-    * Returns true if employee has taken leave on this day, otherwise false
-    * 
-    * @param attendance
-    *        attendance of a day
-    */
-   boolean isEmpLeave(Attendance attendance);
+   public Integer calculateCostToCompany(LocalDate stertDate, 
+           LocalDate endDate, Employee employee);
    
    /**
     * Used to gets the all projects

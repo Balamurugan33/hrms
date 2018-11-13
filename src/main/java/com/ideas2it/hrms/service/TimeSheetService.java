@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
@@ -66,7 +67,9 @@ public interface TimeSheetService {
      * @param tasks
      *        list of project tasks
      */
-    List<TimeSheet> getCurrentMonthTasks(List<TimeSheet> tasks);
+    List<TimeSheet> getTimeSheetEntries(List<TimeSheet> tasks, LocalDate startDate, LocalDate endDate);
+    
+    boolean isEntryBetweenPeriod(TimeSheet task, LocalDate startDate, LocalDate endDate);
     
     /**
      * Returns true if task was done in current month, otherwise false
@@ -74,7 +77,7 @@ public interface TimeSheetService {
      * @param task
      *        project task
      */
-    boolean isCurrentMonthTask(TimeSheet task);
+    //boolean isCurrentMonthTask(TimeSheet task);
     
     /**
      * Calculates the number of hours worked on a task
@@ -82,5 +85,5 @@ public interface TimeSheetService {
      * @param task
      *        project task
      */
-    public Integer calculateTaskDuration(TimeSheet task);
+    //public Integer calculateTaskDuration(TimeSheet task);
 }

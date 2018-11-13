@@ -33,7 +33,7 @@ public class Designation {
     
     @Column(name="name")
     private String name;
-    
+
     @OneToMany(mappedBy="designation", fetch=FetchType.EAGER)
     private List<Employee> employees = new ArrayList<Employee>();
 

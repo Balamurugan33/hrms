@@ -24,7 +24,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         Attendance attendance;
         LocalDate today = LocalDate.now();
         
-        attendance = getAttendance(employee);
+        attendance = getAttendance(employee, today);
         if (null != attendance) {
             attendance.setStatus(true);
             attendance = updateAttendance(attendance);
@@ -44,7 +44,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         Attendance attendance;
         LocalDate today = LocalDate.now();
 
-        attendance = getAttendance(employee);
+        attendance = getAttendance(employee, today);
         attendance.setStatus(false);
         updateAttendance(attendance);
 
@@ -56,9 +56,9 @@ public class AttendanceServiceImpl implements AttendanceService {
         return attendanceDao.createAttendance(attendance);
     }
     
-    public Attendance getAttendance(Employee employee) throws AppException {
+    public Attendance getAttendance(Employee employee, LocalDate entryDate) throws AppException {
         AttendanceDao attendanceDao = new AttendanceDaoImpl();
-        return attendanceDao.getAttendance(employee);
+        return attendanceDao.getAttendance(employee, entryDate);
     }
     
     public List<Attendance> getAttendanceSheet(Employee employee) throws AppException {

@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
@@ -48,14 +49,14 @@ public interface AttendanceService {
     Attendance createAttendance(Attendance attendance) throws AppException;
     
     /**
-     * Gets a today's attendance entry of an employee
+     * Gets today's attendance entry of an employee
      *
      * @param id
      *        employee
      * @return
      *        requested attendance, if exists, null otherwise
      */
-    Attendance getAttendance(Employee employee) throws AppException;
+    Attendance getAttendance(Employee employee, LocalDate attendDate) throws AppException;
     
     /**
      * Gets the attendance sheet of an employee

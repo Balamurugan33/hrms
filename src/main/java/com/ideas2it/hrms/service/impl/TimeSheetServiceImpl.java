@@ -1,6 +1,5 @@
 package com.ideas2it.hrms.service.impl;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,32 +43,27 @@ public class TimeSheetServiceImpl implements TimeSheetService {
         TimeSheetDao taskDao = new TimeSheetDaoImpl();
         return taskDao.removeTask(task);
     }
-    
-    public List<TimeSheet> getCurrentMonthTasks(List<TimeSheet> tasks) {
-        List<TimeSheet> curMonthTasks = new ArrayList<TimeSheet>();
 
-        for (TimeSheet task : tasks) {
-            if (isCurrentMonthTask(task)) {
-                curMonthTasks.add(task);
+    public List<TimeSheet> getTimeSheetEntries(List<TimeSheet> timeSheet, LocalDate startDate, LocalDate endDate) {
+        List<TimeSheet> timeSheetEntries = new ArrayList<TimeSheet>();
+
+        for (TimeSheet entry : timeSheet) {
+            if (isEntryBetweenPeriod(entry, startDate, endDate)) {
+                timeSheetEntries.add(entry);
             }
         }
 
-        return curMonthTasks;  
+        return timeSheetEntries;  
     }
 
-    public boolean isCurrentMonthTask(TimeSheet task) {
-        LocalDate today = LocalDate.now();        
-        LocalDate taskDate = task.getEntryDate();
-        boolean isCurMonthTask = false;
+    public boolean isEntryBetweenPeriod(TimeSheet entry, LocalDate startDate, LocalDate endDate) {
+        LocalDate entryDate = entry.getEntryDate();
+        boolean isValidEntry = false;
 
-        if (taskDate.getMonth() == today.getMonth() && taskDate.getYear() == today.getYear()) {
-           isCurMonthTask = true;
-        } 
-
-        return isCurMonthTask;
-    }       
-    
-    public Integer calculateTaskDuration(TimeSheet task) {
-        return null;
+        if (entryDate.isAfter(startDate) && entryDate.isBefore(endDate)) {
+            isValidEntry = true;
+        }
+        
+        return isValidEntry;
     }
 }

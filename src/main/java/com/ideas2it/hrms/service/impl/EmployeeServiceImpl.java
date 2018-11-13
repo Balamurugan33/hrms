@@ -29,7 +29,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     }
     
-    /** {@inheritDoc}*/
+    public List<Attendance> getAttendanceSheet(Employee employee) throws AppException {
+        AttendanceServiceImpl attendService = new AttendanceServiceImpl();
+        return attendService.getAttendanceSheet(employee);
+    }
+    
     public List<Attendance> markPresent(Employee employee) throws AppException {
         AttendanceServiceImpl attendService = new AttendanceServiceImpl();
         return attendService.markPresent(employee);
@@ -108,18 +112,8 @@ public class EmployeeServiceImpl implements EmployeeService{
         return billAmount;
     }
     
-    /**
-     * Calculates the total amount paid to employee by company,
-     * between the two different date
-     * 
-     * @param stertDate
-     *        starting working date
-     * @param endDate
-     *        ending working date
-     * @param employee
-     *        company employee
-     */
-    private Integer calculateCostToCompany(LocalDate stertDate, 
+    /** {@inheritDoc}*/
+    public Integer calculateCostToCompany(LocalDate stertDate, 
             LocalDate endDate, Employee employee) {
         Integer costToCompany = 0;
         List<LocalDate> workeddates = calculateBetweenDates(stertDate, endDate);
@@ -227,8 +221,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     /** {@inheritDoc}*/
     public boolean createTask(TimeSheet task) throws AppException {
-        TimeSheetService taskService = new TimeSheetServiceImpl();
-        return (null != taskService.createTask(task));
+        TimeSheetService sheetService = new TimeSheetServiceImpl();
+        return (null != sheetService.createTask(task));
     }
 
 }

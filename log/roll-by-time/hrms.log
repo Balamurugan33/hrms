@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 2018-11-09 12:23:26 INFO Initializing Servlet 'spring'
 2018-11-09 12:23:28 INFO Completed initialization in 1480 ms
 2018-11-09 12:23:31 INFO Initializing Servlet 'spring'
@@ -2873,3 +2874,5 @@ Caused by: java.lang.ClassNotFoundException: Could not load requested class : co
 2018-11-13 11:28:14 INFO Completed initialization in 765 ms
 2018-11-13 11:28:54 INFO Initializing Servlet 'spring'
 2018-11-13 11:28:54 INFO Completed initialization in 748 ms
+=======
+>>>>>>> 73eb25d919ca24a04a77a8fb62a80157dc0636b9

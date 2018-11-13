@@ -8,11 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.TimeSheet;
@@ -29,8 +27,7 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
  * @author Ganesh Venkat S
  */
 @Controller 
-public class TimeSheetController {
-            
+public class TimeSheetController {            
     @PostMapping("projectTask/create")
     public ModelAndView createTask(@ModelAttribute("task") TimeSheet task, 
             HttpServletRequest request) {

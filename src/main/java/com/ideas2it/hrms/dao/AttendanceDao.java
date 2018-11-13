@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
@@ -33,12 +34,14 @@ public interface AttendanceDao {
     /**
      * Gets a today's attendance entry of an employee
      *
-     * @param id
+     * @param employee
      *        employee
+     * @param entryDate       
+     *        an entry date of an employee's attendance history
      * @return
      *        requested attendance, if exists, null otherwise
      */
-    Attendance getAttendance(Employee employee) throws AppException;
+    Attendance getAttendance(Employee employee, LocalDate entryDate) throws AppException;
     
     /**
      * Gets the attendance sheet of an employee

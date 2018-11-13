@@ -93,16 +93,18 @@
 
 <c:if test="${not empty timeSheets}">
  <div id="taskInfo" align="center">
+    <br>
+    <br>
     <table class="table table-striped text-center">
     <tr>
+        <th class="text-center">Date</th>
         <th class="text-center">Project</th>
-        <th class="text-center">EntryDate</th>
         <th class="text-center">Worked Hours</th>
     </tr>
     <c:forEach var= "timeSheet" items= "${timeSheets}">
     <tr>
-        <td>${timeSheet.project.name}</td>
         <td>${timeSheet.entryDate}</td>
+        <td>${timeSheet.project.name}</td>
         <td>${timeSheet.workedHours}</td>
     </tr>
     </c:forEach>
@@ -129,7 +131,6 @@
     
 <c:if test="${not empty attendance}">
  <div id=attendanceInfo align="center">
-    <table class="table table-striped text-center">
   <c:choose>
     <c:when test="${isChecked=='true'}">
       <input class="toggle" type="checkbox" name="checkAttendance" checked="checked" onclick="checkAttendance(this)" />

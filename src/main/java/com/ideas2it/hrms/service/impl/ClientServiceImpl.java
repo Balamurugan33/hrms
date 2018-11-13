@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.dao.ClientDao;
@@ -45,13 +46,13 @@ public class ClientServiceImpl implements ClientService {
         return clientDao.searchClient(email);
     }
     
-    public Integer calculateNetProfit(Client client) {
+    public Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate) {
         ProjectServiceImpl projectService = new ProjectServiceImpl();
         List<Project> clientProjects = client.getProjects();
         Integer netProfit = 0;
         
         for (Project project: clientProjects) {
-            netProfit = netProfit + projectService.calculateNetProfit(project); 
+            netProfit = netProfit + projectService.calculateNetProfit(project, startDate, endDate); 
         }
         return netProfit;
     }    
