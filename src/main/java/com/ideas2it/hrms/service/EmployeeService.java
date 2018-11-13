@@ -7,7 +7,7 @@ import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
-import com.ideas2it.hrms.model.ProjectTask;
+import com.ideas2it.hrms.model.TimeSheet;
 
 /**
  * It's act as the intermediate between the controller and dao
@@ -75,7 +75,7 @@ public interface EmployeeService {
     * @param tasks
     *        Get the employee tasks
     */
-   List<Project> getEmpProjects(List<ProjectTask> tasks);
+   List<Project> getEmpProjects(List<TimeSheet> tasks);
       
    /**
     * Calculates the net profit of the company, for current month,
@@ -99,7 +99,7 @@ public interface EmployeeService {
     * @param curMonthTasks
     *        tasks done this month by an employee
     */
-   Integer calculateHoursWorkedEmp(List<ProjectTask> curMonthTasks);
+   Integer calculateHoursWorkedEmp(List<TimeSheet> curMonthTasks);
 
    /**
     * Calculates the total amount paid to employee by company, for current month
@@ -133,5 +133,5 @@ public interface EmployeeService {
    /**
     * Used to create the task
     */
-   boolean createTask(ProjectTask task) throws AppException;
+   boolean createTask(TimeSheet task) throws AppException;
 }

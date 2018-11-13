@@ -1,7 +1,7 @@
 package com.ideas2it.hrms.common;
 
-public class ProjectTaskConstants {
-    // ProjectTaskDaoImpl: Error messages to display to the user
+public class TimeSheetConstants {
+    // TimeSheetDaoImpl: Error messages to display to the user
     public static String ERROR_CREATE_TASK
         = "The task could not be created: ";
     public static String ERROR_RETRIEVE_TASK

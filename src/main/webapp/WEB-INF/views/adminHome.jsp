@@ -78,14 +78,12 @@
         <table class="table table-striped text-center">
         <tr>
             <th class="text-center">Name</th>
-            <th class="text-center">Salary</th>
             <th class="text-center">Hourly Rate</th>
             <th class="text-center">Action</th>
         </tr>
         <c:forEach var="designation" items="${designations}">
         <tr>
             <td>${designation.name}</td>
-            <td>${designation.salary}</td>
             <td>${designation.hourlyRate}</td>
         <form method="post">
             <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${designation.id}" >Update</button>
@@ -100,12 +98,6 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="name"
                                     value= "${designation.name}" placeholder="Name" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="salary"
-                                   value= "${designation.salary}" placeholder="Mobile Number" required="required">
                             </div>
                         </div>
                         <div class="form-group">
@@ -192,8 +184,8 @@
 <c:if test="${not empty employees}">
     <div>
         <form method="get">
-        <button type="submit" class="btn btn-outline-success btn-lg" 
-            formaction="/hrms/employee/createProfile">Add Employee</button>
+        <button type="button" class="btn btn-outline-success btn-lg" 
+            data-toggle="modal" data-target="#EmployeeCreate">Add Employee</button>
         </form>
         <table class="table table-striped text-center">
         <tr>
@@ -210,8 +202,8 @@
             <td>${employee.mobileNo}</td>
             <td>${employee.emailId}</td>
             <td>${employee.designation.name}</td>
-            <td>${employee.designation.salary}</td>
-            <td><form method="post">
+            <td>${employee.salary}</td>
+            <td><form action="/hrms/employee/deleteEmployee" method="post">
                 <button type="button"  data-toggle="modal" data-target="#${employee.id}" class="btn btn-outline-success" >Assign Task</button>
                 <button type="submit" class="btn btn-outline-danger">Remove</button>
                 <input type="hidden" name="id" value="${employee.id}">
@@ -221,27 +213,26 @@
                  <div class="modal-dialog modal-sm">
                      <div class="modal-content">
                          <div class="modal-header">
-                             <h4>Enter Task Detail</h4>
+                             <h4>Enter TmieSheet</h4>
                          </div>
                          <div class="modal-body">
                              <form action="/hrms/employee/createTask" method="post">
                                  <div class="form-group">
-                                     <label>Task Name</label>
+                                     <label>Project Name</label>
                                      <div class="input-group">
-                                         <input type="text" class="form-control" name="name"
+                                         <input type="text" class="form-control" name="projectId"
                                              required="required">
                                      </div>
                                  </div>
                                  <div class="form-group">
-                                         <label>Project Name</label>
-                                         <select class="form-control" name="projectId">
-                                             <c:forEach var="project" items="${allProjects}">
-                                                  <option value="${project.id}">${project.name}</option>
-                                             </c:forEach>
-                                         </select>
+                                     <label>Worked hours</label>
+                                     <div class="input-group">
+                                         <input type="text" class="form-control" name="wrokedHours"
+                                             required="required">
+                                     </div>
                                  </div>
                                  <input type="hidden" name="empId" value="${employee.id}">
-                                 <input type="hidden" name="taskDate" value="<%= java.time.LocalDate.now() %>">
+                                 <input type="hidden" name="entryDate" value="<%= java.time.LocalDate.now() %>">
                                  <div class="form-group">
                                      <button type="submit" class="btn btn-primary btn-block btn-lg" >Assign</button>
                                      <button type="button" class="btn btn-danger btn-block btn-lg" 
@@ -312,12 +303,6 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="salary"
-                                   placeholder="Salary" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="hourlyRate"
                                    placeholder="Hourly Rate" required="required">
                             </div>
@@ -356,6 +341,68 @@
 							             <option value="${client.id}">${client.name}</option>
 							        </c:forEach>
 						        </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Save</button>
+                            <button type="button" class="btn btn-danger btn-block btn-lg" 
+                                data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
+     
+     <div class="modal fade" id="EmployeeCreate" >
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Enter Employee Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="/hrms/employee/createEmployee" method="post">
+                        <div class="form-group">
+                            <label>Employee Name</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="name"
+                                    required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="mobileNo"
+                                    required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email id</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="emailId"
+                                    required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label>Designation</label>
+                                <select class="form-control" name="designationId">
+                                    <c:forEach var="designation" items="${allDesignation}">
+                                         <option value="${designation.id}">${designation.name}</option>
+                                    </c:forEach>
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            <label>salary</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="salary"
+                                    required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Hourly Rate</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="hourlyRate"
+                                    required="required">
+                            </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Save</button>

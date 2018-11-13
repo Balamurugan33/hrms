@@ -17,6 +17,15 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+/**
+ * Used to get the employee details it's means single employee details
+ * And also used to get the designation, 
+ * from designation to get the employee salary and role 
+ * Used to get the List of attendance it's single employee present and absent dates
+ * 
+ * @author Balamurugan M
+ *
+ */
 @Entity
 @Table(name="employee")
 public class Employee {
@@ -35,9 +44,12 @@ public class Employee {
     @Column(name="mobile_number")
     private String mobileNo;
     
+    @Column(name="hourly_rate")
+    private Integer hourlyRate;
+    
     @OneToMany(mappedBy="employee")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<ProjectTask> projectTasks = new ArrayList<ProjectTask>();
+    private List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
     
     @OneToMany(mappedBy="employee", fetch=FetchType.EAGER)
     private List<Attendance> attendance = new ArrayList<Attendance>();
@@ -46,12 +58,23 @@ public class Employee {
     @JoinColumn(name="designation_id")
     private Designation designation;
     
-    public List<ProjectTask> getProjectTasks() {
-        return projectTasks;
+    @Column(name="salary")
+    private Integer salary;
+    
+    public Integer getSalary() {
+        return salary;
     }
 
-    public void setProjectTasks(List<ProjectTask> projectTasks) {
-        this.projectTasks = projectTasks;
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
+
+    public List<TimeSheet> getTimeSheet() {
+        return timeSheet;
+    }
+
+    public void setTimeSheet(List<TimeSheet> timeSheet) {
+        this.timeSheet = timeSheet;
     }
 
     public List<Attendance> getAttendance() {
@@ -100,6 +123,14 @@ public class Employee {
 
     public void setDesignation(Designation designation) {
         this.designation = designation;
+    }
+    
+    public Integer getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public void setHourlyRate(Integer hourlyRate) {
+        this.hourlyRate = hourlyRate;
     }
     
 }

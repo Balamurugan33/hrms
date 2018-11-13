@@ -32,7 +32,7 @@
         <mapping class="com.ideas2it.hrms.model.Designation"/>
         <mapping class="com.ideas2it.hrms.model.Employee"/>
         <mapping class="com.ideas2it.hrms.model.Project"/>
-        <mapping class="com.ideas2it.hrms.model.ProjectTask"/>
+        <mapping class="com.ideas2it.hrms.model.TimeSheet"/>
         <mapping class="com.ideas2it.hrms.model.User"/>
 
     </session-factory>

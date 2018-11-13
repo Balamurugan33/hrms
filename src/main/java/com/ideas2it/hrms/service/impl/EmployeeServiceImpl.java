@@ -11,11 +11,11 @@ import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
-import com.ideas2it.hrms.model.ProjectTask;
+import com.ideas2it.hrms.model.TimeSheet;
 import com.ideas2it.hrms.service.DesignationService;
 import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.ProjectService;
-import com.ideas2it.hrms.service.ProjectTaskService;
+import com.ideas2it.hrms.service.TimeSheetService;
 
 public class EmployeeServiceImpl implements EmployeeService{
 
@@ -70,9 +70,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     
     /** {@inheritDoc}*/
-    public List<Project> getEmpProjects(List<ProjectTask> tasks) {
+    public List<Project> getEmpProjects(List<TimeSheet> tasks) {
         List<Project> projects = new ArrayList<Project>();
-        for(ProjectTask task:tasks) {
+        for(TimeSheet task:tasks) {
             if(! projects.contains(task.getProject())) {
                 projects.add(task.getProject());
             }
@@ -93,10 +93,10 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     
     public Integer calculateBillableAmount(Employee employee) {
-        ProjectTaskServiceImpl taskService = new ProjectTaskServiceImpl();
-        List<ProjectTask> empTasks = employee.getProjectTasks();
-        List<ProjectTask> curMonthTasks = new ArrayList<ProjectTask>();
-        Integer empHourlyRate = employee.getDesignation().getHourlyRate();
+        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
+        List<TimeSheet> empTasks = employee.getTimeSheet();
+        List<TimeSheet> curMonthTasks = new ArrayList<TimeSheet>();
+        Integer empHourlyRate = employee.getHourlyRate();
         Integer curMonthHoursWorked = 0;
         Integer billableAmount = 0;
         
@@ -107,12 +107,12 @@ public class EmployeeServiceImpl implements EmployeeService{
         return billableAmount;        
     }
     
-    public Integer calculateHoursWorkedEmp(List<ProjectTask> curMonthTasks) {
-        ProjectTaskServiceImpl taskService = new ProjectTaskServiceImpl();
+    public Integer calculateHoursWorkedEmp(List<TimeSheet> curMonthTasks) {
+        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
         Integer numHoursWorkedTask = 0;
         Integer totalHoursWorked = 0;
             
-        for (ProjectTask task : curMonthTasks) {           
+        for (TimeSheet task : curMonthTasks) {           
             numHoursWorkedTask = taskService.calculateTaskDuration(task);
             totalHoursWorked = totalHoursWorked + numHoursWorkedTask;
         }
@@ -122,7 +122,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         
     public Integer calculateCostToCompany(Employee employee) {
         Integer costToCompany = 0;
-        Integer monthlySalary = employee.getDesignation().getSalary();
+        Integer monthlySalary = employee.getSalary();
         Integer dailySalary = monthlySalary / 30; 
         Integer numLeaveDays = 0;
         
@@ -165,8 +165,8 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public boolean createTask(ProjectTask task) throws AppException {
-        ProjectTaskService taskService = new ProjectTaskServiceImpl();
+    public boolean createTask(TimeSheet task) throws AppException {
+        TimeSheetService taskService = new TimeSheetServiceImpl();
         return (null != taskService.createTask(task));
     }
 }

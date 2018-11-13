@@ -20,11 +20,11 @@ import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
-import com.ideas2it.hrms.model.ProjectTask;
+import com.ideas2it.hrms.model.TimeSheet;
 import com.ideas2it.hrms.service.EmployeeService;
-import com.ideas2it.hrms.service.ProjectTaskService;
+import com.ideas2it.hrms.service.TimeSheetService;
 import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
-import com.ideas2it.hrms.service.impl.ProjectTaskServiceImpl;
+import com.ideas2it.hrms.service.impl.TimeSheetServiceImpl;
 
 import static com.ideas2it.hrms.common.EmpConstants.MSG_CREATE_SUCCESS;
 import static com.ideas2it.hrms.common.ProjectConstants.MSG_CREATED;
@@ -68,7 +68,7 @@ public class EmployeeController {
     
     @PostMapping("employee/createEmployee")
     public ModelAndView createEmployee(@ModelAttribute("employee") 
-            Employee employee, HttpServletRequest request) {
+            Employee employee, HttpServletRequest request, ModelMap model) {
         try {
             Integer id = Integer.parseInt(request.getParameter("designationId"));
             Designation designation = new Designation();
@@ -76,15 +76,17 @@ public class EmployeeController {
             employee.setDesignation(designation);
             if(employeeService.isEmployeeExist(employee.getEmailId())) {
                 if (employeeService.createEmployee(employee)) {
-                    return new ModelAndView(ADMINMENU, EmpConstants.
-                        LABEL_MESSAGE, EmpConstants.MSG_CREATE_SUCCESS);
+                    model.addAttribute(EmpConstants.LABEL_MESSAGE, 
+                        EmpConstants.MSG_CREATE_SUCCESS);
                 } else {
-                    return new ModelAndView(ADMINMENU, EmpConstants.
-                        LABEL_MESSAGE, EmpConstants.MSG_CREATE_FAIL);
+                    model.addAttribute(EmpConstants.LABEL_MESSAGE, 
+                        EmpConstants.MSG_CREATE_FAIL);
                 }
+            } else {
+                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
+                    EmpConstants.MSG_ALREADY_EXIST);
             }
-            return new ModelAndView(ADMINMENU, EmpConstants.
-                    LABEL_MESSAGE, EmpConstants.MSG_ALREADY_EXIST);
+            return displayEmployees(model);
         } catch (AppException appException) {
              return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
                  appException.getMessage());
@@ -182,8 +184,11 @@ public class EmployeeController {
     public ModelAndView displayEmployees(ModelMap model) {
         try {
             ModelAndView modelAndView 
-                = new ModelAndView(ADMINMENU, "command", new ProjectTask());
+                = new ModelAndView(ADMINMENU, "command", new TimeSheet());
             modelAndView.addObject("allProjects", employeeService.getAllProjects());
+            modelAndView.addObject("command", new Employee());
+            modelAndView.addObject("allDesignation", 
+                employeeService.getDesignations());
             return modelAndView.addObject(EmpConstants.LABEL_EMPLOYEES, 
                 employeeService.displayEmployees());
         } catch (AppException appException) {
@@ -197,15 +202,15 @@ public class EmployeeController {
         HttpSession session = request.getSession(false);
         Employee employee = (Employee) session.getAttribute("employee");
         return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_PROJECTS, 
-            employeeService.getEmpProjects(employee.getProjectTasks()));
+            employeeService.getEmpProjects(employee.getTimeSheet()));
     }
     
     @GetMapping("employee/empTasks")
     public ModelAndView employeesTasks(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         Employee employee = (Employee) session.getAttribute("employee");
-        return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_TASKS, 
-           employee.getProjectTasks());
+        return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_TIMESHEETS, 
+           employee.getTimeSheet());
     }
     
     @GetMapping("employee/empAttendance")
@@ -217,7 +222,7 @@ public class EmployeeController {
     }
     
     @PostMapping("employee/createTask")
-    public ModelAndView createTask(@ModelAttribute("task") ProjectTask task, 
+    public ModelAndView createTask(@ModelAttribute("task") TimeSheet task, 
             HttpServletRequest request, ModelMap model) {
         try {
             Project project = new Project();

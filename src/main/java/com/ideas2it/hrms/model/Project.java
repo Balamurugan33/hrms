@@ -33,7 +33,7 @@ public class Project {
     @JoinColumn(name = "client_id")
     private Client client;
     @OneToMany(mappedBy = "project", fetch=FetchType.EAGER)
-    private List<ProjectTask> projectTasks = new ArrayList<ProjectTask>();
+    private List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
     
     public Integer getId() {
         return id;
@@ -57,11 +57,11 @@ public class Project {
     public void setClient(Client client) {
         this.client = client;
     }
-    public List<ProjectTask> getProjectTasks() {
-        return projectTasks;
+    public List<TimeSheet> getTimeSheet() {
+        return timeSheet;
     }
 
-    public void setProjectTasks(List<ProjectTask> projectTasks) {
-        this.projectTasks = projectTasks;
+    public void setTimeSheet(List<TimeSheet> timeSheet) {
+        this.timeSheet = timeSheet;
     }
 }

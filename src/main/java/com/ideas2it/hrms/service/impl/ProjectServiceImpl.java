@@ -9,7 +9,7 @@ import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
-import com.ideas2it.hrms.model.ProjectTask;
+import com.ideas2it.hrms.model.TimeSheet;
 import com.ideas2it.hrms.service.ClientService;
 import com.ideas2it.hrms.service.ProjectService;
 
@@ -61,9 +61,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
     
     public Integer calculateBillableAmount(Project project) {
-        ProjectTaskServiceImpl taskService = new ProjectTaskServiceImpl();
-        List<ProjectTask> projectTasks = project.getProjectTasks();  
-        List<ProjectTask> curMonthTasks = new ArrayList<ProjectTask>();
+        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
+        List<TimeSheet> projectTasks = project.getTimeSheet();  
+        List<TimeSheet> curMonthTasks = new ArrayList<TimeSheet>();
         Integer billableAmount = 0;
 
         curMonthTasks = taskService.getCurrentMonthTasks(projectTasks);
@@ -72,12 +72,12 @@ public class ProjectServiceImpl implements ProjectService {
         return billableAmount;
     }
     
-    public Integer calculateBillAllTasks(List<ProjectTask> curMonthTasks) {
-        ProjectTaskServiceImpl taskService = new ProjectTaskServiceImpl();
+    public Integer calculateBillAllTasks(List<TimeSheet> curMonthTasks) {
+        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
         Integer billAllTasks = 0;
         
-        for (ProjectTask task: curMonthTasks) {
-            Integer hourlyRate = task.getEmployee().getDesignation().getHourlyRate();            
+        for (TimeSheet task: curMonthTasks) {
+            Integer hourlyRate = task.getEmployee().getHourlyRate();            
             Integer numHoursWorkedTask = 0;
             Integer taskBill = 0;
 
@@ -91,12 +91,12 @@ public class ProjectServiceImpl implements ProjectService {
     
     public Integer calculateCostToCompany(Project project) {
         EmployeeServiceImpl empService = new EmployeeServiceImpl();
-        List<ProjectTask> projectTasks = project.getProjectTasks();  
+        List<TimeSheet> projectTasks = project.getTimeSheet();  
         List<Employee> projectEmployees = new ArrayList<Employee>();
         Integer costToCompany = 0;
 
         // Get the list of unique employees working on this project
-        for (ProjectTask task: projectTasks) {
+        for (TimeSheet task: projectTasks) {
             if (!projectEmployees.contains(task.getEmployee())) {
                 projectEmployees.add(task.getEmployee());
             }

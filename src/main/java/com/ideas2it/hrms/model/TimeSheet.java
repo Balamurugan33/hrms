@@ -21,20 +21,18 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  */
 @Entity
-@Table(name="project_task")
-public class ProjectTask {
+@Table(name="timesheet")
+public class TimeSheet {
     @Id  
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name="name")
-    private String name;
-    @Column(name="task_date")
-    private LocalDate taskDate;
-    @Column(name="start_time")
-    private LocalTime startTime;
-    @Column(name="end_time")
-    private LocalTime endTime;
+    @Column(name="bill_amount")
+    private String billAmount;
+    @Column(name="entry_date")
+    private LocalDate entryDate;
+    @Column(name="worked_hours")
+    private Integer workedHours;
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
@@ -48,31 +46,25 @@ public class ProjectTask {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
+    public String getBillAmount() {
+        return billAmount;
     }
-    public void setName(String name) {
-        this.name = name;
-    }    
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    public LocalDate getTaskDate() {
-        return taskDate;
+    public void setBillAmount(String billAmount) {
+        this.billAmount = billAmount;
     }
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    public void setTaskDate(LocalDate taskDate) {
-        this.taskDate = taskDate;
-    }    
-    public LocalTime getStartTime() {
-        return startTime;
+    public LocalDate getEntryDate() {
+        return entryDate;
     }
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    public void setEntryDate(LocalDate entryDate) {
+        this.entryDate = entryDate;
     }
-    public LocalTime getEndTime() {
-        return endTime;
+    public Integer getWorkedHours() {
+        return workedHours;
     }
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
+    public void setWorkedHours(Integer workedHours) {
+        this.workedHours = workedHours;
     }
     public Project getProject() {
         return project;
