@@ -1,11 +1,11 @@
 package com.ideas2it.hrms.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -111,6 +111,33 @@ public class ProjectController {
             // redirect him to the same page; the projects must also be sent
             // alert box is optional for now
             modelAndView.setViewName("adminHome");
+        } catch (AppException appException) {
+            modelAndView.addObject("Error", appException.getMessage());
+        }
+        return modelAndView;
+    }
+    
+    @GetMapping("netProfit")
+    public ModelAndView getNetProfit(
+            @ModelAttribute("project") Project project, 
+                HttpServletRequest request) {
+        ProjectService projectService = new ProjectServiceImpl();
+        ModelAndView modelAndView = new ModelAndView(); 
+
+        try {
+            LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
+            LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));            
+            Integer netProfit;
+            
+            // Check if duplicate project exists including deleted projects
+            Client client = new Client();
+            client.setId(Integer.parseInt(request.getParameter("clientId")));
+            project.setClient(client);
+            netProfit = projectService.calculateNetProfit(project, startDate, endDate);
+            modelAndView.addObject("Success", MSG_CREATED);
+            modelAndView.setViewName("adminHome");
+            // redirect him to the same page; the projects must also be sent
+            // alert box is optional for now
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
         }

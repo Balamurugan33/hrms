@@ -75,7 +75,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
     
     public Integer calculateTotalBill(List<TimeSheet> timeSheetEntries) {
-        TimeSheetServiceImpl sheetService = new TimeSheetServiceImpl();
+        SalaryTrackerServiceImpl salaryService = new SalaryTrackerServiceImpl();
         List<SalaryTracker> salaryTrackers = new ArrayList<SalaryTracker>();
         Integer totalBill = 0;
         
@@ -85,7 +85,7 @@ public class ProjectServiceImpl implements ProjectService {
             Integer entryBill;
             
             salaryTrackers = entry.getEmployee().getSalaryTrackers();
-            SalaryTracker entrySalary = getSalaryTrackerOnDate(entry.getEntryDate(), salaryTrackers);
+            SalaryTracker entrySalary = salaryService.getSalaryTrackerOnDate(entry.getEntryDate(), salaryTrackers);
             hourlyRate = entrySalary.getHourlyRate();
             numHoursWorkedEntry = entry.getWorkedHours();
             entryBill = hourlyRate * numHoursWorkedEntry;
