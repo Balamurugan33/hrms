@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.dao.SalaryTrackerDao;
@@ -39,5 +40,17 @@ public class SalaryTrackerServiceImpl implements SalaryTrackerService{
     /** {@inheritDoc}*/
     public Boolean isSalaryTrackerExist(String name) throws AppException {
         return (null == salaryTrackerDao.searchSalaryTracker(name));
+    }
+    
+    /** {@inheritDoc}*/
+    public SalaryTracker getSalaryTrackerOnDate(LocalDate workedDate, 
+        List<SalaryTracker> salaryTrackers) {
+        SalaryTracker salaryTracker = null;
+        for(SalaryTracker tracker : salaryTrackers) {
+            if (workedDate.compareTo(tracker.getUpdateDate()) >= 0) {
+                salaryTracker = tracker;
+            }
+        }
+        return salaryTracker;
     }
 }

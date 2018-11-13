@@ -79,27 +79,32 @@ public interface EmployeeService {
    List<Project> getEmpProjects(List<TimeSheet> tasks);
       
    /**
-    * Calculates the net profit of the company, for current month,
+    * Calculates the net profit of the company, between the two different date
     * from a single employee
-    * @param employee
-    *        company employee
-    */
-   Integer calculateNetProfit(LocalDate stertDate, LocalDate endDate, 
-           Employee employee);
-   
-   /**
-    * Calculates the total amount paid to employee by company,
-    * between the two different date
-    * 
-    * @param stertDate
+    * *
+    * @param startDate
     *        starting working date
     * @param endDate
     *        ending working date
     * @param employee
     *        company employee
     */
-   public Integer calculateCostToCompany(LocalDate stertDate, 
-           LocalDate endDate, Employee employee);
+   Integer calculateNetProfit(LocalDate startDate, LocalDate endDate, 
+           Employee employee) throws AppException;
+   
+   /**
+    * Calculates the total amount paid to employee by company,
+    * between the two different date
+    * 
+    * @param startDate
+    *        starting working date
+    * @param endDate
+    *        ending working date
+    * @param employee
+    *        company employee
+    */
+   public Integer calculateCostToCompany(LocalDate startDate, 
+           LocalDate endDate, Employee employee) throws AppException;
    
    /**
     * Used to gets the all projects

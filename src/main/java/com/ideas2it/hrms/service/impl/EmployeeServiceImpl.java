@@ -17,6 +17,7 @@ import com.ideas2it.hrms.service.AttendanceService;
 import com.ideas2it.hrms.service.DesignationService;
 import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.ProjectService;
+import com.ideas2it.hrms.service.SalaryTrackerService;
 import com.ideas2it.hrms.service.TimeSheetService;
 
 public class EmployeeServiceImpl implements EmployeeService{
@@ -76,56 +77,81 @@ public class EmployeeServiceImpl implements EmployeeService{
         DesignationService designationService = new DesignationServiceImpl();
         return designationService.displayDesignations();
     }
-
-    public Integer calculateNetProfit(LocalDate stertDate, LocalDate endDate, 
-            Employee employee) {
-        Integer billAmount = calculateBillAmount(stertDate, endDate, employee);
-        Integer castToCompany 
-            = calculateCostToCompany(stertDate, endDate, employee);
-        return  billAmount - castToCompany;
-    }
     
-    /**
-     * Calculates the total billable amount, between the two different date
-     * from a single employee
-     * 
-     * @param stertDate
-     *        starting working date
-     * @param endDate
-     *        ending working date
-     * @param employee
-     *        company employee
-     */
-    private Integer calculateBillAmount(LocalDate stertDate, LocalDate endDate, 
-            Employee employee) {
-        Integer billAmount = 0;
-        List<TimeSheet> currentTimeSheets = getBetweenTimeSheets(stertDate, 
-                endDate, employee.getTimeSheet());
-        for (TimeSheet timesheet : currentTimeSheets) {
-            
-            SalaryTracker currentTracker = getBetweenSalaryTracker(
-                timesheet.getEntryDate(), employee.getSalaryTrackers());
-            billAmount 
-                = timesheet.getWorkedHours() * currentTracker.getHourlyRate();
-            
-        }
-        return billAmount;
+    /** {@inheritDoc}*/
+    public Integer calculateNetProfit(LocalDate startDate, LocalDate endDate, 
+            Employee employee) throws AppException {
+        Integer billAmount = calculateBillAmount(startDate, endDate, employee);
+        Integer costToCompany 
+            = calculateCostToCompany(startDate, endDate, employee);
+        return  billAmount - costToCompany;
     }
     
     /** {@inheritDoc}*/
-    public Integer calculateCostToCompany(LocalDate stertDate, 
-            LocalDate endDate, Employee employee) {
+    public List<Project> getEmpProjects(List<TimeSheet> tasks) {
+        List<Project> projects = new ArrayList<Project>();
+        for(TimeSheet task:tasks) {
+            if(! projects.contains(task.getProject())) {
+                projects.add(task.getProject());
+            }
+        }
+        return projects;
+    }
+   
+    /** {@inheritDoc}*/
+    public List<Project> getAllProjects() throws AppException {
+        ProjectService projectService = new ProjectServiceImpl();
+        return projectService.getAllProjects();
+    }
+
+    /** {@inheritDoc}*/
+    public boolean createTask(TimeSheet task) throws AppException {
+        TimeSheetService sheetService = new TimeSheetServiceImpl();
+        return (null != sheetService.createTask(task));
+    }
+    
+    /** {@inheritDoc}*/
+    public Integer calculateCostToCompany(LocalDate startDate, 
+            LocalDate endDate, Employee employee) throws AppException {
+        SalaryTrackerService salaryService = new SalaryTrackerServiceImpl();
         Integer costToCompany = 0;
-        List<LocalDate> workeddates = calculateBetweenDates(stertDate, endDate);
+        List<LocalDate> workeddates = calculateBetweenDates(startDate, endDate);
         for (LocalDate workedDate : workeddates) {
-            SalaryTracker currentTracker = getSalaryTracker(workedDate, 
-                employee.getSalaryTrackers());
+            SalaryTracker currentTracker = salaryService.getSalaryTrackerOnDate(
+                workedDate, employee.getSalaryTrackers());
             if (isEmpPresent(workedDate, employee)) {
                 Integer dailySalary = currentTracker.getSalary()/30;
                 costToCompany = costToCompany + dailySalary;
             }
         }
         return costToCompany; 
+    }
+    
+    /**
+     * Calculates the total billable amount, between the two different date
+     * from a single employee
+     * 
+     * @param startDate
+     *        starting working date
+     * @param endDate
+     *        ending working date
+     * @param employee
+     *        company employee
+     */
+    private Integer calculateBillAmount(LocalDate startDate, LocalDate endDate, 
+            Employee employee) {
+        SalaryTrackerService salaryService = new SalaryTrackerServiceImpl();
+        Integer billAmount = 0;
+        List<TimeSheet> currentTimeSheets = getBetweenTimeSheets(startDate, 
+                endDate, employee.getTimeSheet());
+        for (TimeSheet timesheet : currentTimeSheets) {
+            
+            SalaryTracker currentTracker = salaryService.getSalaryTrackerOnDate(
+                timesheet.getEntryDate(), employee.getSalaryTrackers());
+            billAmount 
+                = timesheet.getWorkedHours() * currentTracker.getHourlyRate();
+        }
+        return billAmount;
     }
     
     /**
@@ -152,37 +178,19 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     
     /**
-     * Used to get the salary tracker of particular date
-     * 
-     * @param workedDate
-     *        date to get the employee salary tracker
-     * @param salaryTrackers
-     */
-    private SalaryTracker getSalaryTracker(LocalDate workedDate, 
-        List<SalaryTracker> salaryTrackers) {
-        SalaryTracker salaryTracker = null;
-        for(SalaryTracker tracker : salaryTrackers) {
-            if (workedDate.compareTo(tracker.getUpdateDate()) >= 0) {
-                salaryTracker = tracker;
-            }
-        }
-        return salaryTracker;
-    }
-    
-    /**
      * Used to get the dates between the two date
      * 
-     * @param stertDate
+     * @param startDate
      *        Starting date
      * @param endDate
      *        Ending date 
      */
-    private List<LocalDate> calculateBetweenDates(LocalDate stertDate, 
+    private List<LocalDate> calculateBetweenDates(LocalDate startDate, 
             LocalDate endDate) {
             List<LocalDate> totalDates = new ArrayList<LocalDate>();
-            while (!stertDate.isAfter(endDate)) {
-                totalDates.add(stertDate);
-                stertDate = stertDate.plusDays(1);
+            while (!startDate.isAfter(endDate)) {
+                totalDates.add(startDate);
+                startDate = startDate.plusDays(1);
             }
             return totalDates;
         }
@@ -195,34 +203,11 @@ public class EmployeeServiceImpl implements EmployeeService{
      * @param employee
      *        company employee
      */
-    private boolean isEmpPresent(LocalDate workedDate, Employee employee) {
+    private boolean isEmpPresent(LocalDate workedDate, Employee employee) 
+            throws AppException {
         AttendanceService attendanceService = new AttendanceServiceImpl();
-        Attendance attendance 
-            = attendanceService.getAttendanceStatus(employee, workedDate);
+        Attendance attendance = null;
+            attendance = attendanceService.getAttendance(employee, workedDate);
         return attendance.getStatus();
     }
-    
-    /** {@inheritDoc}*/
-    public List<Project> getEmpProjects(List<TimeSheet> tasks) {
-        List<Project> projects = new ArrayList<Project>();
-        for(TimeSheet task:tasks) {
-            if(! projects.contains(task.getProject())) {
-                projects.add(task.getProject());
-            }
-        }
-        return projects;
-    }
-   
-    /** {@inheritDoc}*/
-    public List<Project> getAllProjects() throws AppException {
-        ProjectService projectService = new ProjectServiceImpl();
-        return projectService.getAllProjects();
-    }
-
-    /** {@inheritDoc}*/
-    public boolean createTask(TimeSheet task) throws AppException {
-        TimeSheetService sheetService = new TimeSheetServiceImpl();
-        return (null != sheetService.createTask(task));
-    }
-
 }

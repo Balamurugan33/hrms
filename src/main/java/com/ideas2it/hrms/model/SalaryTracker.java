@@ -3,14 +3,26 @@ package com.ideas2it.hrms.model;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+/**
+ * Used to get the single employee salary details
+ * When the salary of employee is changed the new entry is created
+ * And also it's store the salary changing date for future tracking
+ *   
+ * @author Balamurugan M
+ *
+ */
+@Entity
+@Table(name="salary_tracker")
 public class SalaryTracker {
     
     @Id  
@@ -21,7 +33,7 @@ public class SalaryTracker {
     @Column(name="salary")
     private Integer salary;
     
-    @Column(name="hourlyRate")
+    @Column(name="hourly_rate")
     private Integer hourlyRate;
     
     @Column(name="update_date")

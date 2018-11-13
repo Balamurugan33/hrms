@@ -34,6 +34,7 @@
         <mapping class="com.ideas2it.hrms.model.Project"/>
         <mapping class="com.ideas2it.hrms.model.TimeSheet"/>
         <mapping class="com.ideas2it.hrms.model.User"/>
+        <mapping class="com.ideas2it.hrms.model.SalaryTracker"/>
 
     </session-factory>
 
