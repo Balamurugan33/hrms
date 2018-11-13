@@ -27,8 +27,6 @@ public class TimeSheet {
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name="bill_amount")
-    private String billAmount;
     @Column(name="entry_date")
     private LocalDate entryDate;
     @Column(name="worked_hours")
@@ -45,12 +43,6 @@ public class TimeSheet {
     }
     public void setId(Integer id) {
         this.id = id;
-    }
-    public String getBillAmount() {
-        return billAmount;
-    }
-    public void setBillAmount(String billAmount) {
-        this.billAmount = billAmount;
     }
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public LocalDate getEntryDate() {

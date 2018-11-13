@@ -11,7 +11,9 @@ import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
+import com.ideas2it.hrms.model.SalaryTracker;
 import com.ideas2it.hrms.model.TimeSheet;
+import com.ideas2it.hrms.service.AttendanceService;
 import com.ideas2it.hrms.service.DesignationService;
 import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.ProjectService;
@@ -27,11 +29,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     }
     
+    /** {@inheritDoc}*/
     public List<Attendance> markPresent(Employee employee) throws AppException {
         AttendanceServiceImpl attendService = new AttendanceServiceImpl();
         return attendService.markPresent(employee);
     }
     
+    /** {@inheritDoc}*/
     public List<Attendance> markAbsent(Employee employee) throws AppException {
         AttendanceServiceImpl attendService = new AttendanceServiceImpl();
         return attendService.markAbsent(employee);
@@ -68,6 +72,141 @@ public class EmployeeServiceImpl implements EmployeeService{
         DesignationService designationService = new DesignationServiceImpl();
         return designationService.displayDesignations();
     }
+
+    public Integer calculateNetProfit(LocalDate stertDate, LocalDate endDate, 
+            Employee employee) {
+        Integer billAmount = calculateBillAmount(stertDate, endDate, employee);
+        Integer castToCompany 
+            = calculateCostToCompany(stertDate, endDate, employee);
+        return  billAmount - castToCompany;
+    }
+    
+    /**
+     * Calculates the total billable amount, between the two different date
+     * from a single employee
+     * 
+     * @param stertDate
+     *        starting working date
+     * @param endDate
+     *        ending working date
+     * @param employee
+     *        company employee
+     */
+    private Integer calculateBillAmount(LocalDate stertDate, LocalDate endDate, 
+            Employee employee) {
+        Integer billAmount = 0;
+        List<TimeSheet> currentTimeSheets = getBetweenTimeSheets(stertDate, 
+                endDate, employee.getTimeSheet());
+        for (TimeSheet timesheet : currentTimeSheets) {
+            
+            SalaryTracker currentTracker = getBetweenSalaryTracker(
+                timesheet.getEntryDate(), employee.getSalaryTrackers());
+            billAmount 
+                = timesheet.getWorkedHours() * currentTracker.getHourlyRate();
+            
+        }
+        return billAmount;
+    }
+    
+    /**
+     * Calculates the total amount paid to employee by company,
+     * between the two different date
+     * 
+     * @param stertDate
+     *        starting working date
+     * @param endDate
+     *        ending working date
+     * @param employee
+     *        company employee
+     */
+    private Integer calculateCostToCompany(LocalDate stertDate, 
+            LocalDate endDate, Employee employee) {
+        Integer costToCompany = 0;
+        List<LocalDate> workeddates = calculateBetweenDates(stertDate, endDate);
+        for (LocalDate workedDate : workeddates) {
+            SalaryTracker currentTracker = getSalaryTracker(workedDate, 
+                employee.getSalaryTrackers());
+            if (isEmpPresent(workedDate, employee)) {
+                Integer dailySalary = currentTracker.getSalary()/30;
+                costToCompany = costToCompany + dailySalary;
+            }
+        }
+        return costToCompany; 
+    }
+    
+    /**
+     * Used to get the employee time sheet between the two dates 
+     * 
+     * @param startDate
+     *        Starting date of employee time sheet
+     * @param endDate
+     *        Ending date of employee time sheet
+     * @param timesheets
+     */
+    private List<TimeSheet> getBetweenTimeSheets(LocalDate startDate, 
+            LocalDate endDate, List<TimeSheet> timesheets) {
+        List<TimeSheet> currentTimeSheets = new ArrayList<TimeSheet>();
+        for (TimeSheet timeSheet : timesheets) {
+            LocalDate date = timeSheet.getEntryDate();
+            
+            if ((date.compareTo(startDate) >= 0) 
+                    && (date.compareTo(endDate) <= 0)) {
+                currentTimeSheets.add(timeSheet);
+            }
+        }
+        return currentTimeSheets;
+    }
+    
+    /**
+     * Used to get the salary tracker of particular date
+     * 
+     * @param workedDate
+     *        date to get the employee salary tracker
+     * @param salaryTrackers
+     */
+    private SalaryTracker getSalaryTracker(LocalDate workedDate, 
+        List<SalaryTracker> salaryTrackers) {
+        SalaryTracker salaryTracker = null;
+        for(SalaryTracker tracker : salaryTrackers) {
+            if (workedDate.compareTo(tracker.getUpdateDate()) >= 0) {
+                salaryTracker = tracker;
+            }
+        }
+        return salaryTracker;
+    }
+    
+    /**
+     * Used to get the dates between the two date
+     * 
+     * @param stertDate
+     *        Starting date
+     * @param endDate
+     *        Ending date 
+     */
+    private List<LocalDate> calculateBetweenDates(LocalDate stertDate, 
+            LocalDate endDate) {
+            List<LocalDate> totalDates = new ArrayList<LocalDate>();
+            while (!stertDate.isAfter(endDate)) {
+                totalDates.add(stertDate);
+                stertDate = stertDate.plusDays(1);
+            }
+            return totalDates;
+        }
+    
+    /**
+     * Returns true if employee has present on this day, otherwise false
+     * 
+     * @param workedDate
+     *        date to check the employee is present
+     * @param employee
+     *        company employee
+     */
+    private boolean isEmpPresent(LocalDate workedDate, Employee employee) {
+        AttendanceService attendanceService = new AttendanceServiceImpl();
+        Attendance attendance 
+            = attendanceService.getAttendanceStatus(employee, workedDate);
+        return attendance.getStatus();
+    }
     
     /** {@inheritDoc}*/
     public List<Project> getEmpProjects(List<TimeSheet> tasks) {
@@ -79,94 +218,17 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
         return projects;
     }
-    
-    public Integer calculateNetProfit(Employee employee) {
-            Integer billableAmount = 0;
-            Integer costToCompany = 0;
-            Integer netProfit = 0;
-            
-            billableAmount = calculateBillableAmount(employee);            
-            costToCompany = calculateCostToCompany(employee);            
-            netProfit = billableAmount - costToCompany;
-
-            return netProfit;
-    }
-    
-    public Integer calculateBillableAmount(Employee employee) {
-        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
-        List<TimeSheet> empTasks = employee.getTimeSheet();
-        List<TimeSheet> curMonthTasks = new ArrayList<TimeSheet>();
-        Integer empHourlyRate = employee.getHourlyRate();
-        Integer curMonthHoursWorked = 0;
-        Integer billableAmount = 0;
-        
-        curMonthTasks = taskService.getCurrentMonthTasks(empTasks);
-        curMonthHoursWorked = calculateHoursWorkedEmp(curMonthTasks);
-        billableAmount = curMonthHoursWorked * empHourlyRate;
-        
-        return billableAmount;        
-    }
-    
-    public Integer calculateHoursWorkedEmp(List<TimeSheet> curMonthTasks) {
-        TimeSheetServiceImpl taskService = new TimeSheetServiceImpl();
-        Integer numHoursWorkedTask = 0;
-        Integer totalHoursWorked = 0;
-            
-        for (TimeSheet task : curMonthTasks) {           
-            numHoursWorkedTask = taskService.calculateTaskDuration(task);
-            totalHoursWorked = totalHoursWorked + numHoursWorkedTask;
-        }
-        
-        return totalHoursWorked;
-    }
-        
-    public Integer calculateCostToCompany(Employee employee) {
-        Integer costToCompany = 0;
-        Integer monthlySalary = employee.getSalary();
-        Integer dailySalary = monthlySalary / 30; 
-        Integer numLeaveDays = 0;
-        
-        numLeaveDays = getNumLeaves(employee);
-        costToCompany = monthlySalary - (numLeaveDays * dailySalary);
-
-        return costToCompany;
-    }
-
-    public Integer getNumLeaves(Employee employee) {
-        Integer numLeaves = 0;
-
-        for (Attendance attendance : employee.getAttendance()) {
-            if (isEmpLeave(attendance)) {
-                numLeaves ++ ;
-            }
-        }
-        
-        return numLeaves;
-    }
-
-    public boolean isEmpLeave(Attendance attendance) {
-        LocalDate today = LocalDate.now();
-        LocalDate attendDate = attendance.getAttendDate();
-        boolean isAbsent = false;
-
-        if (attendDate.getMonth() == today.getMonth() &&
-                attendDate.getYear() == today.getYear()
-                    && !attendance.getStatus()) {
-            isAbsent = true;
-        }
-
-        return isAbsent;
-    }
-
+   
     /** {@inheritDoc}*/
     public List<Project> getAllProjects() throws AppException {
         ProjectService projectService = new ProjectServiceImpl();
         return projectService.getAllProjects();
     }
 
-    @Override
+    /** {@inheritDoc}*/
     public boolean createTask(TimeSheet task) throws AppException {
         TimeSheetService taskService = new TimeSheetServiceImpl();
         return (null != taskService.createTask(task));
     }
+
 }

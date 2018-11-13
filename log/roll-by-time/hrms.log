@@ -2869,3 +2869,7 @@ Caused by: java.lang.ClassNotFoundException: Could not load requested class : co
 2018-11-13 11:27:44 INFO HHH000397: Using ASTQueryTranslatorFactory
 2018-11-13 11:28:05 INFO Initializing Servlet 'spring'
 2018-11-13 11:28:05 INFO Completed initialization in 775 ms
+2018-11-13 11:28:13 INFO Initializing Servlet 'spring'
+2018-11-13 11:28:14 INFO Completed initialization in 765 ms
+2018-11-13 11:28:54 INFO Initializing Servlet 'spring'
+2018-11-13 11:28:54 INFO Completed initialization in 748 ms

@@ -58,6 +58,10 @@ public class Employee {
     @JoinColumn(name="designation_id")
     private Designation designation;
     
+    @OneToMany(mappedBy="employee")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<SalaryTracker> salaryTrackers = new ArrayList<SalaryTracker>();
+    
     @Column(name="salary")
     private Integer salary;
     
@@ -131,6 +135,14 @@ public class Employee {
 
     public void setHourlyRate(Integer hourlyRate) {
         this.hourlyRate = hourlyRate;
+    }
+
+    public List<SalaryTracker> getSalaryTrackers() {
+        return salaryTrackers;
+    }
+
+    public void setSalaryTrackers(List<SalaryTracker> salaryTrackers) {
+        this.salaryTrackers = salaryTrackers;
     }
     
 }
