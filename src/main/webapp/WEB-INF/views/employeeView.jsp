@@ -97,35 +97,15 @@
     <br>
     <table class="table table-striped text-center">
     <tr>
-<<<<<<< HEAD
-        <th>Date</th>
-        <th>Task</th>
-        <th>Project</th>
-        <th> Action </th>
-=======
+        <th class="text-center">Date</th>
         <th class="text-center">Project</th>
-        <th class="text-center">EntryDate</th>
         <th class="text-center">Worked Hours</th>
->>>>>>> 9e6d0c5da97005b6c8e13c0b121de6e848eb0f27
     </tr>
     <c:forEach var= "timeSheet" items= "${timeSheets}">
     <tr>
-<<<<<<< HEAD
-        <input type="hidden" name="taskId" id="taskId" value="${task.id}" />
-        <td> ${projectTask.taskDate} </td>
-        <td>${projectTask.name}</td>
-        <td>${projectTask.project.name}</td>    
-        <td> 
-          <form>
-            <button type="submit" name = "startTask" value="startTask" formaction="/hrms/projectTask/startTask" formmethod="POST"> Start Task </button> 
-            <button type="submit" name = "endTask" value="endTask" formaction="/hrms/projectTask/endTask" formmethod="POST"> End Task </button>                                    
-          </form>             
-        </td>  
-=======
-        <td>${timeSheet.project.name}</td>
         <td>${timeSheet.entryDate}</td>
+        <td>${timeSheet.project.name}</td>
         <td>${timeSheet.workedHours}</td>
->>>>>>> 9e6d0c5da97005b6c8e13c0b121de6e848eb0f27
     </tr>
     </c:forEach>
     </table>
