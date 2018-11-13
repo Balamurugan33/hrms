@@ -12,6 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Used to get the client details it's means contact details
+ * It's has only single client details of company
+ * And also used to get the list of projects have a same client 
+ * 
+ * @author Balamurgan M
+ */
 @Entity
 @Table(name="client")
 public class Client {

@@ -12,6 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Used to get the Designation of the employee
+ * Not a list of designation, only it's store the single designation detail
+ * And used to get the list of employee have a same designation
+ * Also get the employee salary and hourly rate based on the designation 
+ * it's means the salary and hourly rate varied based on the designation  
+ * 
+ * @author Balamurugan M
+ *
+ */
 @Entity
 @Table(name="designation")
 public class Designation {
@@ -23,10 +33,7 @@ public class Designation {
     
     @Column(name="name")
     private String name;
-    
-    @Column(name="salary")
-    private Integer salary;
-    
+
     @OneToMany(mappedBy="designation", fetch=FetchType.EAGER)
     private List<Employee> employees = new ArrayList<Employee>();
 
@@ -52,13 +59,5 @@ public class Designation {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Integer salary) {
-        this.salary = salary;
     }
 }

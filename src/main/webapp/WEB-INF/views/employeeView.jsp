@@ -62,7 +62,7 @@
 
 <c:if test="${not empty employeeDetail}">
   <div align="center">
-  <table style="float:center" class="table">
+  <table style="float:center">
     <tr>
         <td>Employee ID:</td> 
         <td>${employee.id}</td>  
@@ -85,25 +85,32 @@
     </tr>
     <tr>
          <td>Salary</td>
-         <td>${employee.designation.salary}</td>
+         <td>${employee.salary}</td>
     </tr>
    </table>
  </div>
 </c:if>
 
-<c:if test="${not empty tasks}">
+<c:if test="${not empty timeSheets}">
  <div id="taskInfo" align="center">
     <br>
     <br>
     <table class="table table-striped text-center">
     <tr>
+<<<<<<< HEAD
         <th>Date</th>
         <th>Task</th>
         <th>Project</th>
         <th> Action </th>
+=======
+        <th class="text-center">Project</th>
+        <th class="text-center">EntryDate</th>
+        <th class="text-center">Worked Hours</th>
+>>>>>>> 9e6d0c5da97005b6c8e13c0b121de6e848eb0f27
     </tr>
-    <c:forEach var= "projectTask" items= "${tasks}">
+    <c:forEach var= "timeSheet" items= "${timeSheets}">
     <tr>
+<<<<<<< HEAD
         <input type="hidden" name="taskId" id="taskId" value="${task.id}" />
         <td> ${projectTask.taskDate} </td>
         <td>${projectTask.name}</td>
@@ -114,6 +121,11 @@
             <button type="submit" name = "endTask" value="endTask" formaction="/hrms/projectTask/endTask" formmethod="POST"> End Task </button>                                    
           </form>             
         </td>  
+=======
+        <td>${timeSheet.project.name}</td>
+        <td>${timeSheet.entryDate}</td>
+        <td>${timeSheet.workedHours}</td>
+>>>>>>> 9e6d0c5da97005b6c8e13c0b121de6e848eb0f27
     </tr>
     </c:forEach>
     </table>
@@ -124,8 +136,8 @@
     <div id=projectInfo align="center">
     <table class="table table-striped text-center">
     <tr>
-        <th>Project</th>
-        <th>Client</th>
+        <th class="text-center">Project</th>
+        <th class="text-center">Client</th>
     </tr>
     <c:forEach var= "project" items= "${projects}">
     <tr>
@@ -154,8 +166,8 @@
     <br>
     <table class="table table-striped text-center">
     <tr>
-        <th>Date</th>
-        <th>Attendance</th>
+        <th class="text-center">Date</th>
+        <th class="text-center">Attendance</th>
     </tr>
     <c:forEach var="attendance" items="${attendance}">
     <tr>
@@ -202,6 +214,8 @@
                             <button type="button" class="btn btn-danger btn-block btn-lg" onclick="closeUpdate()">
                                 Cancel</button>
                             <input type="hidden" name="id" value = "${employee.id}">
+                            <input type="hidden" name="salary" value = "${employee.salary}">
+                            <input type="hidden" name="hourlyRate" value = "${employee.hourlyRate}">
                         </div>
                     </form>
                 </div>

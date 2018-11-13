@@ -3,18 +3,18 @@ package com.ideas2it.hrms.dao;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.model.ProjectTask;
+import com.ideas2it.hrms.model.TimeSheet;
 
 /**
  * <p>
- * Provides an interface for basic CRUD operations on the ProjectTask Model:
+ * Provides an interface for basic CRUD operations on the TimeSheet Model:
  * Add new task, Get task, Get all tasks,
  * Update task, Remove task
  * </p>
  *
  * @author Ganesh Venkat S
  */
-public interface ProjectTaskDao {
+public interface TimeSheetDao {
     
     /**
      * Creates a new task 
@@ -24,7 +24,7 @@ public interface ProjectTaskDao {
      * @return 
      *       new task, if added, null otherwise
      */
-    ProjectTask createTask(ProjectTask task) throws AppException; 
+    TimeSheet createTask(TimeSheet task) throws AppException; 
     
     /**
      * Gets a task
@@ -34,7 +34,7 @@ public interface ProjectTaskDao {
      * @return
      *        requested task, if exists, null otherwise
      */
-    ProjectTask getTaskById(Integer id) throws AppException;
+    TimeSheet getTaskById(Integer id) throws AppException;
      
     /**
      * Gets all the tasks allocated to company
@@ -42,7 +42,7 @@ public interface ProjectTaskDao {
      * @return
      *        list of all tasks
      */
-    List<ProjectTask> getAllTasks() throws AppException;
+    List<TimeSheet> getAllTasks() throws AppException;
     
     /**
      * Updates a task's details
@@ -50,7 +50,7 @@ public interface ProjectTaskDao {
      * @param task
      *       task to update
      */
-    ProjectTask updateTask(ProjectTask task) throws AppException;
+    TimeSheet updateTask(TimeSheet task) throws AppException;
     
     /**
      * Removes a task
@@ -58,5 +58,5 @@ public interface ProjectTaskDao {
      * @param task
      *       task to remove
      */
-    ProjectTask removeTask(ProjectTask task) throws AppException;
+    TimeSheet removeTask(TimeSheet task) throws AppException;
 }

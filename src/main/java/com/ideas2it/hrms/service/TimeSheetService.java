@@ -3,18 +3,18 @@ package com.ideas2it.hrms.service;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.model.ProjectTask;
+import com.ideas2it.hrms.model.TimeSheet;
 
 /**
  * <p>
- * Provides an interface for basic CRUD operations on the ProjectTask Model:
+ * Provides an interface for basic CRUD operations on the TimeSheet Model:
  * Add new task, Get task, Get all tasks,
  * Update Task, Remove task
  * </p>
  *
  * @author Ganesh Venkat S
  */
-public interface ProjectTaskService {
+public interface TimeSheetService {
     
     /**
      * Creates a new task 
@@ -24,7 +24,7 @@ public interface ProjectTaskService {
      * @return 
      *        new task, if added, null otherwise
      */
-    ProjectTask createTask(ProjectTask task) throws AppException;
+    TimeSheet createTask(TimeSheet task) throws AppException;
     
     /**
      * Gets a task 
@@ -34,7 +34,7 @@ public interface ProjectTaskService {
      * @return
      *        requested task, if exists, null otherwise
      */
-    ProjectTask getTaskById(Integer id) throws AppException;
+    TimeSheet getTaskById(Integer id) throws AppException;
     
     /**
      * Gets all the tasks allocated to company
@@ -42,7 +42,7 @@ public interface ProjectTaskService {
      * @return
      *        list of all tasks
      */
-    List<ProjectTask> getAllTasks() throws AppException;
+    List<TimeSheet> getAllTasks() throws AppException;
     
     /**
      * Updates a task's details
@@ -50,7 +50,7 @@ public interface ProjectTaskService {
      * @param task
      *        task to update
      */
-    ProjectTask updateTask(ProjectTask task) throws AppException;
+    TimeSheet updateTask(TimeSheet task) throws AppException;
     
     /**
      * Removes a task
@@ -58,7 +58,7 @@ public interface ProjectTaskService {
      * @param task
      *        task to remove
      */
-    ProjectTask removeTask(ProjectTask task) throws AppException;
+    TimeSheet removeTask(TimeSheet task) throws AppException;
     
     /**
      * Gets the tasks done this month
@@ -66,7 +66,7 @@ public interface ProjectTaskService {
      * @param tasks
      *        list of project tasks
      */
-    List<ProjectTask> getCurrentMonthTasks(List<ProjectTask> tasks);
+    List<TimeSheet> getCurrentMonthTasks(List<TimeSheet> tasks);
     
     /**
      * Returns true if task was done in current month, otherwise false
@@ -74,7 +74,7 @@ public interface ProjectTaskService {
      * @param task
      *        project task
      */
-    boolean isCurrentMonthTask(ProjectTask task);
+    boolean isCurrentMonthTask(TimeSheet task);
     
     /**
      * Calculates the number of hours worked on a task
@@ -82,5 +82,5 @@ public interface ProjectTaskService {
      * @param task
      *        project task
      */
-    public Integer calculateTaskDuration(ProjectTask task);
+    public Integer calculateTaskDuration(TimeSheet task);
 }

@@ -1,6 +1,5 @@
 package com.ideas2it.hrms.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
-import com.ideas2it.hrms.model.ProjectTask;
-import com.ideas2it.hrms.service.ProjectTaskService;
-import com.ideas2it.hrms.service.impl.ProjectTaskServiceImpl;
+import com.ideas2it.hrms.model.TimeSheet;
+import com.ideas2it.hrms.service.TimeSheetService;
+import com.ideas2it.hrms.service.impl.TimeSheetServiceImpl;
 
 import static com.ideas2it.hrms.common.ProjectConstants.MSG_CREATED;
 import static com.ideas2it.hrms.common.ProjectConstants.MSG_DELETED;
@@ -28,30 +27,11 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
  * @author Ganesh Venkat S
  */
 @Controller 
-public class ProjectTaskController {
-    
-    @PostMapping("projectTask/startTask")
-    public ModelAndView startTask(HttpServletRequest request) {
-        ProjectTaskService taskService = new ProjectTaskServiceImpl();
-        String taskIdString = request.getParameter("taskId");
-        Integer taskId;
-        List <ProjectTask> employeeTasks = new ArrayList<ProjectTask>();
-
-        taskId = Integer.parseInt(taskIdString);            
-        try {
-                            
-        } catch (AppException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }  
-        }        
-        // return employeeTasks;
-    }
-            
+public class TimeSheetController {            
     @PostMapping("projectTask/create")
-    public ModelAndView createTask(@ModelAttribute("task") ProjectTask task, 
+    public ModelAndView createTask(@ModelAttribute("task") TimeSheet task, 
             HttpServletRequest request) {
-        ProjectTaskService taskService = new ProjectTaskServiceImpl();
+        TimeSheetService taskService = new TimeSheetServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
@@ -75,9 +55,9 @@ public class ProjectTaskController {
     
     @PostMapping("update")
     public ModelAndView updateTask(
-        @ModelAttribute("task") ProjectTask task, 
+        @ModelAttribute("task") TimeSheet task, 
         HttpServletRequest request) {
-        ProjectTaskService taskService = new ProjectTaskServiceImpl();
+        TimeSheetService taskService = new TimeSheetServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
@@ -95,13 +75,13 @@ public class ProjectTaskController {
         
     @PostMapping("delete")
     public ModelAndView deleteTask(HttpServletRequest request) {
-        ProjectTaskService taskService = new ProjectTaskServiceImpl();
+        TimeSheetService taskService = new TimeSheetServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
             // Check if the task to be deleted exists 
             Integer id = Integer.parseInt(request.getParameter("id"));
-            ProjectTask task = taskService.getTaskById(id);
+            TimeSheet task = taskService.getTaskById(id);
             if (null != task) {
                 task = taskService.removeTask(task);    
             }
@@ -118,11 +98,11 @@ public class ProjectTaskController {
     // Check if this method is redundant
     @GetMapping("displayAll")
     public ModelAndView displayAllTasks(HttpServletRequest request) {
-        ProjectTaskService taskService = new ProjectTaskServiceImpl();
+        TimeSheetService taskService = new TimeSheetServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
-            List<ProjectTask> allTasks = taskService.getAllTasks();
+            List<TimeSheet> allTasks = taskService.getAllTasks();
             modelAndView.addObject("allTasks", allTasks);
             // redirect him to the same page; the tasks must also be sent
             // alert box is optional for now
