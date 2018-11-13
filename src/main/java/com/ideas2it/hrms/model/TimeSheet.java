@@ -51,7 +51,6 @@ public class TimeSheet {
     public void setEntryDate(LocalDate entryDate) {
         this.entryDate = entryDate;
     }
-
     public Integer getWorkedHours() {
         return workedHours;
     }

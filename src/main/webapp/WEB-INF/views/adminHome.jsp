@@ -8,6 +8,9 @@
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <jsp:include page='adminHeader.jsp'/>
 </head>
+<body>
+
+    
 
 <c:if test="${not empty clients}">
     <div>
@@ -205,6 +208,7 @@
             <td>${employee.salary}</td>
             <td><form action="/hrms/employee/deleteEmployee" method="post">
                 <button type="button"  data-toggle="modal" data-target="#${employee.id}" class="btn btn-outline-success" >Assign Task</button>
+                <button type="button" onclick="setDate('this.form')" class="btn btn-primary">View Revenue</button>
                 <button type="submit" class="btn btn-outline-danger">Remove</button>
                 <input type="hidden" name="id" value="${employee.id}">
                 </form></td>
@@ -415,10 +419,35 @@
         </div>
      </div>
      
+     <div id="empRevenue" >
+        <form method="post" action="/hrms/employee/profit">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="date" class="form-control" name="startDate" id="startDate"
+                    placeholder="Start Date" required="required">
+            </div>
+            <div class="input-group">
+                <input type="date" class="form-control" name="endDate" id="endDate"
+                    placeholder="End Date" required="required">
+            </div>
+            <div class="input-group">
+                <button type="submit">Show</button>
+            </div>
+         </div>
+         <input type="hidden" id="empId" name="empId">
+        </form>
+    </div>
+     
 <body/>
 <c:if test="${not empty message}">
 <script>
     alert ("${message}");
+</script>
+
+<script>
+function setDate(form) {
+	form.getElementById("empid");
+}
 </script>
 </c:if>
 </html>

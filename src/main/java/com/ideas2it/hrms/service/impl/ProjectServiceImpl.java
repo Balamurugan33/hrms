@@ -85,7 +85,8 @@ public class ProjectServiceImpl implements ProjectService {
             Integer entryBill;
             
             salaryTrackers = entry.getEmployee().getSalaryTrackers();
-            SalaryTracker entrySalary = salaryService.getSalaryTrackerOnDate(entry.getEntryDate(), salaryTrackers);
+            SalaryTracker entrySalary = salaryService.getSalaryTrackerOnDate(
+                entry.getEntryDate(), salaryTrackers);
             hourlyRate = entrySalary.getHourlyRate();
             numHoursWorkedEntry = entry.getWorkedHours();
             entryBill = hourlyRate * numHoursWorkedEntry;
@@ -119,5 +120,11 @@ public class ProjectServiceImpl implements ProjectService {
     public List<Client> displayClients() throws AppException {
         ClientService clientService = new ClientServiceImpl();
         return clientService.displayClients();
+    }
+
+    @Override
+    public Integer calculateBillAllTasks(List<TimeSheet> curMonthTasks) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

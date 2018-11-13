@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -212,17 +213,16 @@ public class EmployeeController {
         Employee employee = (Employee) session.getAttribute("employee");
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         ModelAndView modelAndView = new ModelAndView(); 
-                
+        /*        
         try {
             attendanceSheet = employeeService.getAttendanceSheet(employee);
             modelAndView.addObject("Success", "Attendance has been created");
             modelAndView.setViewName(EMPLOYEE_MENU);
         } catch (AppException e) {
-            // TODO Auto-generated catch block
             modelAndView.addObject("Error", e.getMessage());
         }   
         modelAndView.addObject(EmpConstants.LABEL_ATTENDANCE, attendanceSheet);
-        
+        */
         return modelAndView;        
     }
     
@@ -240,6 +240,24 @@ public class EmployeeController {
                 model.addAttribute(EmpConstants.LABEL_MESSAGE, "Attendance has been created");
             }
             return displayEmployees(model);
+        } catch (AppException appException) {
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
+                appException.getMessage());
+        }
+    }
+    
+    @PostMapping("employee/profit")
+    public ModelAndView calculateNetProfit(HttpServletRequest request, 
+            ModelMap model) {
+        try {
+            HttpSession session = request.getSession(false);
+            Employee employee = (Employee) session.getAttribute("employee");
+            LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
+            LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));
+            Integer profit 
+                = employeeService.calculateNetProfit(startDate, endDate, employee);
+            return new ModelAndView(ADMINMENU, EmpConstants.LABEL_MESSAGE, 
+                    profit);
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
                 appException.getMessage());

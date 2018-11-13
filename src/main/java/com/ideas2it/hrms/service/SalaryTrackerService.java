@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
@@ -42,4 +43,14 @@ public interface SalaryTrackerService {
      *        Get the salaryTracker name
      */
     Boolean isSalaryTrackerExist(String name) throws AppException;
+    
+    /**
+     * Used to get the salary tracker of particular date
+     * 
+     * @param workedDate
+     *        date to get the employee salary tracker
+     * @param salaryTrackers
+     */
+    SalaryTracker getSalaryTrackerOnDate(LocalDate workedDate, 
+        List<SalaryTracker> salaryTrackers);
 }
