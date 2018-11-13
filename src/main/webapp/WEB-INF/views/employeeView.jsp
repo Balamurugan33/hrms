@@ -104,13 +104,14 @@
     </tr>
     <c:forEach var= "projectTask" items= "${tasks}">
     <tr>
+        <input type="hidden" name="taskId" id="taskId" value="${task.id}" />
         <td> ${projectTask.taskDate} </td>
         <td>${projectTask.name}</td>
         <td>${projectTask.project.name}</td>    
         <td> 
           <form>
-            <button type="submit" name = "startTask" value="startTask" formaction="/hrms/task/startTask"> Start Task </button> 
-            <button type="submit" name = "endTask" value="endTask" formaction="/hrms/task/endTask"> End Task </button>                                    
+            <button type="submit" name = "startTask" value="startTask" formaction="/hrms/projectTask/startTask" formmethod="POST"> Start Task </button> 
+            <button type="submit" name = "endTask" value="endTask" formaction="/hrms/projectTask/endTask" formmethod="POST"> End Task </button>                                    
           </form>             
         </td>  
     </tr>

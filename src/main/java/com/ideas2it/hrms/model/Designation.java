@@ -24,9 +24,6 @@ public class Designation {
     @Column(name="name")
     private String name;
     
-    @Column(name="hourly_rate")
-    private Integer hourlyRate;
-    
     @Column(name="salary")
     private Integer salary;
     
@@ -55,14 +52,6 @@ public class Designation {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getHourlyRate() {
-        return hourlyRate;
-    }
-
-    public void setHourlyRate(Integer hourlyRate) {
-        this.hourlyRate = hourlyRate;
     }
 
     public Integer getSalary() {

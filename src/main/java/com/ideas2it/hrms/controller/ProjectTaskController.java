@@ -1,5 +1,6 @@
 package com.ideas2it.hrms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,24 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
  */
 @Controller 
 public class ProjectTaskController {
+    
+    @PostMapping("projectTask/startTask")
+    public ModelAndView startTask(HttpServletRequest request) {
+        ProjectTaskService taskService = new ProjectTaskServiceImpl();
+        String taskIdString = request.getParameter("taskId");
+        Integer taskId;
+        List <ProjectTask> employeeTasks = new ArrayList<ProjectTask>();
+
+        taskId = Integer.parseInt(taskIdString);            
+        try {
+                            
+        } catch (AppException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }  
+        }        
+        // return employeeTasks;
+    }
             
     @PostMapping("projectTask/create")
     public ModelAndView createTask(@ModelAttribute("task") ProjectTask task, 
