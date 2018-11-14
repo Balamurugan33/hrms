@@ -217,7 +217,7 @@
                  <div class="modal-dialog modal-sm">
                      <div class="modal-content">
                          <div class="modal-header">
-                             <h4>Enter TmieSheet</h4>
+                             <h4>Enter TimeSheet</h4>
                          </div>
                          <div class="modal-body">
                              <form action="/hrms/employee/createTask" method="post">
@@ -357,7 +357,7 @@
         </div>
      </div>
      
-     <div class="modal fade" id="EmployeeCreate" >
+     <div class="modal fade" id="EmployeeCreate">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">

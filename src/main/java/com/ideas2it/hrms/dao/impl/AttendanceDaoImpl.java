@@ -57,6 +57,7 @@ public class AttendanceDaoImpl implements AttendanceDao {
     public Attendance getAttendance(Employee employee, LocalDate attendDate) throws AppException {
         Transaction transaction = null;
         Attendance attendance = null;
+        List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
@@ -69,7 +70,11 @@ public class AttendanceDaoImpl implements AttendanceDao {
             predicates[0] = builder.equal(attendRoot.get("employee"), employee);
             predicates[1] = builder.equal(attendRoot.get("attendDate"), attendDate);
             criteria.select(attendRoot).where(predicates);
-            attendance = session.createQuery(criteria).getSingleResult();
+            
+            attendanceSheet = session.createQuery(criteria).getResultList();
+            if (!attendanceSheet.isEmpty()) {
+                attendance = attendanceSheet.get(0);
+            }
             transaction.commit();
         } catch (HibernateException e) {
             AppLogger.error(ERROR_RETRIEVE_ATTENDANCE + attendance.getId(), e);

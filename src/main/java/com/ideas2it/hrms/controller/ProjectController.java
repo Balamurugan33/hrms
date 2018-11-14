@@ -46,8 +46,6 @@ public class ProjectController {
             project.setClient(client);
             project = projectService.createProject(project);   
             modelAndView.addObject("Success", MSG_CREATED);
-            // redirect him to the same page; the projects must also be sent
-            // alert box is optional for now
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
         }
@@ -67,8 +65,6 @@ public class ProjectController {
             project.setClient(client);
             // Check if the project to be updated exists 
             project = projectService.updateProject(project);   
-            // redirect him to the same page; the projects must also be sent
-            // alert box is optional for now
             modelAndView.setViewName("projects");
         } catch (AppException appException) {
             modelAndView.addObject("Error", MSG_UPDATED);
@@ -89,8 +85,6 @@ public class ProjectController {
                 project = projectService.removeProject(project);    
             }
             modelAndView.addObject("Success", MSG_DELETED);
-            // redirect him to the same page; the projects must also be sent
-            // alert box is optional for now
             modelAndView.setViewName("projects");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());  
@@ -108,8 +102,6 @@ public class ProjectController {
                     projectService.displayClients());
             List<Project> allProjects = projectService.getAllProjects();
             modelAndView.addObject("projects", allProjects);
-            // redirect him to the same page; the projects must also be sent
-            // alert box is optional for now
             modelAndView.setViewName("adminHome");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
@@ -136,8 +128,6 @@ public class ProjectController {
             netProfit = projectService.calculateNetProfit(project, startDate, endDate);
             modelAndView.addObject("Success", MSG_CREATED);
             modelAndView.setViewName("adminHome");
-            // redirect him to the same page; the projects must also be sent
-            // alert box is optional for now
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
         }

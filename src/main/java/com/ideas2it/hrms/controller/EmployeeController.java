@@ -213,7 +213,7 @@ public class EmployeeController {
         Employee employee = (Employee) session.getAttribute("employee");
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         ModelAndView modelAndView = new ModelAndView(); 
-        /*        
+                
         try {
             attendanceSheet = employeeService.getAttendanceSheet(employee);
             modelAndView.addObject("Success", "Attendance has been created");
@@ -222,7 +222,7 @@ public class EmployeeController {
             modelAndView.addObject("Error", e.getMessage());
         }   
         modelAndView.addObject(EmpConstants.LABEL_ATTENDANCE, attendanceSheet);
-        */
+        
         return modelAndView;        
     }
     

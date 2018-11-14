@@ -67,8 +67,9 @@ public interface ProjectService {
      * from a single project
      * @param employee
      *        company project
+     * @throws AppException 
      */
-    Integer calculateNetProfit(Project project, LocalDate startDate, LocalDate endDate);
+    Integer calculateNetProfit(Project project, LocalDate startDate, LocalDate endDate) throws AppException;
     
     /**
      * Calculates the total billable amount for a project, for current month
@@ -77,22 +78,15 @@ public interface ProjectService {
      *        billable project 
      */
     Integer calculateBillableAmount(Project project, LocalDate startDate, LocalDate endDate);
-    
-    /**
-     * Calculates the total bill for tasks, for a project, for current month
-     * 
-     * @param curMonthTasks
-     *        list of all tasks for this project, in current month
-     */
-    //Integer calculateBillAllTasks(List<TimeSheet> curMonthTasks);
-    
+        
     /**
      * Calculates the total amount paid to employees, working on a project, for current month
      * 
      * @param project
      *        project
+     * @throws AppException 
      */
-    Integer calculateCostToCompany(Project project, LocalDate startDate, LocalDate endDate);
+    Integer calculateCostToCompany(Project project, LocalDate startDate, LocalDate endDate) throws AppException;
     
     /**
      * Used to get all clients

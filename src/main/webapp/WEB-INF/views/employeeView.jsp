@@ -87,12 +87,17 @@
          <td>Salary</td>
          <td>${employee.salary}</td>
     </tr>
-   </table>
+   </table>        
+   <br>
+   <br>
+   <a href="#" onclick="openUpdate()"><button type="submit" class="btn btn-success">Edit Profile</button></a>                  
  </div>
 </c:if>
 
 <c:if test="${not empty timeSheets}">
  <div id="taskInfo" align="center">
+     <button type="button" class="btn btn-outline-success btn-lg pull-right" 
+       data-toggle="modal" data-target="#TimeSheetCreate">Add entry</button>
     <br>
     <br>
     <table class="table table-striped text-center">
@@ -106,9 +111,87 @@
         <td>${timeSheet.entryDate}</td>
         <td>${timeSheet.project.name}</td>
         <td>${timeSheet.workedHours}</td>
+        <form method="post">
+          <td>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${timeSheet.id}" >Update</button>
+            <button type="submit" class="btn btn-danger" formaction="/hrms/projectTask/delete">Delete</button>
+            <div class="modal fade" id="${timeSheet.id}">
+            <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            <div class="modal-header">
+              <h4>Update TimeSheet Entry</h4>
+            </div>
+            <div class="modal-body">
+            <div class="form-group">
+            <div class="input-group">
+              <label>Date</label>
+              <input type="text" class="form-control" name="entryDate" value= "${timeSheet.entryDate}" required="required">
+            </div>
+            </div>
+            <div class="modal-body">
+            <div class="form-group">
+            <div class="input-group">
+              <label>Project Name</label>
+                <input type="hidden" name="projectId" value = "${timeSheet.project.id}">   
+                <input type="text" class="form-control" name="projectName" value= "${timeSheet.project.name}" required="required">
+            </div>
+            </div>
+            <div class="form-group">
+              <label>Hours Worked</label>
+              <input type="text" class="form-control" name="workedHours" value= "${timeSheet.workedHours}" required="required">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block btn-lg" formaction="/hrms/projectTask/update">Update</button>
+              <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Cancel</button>
+              <input type="hidden" name="id" value = "${timeSheet.id}">            
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+          </td>
+        </form>
     </tr>
     </c:forEach>
     </table>
+         <div class="modal fade" id="TimeSheetCreate" >
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Add entry</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="create" method="post">
+                        <div class="form-group">
+                            <label>Date</label>
+                            <div class="input-group">
+                              <input type="date" class="form-control" name="date" value= "">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Name</label>
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="projectName" value= "${timeSheet.project.name}" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label>Client Name</label>
+                                <select class="form-control" name="clientId">
+							        <c:forEach var="client" items="${allClients}">
+							             <option value="${client.id}">${client.name}</option>
+							        </c:forEach>
+						        </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Save</button>
+                            <button type="button" class="btn btn-danger btn-block btn-lg" 
+                                data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
  </div>
 </c:if>
     
@@ -167,7 +250,7 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Enter Client Detail</h4>
+                    <h4>Update profile info</h4>
                 </div>
                 <div class="modal-body">
                     <form action="/hrms/employee/updateEmployee" method="post">

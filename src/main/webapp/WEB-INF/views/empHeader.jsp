@@ -11,14 +11,13 @@
       <a href="#" >Welcome ${employee.name}</a>
   </div>
   <div style="float:right">
-      <a href="/hrms/user/logout">logout</a>
+      <a href="/hrms/user/logout">Sign Out</a>
   </div>
 </div>
 
 <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="/hrms/employee/viewProfile">My Profile</a>
-      <a href="#" onclick="openUpdate()">Edit Profile</a>
       <a href="/hrms/employee/empProjects">Projects</a>
       <a href="/hrms/employee/empTasks">Time Sheet</a>
       <a href="/hrms/employee/empAttendance">Attendance</a>

@@ -27,7 +27,7 @@ import static com.ideas2it.hrms.common.ProjectConstants.ERROR_UPDATE_PROJECT;
  * @author Ganesh Venkat S
  */
 public class ProjectDaoImpl implements ProjectDao {
-    
+        
     @Override
     public Project createProject(Project project) throws AppException {
         Transaction transaction = null;
