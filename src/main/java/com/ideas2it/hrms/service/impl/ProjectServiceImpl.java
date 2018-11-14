@@ -110,7 +110,7 @@ public class ProjectServiceImpl implements ProjectService {
         }
         
         for (Employee employee: projectEmployees) {
-            costToCompany = costToCompany + empService.calculateCostToCompany(startDate, endDate, employee);
+            //costToCompany = costToCompany + empService.calculateCostToCompany(startDate, endDate, employee);
         }
         
         return costToCompany;
@@ -120,11 +120,5 @@ public class ProjectServiceImpl implements ProjectService {
     public List<Client> displayClients() throws AppException {
         ClientService clientService = new ClientServiceImpl();
         return clientService.displayClients();
-    }
-
-    @Override
-    public Integer calculateBillAllTasks(List<TimeSheet> curMonthTasks) {
-        // TODO Auto-generated method stub
-        return null;
     }
 }

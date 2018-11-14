@@ -27,6 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     /** {@inheritDoc}*/
     public Boolean createEmployee(Employee employee) throws AppException {
         return employeeDao.createEmployee(employee);
+        
 
     }
     
@@ -79,15 +80,6 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     
     /** {@inheritDoc}*/
-    public Integer calculateNetProfit(LocalDate startDate, LocalDate endDate, 
-            Employee employee) throws AppException {
-        Integer billAmount = calculateBillAmount(startDate, endDate, employee);
-        Integer costToCompany 
-            = calculateCostToCompany(startDate, endDate, employee);
-        return  billAmount - costToCompany;
-    }
-    
-    /** {@inheritDoc}*/
     public List<Project> getEmpProjects(List<TimeSheet> tasks) {
         List<Project> projects = new ArrayList<Project>();
         for(TimeSheet task:tasks) {
@@ -111,6 +103,15 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     
     /** {@inheritDoc}*/
+    public Integer calculateNetProfit(LocalDate startDate, LocalDate endDate, 
+            Employee employee) throws AppException {
+        Integer billAmount = calculateBillAmount(startDate, endDate, employee);
+        Integer costToCompany 
+            = calculateCostToCompany(startDate, endDate, employee);
+        return  billAmount - costToCompany;
+    }
+    
+    /** {@inheritDoc}*/
     public Integer calculateCostToCompany(LocalDate startDate, 
             LocalDate endDate, Employee employee) throws AppException {
         SalaryTrackerService salaryService = new SalaryTrackerServiceImpl();
@@ -127,18 +128,8 @@ public class EmployeeServiceImpl implements EmployeeService{
         return costToCompany; 
     }
     
-    /**
-     * Calculates the total billable amount, between the two different date
-     * from a single employee
-     * 
-     * @param startDate
-     *        starting working date
-     * @param endDate
-     *        ending working date
-     * @param employee
-     *        company employee
-     */
-    private Integer calculateBillAmount(LocalDate startDate, LocalDate endDate, 
+    /** {@inheritDoc}*/
+    public Integer calculateBillAmount(LocalDate startDate, LocalDate endDate, 
             Employee employee) {
         SalaryTrackerService salaryService = new SalaryTrackerServiceImpl();
         Integer billAmount = 0;
@@ -209,5 +200,15 @@ public class EmployeeServiceImpl implements EmployeeService{
         Attendance attendance = null;
             attendance = attendanceService.getAttendance(employee, workedDate);
         return attendance.getStatus();
+    }
+
+    @Override
+    public boolean salaryIncrement(String emailId, SalaryTracker salaryTracker)
+            throws AppException {
+        Employee employee = employeeDao.searchEmployee(emailId);
+        salaryTracker.setEmployee(employee);
+        employee.setSalary(salaryTracker.getSalary());
+        employee.getSalaryTrackers().add(salaryTracker);
+        return employeeDao.updateEmployee(employee);
     }
 }
