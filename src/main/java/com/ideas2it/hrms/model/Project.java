@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.SQLDelete;
 
 /**
@@ -39,7 +41,8 @@ public class Project {
     private Client client;
     @OneToMany(mappedBy = "project", fetch=FetchType.EAGER)
     private List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();    
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinTable(
         name = "project_employee", 
         joinColumns = { @JoinColumn(name = "project_id") }, 
