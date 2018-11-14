@@ -8,6 +8,7 @@ import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
+import com.ideas2it.hrms.model.SalaryTracker;
 import com.ideas2it.hrms.model.TimeSheet;
 
 /**
@@ -105,8 +106,22 @@ public interface EmployeeService {
     * @param employee
     *        company employee
     */
-   public Integer calculateCostToCompany(LocalDate startDate, 
+   Integer calculateCostToCompany(LocalDate startDate, 
            LocalDate endDate, Employee employee) throws AppException;
+   
+   /**
+    * Calculates the total billable amount, between the two different date
+    * from a single employee
+    * 
+    * @param startDate
+    *        starting working date
+    * @param endDate
+    *        ending working date
+    * @param employee
+    *        company employee
+    */
+   Integer calculateBillAmount(LocalDate startDate, LocalDate endDate, 
+           Employee employee);
    
    /**
     * Used to gets the all projects
@@ -117,4 +132,15 @@ public interface EmployeeService {
     * Used to create the task
     */
    boolean createTask(TimeSheet task) throws AppException;
+   
+   /**
+    * Used to update the employee salary and create the salary tracker
+    * 
+    * @param emailId
+    *        employee emailId
+    * @param salaryTracker
+    *         salary tracking details 
+    */
+   boolean salaryIncrement(String emailId, SalaryTracker salaryTracker) 
+           throws AppException;
 }

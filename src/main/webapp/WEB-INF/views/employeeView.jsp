@@ -286,6 +286,27 @@
         </div>
      </div>
 
+
+<div id="empRevenue" >
+        <form method="post" action="/hrms/employee/profit">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="date" class="form-control" name="startDate" id="startDate"
+                    placeholder="Start Date" required="required">
+            </div>
+            <div class="input-group">
+                <input type="date" class="form-control" name="endDate" id="endDate"
+                    placeholder="End Date" required="required">
+            </div>
+            <div class="input-group">
+                <button type="submit">Show</button>
+            </div>
+         </div>
+         <input type="hidden" id="empId" name="empId">
+        </form>
+    </div>
+
+
 </body>
 
 <c:if test="${not empty message}">

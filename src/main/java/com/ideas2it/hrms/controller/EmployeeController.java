@@ -21,6 +21,7 @@ import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
+import com.ideas2it.hrms.model.SalaryTracker;
 import com.ideas2it.hrms.model.TimeSheet;
 import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
@@ -66,12 +67,17 @@ public class EmployeeController {
     
     @PostMapping("employee/createEmployee")
     public ModelAndView createEmployee(@ModelAttribute("employee") 
-            Employee employee, HttpServletRequest request, ModelMap model) {
+            Employee employee, @ModelAttribute("salaryTracker") SalaryTracker 
+            salaryTracker, HttpServletRequest request, ModelMap model) {
         try {
+            List<SalaryTracker> trackers = new ArrayList<SalaryTracker>();
+            salaryTracker.setEmployee(employee);
+            trackers.add(salaryTracker);
             Integer id = Integer.parseInt(request.getParameter("designationId"));
             Designation designation = new Designation();
             designation.setId(id);
             employee.setDesignation(designation);
+            employee.setSalaryTrackers(trackers);
             if(employeeService.isEmployeeExist(employee.getEmailId())) {
                 if (employeeService.createEmployee(employee)) {
                     model.addAttribute(EmpConstants.LABEL_MESSAGE, 
@@ -180,6 +186,7 @@ public class EmployeeController {
                 = new ModelAndView(ADMINMENU, "command", new TimeSheet());
             modelAndView.addObject("allProjects", employeeService.getAllProjects());
             modelAndView.addObject("command", new Employee());
+            modelAndView.addObject("command", new SalaryTracker());
             modelAndView.addObject("allDesignation", 
                 employeeService.getDesignations());
             return modelAndView.addObject(EmpConstants.LABEL_EMPLOYEES, 
@@ -250,17 +257,56 @@ public class EmployeeController {
     public ModelAndView calculateNetProfit(HttpServletRequest request, 
             ModelMap model) {
         try {
-            HttpSession session = request.getSession(false);
-            Employee employee = (Employee) session.getAttribute("employee");
+            Employee employee = employeeService.
+                    searchEmployee(request.getParameter("empEmailId"));
             LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
             LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));
-            Integer profit 
-                = employeeService.calculateNetProfit(startDate, endDate, employee);
-            return new ModelAndView(ADMINMENU, EmpConstants.LABEL_MESSAGE, 
-                    profit);
+            Integer billAmount = employeeService.
+                calculateBillAmount(startDate, endDate, employee);
+            Integer costToCompany = employeeService.
+                calculateCostToCompany(startDate, endDate, employee);
+            Integer profit = employeeService.
+                calculateNetProfit(startDate, endDate, employee);
+            model.addAttribute("BilAmount", billAmount);
+            model.addAttribute("CostToCompany", costToCompany);
+            model.addAttribute("EmpProfit", profit);
+            return displayEmployees(model);
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
                 appException.getMessage());
+        }
+    }
+    
+    @PostMapping("employee/revenue")
+    public ModelAndView viewRevenue(HttpServletRequest request) {
+        try {
+            Employee employee = employeeService.
+                searchEmployee(request.getParameter("emailId"));
+            return new ModelAndView("revenue", "employeeDetail", employee);
+        } catch (AppException appException) {
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
+                    appException.getMessage());
+        }
+    }
+    
+    @PostMapping("employee/increment")
+    public ModelAndView SalaryIncrement(@ModelAttribute("salaryTracker") 
+            SalaryTracker salaryTracker, HttpServletRequest request, 
+            ModelMap model) {
+        try {
+            
+            String emailId = request.getParameter("emailId");
+            if (employeeService.salaryIncrement(emailId, salaryTracker)) {
+                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
+                     EmpConstants.MSG_UPDATE_SUCCESS);
+            } else {
+                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
+                        EmpConstants.MSG_UPDATE_FAIL);
+            }
+            return displayEmployees(model);
+        } catch (AppException appException) {
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
+                    appException.getMessage());
         }
     }
 }

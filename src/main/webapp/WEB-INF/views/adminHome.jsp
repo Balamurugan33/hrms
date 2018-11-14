@@ -1,17 +1,76 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <jsp:include page='adminHeader.jsp'/>
+  
+  <style>
+.revenue {
+     background: white;
+     display: inline-block;
+     padding: 25px;
+     border-radius: 20px;
+     box-shadow: 10px 10px 10px 10px #8a6bb1; 
+     align: center;
+     margin-top:30px;
+     margin-left:50%;
+     }
+     
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    background:none;
+    outline:none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown-content button:hover {background-color: gray;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+ </style>
+ 
 </head>
 <body>
-
-    
-
 <c:if test="${not empty clients}">
     <div>
         <button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-outline-success btn-lg">Add Client</button>
@@ -161,11 +220,8 @@
                         </div>
                         <div class="form-group">
                             <label>Client Name</label>
-                                <select class="form-control" name="clientId">
-                                    <c:forEach var="client" items="${allClients}">
-                                         <option value="${client.id}" <c:if test = "${client.id==project.client.id}"> selected="selected" </c:if> >${client.name}</option>
-                                    </c:forEach>
-                                </select>
+                                <input type="text" class="form-control" name="name"
+                                    value= "${project.client.name}" required="required">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg" 
@@ -207,38 +263,58 @@
             <td>${employee.designation.name}</td>
             <td>${employee.salary}</td>
             <td><form action="/hrms/employee/deleteEmployee" method="post">
-                <button type="button"  data-toggle="modal" data-target="#${employee.id}" class="btn btn-outline-success" >Assign Task</button>
-                <button type="button" onclick="setDate('this.form')" class="btn btn-primary">View Revenue</button>
-                <button type="submit" class="btn btn-outline-danger">Remove</button>
+                <div class="dropdown">
+				  <button class="btn btn-success">Select Action</button>
+				  <div class="dropdown-content">
+				    <a href="#" data-toggle="modal" data-target="#${employee.id}">Assign Project</a>
+						     <div class="dropdown">
+							    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Assign Project
+							    <span class="caret"></span></button>
+							    <ul class="dropdown-menu dropdown-menu-right">
+							      <form action="/hrms/employee/updateEmployee" method="post">
+							      <c:forEach var ="project" items="${allProjects}">
+							      <li><button type="sumbit">${project.name}</button></li>
+							      <input type="hidden" name="projectId" value="${project.id}">
+							      </c:forEach>
+							      </form>
+							    </ul>
+							  </div>
+				    <a href="#" data-toggle="modal" data-target="#${employee.id}">Increment</a>
+				    <a href="#" data-toggle="modal" data-target="#${employee.mobileNo}">View Revenue</a>
+				    <button type="submit" class="btn-danger"> <i class="fas fa-times-square"></i>Remove</button>
+				  </div>
+				  <button type="sumbit">gh${project.name}</button>
+				</div>
                 <input type="hidden" name="id" value="${employee.id}">
+                <input type="hidden" name="id" value="${employee.emailId}">
                 </form></td>
         </tr>
              <div class="modal fade" id="${employee.id}" >
                  <div class="modal-dialog modal-sm">
                      <div class="modal-content">
                          <div class="modal-header">
-                             <h4>Enter TimeSheet</h4>
+                             <h4>Enter Increment Salary & Hourly Rate</h4>
                          </div>
                          <div class="modal-body">
-                             <form action="/hrms/employee/createTask" method="post">
+                             <form action="/hrms/employee/increment" method="post">
                                  <div class="form-group">
-                                     <label>Project Name</label>
+                                     <label>Salary</label>
                                      <div class="input-group">
-                                         <input type="text" class="form-control" name="projectId"
+                                         <input type="text" class="form-control" name="salary"
                                              required="required">
                                      </div>
                                  </div>
                                  <div class="form-group">
-                                     <label>Worked hours</label>
+                                     <label>Hourly Rate</label>
                                      <div class="input-group">
-                                         <input type="text" class="form-control" name="wrokedHours"
+                                         <input type="text" class="form-control" name="hourlyRate"
                                              required="required">
                                      </div>
                                  </div>
-                                 <input type="hidden" name="empId" value="${employee.id}">
-                                 <input type="hidden" name="entryDate" value="<%= java.time.LocalDate.now() %>">
+                                 <input type="hidden" name="emailId" value="${employee.emailId}">
+                                 <input type="hidden" name="updateDate" value="<%= java.time.LocalDate.now() %>">
                                  <div class="form-group">
-                                     <button type="submit" class="btn btn-primary btn-block btn-lg" >Assign</button>
+                                     <button type="submit" class="btn btn-primary btn-block btn-lg" >Increment</button>
                                      <button type="button" class="btn btn-danger btn-block btn-lg" 
                                          data-dismiss="modal">Cancel</button>
                                  </div>
@@ -247,6 +323,54 @@
                      </div>
                  </div>
               </div>
+              
+              <div class="modal fade" id="${employee.mobileNo}" >
+                 <div class="modal-dialog modal-sm">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h4>Enter Dates</h4>
+                         </div>
+                         <c:if test="${fn:length(employee.attendance) != 0}">
+                         <form method="post" action="/hrms/employee/profit">
+                         <div class="modal-body">
+					        <div class="form-group">
+					            <div class="input-group">
+					                <label>Start Date</label>
+					                <input type="date" class="form-control" name="startDate"
+					                    required="required" min="${employee.attendance[0].attendDate}" 
+					                    max="${employee.attendance[fn:length(employee.attendance)-1].attendDate}" >
+					            </div>
+					            <div class="input-group">
+					                <label>End Date</label>
+					                <input type="date" class="form-control" name="endDate"
+					                    required="required" min="${employee.attendance[0].attendDate}" 
+                                        max="${employee.attendance[fn:length(employee.attendance)-1].attendDate}" >
+					            </div>
+					         </div>
+					         <input type="hidden" name="empEmailId" value="${employee.emailId}">
+                         </div>
+                         <div class="modal-footer">
+                             <div class="input-group">
+                                    <button type="submit" class="btn btn-primary btn-block btn-lg">Show</button>
+                                    <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                         </div>
+                         </form>
+                         </c:if>
+                         <c:if test="${fn:length(employee.attendance) == 0}">
+                         <div class="modal-body">
+                               <label>No Entries</label>
+                         </div>
+                         <div class="modal-footer">
+                             <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Close</button>
+                         </div>
+                         </c:if>
+                     </div>
+                 </div>
+              </div>
+              
+              
+              
         </c:forEach>
         </table>
         
@@ -408,6 +532,7 @@
                                     required="required">
                             </div>
                         </div>
+                        <input type="hidden" name="updateDate" value="<%= java.time.LocalDate.now() %>">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Save</button>
                             <button type="button" class="btn btn-danger btn-block btn-lg" 
@@ -419,24 +544,22 @@
         </div>
      </div>
      
-     <div id="empRevenue" >
-        <form method="post" action="/hrms/employee/profit">
-        <div class="form-group">
-            <div class="input-group">
-                <input type="date" class="form-control" name="startDate" id="startDate"
-                    placeholder="Start Date" required="required">
-            </div>
-            <div class="input-group">
-                <input type="date" class="form-control" name="endDate" id="endDate"
-                    placeholder="End Date" required="required">
-            </div>
-            <div class="input-group">
-                <button type="submit">Show</button>
-            </div>
-         </div>
-         <input type="hidden" id="empId" name="empId">
-        </form>
-    </div>
+  <c:if test="${not empty EmpProfit}">
+     <div class="revenue">
+        <table class="table table-striped text-center">
+            <tr>
+               <th class="text-center">Cost To Company Pay</th>
+	           <th class="text-center">Bill Amount</th>
+	           <th class="text-center">Profit</th>
+            </tr>
+            <tr>
+                <td>${CostToCompany}</td>
+                <td>${BilAmount}</td>
+                <td>${EmpProfit}</td>
+            </tr>
+        </table>
+     </div>
+  </c:if>
      
 <body/>
 <c:if test="${not empty message}">
@@ -444,10 +567,5 @@
     alert ("${message}");
 </script>
 
-<script>
-function setDate(form) {
-	form.getElementById("empid");
-}
-</script>
 </c:if>
 </html>

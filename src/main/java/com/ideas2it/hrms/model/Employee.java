@@ -3,6 +3,7 @@ package com.ideas2it.hrms.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -61,7 +62,7 @@ public class Employee {
     @JoinColumn(name="designation_id")
     private Designation designation;
     
-    @OneToMany(mappedBy="employee")
+    @OneToMany(mappedBy="employee", cascade=CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<SalaryTracker> salaryTrackers = new ArrayList<SalaryTracker>();
     
