@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.SQLDelete;
+
 /**
  * Used to get the client details it's means contact details
  * It's has only single client details of company
@@ -21,6 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="client")
+@SQLDelete(sql="update client set expired_date = current_date() where id=?")
 public class Client {
     @Id  
     @Column(name="id")

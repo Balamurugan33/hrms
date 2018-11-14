@@ -481,7 +481,7 @@
         </div>
      </div>
      
-     <div class="modal fade" id="EmployeeCreate" >
+     <div class="modal fade" id="EmployeeCreate">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">

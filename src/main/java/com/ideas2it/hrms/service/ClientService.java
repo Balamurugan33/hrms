@@ -55,8 +55,9 @@ public interface ClientService {
      * Calculates net profit for company from this client, for current month
      * @param email
      *        client
+     * @throws AppException 
      */
-    Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate);
+    Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate) throws AppException;
     
     /**
      * Find an existing client 

@@ -10,9 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.SQLDelete;
 
 /**
  * Project model
@@ -22,6 +26,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="project")
+@SQLDelete(sql="update project set expired_date = current_date() where id=?")
 public class Project {
     @Id  
     @Column(name="id")
@@ -33,7 +38,14 @@ public class Project {
     @JoinColumn(name = "client_id")
     private Client client;
     @OneToMany(mappedBy = "project", fetch=FetchType.EAGER)
-    private List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
+    private List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();    
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(
+        name = "project_employee", 
+        joinColumns = { @JoinColumn(name = "project_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "employee_id") }
+    )
+    private List<Employee> employees = new ArrayList<Employee>();
     
     public Integer getId() {
         return id;
@@ -64,4 +76,13 @@ public class Project {
     public void setTimeSheet(List<TimeSheet> timeSheet) {
         this.timeSheet = timeSheet;
     }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+    
 }

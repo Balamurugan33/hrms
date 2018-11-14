@@ -49,7 +49,7 @@ public class ProjectServiceImpl implements ProjectService {
         return projectDao.removeProject(project);
     }
         
-    public Integer calculateNetProfit(Project project, LocalDate startDate, LocalDate endDate) {
+    public Integer calculateNetProfit(Project project, LocalDate startDate, LocalDate endDate) throws AppException {
         Integer billableAmount = 0;
         Integer costToCompany = 0;
         Integer netProfit = 0;
@@ -96,7 +96,7 @@ public class ProjectServiceImpl implements ProjectService {
         return totalBill;
     }
     
-    public Integer calculateCostToCompany(Project project, LocalDate startDate, LocalDate endDate) {
+    public Integer calculateCostToCompany(Project project, LocalDate startDate, LocalDate endDate) throws AppException {
         EmployeeServiceImpl empService = new EmployeeServiceImpl();
         List<TimeSheet> projectTimeSheet = project.getTimeSheet();  
         List<Employee> projectEmployees = new ArrayList<Employee>();

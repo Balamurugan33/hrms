@@ -15,7 +15,7 @@ import com.ideas2it.hrms.model.Project;
  * @author Ganesh Venkat S
  */
 public interface ProjectDao {
-    
+        
     /**
      * Creates a new project 
      * 

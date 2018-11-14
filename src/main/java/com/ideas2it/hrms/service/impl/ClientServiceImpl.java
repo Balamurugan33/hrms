@@ -46,7 +46,7 @@ public class ClientServiceImpl implements ClientService {
         return clientDao.searchClient(email);
     }
     
-    public Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate) {
+    public Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate) throws AppException {
         ProjectServiceImpl projectService = new ProjectServiceImpl();
         List<Project> clientProjects = client.getProjects();
         Integer netProfit = 0;

@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.SQLDelete;
+
 /**
  * Attendance model
  * 
@@ -19,6 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="attendance")
+@SQLDelete(sql="update attendance set expired_date = current_date() where id=?")
 public class Attendance {
     @Id  
     @Column(name="id")

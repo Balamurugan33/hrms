@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.SQLDelete;
+
 /**
  * Used to get the Designation of the employee
  * Not a list of designation, only it's store the single designation detail
@@ -24,6 +26,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="designation")
+@SQLDelete(sql="update designation set expired_date = current_date() where id=?")
 public class Designation {
     
     @Id

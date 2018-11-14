@@ -1,8 +1,10 @@
 package com.ideas2it.hrms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +16,9 @@ import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.TimeSheet;
+import com.ideas2it.hrms.service.ProjectService;
 import com.ideas2it.hrms.service.TimeSheetService;
+import com.ideas2it.hrms.service.impl.ProjectServiceImpl;
 import com.ideas2it.hrms.service.impl.TimeSheetServiceImpl;
 
 import static com.ideas2it.hrms.common.ProjectConstants.MSG_CREATED;
@@ -53,42 +57,57 @@ public class TimeSheetController {
        return modelAndView;
     }
     
-    @PostMapping("update")
-    public ModelAndView updateTask(
-        @ModelAttribute("task") TimeSheet task, 
-        HttpServletRequest request) {
-        TimeSheetService taskService = new TimeSheetServiceImpl();
+    @PostMapping("projectTask/update")
+    public ModelAndView updateTask(@ModelAttribute("task") TimeSheet task, HttpServletRequest request) {
+        TimeSheetService sheetService = new TimeSheetServiceImpl();
+        ProjectService projectService = new ProjectServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
+            List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
             // Check if the task to be updated exists 
-            task = taskService.updateTask(task);   
+            HttpSession session = request.getSession();
+            Employee currentEmployee = (Employee) session.getAttribute("employee");
+            Integer projectId = Integer.parseInt(request.getParameter("projectId"));
+            String projectName = request.getParameter("projectName");
+            
+            
+            Project project = projectService.getProjectById(projectId);
+            //System.out.println(task.getProject().getName());
+            task.setProject(project);
+            task.setEmployee(currentEmployee);
+            task.getProject().setName(projectName);
+            task = sheetService.updateTask(task);   
+            // Get this employee's tasks
+            timeSheet = sheetService.getAllTasks();
+
             modelAndView.addObject("Success", MSG_UPDATED);
-            // redirect him to the same page; the tasks must also be sent
-            // alert box is optional for now
-            modelAndView.setViewName("tasks");
+            modelAndView.addObject("timeSheets", timeSheet);
+            modelAndView.setViewName("employeeView");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());  
         }
         return modelAndView;
     }
         
-    @PostMapping("delete")
+    @PostMapping("projectTask/delete")
     public ModelAndView deleteTask(HttpServletRequest request) {
-        TimeSheetService taskService = new TimeSheetServiceImpl();
+        TimeSheetService sheetService = new TimeSheetServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
+        List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
 
         try {
-            // Check if the task to be deleted exists 
+            // Check if the task to be deleted exists - rare case, db inconsistent with application
             Integer id = Integer.parseInt(request.getParameter("id"));
-            TimeSheet task = taskService.getTaskById(id);
+            TimeSheet task = sheetService.getTaskById(id);
+            
             if (null != task) {
-                task = taskService.removeTask(task);    
-            }
+                task = sheetService.removeTask(task);    
+                timeSheet = sheetService.getAllTasks();
+            }            
             modelAndView.addObject("Success", MSG_DELETED);
-            // redirect him to the same page; the tasks must also be sent
-            // alert box is optional for now
-            modelAndView.setViewName("tasks");
+            modelAndView.addObject("timeSheets", timeSheet);
+            modelAndView.setViewName("employeeView");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());  
         }

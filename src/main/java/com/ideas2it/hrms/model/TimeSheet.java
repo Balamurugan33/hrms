@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.SQLDelete;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,6 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name="timesheet")
+@SQLDelete(sql="update timesheet set expired_date = current_date() where id=?")
 public class TimeSheet {
     @Id  
     @Column(name="id")

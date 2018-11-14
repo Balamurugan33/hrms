@@ -11,12 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.SQLDelete;
 
 /**
  * Used to get the employee details it's means single employee details
@@ -29,6 +31,7 @@ import org.hibernate.annotations.LazyCollectionOption;
  */
 @Entity
 @Table(name="employee")
+@SQLDelete(sql="update employee set expired_date = current_date() where id=?")
 public class Employee {
     
     @Id
@@ -63,6 +66,9 @@ public class Employee {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<SalaryTracker> salaryTrackers = new ArrayList<SalaryTracker>();
     
+    @ManyToMany(mappedBy="employees", fetch=FetchType.EAGER)
+    private List<Project> projects = new ArrayList<Project>();
+
     @Column(name="salary")
     private Integer salary;
     
@@ -146,4 +152,11 @@ public class Employee {
         this.salaryTrackers = salaryTrackers;
     }
     
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
 }
