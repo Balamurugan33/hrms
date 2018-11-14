@@ -66,7 +66,8 @@ public class Employee {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<SalaryTracker> salaryTrackers = new ArrayList<SalaryTracker>();
     
-    @ManyToMany(mappedBy="employees", fetch=FetchType.EAGER)
+    @ManyToMany(mappedBy="employees")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Project> projects = new ArrayList<Project>();
 
     @Column(name="salary")

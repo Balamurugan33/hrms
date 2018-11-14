@@ -309,4 +309,31 @@ public class EmployeeController {
                     appException.getMessage());
         }
     }
+    
+    @PostMapping("employee/assignProject")
+    public ModelAndView assignProject(HttpServletRequest request, 
+            ModelMap model) {
+        try {
+            
+            String emailId = request.getParameter("emailId");
+            Integer id = Integer.parseInt(request.getParameter("projectId"));
+            Employee employee = employeeService.searchEmployee(emailId);
+            Project project = new Project();
+            project.setId(id);
+            
+            if (!employee.getProjects().contains(project)) {
+                employee.getProjects().add(project);
+                employeeService.updateEmployee(employee);
+                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
+                        EmpConstants.MSG_UPDATE_SUCCESS);
+            } else {
+                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
+                        EmpConstants.MSG_ALREADY_ASSIGN);
+            }
+            return displayEmployees(model);
+        } catch (AppException appException) {
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
+                    appException.getMessage());
+        }
+    }
 }
