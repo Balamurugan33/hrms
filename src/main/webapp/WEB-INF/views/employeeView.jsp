@@ -1,19 +1,16 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <link rel = "stylesheet"
-   type = "text/css"
-   href = "<c:url value='/resources/attendanceToggle.css'/>"/>
+ <link rel = "stylesheet" type = "text/css" href = "<c:url value='/resources/attendanceToggle.css'/>"/>
+ <link rel = "stylesheet" type = "text/css" href = "<c:url value='/resources/bootstrap.css'/>"/>
 </head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <jsp:include page='empHeader.jsp'/>
 <body>
-
+<div id="view" style="transition: margin-left .5s; padding: 16px;">
 <c:if test="${not empty employeeDetail}">
   <div align="center">
   <table style="float:center">
@@ -59,6 +56,7 @@
         <th class="text-center">Date</th>
         <th class="text-center">Project</th>
         <th class="text-center">Worked Hours</th>
+        <th class="text-center">Action</th>
     </tr>
     <c:forEach var= "timeSheet" items= "${timeSheets}">
     <tr>
@@ -258,6 +256,7 @@
             </div>
         </div>
      </div>
+ </div>
 </body>
 
 <c:if test="${not empty message}">
@@ -266,15 +265,13 @@
 </script>
 </c:if>
 <script>
-function openUpdate(event) {
-    $("#Update").modal("show");
-}
-
-function closeUpdate(event) {
-    $("#Update").modal("hide");
-}
-</script>
-  <script>
+	function openUpdate(event) {
+	    $("#Update").modal("show");
+	}
+	
+	function closeUpdate(event) {
+	    $("#Update").modal("hide");
+	}
     function checkAttendance(checkbox)
     {
       if (checkbox.checked)
@@ -284,6 +281,18 @@ function closeUpdate(event) {
       else {
           window.location = "/hrms/employee/markAbsent";    
       }
+    }
+    
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("view").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        document.getElementById("view").style.marginLeft = "0";
     }
   </script>
 </html>

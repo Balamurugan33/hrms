@@ -8,12 +8,33 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <jsp:include page='adminHeader.jsp'/>
+<style>
+
+.pulse:hover,
+.pulse:focus {
+          animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+}
+
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+.pulse {
+  --color: #ef6eae;
+  --hover: #ef8f6e;
+}
+
+</style>
 </head>
 <body style="    margin-left: 78px;">
 <c:if test="${not empty clients}">
     <div>
-        <button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-outline-success btn-lg">Add Client</button>
-        <table class="table table-striped text-center">
+        <center><button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-success btn-lg pulse">Add Client</button></center>
+        <table class="table table-striped table-dark text-center">
         <tr>
 	        <th class="text-center">Name</th>
 	        <th class="text-center">Mobile No</th>
