@@ -26,7 +26,7 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_DELETED;
 import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
 
 /**
- * Provides functionality to manage tasks of projects
+ * Provides functionality to manage employee TimeSheets
  * 
  * @author Ganesh Venkat S
  */
@@ -64,7 +64,6 @@ public class TimeSheetController {
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
-            // Check if duplicate task exists including deleted tasks
             Project project = new Project();
             project.setId(Integer.parseInt(request.getParameter("projectId")));
             Employee employee = new Employee();
@@ -73,8 +72,6 @@ public class TimeSheetController {
             task.setEmployee(employee);
             task = taskService.createTask(task);   
             modelAndView.addObject("Success", MSG_CREATED);
-            // redirect him to the same page; the tasks must also be sent
-            // alert box is optional for now
             modelAndView.setViewName("tasks");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
@@ -90,20 +87,16 @@ public class TimeSheetController {
 
         try {
             List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
-            // Check if the task to be updated exists 
             HttpSession session = request.getSession();
             Employee currentEmployee = (Employee) session.getAttribute("employee");
             Integer projectId = Integer.parseInt(request.getParameter("projectId"));
-            String projectName = request.getParameter("projectName");
-            
+            String projectName = request.getParameter("projectName");            
             
             Project project = projectService.getProjectById(projectId);
-            //System.out.println(task.getProject().getName());
             task.setProject(project);
             task.setEmployee(currentEmployee);
             task.getProject().setName(projectName);
             task = sheetService.updateTask(task);   
-            // Get this employee's tasks
             timeSheet = sheetService.getAllTasks();
 
             modelAndView.addObject("Success", MSG_UPDATED);
@@ -122,7 +115,6 @@ public class TimeSheetController {
         List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
 
         try {
-            // Check if the task to be deleted exists - rare case, db inconsistent with application
             Integer id = Integer.parseInt(request.getParameter("id"));
             TimeSheet task = sheetService.getTaskById(id);
             
@@ -139,7 +131,6 @@ public class TimeSheetController {
         return modelAndView;
     }
     
-    // Check if this method is redundant
     @GetMapping("displayAll")
     public ModelAndView displayAllTasks(HttpServletRequest request) {
         TimeSheetService taskService = new TimeSheetServiceImpl();
@@ -148,8 +139,6 @@ public class TimeSheetController {
         try {
             List<TimeSheet> allTasks = taskService.getAllTasks();
             modelAndView.addObject("allTasks", allTasks);
-            // redirect him to the same page; the tasks must also be sent
-            // alert box is optional for now
             modelAndView.setViewName("tasks");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());

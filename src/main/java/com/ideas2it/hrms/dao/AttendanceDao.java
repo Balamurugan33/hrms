@@ -11,7 +11,7 @@ import com.ideas2it.hrms.model.Employee;
  * <p>
  * Provides an interface for basic CRUD operations on the Attendance Model:
  * Add new attendance, Get attendance, Get all attendances,
- * Update attendance, Remove attendance
+ * Update attendance, Remove attendance, Get attendanceSheet of an employee
  * </p>
  *
  * @author Ganesh Venkat S
@@ -20,9 +20,6 @@ public interface AttendanceDao {
     
     /**
      * Creates a new attendance 
-     * 
-     * @param employee
-     *       employee
      *       
      * @param attendance
      *       new attendance

@@ -25,7 +25,7 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
 
 /**
  * Provides functionality to manage projects delegated to the company
- * 
+ * And calculate netProfit for company from a project, between a startDate and an endDate
  * @author Ganesh Venkat S
  */
 @Controller 
@@ -40,7 +40,6 @@ public class ProjectController {
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
-            // Check if duplicate project exists including deleted projects
             Client client = new Client();
             client.setId(Integer.parseInt(request.getParameter("clientId")));
             project.setClient(client);
@@ -63,7 +62,6 @@ public class ProjectController {
             Client client = new Client();
             client.setId(Integer.parseInt(request.getParameter("clientId")));
             project.setClient(client);
-            // Check if the project to be updated exists 
             project = projectService.updateProject(project);   
             modelAndView.setViewName("projects");
         } catch (AppException appException) {
@@ -78,7 +76,6 @@ public class ProjectController {
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
-            // Check if the project to be deleted exists 
             Integer id = Integer.parseInt(request.getParameter("id"));
             Project project = projectService.getProjectById(id);
             if (null != project) {
@@ -92,7 +89,6 @@ public class ProjectController {
         return displayAllProjects(modelAndView);
     }
     
-    // Check if this method is redundant
     @GetMapping("displayAll")
     public ModelAndView displayAllProjects(ModelAndView modelAndView) {
         ProjectService projectService = new ProjectServiceImpl();
@@ -110,22 +106,29 @@ public class ProjectController {
     }
     
     @GetMapping("netProfit")
-    public ModelAndView getNetProfit(
-            @ModelAttribute("project") Project project, 
-                HttpServletRequest request) {
+    public ModelAndView getNetProfit(HttpServletRequest request) {
         ProjectService projectService = new ProjectServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
+            Integer projectId = Integer.parseInt(request.getParameter("projectId"));
             LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
             LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));            
             Integer netProfit;
-            
-            // Check if duplicate project exists including deleted projects
+            Integer billableAmount;
+            Integer costToCompany;
+            Project project;
             Client client = new Client();
+            
+            project = projectService.getProjectById(projectId);
             client.setId(Integer.parseInt(request.getParameter("clientId")));
             project.setClient(client);
             netProfit = projectService.calculateNetProfit(project, startDate, endDate);
+            billableAmount = projectService.calculateBillableAmount(project, startDate, endDate);
+            costToCompany = projectService.calculateCostToCompany(project, startDate, endDate);
+            modelAndView.addObject("Profit", netProfit);
+            modelAndView.addObject("BilAmount", billableAmount);
+            modelAndView.addObject("CostToCompany", costToCompany);
             modelAndView.addObject("Success", MSG_CREATED);
             modelAndView.setViewName("adminHome");
         } catch (AppException appException) {

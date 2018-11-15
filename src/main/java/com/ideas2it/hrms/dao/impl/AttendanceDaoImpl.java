@@ -44,10 +44,10 @@ public class AttendanceDaoImpl implements AttendanceDao {
             session.save(attendance);
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_CREATE_ATTENDANCE + attendance.getId(), e);
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ERROR_CREATE_ATTENDANCE + attendance.getId(), e);
             throw new AppException(ERROR_CREATE_ATTENDANCE 
                 + attendance.getId());
         }
@@ -60,25 +60,22 @@ public class AttendanceDaoImpl implements AttendanceDao {
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         
         try (Session session = HibernateSession.getSession()) {
-            transaction = session.beginTransaction();
-            
+            transaction = session.beginTransaction();            
             CriteriaBuilder builder = session.getCriteriaBuilder();
             CriteriaQuery<Attendance> criteria = builder.createQuery(Attendance.class);
             Root<Attendance> attendRoot = criteria.from(Attendance.class);
-
             Predicate[] predicates = new Predicate[2];
+            
             predicates[0] = builder.equal(attendRoot.get("employee"), employee);
             predicates[1] = builder.equal(attendRoot.get("attendDate"), attendDate);
-            criteria.select(attendRoot).where(predicates);
-            
+            criteria.select(attendRoot).where(predicates);            
             attendanceSheet = session.createQuery(criteria).getResultList();
             if (!attendanceSheet.isEmpty()) {
                 attendance = attendanceSheet.get(0);
-            }
+            }            
             transaction.commit();
         } catch (HibernateException e) {
             AppLogger.error(ERROR_RETRIEVE_ATTENDANCE + attendance.getId(), e);
-
             if (null != transaction) {
                 transaction.rollback();
             }  
@@ -94,16 +91,15 @@ public class AttendanceDaoImpl implements AttendanceDao {
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         
         try (Session session = HibernateSession.getSession()) {
-            transaction = session.beginTransaction();
-            
+            transaction = session.beginTransaction();            
             String getAttendanceSheet = "from Attendance where employee.id = :employee_id";            
-            attendanceSheet = session.createQuery(getAttendanceSheet).setParameter("employee_id", empId).getResultList();           
+            attendanceSheet = session.createQuery(getAttendanceSheet).setParameter("employee_id", empId).getResultList();            
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_RETRIEVE_ATTENDANCES + employee.getId(), e);
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ERROR_RETRIEVE_ATTENDANCES + employee.getId(), e);
             throw new AppException(ERROR_RETRIEVE_ATTENDANCES 
                 + employee.getId());
         }
@@ -116,8 +112,8 @@ public class AttendanceDaoImpl implements AttendanceDao {
         List<Attendance> attendance = new ArrayList<Attendance>();
         
         try (Session session = HibernateSession.getSession()) {
-            transaction = session.beginTransaction();
-            attendance = session.createQuery("from Attendance").list();
+            transaction = session.beginTransaction();            
+            attendance = session.createQuery("from Attendance").list();            
             transaction.commit();
         } catch (HibernateException e) {
             AppLogger.error(ERROR_RETRIEVE_ATTENDANCES, e);

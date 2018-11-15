@@ -76,7 +76,7 @@ public interface AttendanceService {
     List<Attendance> getAllAttendances() throws AppException;
     
     /**
-     * Updates a attendance's details
+     * Updates an attendance entry
      * 
      * @param attendance
      *       attendance to update
