@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 /**
  * Used to get the employee details it's means single employee details
@@ -32,6 +33,7 @@ import org.hibernate.annotations.SQLDelete;
 @Entity
 @Table(name="employee")
 @SQLDelete(sql="update employee set expired_date = current_date() where id=?")
+@Where(clause = "expired_date is null")
 public class Employee {
     
     @Id

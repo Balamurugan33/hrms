@@ -19,9 +19,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 /**
- * Project model
+ * Represents a project allocated by a client to the company.
+ * A project can have many employees and employees can work on multiple projects at a time.
  * 
  * @author Ganesh Venkat S
  *
@@ -29,18 +31,24 @@ import org.hibernate.annotations.SQLDelete;
 @Entity
 @Table(name="project")
 @SQLDelete(sql="update project set expired_date = current_date() where id=?")
+@Where(clause = "expired_date is null")
 public class Project {
+    
     @Id  
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(name="name")
     private String name;
+
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
+
     @OneToMany(mappedBy = "project", fetch=FetchType.EAGER)
     private List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();    
+
     @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinTable(
@@ -48,6 +56,7 @@ public class Project {
         joinColumns = { @JoinColumn(name = "project_id") }, 
         inverseJoinColumns = { @JoinColumn(name = "employee_id") }
     )
+
     private List<Employee> employees = new ArrayList<Employee>();
     
     public Integer getId() {
@@ -65,6 +74,7 @@ public class Project {
     public void setName(String name) {
         this.name = name;
     }
+    
     public Client getClient() {
         return client;
     }
@@ -72,6 +82,7 @@ public class Project {
     public void setClient(Client client) {
         this.client = client;
     }
+    
     public List<TimeSheet> getTimeSheet() {
         return timeSheet;
     }
@@ -112,5 +123,4 @@ public class Project {
             return false;
         return true;
     }
-    
 }

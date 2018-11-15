@@ -31,7 +31,32 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
  * @author Ganesh Venkat S
  */
 @Controller 
-public class TimeSheetController {            
+public class TimeSheetController {       
+    @PostMapping("timeSheet/createEntry")
+    public ModelAndView createEntry(@ModelAttribute("entry") TimeSheet entry, 
+            HttpServletRequest request) {
+        TimeSheetService sheetService = new TimeSheetServiceImpl();
+        ModelAndView modelAndView = new ModelAndView();                
+        HttpSession session = request.getSession();        
+        Employee employee = (Employee) session.getAttribute("employee");
+        List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
+                
+        try {
+            Project project = new Project();
+            project.setId(Integer.parseInt(request.getParameter("sheetProjectId")));
+            entry.setProject(project);
+            entry.setEmployee(employee);
+            entry = sheetService.createTask(entry);       
+            timeSheet = sheetService.getAllTasks();
+            modelAndView.addObject("timeSheets", timeSheet);
+            modelAndView.addObject("Success", MSG_CREATED);
+            modelAndView.setViewName("employeeView");
+        } catch (AppException appException) {
+            modelAndView.addObject("Error", appException.getMessage());
+        }
+        return modelAndView;
+    } 
+    
     @PostMapping("projectTask/create")
     public ModelAndView createTask(@ModelAttribute("task") TimeSheet task, 
             HttpServletRequest request) {

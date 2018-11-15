@@ -6,55 +6,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-    .toggle {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      width: 68px;
-      height: 32px;
-      display: inline-block;
-      position: relative;
-      border-radius: 50px;
-      overflow: hidden;
-      outline: none;
-      border: none;
-      cursor: pointer;
-      background-color: #707070;
-      transition: background-color ease 0.3s;
-    }
-
-    .toggle:before {
-      content: "In Out";
-      display: block;
-      position: absolute;
-      z-index: 2;
-      width: 28px;
-      height: 28px;
-      background: #fff;
-      left: 2px;
-      top: 2px;
-      border-radius: 50%;
-      font: 10px/28px Helvetica;
-      text-transform: uppercase;
-      font-weight: bold;
-      text-indent: -22px;
-      word-spacing: 37px;
-      color: #fff;
-      text-shadow: -1px -1px rgba(0,0,0,0.15);
-      white-space: nowrap;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-      transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
-    }
-
-    .toggle:checked {
-      background-color: #4CD964;
-    }
-
-    .toggle:checked:before {
-      left: 42px;
-    }
-    </style>
+ <link rel = "stylesheet"
+   type = "text/css"
+   href = "<c:url value='/resources/attendanceToggle.css'/>"/>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <jsp:include page='empHeader.jsp'/>
@@ -154,33 +108,33 @@
     </tr>
     </c:forEach>
     </table>
-         <div class="modal fade" id="TimeSheetCreate" >
+        <div class="modal fade" id="TimeSheetCreate">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4>Add entry</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="create" method="post">
+                    <form action="/hrms/timeSheet/createEntry" method="post">
                         <div class="form-group">
                             <label>Date</label>
                             <div class="input-group">
-                              <input type="date" class="form-control" name="date" value= "">
+                              <input type="date" class="form-control" name="entryDate" value= "${timeSheet.entryDate}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Project Name</label>
-                            <div class="input-group">
-                              <input type="text" class="form-control" name="projectName" value= "${timeSheet.project.name}" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                                <label>Client Name</label>
-                                <select class="form-control" name="clientId">
-							        <c:forEach var="client" items="${allClients}">
-							             <option value="${client.id}">${client.name}</option>
+                                <label>Project Name</label>
+                                <select class="form-control" name="sheetProjectId">
+							        <c:forEach var="project" items="${employee.projects}">
+							             <option value="${project.id}">${project.name}</option>
 							        </c:forEach>
 						        </select>
+                        </div>
+                       <div class="form-group">
+                            <label>Hours Worked</label>
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="workedHours" value= "${timeSheet.workedHours}" required="required">
+                            </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Save</button>
@@ -196,6 +150,7 @@
 </c:if>
     
 <c:if test="${not empty projects}">
+    <h4 align="center"> <b> History of Projects Worked On </b> </h4> 
     <div id=projectInfo align="center">
     <table class="table table-striped text-center">
     <tr>
@@ -203,6 +158,24 @@
         <th class="text-center">Client</th>
     </tr>
     <c:forEach var= "project" items= "${projects}">
+    <tr>
+        <td>${project.name}</td>
+        <td>${project.client.name}</td>
+    </tr>
+    </c:forEach>
+    </table>
+    </div>
+</c:if>
+
+<c:if test="${not empty currentProjects}">
+    <h4 align="center"><b>Current Projects</b>  </h4> 
+    <div id=projectInfo align="center">
+    <table class="table table-striped text-center">
+    <tr>
+        <th class="text-center">Project</th>
+        <th class="text-center">Client</th>
+    </tr>
+    <c:forEach var= "project" items= "${currentProjects}">
     <tr>
         <td>${project.name}</td>
         <td>${project.client.name}</td>
@@ -285,28 +258,6 @@
             </div>
         </div>
      </div>
-
-
-<div id="empRevenue" >
-        <form method="post" action="/hrms/employee/profit">
-        <div class="form-group">
-            <div class="input-group">
-                <input type="date" class="form-control" name="startDate" id="startDate"
-                    placeholder="Start Date" required="required">
-            </div>
-            <div class="input-group">
-                <input type="date" class="form-control" name="endDate" id="endDate"
-                    placeholder="End Date" required="required">
-            </div>
-            <div class="input-group">
-                <button type="submit">Show</button>
-            </div>
-         </div>
-         <input type="hidden" id="empId" name="empId">
-        </form>
-    </div>
-
-
 </body>
 
 <c:if test="${not empty message}">
