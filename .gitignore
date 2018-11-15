@@ -4,6 +4,4 @@ target/
 *.project
 .classpath
 .settings/
-.hrms.log
-/log
-log
+*.log
