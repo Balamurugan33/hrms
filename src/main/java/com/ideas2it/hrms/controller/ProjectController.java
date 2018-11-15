@@ -105,7 +105,7 @@ public class ProjectController {
         return modelAndView;
     }
     
-    @GetMapping("netProfit")
+    @PostMapping("netProfit")
     public ModelAndView getNetProfit(HttpServletRequest request) {
         ProjectService projectService = new ProjectServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
@@ -121,8 +121,6 @@ public class ProjectController {
             Client client = new Client();
             
             project = projectService.getProjectById(projectId);
-            client.setId(Integer.parseInt(request.getParameter("clientId")));
-            project.setClient(client);
             netProfit = projectService.calculateNetProfit(project, startDate, endDate);
             billableAmount = projectService.calculateBillableAmount(project, startDate, endDate);
             costToCompany = projectService.calculateCostToCompany(project, startDate, endDate);

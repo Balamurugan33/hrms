@@ -120,7 +120,7 @@ public class ClientController {
         }
     }
     
-    @GetMapping("netProfit")
+    @PostMapping("client/netProfit")
     public ModelAndView getNetProfit(HttpServletRequest request) {
         ClientService clientService = new ClientServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 

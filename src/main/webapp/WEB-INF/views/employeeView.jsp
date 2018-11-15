@@ -124,7 +124,7 @@
                         </div>
                         <div class="form-group">
                                 <label>Project Name</label>
-                                <select class="form-control" name="name">
+                                <select class="form-control" name="project">
 							        <c:forEach var="project" items="${employee.projects}">
 							             <option value="${project.id}">${project.name}</option>
 							             <input type="hidden" name="sheetProjectId" value = "${project.id}">							             

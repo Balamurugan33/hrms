@@ -27,7 +27,7 @@
             <td>${client.emailId}</td>
             <form method="post">
             <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${client.id}" >Update</button>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${client.mobileNo}" >View Revenue</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${client.mobileNo}" >View Net Profit</button>
                 <button type="submit" class="btn btn-danger" 
                     formaction="/hrms/client/deleteClient">Delete</button>
      <div class="modal fade" id="${client.id}" >
@@ -71,7 +71,7 @@
                    <div class="modal-header">
                        <h4>Enter The Dates</h4>
                    </div>
-                   <form method="post" action="/hrms/client/profit">
+                   <form method="post" action="/hrms/client/netProfit">
                    <div class="modal-body">
                       <div class="form-group">
                               <label>Start Date</label>
@@ -159,7 +159,7 @@
             <td>${project.name}</td>
             <td>${project.client.name}</td>
         <form method="post">
-            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}a" >View Revenue</button>
+            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}a" >View Net Profit</button>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}" >Update</button>
                 <button type="submit" class="btn btn-danger" 
                     formaction="delete">Delete</button>
@@ -215,6 +215,7 @@
                                         required="required" max="<%= java.time.LocalDate.now() %>" >
                             </div>
                              <input type="hidden" name="projectId" value="${project.id}">
+                             <input type="hidden" name="projectClientId" value="${project.client.id}">                             
                          </div>
                          <div class="modal-footer">
                              <div class="form-group">
