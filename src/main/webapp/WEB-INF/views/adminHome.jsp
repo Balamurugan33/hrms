@@ -554,7 +554,7 @@
         </div>
      </div>
      
-  <c:if test="${not empty EmpProfit}">
+  <c:if test="${not empty Profit}">
      <div class="revenue">
         <table class="table table-striped text-center">
             <tr>
@@ -565,7 +565,7 @@
             <tr>
                 <td>${CostToCompany}</td>
                 <td>${BilAmount}</td>
-                <td>${EmpProfit}</td>
+                <td>${Profit}</td>
             </tr>
         </table>
      </div>

@@ -17,7 +17,10 @@ public class ClientServiceImpl implements ClientService {
     /** {@inheritDoc}*/
     public Boolean createClient(Client client) throws AppException {
         return clientDao.createClient(client);
-
+    }
+    
+    public Client getClientById(Integer id) throws AppException {
+        return clientDao.getClientById(id);
     }
     
     /** {@inheritDoc}*/
@@ -56,5 +59,4 @@ public class ClientServiceImpl implements ClientService {
         }
         return netProfit;
     }    
-
 }

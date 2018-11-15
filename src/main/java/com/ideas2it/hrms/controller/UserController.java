@@ -4,14 +4,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.common.UserConstants;
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.User;
 import com.ideas2it.hrms.service.UserService;
@@ -103,7 +102,7 @@ public class UserController {
         try {
             String role = user.getRole();
             HttpSession session = request.getSession(Boolean.TRUE);
-            session.setMaxInactiveInterval(60); 
+            //session.setMaxInactiveInterval(60); 
             session.setAttribute(UserConstants.LABEL_ROLE, role);
             if (role.equals(LABEL_ADMIN)) {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());

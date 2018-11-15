@@ -23,6 +23,16 @@ public interface ClientService {
      */
     Boolean createClient(Client client) throws AppException;
     
+    /** 
+     * Gets a client
+     * 
+     * @param id
+     * @return client
+     * @throws AppException
+     */
+    
+    Client getClientById(Integer id) throws AppException;
+    
     /**
      * Update an existing client 
      * 

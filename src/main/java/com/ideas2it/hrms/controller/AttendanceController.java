@@ -37,11 +37,8 @@ public class AttendanceController {
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
-            // Check if duplicate attendance exists including deleted attendances
             attendance = attendanceService.createAttendance(attendance);   
             modelAndView.addObject("Success", MSG_CREATED);
-            // redirect him to the same page; the attendances must also be sent
-            // alert box is optional for now
             modelAndView.setViewName("attendance");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
@@ -57,11 +54,8 @@ public class AttendanceController {
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
-            // Check if the attendance to be updated exists 
             attendance = attendanceService.updateAttendance(attendance);
             modelAndView.addObject("Success", MSG_UPDATED);
-            // redirect him to the same page; the attendances must also be sent
-            // alert box is optional for now
             modelAndView.setViewName("attendance");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
@@ -69,7 +63,6 @@ public class AttendanceController {
         return modelAndView;
     }
          
-    // Check if this method is redundant
     @GetMapping("displayAll")
     public ModelAndView displayAllAttendances(HttpServletRequest request) {
         AttendanceService attendanceService = new AttendanceServiceImpl();
@@ -78,8 +71,6 @@ public class AttendanceController {
         try {
             List<Attendance> allAttendances = attendanceService.getAllAttendances();
             modelAndView.addObject("allAttendances", allAttendances);
-            // redirect him to the same page; the attendances must also be sent
-            // alert box is optional for now
             modelAndView.setViewName("attendance");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());

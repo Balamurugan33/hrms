@@ -1,5 +1,7 @@
 package com.ideas2it.hrms.controller;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -7,15 +9,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.common.ClientConstants;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Client;
-import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.service.ClientService;
 import com.ideas2it.hrms.service.impl.ClientServiceImpl;
+
+import static com.ideas2it.hrms.common.ProjectConstants.MSG_CREATED;
 
 /**
  * Used to perform the different action on client 
@@ -116,5 +118,33 @@ public class ClientController {
              return new ModelAndView(ERROR_PAGE, ClientConstants.LABEL_MESSAGE, 
                  appException.getMessage());
         }
+    }
+    
+    @GetMapping("netProfit")
+    public ModelAndView getNetProfit(HttpServletRequest request) {
+        ClientService clientService = new ClientServiceImpl();
+        ModelAndView modelAndView = new ModelAndView(); 
+   
+        try {
+            Integer clientId = Integer.parseInt(request.getParameter("clientId"));
+            LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
+            LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));            
+            Integer netProfit;
+            Integer billableAmount;
+            Integer costToCompany;
+            Client client;
+
+            client = clientService.getClientById(clientId);
+            
+            netProfit = clientService.calculateNetProfit(client, startDate, endDate);
+            modelAndView.addObject("clientProfit", netProfit);
+            modelAndView.addObject("Success", MSG_CREATED);
+            modelAndView.setViewName("adminHome");
+
+        } catch (AppException appException) {
+            modelAndView.addObject("Error", appException.getMessage());
+        }
+        
+        return modelAndView;
     }
 }

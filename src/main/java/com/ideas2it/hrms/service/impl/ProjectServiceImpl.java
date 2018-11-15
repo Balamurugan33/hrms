@@ -110,7 +110,7 @@ public class ProjectServiceImpl implements ProjectService {
         }
         
         for (Employee employee: projectEmployees) {
-            //costToCompany = costToCompany + empService.calculateCostToCompany(startDate, endDate, employee);
+            costToCompany = costToCompany + empService.calculateCostToCompany(startDate, endDate, employee);
         }
         
         return costToCompany;

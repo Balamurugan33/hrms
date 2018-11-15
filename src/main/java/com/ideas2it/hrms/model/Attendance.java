@@ -17,7 +17,7 @@ import org.hibernate.annotations.Where;
 /**
  * Used to track the daily attendance of an employee.
  * An employee has many daily attendance entries, which together form the employee's attendance history.
- * The status field represents whether the employee was: Present or Absent(on leave) on that date
+ * The status field represents whether the employee was: Present or Absent(on leave) on that date.
  * 
  * @author Ganesh Venkat S
  *

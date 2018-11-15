@@ -69,5 +69,15 @@ public interface TimeSheetService {
      */
     List<TimeSheet> getTimeSheetEntries(List<TimeSheet> tasks, LocalDate startDate, LocalDate endDate);
     
+    /** 
+     * Determines whether a timesheet entry was made between a start and end date
+     * @param task
+     *        timesheet entry
+     * @param startDate
+     *        starting date
+     * @param endDate
+     *        ending date
+     * @return
+     */
     boolean isEntryBetweenPeriod(TimeSheet task, LocalDate startDate, LocalDate endDate);    
 }
