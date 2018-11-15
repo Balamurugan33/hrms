@@ -29,9 +29,10 @@
     border: none;
 }
 
-.dropdown {
+.actiondropdown {
     position: relative;
     display: inline-block;
+    text-align:left;
 }
 
 .dropdown-content {
@@ -48,6 +49,7 @@
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    align:left;
 }
 
 .dropdown-content button {
@@ -56,16 +58,23 @@
     text-decoration: none;
     background:none;
     outline:none;
+    border: none;
     display: block;
+}
+
+.dropdown {
+    top: 0;
+    right: 100%;
+    margin-top: -1px;
 }
 
 .dropdown-content a:hover {background-color: #ddd;}
 
 .dropdown-content button:hover {background-color: gray;}
 
-.dropdown:hover .dropdown-content {display: block;}
+.actiondropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.actiondropdown:hover .dropbtn {background-color: #3e8e41;}
 
  </style>
  
@@ -263,20 +272,21 @@
             <td>${employee.designation.name}</td>
             <td>${employee.salary}</td>
             <td><form action="/hrms/employee/deleteEmployee" method="post">
-                <div class="dropdown">
+                <div class="actiondropdown">
 				  <button class="btn btn-success">Select Action</button>
 				  <div class="dropdown-content">
 				    <a href="#" data-toggle="modal" data-target="#${employee.id}">Assign Project</a>
 						     <div class="dropdown">
-							    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Assign Project
-							    <span class="caret"></span></button>
+							    <a href="#" class="dropdown-toggle"  data-toggle="dropdown">Assign Project
+							    <span class="caret"></span></a>
 							    <ul class="dropdown-menu dropdown-menu-right">
-							      <form action="/hrms/employee/updateEmployee" method="post">
 							      <c:forEach var ="project" items="${allProjects}">
+							      <form action="/hrms/employee/assignProject" method="post">
 							      <li><button type="sumbit">${project.name}</button></li>
 							      <input type="hidden" name="projectId" value="${project.id}">
-							      </c:forEach>
+							      <input type="hidden" name="emailId" value="${employee.emailId}">
 							      </form>
+							      </c:forEach>
 							    </ul>
 							  </div>
 				    <a href="#" data-toggle="modal" data-target="#${employee.id}">Increment</a>

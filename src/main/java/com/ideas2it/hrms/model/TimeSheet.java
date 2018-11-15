@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * Used to track the number of hours worked and the projects worked on by an employee in a single day.
  * An employee has many daily timesheet entries, which together form the employee's timesheet history.
  * It contains the information: all projects he's worked on and number of hours worked on each project, 
- * for each working day (entry)
+ * for each entry (working day)
  * The entryDate of a timesheet entry represents the date on which entry was made
  * @author Ganesh Venkat S
  */
