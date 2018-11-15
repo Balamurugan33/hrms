@@ -4,82 +4,13 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="<c:url value='/resources/adminHome.css' />" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <jsp:include page='adminHeader.jsp'/>
   
-  <style>
-.revenue {
-     background: white;
-     display: inline-block;
-     padding: 25px;
-     border-radius: 20px;
-     box-shadow: 10px 10px 10px 10px #8a6bb1; 
-     align: center;
-     margin-top:30px;
-     margin-left:50%;
-     }
-     
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
-
-.actiondropdown {
-    position: relative;
-    display: inline-block;
-    text-align:left;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    align:left;
-}
-
-.dropdown-content button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    background:none;
-    outline:none;
-    border: none;
-    display: block;
-}
-
-.dropdown {
-    top: 0;
-    right: 100%;
-    margin-top: -1px;
-}
-
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown-content button:hover {background-color: gray;}
-
-.actiondropdown:hover .dropdown-content {display: block;}
-
-.actiondropdown:hover .dropbtn {background-color: #3e8e41;}
-
- </style>
- 
 </head>
-<body>
+<body style="    margin-left: 78px;">
 <c:if test="${not empty clients}">
     <div>
         <button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-outline-success btn-lg">Add Client</button>
@@ -149,13 +80,11 @@
         <table class="table table-striped text-center">
         <tr>
             <th class="text-center">Name</th>
-            <th class="text-center">Hourly Rate</th>
             <th class="text-center">Action</th>
         </tr>
         <c:forEach var="designation" items="${designations}">
         <tr>
             <td>${designation.name}</td>
-            <td>${designation.hourlyRate}</td>
         <form method="post">
             <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${designation.id}" >Update</button>
      <div class="modal fade" id="${designation.id}" >
@@ -169,12 +98,6 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="name"
                                     value= "${designation.name}" placeholder="Name" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="hourlyRate"
-                                   value= "${designation.hourlyRate}" placeholder="Hourly Rate" required="required">
                             </div>
                         </div>
                         <div class="form-group">
@@ -271,33 +194,35 @@
             <td>${employee.emailId}</td>
             <td>${employee.designation.name}</td>
             <td>${employee.salary}</td>
-            <td><form action="/hrms/employee/deleteEmployee" method="post">
-                <div class="actiondropdown">
+            <td><div class="actiondropdown">
 				  <button class="btn btn-success">Select Action</button>
 				  <div class="dropdown-content">
-				    <a href="#" data-toggle="modal" data-target="#${employee.id}">Assign Project</a>
-						     <div class="dropdown">
-							    <a href="#" class="dropdown-toggle"  data-toggle="dropdown">Assign Project
-							    <span class="caret"></span></a>
-							    <ul class="dropdown-menu dropdown-menu-right">
-							      <c:forEach var ="project" items="${allProjects}">
-							      <form action="/hrms/employee/assignProject" method="post">
-							      <li><button type="sumbit">${project.name}</button></li>
-							      <input type="hidden" name="projectId" value="${project.id}">
-							      <input type="hidden" name="emailId" value="${employee.emailId}">
-							      </form>
-							      </c:forEach>
-							    </ul>
-							  </div>
-				    <a href="#" data-toggle="modal" data-target="#${employee.id}">Increment</a>
-				    <a href="#" data-toggle="modal" data-target="#${employee.mobileNo}">View Revenue</a>
-				    <button type="submit" class="btn-danger"> <i class="fas fa-times-square"></i>Remove</button>
+						     <form action="/hrms/employee/deleteEmployee" method="post">
+							    
+		                        <a href="#" data-toggle="modal" data-target="#${employee.id}">
+		                         <img class="img" title="Put Increment" src="<c:url value = '/resources/img/salary.svg' />"></a>
+		                        <a href="#" data-toggle="modal" data-target="#${employee.mobileNo}">
+		                        <img class="img" title="View Employee Revenue" src="<c:url value = '/resources/img/revenue.svg' />"></a>
+		                        <button type="submit"><img class="img" title="Delete Employee" src="<c:url value='/resources/img/deleteEmp.svg'/>"></button>
+		                        <input type="hidden" name="id" value="${employee.id}">
+		                    </form>
+						    <div class="dropdown">
+						    <a href="#" class="dropdown-toggle"  data-toggle="dropdown">
+                                    <img class="img" title="Assign Project" src="<c:url value='/resources/img/project.svg' />">
+                                    <span class="caret"></span></a>
+						    <ul class="dropdown-menu dropdown-menu-left">
+						      <c:forEach var ="project" items="${allProjects}">
+						      <form action="/hrms/employee/assignProject" method="post">
+						      <li><button type="submit">${project.name}</button></li>
+						      <input type="hidden" name="projectId" value="${project.id}">
+						      <input type="hidden" name="emailId" value="${employee.emailId}">
+						      </form>
+						      </c:forEach>
+						    </ul>
+						  </div>
 				  </div>
-				  <button type="sumbit">gh${project.name}</button>
 				</div>
-                <input type="hidden" name="id" value="${employee.id}">
-                <input type="hidden" name="id" value="${employee.emailId}">
-                </form></td>
+            </td>
         </tr>
              <div class="modal fade" id="${employee.id}" >
                  <div class="modal-dialog modal-sm">

@@ -2,27 +2,28 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/navigation.css' />" />
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/adminnav.css' />" />
 </head>
 <body>
-<div class="navbar" id="main">
-  <a href="#" onclick="openNav()">&#9776;</a>
-  <a href="/hrms/employee/displayEmployee">Employees</a>
-  <a href="/hrms/project/displayAll">Projects</a>
-  <a href="/hrms/client/displayClient">Clients</a>
-  <a href="/hrms/designation/displayDesignation">Designation</a>
-  <div style="float:right">
-      <a href="/hrms/user/logout">logout</a>
-  </div>
-</div>
 
-<div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="/hrms/employee/viewProfile">My Profile</a>
-      <a href="/hrms/employee/createProfile">Edit Profile</a>
-      <a href="/hrms/employee/empProjects">Projects</a>
-      <a href="/hrms/employee/empTasks">Time Sheet</a>
-      <a href="/hrms/employee/empAttendance">Attendance</a>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/hrms/user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="sidenav">
+	  
+	  <div class="sidenav-header">
+        <a class="navbar-brand" href="#"><img class="img" src="<c:url value='/resources/img/i2i.jpg' />"></a>
+      </div>
+	  
+	  <a href="/hrms/employee/displayEmployee"><img class="img" title="View Employees" src="<c:url value='/resources/img/employees.svg' />"></a>
+	  <a href="/hrms/project/displayAll"><img class="img" title="View Projects" src="<c:url value='/resources/img/projects.ico' />"></a>
+	  <a href="/hrms/client/displayClient"><img class="img" title="View Clients" src="<c:url value='/resources/img/clients.svg' />"></a>
+	  <a href="/hrms/designation/displayDesignation"><img class="img" title="View Designations" src="<c:url value='/resources/img/designations.png' />"></a>
 </div>
 </body>
 <script>
