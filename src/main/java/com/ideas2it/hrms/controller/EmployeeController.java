@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -200,17 +201,28 @@ public class EmployeeController {
     @GetMapping("employee/empProjects")
     public ModelAndView employeesProjects(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
+        ModelAndView modelAndView = new ModelAndView(); 
+
         Employee employee = (Employee) session.getAttribute("employee");
-        return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_PROJECTS, 
-            employeeService.getEmpProjects(employee.getTimeSheet()));
+        modelAndView.addObject("currentProjects", employee.getProjects());
+        modelAndView.addObject("projects", employeeService.getEmpProjects(employee.getTimeSheet()));
+        modelAndView.setViewName(EMPLOYEE_MENU);
+        
+        return modelAndView;
     }
     
     @GetMapping("employee/empTasks")
-    public ModelAndView employeesTasks(HttpServletRequest request) {
+    public ModelAndView employeesTasks(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         Employee employee = (Employee) session.getAttribute("employee");
-        return new ModelAndView(EMPLOYEE_MENU, EmpConstants.LABEL_TIMESHEETS, 
-           employee.getTimeSheet());
+        ModelAndView modelAndView = new ModelAndView(); 
+
+        modelAndView.addObject("command", new TimeSheet());
+        modelAndView.addObject("empProjects", employee.getProjects());
+        modelAndView.addObject(EmpConstants.LABEL_TIMESHEETS, employee.getTimeSheet());
+        modelAndView.setViewName(EMPLOYEE_MENU);
+        
+        return modelAndView;
     }
     
     @GetMapping("employee/empAttendance")

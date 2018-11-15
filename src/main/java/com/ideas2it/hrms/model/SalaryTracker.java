@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -25,6 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="salary_tracker")
 @SQLDelete(sql="update salary_tracker set expired_date = current_date() where id=?")
+@Where(clause = "expired_date is null")
 public class SalaryTracker {
     
     @Id  

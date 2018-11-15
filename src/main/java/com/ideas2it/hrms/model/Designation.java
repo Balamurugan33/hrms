@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 /**
  * Used to get the Designation of the employee
@@ -27,6 +28,7 @@ import org.hibernate.annotations.SQLDelete;
 @Entity
 @Table(name="designation")
 @SQLDelete(sql="update designation set expired_date = current_date() where id=?")
+@Where(clause = "expired_date is null")
 public class Designation {
     
     @Id
