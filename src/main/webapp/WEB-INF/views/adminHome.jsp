@@ -4,82 +4,12 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="<c:url value='/resources/adminHome.css' />" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <jsp:include page='adminHeader.jsp'/>
-  
-  <style>
-.revenue {
-     background: white;
-     display: inline-block;
-     padding: 25px;
-     border-radius: 20px;
-     box-shadow: 10px 10px 10px 10px #8a6bb1; 
-     align: center;
-     margin-top:30px;
-     margin-left:50%;
-     }
-     
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
-
-.actiondropdown {
-    position: relative;
-    display: inline-block;
-    text-align:left;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    align:left;
-}
-
-.dropdown-content button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    background:none;
-    outline:none;
-    border: none;
-    display: block;
-}
-
-.dropdown {
-    top: 0;
-    right: 100%;
-    margin-top: -1px;
-}
-
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown-content button:hover {background-color: gray;}
-
-.actiondropdown:hover .dropdown-content {display: block;}
-
-.actiondropdown:hover .dropbtn {background-color: #3e8e41;}
-
- </style>
- 
 </head>
-<body>
+<body style="    margin-left: 78px;">
 <c:if test="${not empty clients}">
     <div>
         <button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-outline-success btn-lg">Add Client</button>
@@ -97,6 +27,7 @@
             <td>${client.emailId}</td>
             <form method="post">
             <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${client.id}" >Update</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${client.mobileNo}" >View Revenue</button>
                 <button type="submit" class="btn btn-danger" 
                     formaction="/hrms/client/deleteClient">Delete</button>
      <div class="modal fade" id="${client.id}" >
@@ -107,23 +38,18 @@
                 </div>
                 <div class="modal-body">
                         <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="name"
+                                <input type="text" class="form-control tt" name="name"
                                     value= "${client.name}" placeholder="Client Name" required="required">
-                            </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="mobileNo"
+                                <input type="text" class="form-control tt" name="mobileNo"
                                    value= "${client.mobileNo}" placeholder="Mobile Number" required="required">
-                            </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="emailId"
+                                <input type="text" class="form-control tt" name="emailId"
                                    value= "${client.emailId}" placeholder="Email Id" required="required">
-                            </div>
                         </div>
+                 <div class="modal-footer">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg" 
                                 formaction="/hrms/client/updateClient">Update</button>
@@ -132,10 +58,43 @@
                             <input type="hidden" name="id" value = "${client.id}">
                         </div>
                 </div>
+                </div>
             </div>
         </div>
      </div></td>
             </form>
+        </tr>
+        <tr><td>
+        <div class="modal fade" id="${client.mobileNo}" >
+           <div class="modal-dialog modal-sm">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h4>Enter The Dates</h4>
+                   </div>
+                   <form method="post" action="/hrms/client/profit">
+                   <div class="modal-body">
+                      <div class="form-group">
+                              <label>Start Date</label>
+                              <input type="date" class="form-control" name="startDate"
+                                  required="required" max="<%= java.time.LocalDate.now() %>" >
+                          </div>
+                          <div class="form-group">
+                              <label>End Date</label>
+                              <input type="date" class="form-control" name="endDate"
+                                  required="required" max="<%= java.time.LocalDate.now() %>" >
+                          </div>
+                       <input type="hidden" name="clientId" value="${client.id}">
+                   </div>
+                   <div class="modal-footer">
+                       <div class="form-group">
+                              <button type="submit" class="btn btn-primary btn-block btn-lg">Show</button>
+                              <button type="button" class="btn btn-danger  btn-block btn-lg" data-dismiss="modal">Close</button>
+                       </div>
+                   </div>
+                   </form>
+               </div>
+           </div>
+        </div></td>
         </tr>
         </c:forEach>
         </table>
@@ -149,13 +108,11 @@
         <table class="table table-striped text-center">
         <tr>
             <th class="text-center">Name</th>
-            <th class="text-center">Hourly Rate</th>
             <th class="text-center">Action</th>
         </tr>
         <c:forEach var="designation" items="${designations}">
         <tr>
             <td>${designation.name}</td>
-            <td>${designation.hourlyRate}</td>
         <form method="post">
             <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${designation.id}" >Update</button>
      <div class="modal fade" id="${designation.id}" >
@@ -166,16 +123,8 @@
                 </div>
                 <div class="modal-body">
                         <div class="form-group">
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="name"
                                     value= "${designation.name}" placeholder="Name" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="hourlyRate"
-                                   value= "${designation.hourlyRate}" placeholder="Hourly Rate" required="required">
-                            </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg" 
@@ -210,7 +159,8 @@
             <td>${project.name}</td>
             <td>${project.client.name}</td>
         <form method="post">
-            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}" >Update</button>
+            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}a" >View Revenue</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}" >Update</button>
                 <button type="submit" class="btn btn-danger" 
                     formaction="delete">Delete</button>
      <div class="modal fade" id="${project.id}" >
@@ -221,17 +171,16 @@
                 </div>
                 <div class="modal-body">
                         <div class="form-group">
-                            <div class="input-group">
                                 <label>Project Name</label>
                                 <input type="text" class="form-control" name="name"
                                     value= "${project.name}" required="required">
-                            </div>
                         </div>
                         <div class="form-group">
                             <label>Client Name</label>
                                 <input type="text" class="form-control" name="name"
                                     value= "${project.client.name}" required="required">
                         </div>
+                        <div class="modal-footer">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg" 
                                 formaction="update">Update</button>
@@ -239,13 +188,49 @@
                                     data-dismiss="modal">Cancel</button>
                             <input type="hidden" name="id" value = "${project.id}">
                         </div>
+                        </div>
                 </div>
             </div>
         </div>
      </div></td>
             </form>
+        
+        <td>
+        <div class="modal fade" id="${project.id}a" >
+                 <div class="modal-dialog modal-sm">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h4>Enter The Dates</h4>
+                         </div>
+                         <form method="post" action="netProfit">
+                         <div class="modal-body">
+                            <div class="form-group">
+                                    <label>Start Date</label>
+                                    <input type="date" class="form-control" name="startDate"
+                                        required="required" max="<%= java.time.LocalDate.now() %>" >
+                            </div>
+                            <div class="form-group">
+                                    <label>End Date</label>
+                                    <input type="date" class="form-control" name="endDate"
+                                        required="required" max="<%= java.time.LocalDate.now() %>" >
+                            </div>
+                             <input type="hidden" name="projectId" value="${project.id}">
+                         </div>
+                         <div class="modal-footer">
+                             <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block btn-lg">Show</button>
+                                    <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Close</button>
+                             </div>
+                         </div>
+                         </form>
+                     </div>
+                 </div>
+              </div>
+              </td>
         </tr>
+        
         </c:forEach>
+        </table>
     </div>
 </c:if>
 
@@ -271,69 +256,75 @@
             <td>${employee.emailId}</td>
             <td>${employee.designation.name}</td>
             <td>${employee.salary}</td>
-            <td><form action="/hrms/employee/deleteEmployee" method="post">
-                <div class="actiondropdown">
+            <td><div class="actiondropdown">
 				  <button class="btn btn-success">Select Action</button>
 				  <div class="dropdown-content">
-				    <a href="#" data-toggle="modal" data-target="#${employee.id}">Assign Project</a>
-						     <div class="dropdown">
-							    <a href="#" class="dropdown-toggle"  data-toggle="dropdown">Assign Project
-							    <span class="caret"></span></a>
-							    <ul class="dropdown-menu dropdown-menu-right">
-							      <c:forEach var ="project" items="${allProjects}">
-							      <form action="/hrms/employee/assignProject" method="post">
-							      <li><button type="sumbit">${project.name}</button></li>
-							      <input type="hidden" name="projectId" value="${project.id}">
-							      <input type="hidden" name="emailId" value="${employee.emailId}">
-							      </form>
-							      </c:forEach>
-							    </ul>
-							  </div>
-				    <a href="#" data-toggle="modal" data-target="#${employee.id}">Increment</a>
-				    <a href="#" data-toggle="modal" data-target="#${employee.mobileNo}">View Revenue</a>
-				    <button type="submit" class="btn-danger"> <i class="fas fa-times-square"></i>Remove</button>
+						     <form action="/hrms/employee/deleteEmployee" method="post">
+							    
+		                        <a href="#" data-toggle="modal" data-target="#${employee.id}">
+		                         <img class="img" title="Put Increment" src="<c:url value = '/resources/img/salary.svg' />"></a>
+		                        <a href="#" data-toggle="modal" data-target="#${employee.mobileNo}">
+		                        <img class="img" title="View Employee Revenue" src="<c:url value = '/resources/img/revenue.svg' />"></a>
+		                        <button type="submit"><img class="img" title="Delete Employee" src="<c:url value='/resources/img/deleteEmp.svg'/>"></button>
+		                        <input type="hidden" name="id" value="${employee.id}">
+		                    </form>
+						    <div class="dropdown">
+						    <a href="#" class="dropdown-toggle"  data-toggle="dropdown">
+                                    <img class="img" title="Assign Project" src="<c:url value='/resources/img/project.svg' />">
+                                    <span class="caret"></span></a>
+						    <ul class="dropdown-menu dropdown-menu-left">
+						      <c:forEach var ="project" items="${allProjects}">
+						      <c:if test="${!employee.projects.contains(project)}">
+						      <form action="/hrms/employee/assignProject" method="post">
+						      <li><button type="submit">${project.name}</button></li>
+						      <input type="hidden" name="projectId" value="${project.id}">
+						      <input type="hidden" name="emailId" value="${employee.emailId}">
+						      </form>
+						      </c:if>
+						      </c:forEach>
+						    </ul>
+						  </div>
 				  </div>
-				  <button type="sumbit">gh${project.name}</button>
 				</div>
-                <input type="hidden" name="id" value="${employee.id}">
-                <input type="hidden" name="id" value="${employee.emailId}">
-                </form></td>
+            </td>
         </tr>
-             <div class="modal fade" id="${employee.id}" >
+        <tr> 
+             <td><div class="modal fade" id="${employee.id}" >
                  <div class="modal-dialog modal-sm">
                      <div class="modal-content">
                          <div class="modal-header">
+                             <button type="button" class="close btn-danger" data-dismiss="modal">&times;</button>
                              <h4>Enter Increment Salary & Hourly Rate</h4>
                          </div>
+                         <form action="/hrms/employee/increment" method="post">
                          <div class="modal-body">
-                             <form action="/hrms/employee/increment" method="post">
                                  <div class="form-group">
                                      <label>Salary</label>
-                                     <div class="input-group">
                                          <input type="text" class="form-control" name="salary"
-                                             required="required">
-                                     </div>
+                                             value="${employee.salary}" required="required">
                                  </div>
                                  <div class="form-group">
                                      <label>Hourly Rate</label>
-                                     <div class="input-group">
                                          <input type="text" class="form-control" name="hourlyRate"
-                                             required="required">
-                                     </div>
+                                            value="${employee.hourlyRate}" required="required">
                                  </div>
                                  <input type="hidden" name="emailId" value="${employee.emailId}">
                                  <input type="hidden" name="updateDate" value="<%= java.time.LocalDate.now() %>">
-                                 <div class="form-group">
-                                     <button type="submit" class="btn btn-primary btn-block btn-lg" >Increment</button>
-                                     <button type="button" class="btn btn-danger btn-block btn-lg" 
-                                         data-dismiss="modal">Cancel</button>
-                                 </div>
-                             </form>
+                         </div>
+                         <div class="modal-footer">
+	                         <div class="form-group">
+                                  <button type="submit" class="btn btn-primary btn-block btn-lg" >Increment</button>
+                                  <button type="button" class="btn btn-danger btn-block btn-lg" 
+                                      data-dismiss="modal">Cancel</button>
+                             </div>
+                         </div>
+                         </form>
                          </div>
                      </div>
                  </div>
-              </div>
+              </td>
               
+              <td>
               <div class="modal fade" id="${employee.mobileNo}" >
                  <div class="modal-dialog modal-sm">
                      <div class="modal-content">
@@ -344,26 +335,24 @@
                          <form method="post" action="/hrms/employee/profit">
                          <div class="modal-body">
 					        <div class="form-group">
-					            <div class="input-group">
-					                <label>Start Date</label>
-					                <input type="date" class="form-control" name="startDate"
-					                    required="required" min="${employee.attendance[0].attendDate}" 
-					                    max="${employee.attendance[fn:length(employee.attendance)-1].attendDate}" >
-					            </div>
-					            <div class="input-group">
-					                <label>End Date</label>
-					                <input type="date" class="form-control" name="endDate"
-					                    required="required" min="${employee.attendance[0].attendDate}" 
-                                        max="${employee.attendance[fn:length(employee.attendance)-1].attendDate}" >
-					            </div>
-					         </div>
+				                <label>Start Date</label>
+				                <input type="date" class="form-control" name="startDate"
+				                    required="required" min="${employee.attendance[0].attendDate}" 
+				                    max="${employee.attendance[fn:length(employee.attendance)-1].attendDate}" >
+					        </div>
+				            <div class="form-group">
+				                <label>End Date</label>
+				                <input type="date" class="form-control" name="endDate"
+				                    required="required" min="${employee.attendance[0].attendDate}" 
+                                       max="${employee.attendance[fn:length(employee.attendance)-1].attendDate}" >
+				            </div>
 					         <input type="hidden" name="empEmailId" value="${employee.emailId}">
                          </div>
                          <div class="modal-footer">
-                             <div class="input-group">
-                                    <button type="submit" class="btn btn-primary btn-block btn-lg">Show</button>
-                                    <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Close</button>
-                                </div>
+                             <div class="form-group">
+                                  <button type="submit" class="btn btn-primary btn-block btn-lg">Show</button>
+                                  <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Close</button>
+                             </div>
                          </div>
                          </form>
                          </c:if>
@@ -378,7 +367,8 @@
                      </div>
                  </div>
               </div>
-              
+              </td>
+          </tr>
               
               
         </c:forEach>
@@ -390,28 +380,22 @@
     <div class="modal fade" id="ClientCreate" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header text-center">
                     <h4>Enter Client Detail</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-center">
                     <form action="hrms/client/createClient" method="post">
                         <div class="form-group">
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="name"
                                     placeholder="Client Name" required="required">
-                            </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="mobileNo"
                                    placeholder="Mobile Number" required="required">
-                            </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="emailId"
                                    placeholder="Email Id" required="required">
-                            </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg" 
@@ -432,26 +416,18 @@
                     <h4>Enter Designation Detail</h4>
                 </div>
                 <div class="modal-body">
-                        <form action="hrms/client/createClient" method="post">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="name"
-                                    placeholder="Name" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="hourlyRate"
-                                   placeholder="Hourly Rate" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg" 
-                                formaction="/hrms/designation/createDesignation">Save</button>
-                            <button type="button" class="btn btn-danger btn-block btn-lg" 
-                                data-dismiss="modal">Cancel</button>
-                        </div>
-                        </form>
+                    <form action="hrms/client/createClient" method="post">
+                    <div class="form-group">
+                            <input type="text" class="form-control" name="name"
+                                placeholder="Designation Name" required="required">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" 
+                            formaction="/hrms/designation/createDesignation">Save</button>
+                        <button type="button" class="btn btn-danger btn-block btn-lg" 
+                            data-dismiss="modal">Cancel</button>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -467,18 +443,16 @@
                     <form action="create" method="post">
                         <div class="form-group">
                             <label>Project Name</label>
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="name"
                                     required="required">
-                            </div>
                         </div>
                         <div class="form-group">
-                                <label>Client Name</label>
-                                <select class="form-control" name="clientId">
-							        <c:forEach var="client" items="${allClients}">
-							             <option value="${client.id}">${client.name}</option>
-							        </c:forEach>
-						        </select>
+                              <label>Client Name</label>
+                              <select class="form-control" name="clientId">
+						        <c:forEach var="client" items="${allClients}">
+						             <option value="${client.id}">${client.name}</option>
+						        </c:forEach>
+				              </select>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Save</button>
@@ -501,24 +475,18 @@
                     <form action="/hrms/employee/createEmployee" method="post">
                         <div class="form-group">
                             <label>Employee Name</label>
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="name"
                                     required="required">
-                            </div>
                         </div>
                         <div class="form-group">
                             <label>Mobile Number</label>
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="mobileNo"
                                     required="required">
-                            </div>
                         </div>
                         <div class="form-group">
                             <label>Email id</label>
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="emailId"
                                     required="required">
-                            </div>
                         </div>
                         <div class="form-group">
                                 <label>Designation</label>
@@ -530,17 +498,13 @@
                         </div>
                         <div class="form-group">
                             <label>salary</label>
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="salary"
                                     required="required">
-                            </div>
                         </div>
                         <div class="form-group">
                             <label>Hourly Rate</label>
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="hourlyRate"
                                     required="required">
-                            </div>
                         </div>
                         <input type="hidden" name="updateDate" value="<%= java.time.LocalDate.now() %>">
                         <div class="form-group">
@@ -558,9 +522,9 @@
      <div class="revenue">
         <table class="table table-striped text-center">
             <tr>
-               <th class="text-center">Cost To Company Pay</th>
-	           <th class="text-center">Bill Amount</th>
-	           <th class="text-center">Profit</th>
+               <th class="text-center">Cost To Company</th>
+	           <th class="text-center">Company Revenue</th>
+	           <th class="text-center">Net Profit</th>
             </tr>
             <tr>
                 <td>${CostToCompany}</td>

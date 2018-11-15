@@ -51,7 +51,7 @@
 <c:if test="${not empty timeSheets}">
  <div id="taskInfo" align="center">
      <button type="button" class="btn btn-outline-success btn-lg pull-right" 
-       data-toggle="modal" data-target="#TimeSheetCreate">Add entry</button>
+       data-toggle="modal" data-target="#TimeSheetCreate">Add Entry</button>
     <br>
     <br>
     <table class="table table-striped text-center">

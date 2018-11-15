@@ -1,0 +1,58 @@
+.revenue {
+     background: white;
+     display: inline-block;
+     padding: 25px;
+     border-radius: 20px;
+     box-shadow: 10px 10px 10px 10px #8a6bb1; 
+     align: center;
+     margin-top:30px;
+     margin-left:50%;
+     }
+     
+.actiondropdown {
+    position: relative;
+    display: inline-block;
+    text-align:left;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 260px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right:60px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: inline;
+    align:left;
+}
+
+.dropdown-content button {
+    color: black;
+    padding-left: 12px;
+    text-decoration: none;
+    background:none;
+    outline:none;
+    border: none;
+    display: inline;
+    text-align:left;
+}
+
+.img {
+    width:25px;
+    hieght:25px;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown li:hover {background-color: gray;}
+
+.actiondropdown:hover .dropdown-content {display: block;}
+
+.actiondropdown:hover .dropbtn {background-color: #3e8e41;}

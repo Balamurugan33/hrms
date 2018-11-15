@@ -31,7 +31,6 @@ public class UserController {
     private String LOGIN_JSP = "login";
     private String ADMIN_JSP = "adminHome";
     private String EMPLOYEE_VIEW = "employeeView";
-    private String CUSTOMERCREATE_JSP = "employeeCreate";
     private String ERROR_JSP = "error";
     private String LABEL_ADMIN = "Admin";
     

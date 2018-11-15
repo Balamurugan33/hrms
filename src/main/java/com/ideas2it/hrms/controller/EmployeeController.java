@@ -281,7 +281,7 @@ public class EmployeeController {
                 calculateNetProfit(startDate, endDate, employee);
             model.addAttribute("BilAmount", billAmount);
             model.addAttribute("CostToCompany", costToCompany);
-            model.addAttribute("EmpProfit", profit);
+            model.addAttribute("Profit", profit);
             return displayEmployees(model);
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
