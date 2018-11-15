@@ -16,9 +16,6 @@
 
 <div class="sidenav">
 	  
-	  <div class="sidenav-header">
-        <a class="navbar-brand" href="#"><img class="img" src="<c:url value='/resources/img/i2i.jpg' />"></a>
-      </div>
 	  
 	  <a href="/hrms/employee/displayEmployee"><img class="img" title="View Employees" src="<c:url value='/resources/img/employees.svg' />"></a>
 	  <a href="/hrms/project/displayAll"><img class="img" title="View Projects" src="<c:url value='/resources/img/projects.ico' />"></a>

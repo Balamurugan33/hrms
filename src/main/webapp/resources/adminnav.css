@@ -29,6 +29,10 @@
     display: block;
 }
 
+.navheader img {
+	width:50px;
+}
+
 .sidenav img {
 	width:50px;
 	padding-top: 53px;
