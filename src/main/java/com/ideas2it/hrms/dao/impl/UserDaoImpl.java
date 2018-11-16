@@ -1,14 +1,14 @@
 package com.ideas2it.hrms.dao.impl;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Query;  
-import org.hibernate.Session; 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.ideas2it.hrms.common.UserConstants;
+import com.ideas2it.hrms.dao.UserDao;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.logger.AppLogger;
-import com.ideas2it.hrms.dao.UserDao;
 import com.ideas2it.hrms.model.User;
 import com.ideas2it.hrms.session.HibernateSession;
 
@@ -22,25 +22,18 @@ import com.ideas2it.hrms.session.HibernateSession;
  * @author Balamurugan M
  */
 public class UserDaoImpl implements UserDao {
-
-    private String insertQuery = 
-        "INSERT INTO user(username, password, role)"+
-        " VALUES(:name, SHA1(:password), :role)";
     
     /** {@inheritDoc}*/
-    public Boolean createUser(User user) throws AppException {
-        Session session = null;
+    public Integer createUser(User user) throws AppException {
+        Session session = null;        
         Transaction transaction = null;
+        Integer userId = 0;
         try {
             session = HibernateSession.getSession();
             transaction = session.beginTransaction();
-            Query query = session.createNativeQuery(insertQuery);
-            query.setParameter("name", user.getUserName());
-            query.setParameter("password", user.getPassword());
-            query.setParameter("role", user.getRole());
-            query.executeUpdate();
+            userId = (Integer)session.save(user);
             transaction.commit();
-            return Boolean.TRUE; 
+            return userId; 
         } catch (HibernateException e) {
             if (null != transaction) {
                 transaction.rollback();

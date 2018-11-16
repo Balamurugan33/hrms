@@ -1,13 +1,15 @@
 package com.ideas2it.hrms.service.impl;
 
-import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.logger.AppLogger;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import com.ideas2it.hrms.dao.UserDao;
 import com.ideas2it.hrms.dao.impl.UserDaoImpl;
+import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.User;
 import com.ideas2it.hrms.service.EmployeeService;
-import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
 import com.ideas2it.hrms.service.UserService;
 
 /**
@@ -25,7 +27,20 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao = new UserDaoImpl();
     
     /** {@inheritDoc}*/
-    public Boolean createUser(User user) throws AppException {
+    public Integer createUser(User user) throws AppException {
+        String password = user.getPassword();
+        String hashedPassword = null;
+        
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            md.update(password.getBytes());
+                  BigInteger hash = new BigInteger(1, md.digest());
+                  hashedPassword = hash.toString(16);                 
+                  } catch (NoSuchAlgorithmException e) { 
+            e.printStackTrace();
+           }
+        user.setPassword(hashedPassword);
+        
         return userDao.createUser(user);
     }
     

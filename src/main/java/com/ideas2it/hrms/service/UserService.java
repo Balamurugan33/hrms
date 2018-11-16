@@ -19,7 +19,7 @@ public interface UserService {
      * @param user
      *        Used to get the User reference
      */
-    Boolean createUser(User user) throws AppException;
+    Integer createUser(User user) throws AppException;
     
     /**
      * Used to find the user in the hrms
