@@ -1,5 +1,10 @@
 package com.ideas2it.hrms.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.common.UserConstants;
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.User;
 import com.ideas2it.hrms.service.UserService;
@@ -102,26 +108,57 @@ public class UserController {
      *       Used to get the user class reference
      */
     private ModelAndView setUserRole(User user, HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+        UserService userService = new UserServiceImpl();
+        
         try {
-            String role = user.getRole();
-            HttpSession session = request.getSession(Boolean.TRUE);
-            //session.setMaxInactiveInterval(60); 
-            session.setAttribute(UserConstants.LABEL_ROLE, role);
-            if (role.equals(LABEL_ADMIN)) {
-                session.setAttribute(UserConstants.LABEL_ID, user.getId());
-                return new ModelAndView(ADMIN_JSP);
-            } else { 
-                Employee employee 
-                    = userService.checkEmployeeDetail(user.getUserName());
-                session.setAttribute(UserConstants.LABEL_EMPLOYEE, employee);
-                return new ModelAndView(EMPLOYEE_VIEW, 
-                        "employeeDetail", employee);
-            }
-        } catch (AppException appException) {
-            return new ModelAndView(ERROR_JSP, UserConstants.LABEL_MESSAGE, 
-                appException.getMessage());
-        }
-    }
+             String role = user.getRole();
+             HttpSession session = request.getSession(Boolean.TRUE);
+             //session.setMaxInactiveInterval(60); 
+             session.setAttribute(UserConstants.LABEL_ROLE, role);
+             Integer numOfClients;
+             Integer numOfProjects;
+             Integer numOfEmployees;
+             Integer companyRevenue;
+             Integer companyExpenditure;
+             Integer companyNetProfit;
+             List<Client> allClients = new ArrayList<Client>();
+             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MMM-dd");
+             LocalDate startDate = LocalDate.parse("2018-Aug-16", formatter);
+             LocalDate endDate = LocalDate.now();
+             
+             if (role.equals(LABEL_ADMIN)) {
+                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
+                 
+                 allClients = userService.getAllClients();             
+                 
+                 numOfClients = allClients.size();               
+                 numOfProjects = userService.getAllProjects().size();
+                 numOfEmployees = userService.getAllEmployees().size();
+                 companyRevenue = userService.getCompanyRevenue(allClients, startDate, endDate);
+                 companyExpenditure = userService.getCompanyExpenditure(allClients, startDate, endDate);
+                 companyNetProfit = userService.getCompanyNetProfit(allClients, startDate, endDate);
+                 
+                 modelAndView.addObject("numOfClients", numOfClients);
+                 modelAndView.addObject("numOfProjects", numOfProjects);
+                 modelAndView.addObject("numOfEmployees", numOfEmployees);                 
+                 modelAndView.addObject("companyRevenue", companyRevenue);
+                 modelAndView.addObject("companyExpenditure", companyExpenditure);                 
+                 modelAndView.addObject("companyNetProfit", companyNetProfit);                
+                 modelAndView.setViewName(ADMIN_JSP);
+             } else { 
+                 Employee employee 
+                     = userService.checkEmployeeDetail(user.getUserName());
+                 session.setAttribute(UserConstants.LABEL_EMPLOYEE, employee);
+                 modelAndView.addObject("employeeDetail", employee);
+                 modelAndView.setViewName(EMPLOYEE_VIEW);
+             }
+         } catch (AppException appException) {
+             modelAndView.addObject(UserConstants.LABEL_MESSAGE, appException.getMessage());
+             modelAndView.setViewName(ERROR_JSP);
+         }
+         return modelAndView;
+     }
     
     // Used to invalidate the session
     @GetMapping("user/logout")
