@@ -53,8 +53,9 @@ public class UserController {
             Employee employee = userService.
                 checkEmployeeDetail(user.getUserName());
             if (null != employee) {
-                if (userService.createUser(user)) {
-                    
+                user.setId(userService.createUser(user));
+                employee.setUser(user);
+                if () {                    
                     return modelAndView.addObject(UserConstants.LABEL_MESSAGE, 
                         UserConstants.MSG_CREATE_SUCCESS);
                 } else {
