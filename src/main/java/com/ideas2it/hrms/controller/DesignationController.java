@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.common.DesignationConstants;
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.service.DesignationService;
 import com.ideas2it.hrms.service.impl.DesignationServiceImpl;
@@ -101,5 +100,15 @@ public class DesignationController {
             return new ModelAndView(ERROR_PAGE, 
                 DesignationConstants.LABEL_MESSAGE, appException.getMessage());
         }
+    }
+    
+    @GetMapping("designation/getEmployees")
+    public ModelAndView displayEmployees(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView(); 
+        Designation designation = new Designation();
+        designation.setId(Integer.parseInt(request.getParameter("designationId")));
+        designation.getEmployees();
+        modelAndView.addObject("timeSheets", designation.getEmployees());
+        return modelAndView;
     }
 }

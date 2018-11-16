@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
@@ -71,6 +72,10 @@ public class Employee {
     @ManyToMany(mappedBy="employees")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Project> projects = new ArrayList<Project>();
+    
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name="salary")
     private Integer salary;
