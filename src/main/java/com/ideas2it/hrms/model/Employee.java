@@ -167,4 +167,12 @@ public class Employee {
     public void setProjects(List<Project> projects) {
         this.projects = projects;
     }
+    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
