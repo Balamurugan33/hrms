@@ -70,6 +70,11 @@ public interface ClientService {
      */
     Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate) throws AppException;
     
+    Integer calculateCompanyRevenue(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
+    
+    Integer calculateCompanyExpenditure(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
+    
+    Integer calculateCompanyNetProfit(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
     /**
      * Find an existing client 
      */

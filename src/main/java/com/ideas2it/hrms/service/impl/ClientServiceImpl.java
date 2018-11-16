@@ -50,6 +50,33 @@ public class ClientServiceImpl implements ClientService {
         return clientDao.searchClient(email);
     }
     
+    public Integer calculateCompanyRevenue(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException {
+        Integer companyRevenue = 0;
+        
+        for (Client client: clients) {
+            companyRevenue = companyRevenue + calculateBillableAmount(client, startDate, endDate);
+        }
+        return companyRevenue;
+    }
+    
+    public Integer calculateCompanyExpenditure(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException {
+        Integer companyExpenditure = 0;
+        
+        for (Client client: clients) {
+            companyExpenditure = companyExpenditure + calculateCostToCompany(client, startDate, endDate);
+        }
+        return companyExpenditure;
+    }
+    
+    public Integer calculateCompanyNetProfit(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException {
+        Integer companyNetProfit = 0;
+        
+        for (Client client: clients) {
+            companyNetProfit = companyNetProfit + calculateNetProfit(client, startDate, endDate);    
+        }        
+        return companyNetProfit;
+    }
+    
     public Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate) throws AppException {
         ProjectServiceImpl projectService = new ProjectServiceImpl();
         List<Project> clientProjects = client.getProjects();
@@ -57,7 +84,7 @@ public class ClientServiceImpl implements ClientService {
         
         for (Project project: clientProjects) {
             netProfit = netProfit + projectService.calculateNetProfit(project, startDate, endDate); 
-        }
+        }        
         return netProfit;
     }
     
@@ -75,5 +102,27 @@ public class ClientServiceImpl implements ClientService {
             profits.add(calculateNetProfit(client, LocalDate.parse("2018-11-09"), LocalDate.now()));
         }
         return profits;
+    }    
+    
+    public Integer calculateBillableAmount(Client client, LocalDate startDate, LocalDate endDate) throws AppException {
+        ProjectServiceImpl projectService = new ProjectServiceImpl();
+        List<Project> clientProjects = client.getProjects();
+        Integer billableAmount = 0;
+        
+        for (Project project: clientProjects) {
+            billableAmount = billableAmount + projectService.calculateBillableAmount(project, startDate, endDate); 
+        }        
+        return billableAmount;                
+    }
+    
+    public Integer calculateCostToCompany(Client client, LocalDate startDate, LocalDate endDate) throws AppException {
+        ProjectServiceImpl projectService = new ProjectServiceImpl();
+        List<Project> clientProjects = client.getProjects();
+        Integer costToCompany = 0;
+        
+        for (Project project: clientProjects) {
+            costToCompany = costToCompany + projectService.calculateBillableAmount(project, startDate, endDate); 
+        }        
+        return costToCompany;                
     }
 }

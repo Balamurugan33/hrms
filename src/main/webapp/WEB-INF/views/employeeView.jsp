@@ -213,8 +213,41 @@
     </tr>
     </c:forEach>
     </table>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ApplyLeave" >Apply Leave</button>        
  </div>
-</c:if>
+</c:if>   
+       <div class="modal fade" id="ApplyLeave" >
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Leave Form</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="/hrms/employee/applyLeave" method="post">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="leaveEmpId"
+                                    value= "${employee.id}" required="required">
+                            </div>
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="employeeName"
+                                value= "${employee.name}" required="required">
+                            </div>
+                            <input type="date" class="form-control" name="leaveDate"
+                                  required="required" max="<%= java.time.LocalDate.now() %>">                            
+                            <div class="input-group">
+                                <input style="height:200px;" type="text" class="form-control" name="leaveReason" placeholder="Reason for applying leave" required="required">
+                            </div>
+                        </div>
+                       <button type="submit" name = "apply"> Apply Leave</button>       
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
+   
+   
+
     <div class="modal fade" id="Update" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">

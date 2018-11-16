@@ -2,12 +2,21 @@ package com.ideas2it.hrms.service.impl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import com.ideas2it.hrms.dao.EmployeeDao;
 import com.ideas2it.hrms.dao.impl.EmployeeDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
@@ -30,6 +39,44 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employeeDao.createEmployee(employee);
         
 
+    }
+    
+    public List<Attendance> applyLeave(Employee employee, String message, String dateString) throws AppException {      
+        //Setting up configurations for the email connection to the Google SMTP server using TLS
+        Properties props = new Properties();
+
+        props.put("mail.smtp.host", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+
+        //Establishing a session with required user details
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("ganeshvenkat@ideas2it.com", "venkat007");
+            }
+        });
+
+        try {
+            //Creating a Message object to set the email content
+            MimeMessage msg = new MimeMessage(session);
+            //Storing the comma seperated values to email addresses
+            String to = "arunkarthick@ideas2it.com";
+            //Setting the recepient from the address variable
+            msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            //String timeStamp = new SimpleDateFormat("yyyymmdd").format(new Date());
+            msg.setSubject("Applying for leave : " + dateString);
+            msg.setSentDate(new Date());
+            msg.setText(message);
+            msg.setHeader("XPriority", "1");
+            Transport.send(msg);
+            System.out.println("Mail has been sent successfully");
+        } catch (MessagingException mex) {
+            System.out.println("Unable to send an email" + mex);
+        }
+
+        return getAttendanceSheet(employee);
     }
     
     public List<Attendance> getAttendanceSheet(Employee employee) throws AppException {
