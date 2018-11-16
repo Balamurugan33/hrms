@@ -53,7 +53,9 @@ public class UserController {
             Employee employee = userService.
                 checkEmployeeDetail(user.getUserName());
             if (null != employee) {
-                if (userService.createUser(user)) {
+                user.setId(userService.createUser(user));
+                employee.setUser(user);
+                if (userService.createEmpLogin(employee)) {
                     
                     return modelAndView.addObject(UserConstants.LABEL_MESSAGE, 
                         UserConstants.MSG_CREATE_SUCCESS);
@@ -110,7 +112,8 @@ public class UserController {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
                 return new ModelAndView(ADMIN_JSP);
             } else { 
-                Employee employee = userService.getEmployee(user.getId());
+                Employee employee 
+                    = userService.checkEmployeeDetail(user.getUserName());
                 session.setAttribute(UserConstants.LABEL_EMPLOYEE, employee);
                 return new ModelAndView(EMPLOYEE_VIEW, 
                         "employeeDetail", employee);

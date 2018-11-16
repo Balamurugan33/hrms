@@ -62,8 +62,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Employee getEmployee(Integer id) throws AppException {
+    public boolean createEmpLogin(Employee employee) throws AppException {
         EmployeeService employeeService = new EmployeeServiceImpl();
-        return employeeService.getEmployeebyUserId(id);
+        return employeeService.updateEmployee(employee);
     }
+
 }

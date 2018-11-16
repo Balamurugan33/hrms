@@ -45,10 +45,11 @@ public interface UserService {
     Employee checkEmployeeDetail(String mailId) throws AppException;
     
     /**
-     * Used to get the employee details
+     * Used to create the employee login
      * 
-     * @param id
-     *        Used get employee user id
+     * @param employee
+     *        Employee details
+     * @return
      */
-    Employee getEmployee(Integer id) throws AppException;
+    boolean createEmpLogin(Employee employee) throws AppException;
 }
