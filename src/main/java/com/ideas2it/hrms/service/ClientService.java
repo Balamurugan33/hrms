@@ -1,6 +1,7 @@
 package com.ideas2it.hrms.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
@@ -73,4 +74,8 @@ public interface ClientService {
      * Find an existing client 
      */
     Client searchClient(String email) throws AppException;
+    
+    ArrayList getClientNames() throws AppException;
+    
+    ArrayList getClientProfits() throws AppException;
 }

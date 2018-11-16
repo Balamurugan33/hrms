@@ -1,6 +1,7 @@
 package com.ideas2it.hrms.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,21 +32,24 @@ public class DesignationController {
     
     @PostMapping("designation/createDesignation")
     public ModelAndView createDesignation(@ModelAttribute("designation") 
-            Designation designation, ModelMap model) {
+            Designation designation, HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView(
+                "redirect:" + "/designation/displayDesignation");
         try {
+            HttpSession session = request.getSession(false);
             if(designationService.isDesignationExist(designation.getName())) {
                 if (designationService.createDesignation(designation)) {
-                    model.addAttribute(DesignationConstants.LABEL_MESSAGE,
+                    session.setAttribute(DesignationConstants.LABEL_MESSAGE,
                         DesignationConstants.MSG_CREATE_SUCCESS);
                 } else {
-                    model.addAttribute(DesignationConstants.LABEL_MESSAGE, 
+                    session.setAttribute(DesignationConstants.LABEL_MESSAGE, 
                         DesignationConstants.MSG_CREATE_FAIL);
                 }
             } else {
-                model.addAttribute(DesignationConstants.LABEL_MESSAGE, 
+                session.setAttribute(DesignationConstants.LABEL_MESSAGE, 
                     DesignationConstants.MSG_ALREADY_EXIST);
             }
-            return displayDesignations(model);
+            return modelAndView;
         } catch (AppException appException) {
              return new ModelAndView(ERROR_PAGE, 
                  DesignationConstants.LABEL_MESSAGE, appException.getMessage());

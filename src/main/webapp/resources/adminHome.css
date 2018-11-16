@@ -9,6 +9,35 @@
      margin-left:30%;
      }
      
+.dsn-right {
+	background: white;
+     display: inline-block;
+     width:300px;
+     height:400px;
+     padding: 25px;
+     marigin-left:45%;
+     border-radius: 20px;
+     box-shadow: 10px 10px 10px 10px #d8c9e8; 
+     align: center;
+}
+
+.dsn-left {
+    background: white;
+     display: inline-block;
+     width:300px;
+     height:400px;
+     marigin-left:45%;
+     padding: 25px;
+     border-radius: 20px;
+     box-shadow: 10px 10px 10px 10px #d8c9e8; 
+     align: center;
+}
+
+.scroll {
+    height:300px;
+    overflow-y:auto;'
+}
+     
 .actiondropdown {
     position: relative;
     display: inline-block;

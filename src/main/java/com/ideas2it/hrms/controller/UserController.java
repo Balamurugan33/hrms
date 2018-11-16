@@ -13,7 +13,9 @@ import com.ideas2it.hrms.common.UserConstants;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.User;
+import com.ideas2it.hrms.service.ClientService;
 import com.ideas2it.hrms.service.UserService;
+import com.ideas2it.hrms.service.impl.ClientServiceImpl;
 import com.ideas2it.hrms.service.impl.UserServiceImpl;
 
 /**
@@ -110,7 +112,11 @@ public class UserController {
             session.setAttribute(UserConstants.LABEL_ROLE, role);
             if (role.equals(LABEL_ADMIN)) {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
-                return new ModelAndView(ADMIN_JSP);
+                ClientService clientService = new ClientServiceImpl();
+                ModelAndView modelAndView = new ModelAndView(ADMIN_JSP, "profits",
+                    clientService.getClientProfits());
+                return modelAndView.addObject("names", 
+                        clientService.getClientNames());
             } else { 
                 Employee employee 
                     = userService.checkEmployeeDetail(user.getUserName());

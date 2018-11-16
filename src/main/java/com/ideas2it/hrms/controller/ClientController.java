@@ -3,6 +3,7 @@ package com.ideas2it.hrms.controller;
 import java.time.LocalDate;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,21 +38,24 @@ public class ClientController {
     
     @PostMapping("client/createClient")
     public ModelAndView createClient(@ModelAttribute("client") Client client, 
-            ModelMap model) {
+            HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView(
+                "redirect:" + "/client/displayClient");
+        HttpSession session = request.getSession(false);
         try {
             if(clientService.isClientExist(client.getEmailId())) {
                 if (clientService.createClient(client)) {
-                    model.addAttribute(ClientConstants.LABEL_MESSAGE,
+                    session.setAttribute(ClientConstants.LABEL_MESSAGE,
                         ClientConstants.MSG_CREATE_SUCCESS);
                 } else {
-                    model.addAttribute(ClientConstants.LABEL_MESSAGE, 
+                    session.setAttribute(ClientConstants.LABEL_MESSAGE, 
                         ClientConstants.MSG_CREATE_FAIL);
                 }
             }else {
-                model.addAttribute(ClientConstants.LABEL_MESSAGE, 
+                session.setAttribute(ClientConstants.LABEL_MESSAGE, 
                     ClientConstants.MSG_ALREADY_EXIST);
             }
-            return displayClients(model);
+            return modelAndView;
         } catch (AppException appException) {
              return new ModelAndView(ERROR_PAGE, ClientConstants.LABEL_MESSAGE, 
                  appException.getMessage());

@@ -29,8 +29,33 @@
 }
 
 </style>
+<script>
+  
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    theme: "red",
+    title:{
+        text: "Simple Line Chart"
+    },
+    axisY:{
+        includeZero: false
+    },
+    
+    data: [{        
+        type: "column",          
+        dataPoints: [
+        	{ y: name }
+        ]
+    }]
+});
+chart.render();
+
+}
+</script>
 </head>
-<body style="    margin-left: 78px;">
+<body style="margin-left: 78px;">
 <c:if test="${not empty clients}">
     <div>
         <center><button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-success btn-lg pulse">Add Client</button></center>
@@ -123,10 +148,12 @@
 </c:if>
 
 <c:if test="${not empty designations}">
-    <div>
-        <button type="button" class="btn btn-outline-success btn-lg" 
-            data-toggle="modal" data-target="#DesignationCreate">Add Designation</button>
-        <table class="table table-striped text-center">
+    <table class="table text-center">
+    <tr><td>
+    <div class="dsn-right">
+        <h3>Designations</h3>
+        <div class="scroll">
+        <table class="table table-striped text-center ">
         <tr>
             <th class="text-center">Name</th>
             <th class="text-center">Action</th>
@@ -157,12 +184,37 @@
                 </div>
             </div>
         </div>
-     </div></td>
+     </div>
+     </td>
             </form>
         </tr>
         </c:forEach>
         </table>
+        </div>
+    </div></td>
+    <td>
+    <div class="dsn-left">
+        <header>
+        <h3>Enter The New Designation</h3>
+        </header>
+        <form action="hrms/client/createClient" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" name="name"
+                placeholder="Designation Name" required="required">
+       </div>
+        <footer>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block btn-lg" 
+                formaction="/hrms/designation/createDesignation">Save</button>
+            <button type="button" class="btn btn-danger btn-block btn-lg" 
+                data-dismiss="modal">Cancel</button>
+        </div>
+        </form>
+        </footer>
     </div>
+    <td></tr>
+    </table>
+    
 </c:if>
 
 <c:if test="${not empty projects}">
@@ -217,7 +269,7 @@
             </form>
         
         <td>
-        <div class="modal fade" id="${project.id}a" >
+        <div class="modal fade" id="${project.id}a" >31px
                  <div class="modal-dialog modal-sm">
                      <div class="modal-content">
                          <div class="modal-header">
@@ -431,30 +483,6 @@
         </div>
      </div>
      
-     <div class="modal fade" id="DesignationCreate" >
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Enter Designation Detail</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="hrms/client/createClient" method="post">
-                    <div class="form-group">
-                            <input type="text" class="form-control" name="name"
-                                placeholder="Designation Name" required="required">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-lg" 
-                            formaction="/hrms/designation/createDesignation">Save</button>
-                        <button type="button" class="btn btn-danger btn-block btn-lg" 
-                            data-dismiss="modal">Cancel</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-     </div>
-     
      <div class="modal fade" id="ProjectCreate" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -556,12 +584,31 @@
         </table>
      </div>
   </c:if>
-     
+  
+  <c:if test="${not empty Profit}">
+     <div class="revenue">
+        <h3>Clients</h3>
+     </div>
+     <div class="revenue">
+        <h3>Projects</h3>
+     </div>
+     <div class="revenue">
+        <h3>Employees</h3>
+     </div>
+  </c:if>
+     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<c:set var="alphabet" value="${names}" scope="page" />
+
 <body/>
-<c:if test="${not empty message}">
+<c:if test="${not empty names}">
 <script>
     alert ("${message}");
-</script>
+    var someJsVar = "<c:out value='${names}'/>";
+    	alert (someJsVar);
+    	var arrayLength = someJsVar.length;
+    	someJsVar.forEach(function(item, index, array) { console.log(item, index); }); // Apple 0 // Banana 1
 
+</script>
 </c:if>
 </html>
