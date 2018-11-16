@@ -50,12 +50,4 @@ public interface EmployeeDao {
      */
     List<Employee> retrieveEmployees() throws AppException;
     
-    /**
-     * Get the particular employee by using user id
-     * 
-     * @param id
-     * Employee user id
-     */
-    Employee fetchEmployeeByUserId(Integer id) throws AppException;
-    
 }

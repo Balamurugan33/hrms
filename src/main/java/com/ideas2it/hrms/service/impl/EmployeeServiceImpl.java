@@ -217,10 +217,4 @@ public class EmployeeServiceImpl implements EmployeeService{
         employee.getSalaryTrackers().add(salaryTracker);
         return employeeDao.updateEmployee(employee);
     }
-
-    @Override
-    public Employee getEmployeebyUserId(Integer id) throws AppException {
-        // TODO Auto-generated method stub
-        return employeeDao.fetchEmployeeByUserId(id);
-    }
 }

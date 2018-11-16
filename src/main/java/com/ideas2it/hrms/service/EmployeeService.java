@@ -144,11 +144,4 @@ public interface EmployeeService {
    boolean salaryIncrement(String emailId, SalaryTracker salaryTracker) 
            throws AppException;
    
-   /**
-    * Used to get the existing employee details by user id
-    * 
-    * @param id
-    *        Employee user id
-    */
-   Employee getEmployeebyUserId(Integer id) throws AppException;
 }
