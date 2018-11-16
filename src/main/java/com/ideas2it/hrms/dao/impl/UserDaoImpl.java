@@ -24,7 +24,7 @@ import com.ideas2it.hrms.session.HibernateSession;
 public class UserDaoImpl implements UserDao {
 
     private String insertQuery = 
-        "INSERT INTO USER(USER_NAME, PASSWORD, ROLE)"+
+        "INSERT INTO user(username, password, role)"+
         " VALUES(:name, SHA1(:password), :role)";
     
     /** {@inheritDoc}*/

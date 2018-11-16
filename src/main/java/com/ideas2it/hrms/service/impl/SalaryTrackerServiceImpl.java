@@ -6,6 +6,7 @@ import java.util.List;
 import com.ideas2it.hrms.dao.SalaryTrackerDao;
 import com.ideas2it.hrms.dao.impl.SalaryTrackerDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.SalaryTracker;
 import com.ideas2it.hrms.service.SalaryTrackerService;
 

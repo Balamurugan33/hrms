@@ -45,4 +45,10 @@ public class UserServiceImpl implements UserService {
         EmployeeService employeeService = new EmployeeServiceImpl();
         return employeeService.searchEmployee(mailId);
     }
+
+    @Override
+    public Employee getEmployee(Integer id) throws AppException {
+        EmployeeService employeeService = new EmployeeServiceImpl();
+        return employeeService.getEmployeebyUserId(id);
+    }
 }

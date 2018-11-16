@@ -14,7 +14,7 @@
                 
                 <form method="post">
                 <div class="group">
-                    <label for="user" class="label">Email Address</label>
+                    <label for="user" class="label">User Name</label>
                     <input type="text" name="userName" class="input" required>
                 </div>
                 <div class="group">
@@ -32,8 +32,12 @@
             <div class="sign-up-htm">
                 <form method="post">
                 <div class="group">
-                    <label for="user" class="label">Email Address</label>
+                    <label for="user" class="label">User Name</label>
                     <input type="text" name="userName" class="input" required>
+                </div>
+                <div class="group">
+                    <label for="user" class="label">Register Email</label>
+                    <input type="text" name="emailId" class="input" required>
                 </div>
                 <div class="group">
                     <label for="pass" class="label">Password</label>
@@ -46,6 +50,7 @@
                 <div class="group">
                     <input type="submit" formaction="/hrms/user/register" class="button" value="Sign Up">
                 </div>
+                <input type="hidden" name="role" value="Employee">
                 </form>
                 <div class="hr"></div>
                 <div class="foot-lnk">

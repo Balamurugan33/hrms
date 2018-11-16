@@ -49,18 +49,21 @@ public class UserController {
         try {
             ModelAndView modelAndView = new ModelAndView(LOGIN_JSP, "command",
                 new User());
-            if (null != userService.checkEmployeeDetail(user.getUserName())) {
+            String empEmail = request.getParameter("emailId");
+            if (null != userService.checkEmployeeDetail(empEmail)) {
                 user.setRole(request.getParameter(UserConstants.LABEL_ROLE));
-                if (userService.createUser(user)) {
+                
+                if ( null == userService.searchName(user.getUserName())) {
+                    userService.createUser(user);
                     return modelAndView.addObject(UserConstants.LABEL_MESSAGE, 
                         UserConstants.MSG_CREATE_SUCCESS);
                 } else {
                     return modelAndView.addObject(UserConstants.LABEL_MESSAGE, 
-                        UserConstants.MSG_CREATE_FAIL);
+                        UserConstants.MSG_CREATE_FAIL+user.getUserName());
                 }
             } else {
                 return modelAndView.addObject(UserConstants.LABEL_MESSAGE, 
-                    UserConstants.MSG_USER_NAME_NOTEXIST);
+                    UserConstants.MSG_USER_NAME_NOTEXIST+empEmail);
             }
         } catch (AppException appException) {
             return new ModelAndView(ERROR_JSP, UserConstants.LABEL_MESSAGE, 
@@ -107,8 +110,7 @@ public class UserController {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
                 return new ModelAndView(ADMIN_JSP);
             } else { 
-                Employee employee 
-                    = userService.checkEmployeeDetail(user.getUserName());
+                Employee employee = userService.getEmployee(user.getId());
                 session.setAttribute(UserConstants.LABEL_EMPLOYEE, employee);
                 return new ModelAndView(EMPLOYEE_VIEW, 
                         "employeeDetail", employee);

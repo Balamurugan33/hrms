@@ -43,4 +43,12 @@ public interface UserService {
      *        Used to find the user
      */
     Employee checkEmployeeDetail(String mailId) throws AppException;
+    
+    /**
+     * Used to get the employee details
+     * 
+     * @param id
+     *        Used get employee user id
+     */
+    Employee getEmployee(Integer id) throws AppException;
 }

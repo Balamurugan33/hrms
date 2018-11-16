@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.TimeSheet;
@@ -43,7 +44,7 @@ public class TimeSheetController {
                 
         try {
             Project project = new Project();
-            project.setId(Integer.parseInt(request.getParameter("sheetProjectId")));
+            project.setId(Integer.parseInt(request.getParameter("projectId")));
             entry.setProject(project);
             entry.setEmployee(employee);
             entry = sheetService.createTask(entry);       
@@ -86,6 +87,7 @@ public class TimeSheetController {
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
+            AppLogger.error("bhgih"+task.getEntryDate());
             List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
             HttpSession session = request.getSession();
             Employee currentEmployee = (Employee) session.getAttribute("employee");

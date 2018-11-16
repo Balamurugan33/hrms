@@ -116,23 +116,20 @@
                     <form action="/hrms/timeSheet/createEntry" method="post">
                         <div class="form-group">
                             <label>Date</label>
-                            <div class="input-group">
-                              <input type="date" class="form-control" name="entryDate" value= "${timeSheet.entryDate}">
-                            </div>
+                              <input type="date" class="form-control" name="entryDate" value="<%= java.time.LocalDate.now() %>" readonly>
                         </div>
                         <div class="form-group">
                                 <label>Project Name</label>
-                                <select class="form-control" name="project">
+                                <select class="form-control" name="projectId">
 							        <c:forEach var="project" items="${employee.projects}">
 							             <option value="${project.id}">${project.name}</option>
-							             <input type="hidden" name="sheetProjectId" value = "${project.id}">							             
 							        </c:forEach>
 						        </select>
                         </div>
                        <div class="form-group">
                             <label>Hours Worked</label>
-                            <div class="input-group">
-                              <input type="text" class="form-control" name="workedHours" value= "${timeSheet.workedHours}" required="required">
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="workedHours" required="required">
                             </div>
                         </div>
                         <div class="form-group">

@@ -24,8 +24,6 @@ import org.hibernate.annotations.Where;
  */
 @Entity
 @Table(name="attendance")
-@SQLDelete(sql="update attendance set expired_date = current_date() where id=?")
-@Where(clause = "expired_date is null")
 public class Attendance {
     
     @Id  

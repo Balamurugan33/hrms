@@ -7,6 +7,7 @@ import java.util.List;
 import com.ideas2it.hrms.dao.EmployeeDao;
 import com.ideas2it.hrms.dao.impl.EmployeeDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
@@ -139,8 +140,9 @@ public class EmployeeServiceImpl implements EmployeeService{
             
             SalaryTracker currentTracker = salaryService.getSalaryTrackerOnDate(
                 timesheet.getEntryDate(), employee.getSalaryTrackers());
-            billAmount 
+            billAmount
                 = timesheet.getWorkedHours() * currentTracker.getHourlyRate();
+            
         }
         return billAmount;
     }
@@ -198,8 +200,12 @@ public class EmployeeServiceImpl implements EmployeeService{
             throws AppException {
         AttendanceService attendanceService = new AttendanceServiceImpl();
         Attendance attendance = null;
-            attendance = attendanceService.getAttendance(employee, workedDate);
-        return attendance.getStatus();
+        Boolean present = Boolean.FALSE;
+        attendance = attendanceService.getAttendance(employee, workedDate);
+        if (null !=  attendance) {
+            present = attendance.getStatus();
+        }
+        return present;
     }
 
     @Override
@@ -210,5 +216,11 @@ public class EmployeeServiceImpl implements EmployeeService{
         employee.setSalary(salaryTracker.getSalary());
         employee.getSalaryTrackers().add(salaryTracker);
         return employeeDao.updateEmployee(employee);
+    }
+
+    @Override
+    public Employee getEmployeebyUserId(Integer id) throws AppException {
+        // TODO Auto-generated method stub
+        return employeeDao.fetchEmployeeByUserId(id);
     }
 }

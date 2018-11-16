@@ -18,8 +18,8 @@ public class UserConstants {
     
     // Result message
     public static String MSG_CREATE_SUCCESS = "Successfully created";
-    public static String MSG_CREATE_FAIL = "Create operation failed";
-    public static String MSG_USER_NAME_NOTEXIST = "User name is not exist->";
+    public static String MSG_CREATE_FAIL = "The user name already exist -> ";
+    public static String MSG_USER_NAME_NOTEXIST = "Please enter register emailId->";
     public static String MSG_INVALID_LOGIN = "Invalid user name or password";
     
     // Labels

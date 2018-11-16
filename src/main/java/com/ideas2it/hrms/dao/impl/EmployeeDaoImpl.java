@@ -110,4 +110,19 @@ public class EmployeeDaoImpl implements EmployeeDao {
             session.close(); 
         }
     }
+
+    @Override
+    public Employee fetchEmployeeByUserId(Integer id) throws AppException {
+        try {
+            session = HibernateSession.getSession();
+            String query = "FROM Employee WHERE userId = :userId";
+            return (Employee)session.createQuery(query).
+                setParameter("userId", id ).uniqueResult();
+        } catch (HibernateException e) {
+            AppLogger.error(EmpConstants.ERROR_RETRIEVE_EMPLOYEE+id, e);
+            throw new AppException(EmpConstants.ERROR_RETRIEVE_EMPLOYEE+id);
+        } finally {
+            session.close(); 
+        }
+    }
 }

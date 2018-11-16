@@ -128,10 +128,10 @@ public class ProjectController {
             modelAndView.addObject("BilAmount", billableAmount);
             modelAndView.addObject("CostToCompany", costToCompany);
             modelAndView.addObject("Success", MSG_CREATED);
-            modelAndView.setViewName("adminHome");
+            return displayAllProjects(modelAndView);
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
+            return modelAndView;
         }
-        return modelAndView;
     }
 }
