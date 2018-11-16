@@ -1,10 +1,8 @@
 package com.ideas2it.hrms.controller;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -257,17 +255,18 @@ public class EmployeeController {
         HttpSession session1 = request.getSession(false);        
         Employee employee = (Employee) session1.getAttribute("employee");
         Integer empId = 0;
-        String timeStamp = new SimpleDateFormat("yyyymmdd").format(new Date());
         
         LocalDate localDate = LocalDate.now();//For reference
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-        String dateString = localDate.format(formatter);        
+        String dateString = localDate.format(formatter);         
         
         String leaveTemplate = "Hi, I would like to apply for leave on " + dateString + " as ";
         String message = null;
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         
-        //empId = Integer.parseInt(request.getParameter("leaveEmpId"));
+        DateTimeFormatter leaveFormatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+        LocalDate date = LocalDate.parse(request.getParameter("leaveDate"), leaveFormatter);
+        
         message = leaveTemplate + request.getParameter("leaveReason");
 
         try {

@@ -233,6 +233,8 @@
                               <input type="text" class="form-control" name="employeeName"
                                 value= "${employee.name}" required="required">
                             </div>
+                            <input type="date" class="form-control" name="leaveDate"
+                                  required="required" max="<%= java.time.LocalDate.now() %>">                            
                             <div class="input-group">
                                 <input style="height:200px;" type="text" class="form-control" name="leaveReason" placeholder="Reason for applying leave" required="required">
                             </div>
