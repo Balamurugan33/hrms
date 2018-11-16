@@ -50,11 +50,11 @@ public class UserController {
             ModelAndView modelAndView = new ModelAndView(LOGIN_JSP, "command",
                 new User());
             String empEmail = request.getParameter("emailId");
-            if (null != userService.checkEmployeeDetail(empEmail)) {
-                user.setRole(request.getParameter(UserConstants.LABEL_ROLE));
-                
-                if ( null == userService.searchName(user.getUserName())) {
-                    userService.createUser(user);
+            Employee employee = userService.
+                checkEmployeeDetail(user.getUserName());
+            if (null != employee) {
+                if (userService.createUser(user)) {
+                    
                     return modelAndView.addObject(UserConstants.LABEL_MESSAGE, 
                         UserConstants.MSG_CREATE_SUCCESS);
                 } else {

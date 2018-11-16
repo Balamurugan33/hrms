@@ -14,7 +14,7 @@
                 
                 <form method="post">
                 <div class="group">
-                    <label for="user" class="label">User Name</label>
+                    <label for="user" class="label">Email Address</label>
                     <input type="text" name="userName" class="input" required>
                 </div>
                 <div class="group">
@@ -32,12 +32,8 @@
             <div class="sign-up-htm">
                 <form method="post">
                 <div class="group">
-                    <label for="user" class="label">User Name</label>
+                    <label for="user" class="label">Email Address</label>
                     <input type="text" name="userName" class="input" required>
-                </div>
-                <div class="group">
-                    <label for="user" class="label">Register Email</label>
-                    <input type="text" name="emailId" class="input" required>
                 </div>
                 <div class="group">
                     <label for="pass" class="label">Password</label>
