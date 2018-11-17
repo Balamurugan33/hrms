@@ -20,6 +20,7 @@ import com.ideas2it.hrms.common.EmpConstants;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Attendance;
+import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
@@ -40,31 +41,18 @@ import static com.ideas2it.hrms.common.EmpConstants.MSG_CREATE_SUCCESS;
 public class EmployeeController {
 
     private String EMPLOYEE_MENU = "employeeView";
-    private String EMPLOYEE_CREATE = "empCreate";
     private String ADMINMENU = "adminHome";
     private String ERROR_PAGE = "error";
     private EmployeeService employeeService = new EmployeeServiceImpl();
-
-    @GetMapping("employee/viewProfile")
-    public ModelAndView viewProfile(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        Employee employee = (Employee) session.getAttribute("employee");
-        return new ModelAndView(EMPLOYEE_MENU, "employeeDetail", employee);
-    }
-
-    @GetMapping("employee/createProfile")
-    public ModelAndView viewCreateForm() {
-        try {
-            ModelAndView modelAndView = new ModelAndView(EMPLOYEE_CREATE,
-                    "command", new Employee());
-            return modelAndView.addObject("designations",
-                    employeeService.getDesignations());
-        } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
-                    appException.getMessage());
-        }
-    }
-
+    
+    /**
+     * Used to create the employee  
+     *  
+     * @param employee
+     *        Get the the employee details  
+     * @param salaryTracker
+     *        Used to get the employee salary detail
+     */
     @PostMapping("employee/createEmployee")
     public ModelAndView createEmployee(
             @ModelAttribute("employee") Employee employee,
@@ -383,18 +371,11 @@ public class EmployeeController {
             String emailId = request.getParameter("emailId");
             Integer id = Integer.parseInt(request.getParameter("projectId"));
             Employee employee = employeeService.searchEmployee(emailId);
-            Project project = new Project();
-            project.setId(id);
-
-            if (!employee.getProjects().contains(project)) {
-                employee.getProjects().add(project);
-                employeeService.updateEmployee(employee);
-                model.addAttribute(EmpConstants.LABEL_MESSAGE,
-                        EmpConstants.MSG_UPDATE_SUCCESS);
-            } else {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE,
-                        EmpConstants.MSG_ALREADY_ASSIGN);
-            }
+            Project project = employeeService.getProjectById(id);
+            employee.getProjects().add(project);
+            employeeService.updateEmployee(employee);
+            model.addAttribute(EmpConstants.LABEL_MESSAGE,
+                 EmpConstants.MSG_UPDATE_SUCCESS);
             return displayEmployees(model);
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,

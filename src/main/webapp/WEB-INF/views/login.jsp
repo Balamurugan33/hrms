@@ -15,11 +15,11 @@
                 <form method="post">
                 <div class="group">
                     <label for="user" class="label">Email Address</label>
-                    <input type="text" name="userName" class="input" required>
+                    <input type="text" title="please enter emailId" name="userName" class="input" required>
                 </div>
                 <div class="group">
                     <label for="pass" class="label">Password</label>
-                    <input type="password" name="password" class="input" data-type="password" required>
+                    <input type="password" title="please enter password" name="password" class="input" data-type="password" required>
                 </div>
                 <div class="group">
                     <input type="submit" class="button" formaction="/hrms/user/login" value="Sign In">
@@ -33,15 +33,15 @@
                 <form method="post">
                 <div class="group">
                     <label for="user" class="label">Email Address</label>
-                    <input type="text" name="userName" class="input" required>
+                    <input type="text" title="please enter emailId" name="userName" class="input" required>
                 </div>
                 <div class="group">
                     <label for="pass" class="label">Password</label>
-                    <input type="password" name="password" class="input" data-type="password" required>
+                    <input type="password" title="please enter password" name="password" class="input" data-type="password" required>
                 </div>
                 <div class="group">
                     <label for="pass" class="label">Repeat Password</label>
-                    <input type="password" class="input" data-type="password">
+                    <input type="password" title="please repeat password" class="input" data-type="password">
                 </div>
                 <div class="group">
                     <input type="submit" formaction="/hrms/user/register" class="button" value="Sign Up">

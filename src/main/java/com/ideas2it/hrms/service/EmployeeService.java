@@ -146,4 +146,12 @@ public interface EmployeeService {
    boolean salaryIncrement(String emailId, SalaryTracker salaryTracker) 
            throws AppException;
    
+   /**
+    * Used get the existing project
+    * 
+    * @param id
+    *        project id
+    */
+   Project getProjectById(Integer id) throws AppException;
+   
 }

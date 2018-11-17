@@ -143,6 +143,12 @@ public class EmployeeServiceImpl implements EmployeeService{
         ProjectService projectService = new ProjectServiceImpl();
         return projectService.getAllProjects();
     }
+    
+    /** {@inheritDoc}*/
+    public Project getProjectById(Integer id) throws AppException {
+        ProjectService projectService = new ProjectServiceImpl();
+        return projectService.getProjectById(id);
+    }
 
     /** {@inheritDoc}*/
     public boolean createTask(TimeSheet task) throws AppException {

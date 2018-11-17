@@ -8,54 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <jsp:include page='adminHeader.jsp'/>
-<style>
-
-.pulse:hover,
-.pulse:focus {
-          animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
-}
-
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--hover);
-  }
-}
-
-.pulse {
-  --color: #ef6eae;
-  --hover: #ef8f6e;
-}
-
-</style>
-<script>
-  
-window.onload = function () {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-    animationEnabled: true,
-    theme: "red",
-    title:{
-        text: "Simple Line Chart"
-    },
-    axisY:{
-        includeZero: false
-    },
-    
-    data: [{        
-        type: "column",          
-        dataPoints: [
-        	{ y: name }
-        ]
-    }]
-});
-chart.render();
-
-}
-</script>
 </head>
-<body style="margin-left: 78px;">
+<body style="margin-left: 80px;">
 <c:if test="${not empty clients}">
     <div>
         <center><button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-success btn-lg pulse">Add Client</button></center>
@@ -333,13 +287,12 @@ chart.render();
             <td><div class="actiondropdown">
 				  <button class="btn btn-success">Select Action</button>
 				  <div class="dropdown-content">
-						     <form action="/hrms/employee/deleteEmployee" method="post">
-							    
+						     <form action="/hrms/employee/deleteEmployee" class="dropdown-content-form" method="post">
 		                        <a href="#" data-toggle="modal" data-target="#${employee.id}">
 		                         <img class="img" title="Put Increment" src="<c:url value = '/resources/img/salary.svg' />"></a>
 		                        <a href="#" data-toggle="modal" data-target="#${employee.mobileNo}">
 		                        <img class="img" title="View Employee Revenue" src="<c:url value = '/resources/img/revenue.svg' />"></a>
-		                        <button type="submit"><img class="img" title="Delete Employee" src="<c:url value='/resources/img/deleteEmp.svg'/>"></button>
+		                        <button class="dropdown-content-btn" type="submit"><img class="img" title="Delete Employee" src="<c:url value='/resources/img/deleteEmp.svg'/>"></button>
 		                        <input type="hidden" name="id" value="${employee.id}">
 		                    </form>
 						    <div class="dropdown">
@@ -585,30 +538,52 @@ chart.render();
      </div>
   </c:if>
   
-  <c:if test="${not empty Profit}">
-     <div class="revenue">
-        <h3>Clients</h3>
-     </div>
-     <div class="revenue">
-        <h3>Projects</h3>
-     </div>
-     <div class="revenue">
-        <h3>Employees</h3>
-     </div>
-  </c:if>
-     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<c:set var="alphabet" value="${names}" scope="page" />
+  <c:if test="${not empty names}">
+	<div id="chartContainer" style="height: 300px; width: 75%; margin-left: 78px;"></div>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<c:forEach var = "name"  items="${names}">
+    <input type="text" name="a" value="${name}" style="display:none">
+    </c:forEach>
+    
+    <c:forEach var = "profit"  items="${profits}">
+    <input type="number" name="b" value="${profit}" style="display:none">
+    </c:forEach>
+ </c:if>
 
 <body/>
-<c:if test="${not empty names}">
+<c:if test="${not empty message}">
 <script>
     alert ("${message}");
-    var someJsVar = "<c:out value='${names}'/>";
-    	alert (someJsVar);
-    	var arrayLength = someJsVar.length;
-    	someJsVar.forEach(function(item, index, array) { console.log(item, index); }); // Apple 0 // Banana 1
-
 </script>
 </c:if>
-</html>
+
+<script>
+    window.onload = function () {
+        
+        var dps = []; // dataPoints
+        var a = document.getElementsByName("a");
+        var b = document.getElementsByName("b");
+        var count = a.length;
+        for (var j = 0; j < count; j++) {
+            dps.push({
+                label: a[j].value,
+                y: parseInt(b[j].value)
+            });
+        }
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title :{
+                text:"Revenue Of Company Based On Client"
+            },
+            axisY: {
+                includeZero: false
+            },      
+            data: [{
+                type: "line",
+                dataPoints: dps
+            }]
+        });
+
+        chart.render();
+        }
+</script>
+</html> 

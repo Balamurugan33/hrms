@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -69,8 +70,13 @@ public class Employee {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<SalaryTracker> salaryTrackers = new ArrayList<SalaryTracker>();
     
-    @ManyToMany(mappedBy="employees")
+    @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinTable(
+        name = "project_employee", 
+        joinColumns = { @JoinColumn(name = "employee_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "project_id") }
+    )
     private List<Project> projects = new ArrayList<Project>();
     
     @OneToOne
