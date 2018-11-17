@@ -45,6 +45,14 @@ public class EmployeeController {
     private String ERROR_PAGE = "error";
     private EmployeeService employeeService = new EmployeeServiceImpl();
     
+    @GetMapping("employee/viewProfile")
+    public ModelAndView viewProfile(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        Employee employee = (Employee) session.getAttribute("employee");
+        return new ModelAndView(EMPLOYEE_MENU, 
+            "employeeDetail", employee);
+    }
+    
     /**
      * Used to create the employee  
      *  

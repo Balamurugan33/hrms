@@ -25,9 +25,10 @@ import org.hibernate.annotations.Where;
 
 /**
  * Used to get the employee details it's means single employee details
- * And also used to get the designation, 
- * from designation to get the employee salary and role 
- * Used to get the List of attendance it's single employee present and absent dates
+ * And also get the employee salary and hourly rate details 
+ * Here hourly rate means per hour billable amount from client
+ * Used to get the List of attendance 
+ * It's hold single employee present and absent dates
  * 
  * @author Balamurugan M
  *

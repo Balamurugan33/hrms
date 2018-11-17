@@ -141,7 +141,7 @@ public interface EmployeeService {
     * @param emailId
     *        employee emailId
     * @param salaryTracker
-    *         salary tracking details 
+    *        salary tracking details 
     */
    boolean salaryIncrement(String emailId, SalaryTracker salaryTracker) 
            throws AppException;

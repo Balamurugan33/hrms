@@ -25,13 +25,12 @@ public interface ClientService {
     Boolean createClient(Client client) throws AppException;
     
     /** 
-     * Gets a client
+     * Gets a client by using id
      * 
      * @param id
      * @return client
      * @throws AppException
      */
-    
     Client getClientById(Integer id) throws AppException;
     
     /**
@@ -80,7 +79,13 @@ public interface ClientService {
      */
     Client searchClient(String email) throws AppException;
     
+    /**
+     * Used to get all client names in company 
+     */
     ArrayList getClientNames() throws AppException;
     
+    /**
+     * Used to get all client profits in company 
+     */
     ArrayList getClientProfits() throws AppException;
 }

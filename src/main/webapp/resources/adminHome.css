@@ -92,27 +92,6 @@
     
 }
 
-
-.pulse:hover,
-.pulse:focus {
-  animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
-}
-
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--hover);
-  }
-}
-
-.pulse {
-  --color: #ef6eae;
-  --hover: #ef8f6e;
-}
-
-
-
 .img {
     width:25px;
     hieght:25px;
