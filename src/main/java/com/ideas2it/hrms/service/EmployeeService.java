@@ -28,12 +28,45 @@ public interface EmployeeService {
     */
    Boolean createEmployee(Employee employee) throws AppException;
    
+   /**
+    * Used by an employee to send his project manager an email, applying for leave
+    * @param employee
+    *        an employee
+    * @param message
+    *        reason for leave
+    * @param dateString
+    *        date of leave
+    * @return
+    *        the employee's attendance history    
+    */
    List<Attendance> applyLeave(Employee employee, String message, String dateString) throws AppException;
-   
+
+   /**
+    * Marks an employee as present, for current date, in his/her attendance history
+    * @param employee
+    *        an employee
+    * @return
+    *        the employee's attendance history    
+    */
    List<Attendance> markPresent(Employee employee) throws AppException;
    
+   /**
+    * Marks an employee as absent, for current date, in his/her attendance history
+    * @param employee
+    *        an employee
+    * @return
+    *        the employee's attendance history    
+    */
    List<Attendance> markAbsent(Employee employee) throws AppException;
    
+   /**
+    * Gets the entire attendance history of an employee
+    * 
+    * @param employee
+    *        an employee
+    * @return
+    *        the employee's attendance history    
+    */
    List<Attendance> getAttendanceSheet(Employee employee) throws AppException;
    
    /**

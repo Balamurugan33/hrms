@@ -25,7 +25,7 @@ import org.hibernate.annotations.Where;
 /**
  * Represents a project allocated by a client to the company.
  * A project can have many employees and employees can work on multiple projects at a time.
- * 
+ * A client can allocate multiple projects to the company
  * @author Ganesh Venkat S
  *
  */

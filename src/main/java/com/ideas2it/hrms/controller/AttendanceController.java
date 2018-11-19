@@ -1,14 +1,7 @@
 package com.ideas2it.hrms.controller;
 
 import java.util.List;
-import java.util.Properties;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -35,7 +28,10 @@ import static com.ideas2it.hrms.common.AttendanceConstants.MSG_UPDATED;
 @Controller 
 @RequestMapping("attendance") 
 public class AttendanceController {
-            
+    
+    /**
+     * Creates a new attendance entry
+     */
     @PostMapping("create")
     public ModelAndView createAttendance(
             @ModelAttribute("attendance") Attendance attendance, 
@@ -51,36 +47,11 @@ public class AttendanceController {
             modelAndView.addObject("Error", appException.getMessage());
         }
        return modelAndView;
-    }
+    }    
     
-    @PostMapping("leave")
-    public ModelAndView Leave(@ModelAttribute("attendance") Attendance attendance, 
-        HttpServletRequest request){
-        ModelAndView modelAndView = new ModelAndView();
-        Integer empId = 0;
-        String message = null;
-        
-        empId = Integer.parseInt(request.getParameter("leaveEmpId"));
-        message = request.getParameter("reason");
-        
-    try {
-        Properties props = new Properties();
-    props.put("mail.smtp.host", "smtp.gmail.com");
-    Session session = Session.getDefaultInstance(props, null);
-    session.setDebug(true);
-    Message msg = new MimeMessage(session);
-        msg.setText(message);
-        msg.setFrom(new InternetAddress("ganeshvenkat@ideas2it.com"));
-        msg.setRecipients(Message.RecipientType.TO, new InternetAddress[]{new InternetAddress("ganeshvenkat@ideas2it.com")});
-        msg.setSubject("Subject Line");
-        Transport.send(msg);
-    }  catch (MessagingException e) {
-        e.printStackTrace();
-    }
-    modelAndView.setViewName("employeeView");
-        return modelAndView;
-    }
-    
+    /**
+     * Updates an attendance entry
+     */
     @PostMapping("update")
     public ModelAndView updateAttendance(
         @ModelAttribute("attendance") Attendance attendance, 
@@ -97,7 +68,10 @@ public class AttendanceController {
         }
         return modelAndView;
     }
-         
+    
+    /**
+     * Displays all attendance entries
+     */
     @GetMapping("displayAll")
     public ModelAndView displayAllAttendances(HttpServletRequest request) {
         AttendanceService attendanceService = new AttendanceServiceImpl();

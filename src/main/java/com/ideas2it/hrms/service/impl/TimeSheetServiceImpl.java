@@ -19,52 +19,50 @@ import com.ideas2it.hrms.service.TimeSheetService;
  */
 public class TimeSheetServiceImpl implements TimeSheetService {
     
-    public TimeSheet createTask(TimeSheet task) throws AppException {
-        TimeSheetDao taskDao = new TimeSheetDaoImpl();
-        return taskDao.createTask(task);
+    public TimeSheet createEntry(TimeSheet entry) throws AppException {
+        TimeSheetDao entryDao = new TimeSheetDaoImpl();
+        return entryDao.createEntry(entry);
     }
     
-    public TimeSheet getTaskById(Integer id) throws AppException {
-        TimeSheetDao taskDao = new TimeSheetDaoImpl();
-        return taskDao.getTaskById(id);
+    public TimeSheet getEntryById(Integer id) throws AppException {
+        TimeSheetDao entryDao = new TimeSheetDaoImpl();
+        return entryDao.getEntryById(id);
     }
     
-    public List<TimeSheet> getAllTasks() throws AppException {
-        TimeSheetDao taskDao = new TimeSheetDaoImpl();
-        return taskDao.getAllTasks();
+    public List<TimeSheet> getAllEntries() throws AppException {
+        TimeSheetDao entryDao = new TimeSheetDaoImpl();
+        return entryDao.getAllEntries();
     }
     
-    public TimeSheet updateTask(TimeSheet task) throws AppException {
-        TimeSheetDao taskDao = new TimeSheetDaoImpl();
-        return taskDao.updateTask(task);
+    public TimeSheet updateEntry(TimeSheet entry) throws AppException {
+        TimeSheetDao entryDao = new TimeSheetDaoImpl();
+        return entryDao.updateEntry(entry);
     }
 
-    public TimeSheet removeTask(TimeSheet task) throws AppException {
-        TimeSheetDao taskDao = new TimeSheetDaoImpl();
-        return taskDao.removeTask(task);
+    public TimeSheet removeEntry(TimeSheet entry) throws AppException {
+        TimeSheetDao entryDao = new TimeSheetDaoImpl();
+        return entryDao.removeEntry(entry);
     }
 
-    public List<TimeSheet> getTimeSheetEntries(List<TimeSheet> timeSheet, LocalDate startDate, LocalDate endDate) {
+    public List<TimeSheet> getEntriesInInterval(List<TimeSheet> timeSheet, LocalDate startDate, LocalDate endDate) {
         List<TimeSheet> timeSheetEntries = new ArrayList<TimeSheet>();
 
         for (TimeSheet entry : timeSheet) {
-            if (isEntryBetweenPeriod(entry, startDate, endDate)) {
+            if (isEntryInInterval(entry, startDate, endDate)) {
                 timeSheetEntries.add(entry);
             }
         }
-
         return timeSheetEntries;  
     }
 
-    public boolean isEntryBetweenPeriod(TimeSheet entry, LocalDate startDate, LocalDate endDate) {
+    public boolean isEntryInInterval(TimeSheet entry, LocalDate startDate, LocalDate endDate) {
         LocalDate entryDate = entry.getEntryDate();
         boolean isValidEntry = false;
 
         if (entryDate.isAfter(startDate) && entryDate.isBefore(endDate) 
                 || entryDate.equals(startDate) || entryDate.equals(endDate)) {
             isValidEntry = true;
-        }
-        
+        }        
         return isValidEntry;
     }
 }

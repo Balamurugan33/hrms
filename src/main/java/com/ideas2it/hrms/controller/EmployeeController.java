@@ -20,7 +20,6 @@ import com.ideas2it.hrms.common.EmpConstants;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Attendance;
-import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Designation;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.Project;
@@ -29,7 +28,6 @@ import com.ideas2it.hrms.model.TimeSheet;
 import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
 
-import static com.ideas2it.hrms.common.EmpConstants.MSG_CREATE_SUCCESS;
 
 /**
  * Used to perform the different action on employee using employee service class
@@ -101,6 +99,9 @@ public class EmployeeController {
         }
     }
     
+    /**
+     * Marks an employee as present for current date
+     */
     @GetMapping("/employee/markPresent")
     public ModelAndView markPresent(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -120,7 +121,10 @@ public class EmployeeController {
 
         return modelAndView;
     }
-
+    
+    /**
+     * Marks an employee as absent for current date
+     */
     @GetMapping("/employee/markAbsent")
     public ModelAndView markAbsent(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -223,7 +227,7 @@ public class EmployeeController {
     }
     
     /**
-     * Used to get the employee profit
+     * Gets the projects an employee has worked on
      */
     @GetMapping("employee/empProjects")
     public ModelAndView employeesProjects(HttpServletRequest request) {
@@ -257,7 +261,10 @@ public class EmployeeController {
 
         return modelAndView;
     }
-
+    
+    /**
+     * Gets an employee's attendance history
+     */
     @GetMapping("employee/empAttendance")
     public ModelAndView employeesAttendance(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -268,36 +275,33 @@ public class EmployeeController {
 
         try {
             attendanceSheet = employeeService.getAttendanceSheet(employee);
-            modelAndView.addObject(EmpConstants.LABEL_MESSAGE,
-                "Attendance has been created");
-            modelAndView.setViewName(EMPLOYEE_MENU);
+            modelAndView.addObject(EmpConstants.LABEL_ATTENDANCE, attendanceSheet);
         } catch (AppException e) {
             modelAndView.addObject("Error", e.getMessage());
-        }
-        modelAndView.addObject(EmpConstants.LABEL_ATTENDANCE, attendanceSheet);
-
-        return modelAndView;
+        }   
+        modelAndView.setViewName(EMPLOYEE_MENU);        
+        return modelAndView;        
     }
     
+    
+    /**
+     * Used by an employee to send an email, applying for leave
+     */
     @PostMapping("employee/applyLeave")
     public ModelAndView Leave(@ModelAttribute("attendance") Attendance attendance, 
         HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView();
         HttpSession session1 = request.getSession(false);        
         Employee employee = (Employee) session1.getAttribute("employee");
-        Integer empId = 0;
-        
-        LocalDate localDate = LocalDate.now();//For reference
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-        String dateString = localDate.format(formatter);         
-        
+                
+        LocalDate leaveDate = LocalDate.parse(request.getParameter("leaveDate"));
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+        String dateString = leaveDate.format(dateFormatter);
+
         String leaveTemplate = "Hi, I would like to apply for leave on " + dateString + " as ";
         String message = null;
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
-        
-        DateTimeFormatter leaveFormatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
-        LocalDate date = LocalDate.parse(request.getParameter("leaveDate"), leaveFormatter);
-        
+                        
         message = leaveTemplate + request.getParameter("leaveReason");
 
         try {

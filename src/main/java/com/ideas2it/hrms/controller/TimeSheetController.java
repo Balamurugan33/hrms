@@ -33,6 +33,10 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
  */
 @Controller 
 public class TimeSheetController {       
+    
+    /**
+     * Creates a new timesheet entry
+     */
     @PostMapping("timeSheet/createEntry")
     public ModelAndView createEntry(@ModelAttribute("entry") TimeSheet entry, 
             HttpServletRequest request) {
@@ -47,8 +51,8 @@ public class TimeSheetController {
             project.setId(Integer.parseInt(request.getParameter("projectId")));
             entry.setProject(project);
             entry.setEmployee(employee);
-            entry = sheetService.createTask(entry);       
-            timeSheet = sheetService.getAllTasks();
+            entry = sheetService.createEntry(entry);       
+            timeSheet = sheetService.getAllEntries();
             modelAndView.addObject("timeSheets", timeSheet);
             modelAndView.addObject("Success", MSG_CREATED);
             modelAndView.setViewName("employeeView");
@@ -57,30 +61,11 @@ public class TimeSheetController {
         }
         return modelAndView;
     } 
-    
-    @PostMapping("projectTask/create")
-    public ModelAndView createTask(@ModelAttribute("task") TimeSheet task, 
-            HttpServletRequest request) {
-        TimeSheetService taskService = new TimeSheetServiceImpl();
-        ModelAndView modelAndView = new ModelAndView(); 
 
-        try {
-            Project project = new Project();
-            project.setId(Integer.parseInt(request.getParameter("projectId")));
-            Employee employee = new Employee();
-            employee.setId(Integer.parseInt(request.getParameter("empId")));
-            task.setProject(project);
-            task.setEmployee(employee);
-            task = taskService.createTask(task);   
-            modelAndView.addObject("Success", MSG_CREATED);
-            modelAndView.setViewName("tasks");
-        } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
-        }
-       return modelAndView;
-    }
-    
-    @PostMapping("projectTask/update")
+    /**
+     * Updates a timesheet entry
+     */
+    @PostMapping("timeSheet/updateEntry")
     public ModelAndView updateTask(@ModelAttribute("task") TimeSheet task, HttpServletRequest request) {
         TimeSheetService sheetService = new TimeSheetServiceImpl();
         ProjectService projectService = new ProjectServiceImpl();
@@ -98,8 +83,8 @@ public class TimeSheetController {
             task.setProject(project);
             task.setEmployee(currentEmployee);
             task.getProject().setName(projectName);
-            task = sheetService.updateTask(task);   
-            timeSheet = sheetService.getAllTasks();
+            task = sheetService.updateEntry(task);   
+            timeSheet = sheetService.getAllEntries();
 
             modelAndView.addObject("Success", MSG_UPDATED);
             modelAndView.addObject("timeSheets", timeSheet);
@@ -109,8 +94,11 @@ public class TimeSheetController {
         }
         return modelAndView;
     }
-        
-    @PostMapping("projectTask/delete")
+    
+    /**
+     * Deletes a timesheet entry
+     */
+    @PostMapping("timeSheet/deleteEntry")
     public ModelAndView deleteTask(HttpServletRequest request) {
         TimeSheetService sheetService = new TimeSheetServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
@@ -118,11 +106,11 @@ public class TimeSheetController {
 
         try {
             Integer id = Integer.parseInt(request.getParameter("id"));
-            TimeSheet task = sheetService.getTaskById(id);
+            TimeSheet task = sheetService.getEntryById(id);
             
             if (null != task) {
-                task = sheetService.removeTask(task);    
-                timeSheet = sheetService.getAllTasks();
+                task = sheetService.removeEntry(task);    
+                timeSheet = sheetService.getAllEntries();
             }            
             modelAndView.addObject("Success", MSG_DELETED);
             modelAndView.addObject("timeSheets", timeSheet);
@@ -133,13 +121,16 @@ public class TimeSheetController {
         return modelAndView;
     }
     
+    /**
+     * Displays all timesheet entries
+     */
     @GetMapping("displayAll")
     public ModelAndView displayAllTasks(HttpServletRequest request) {
         TimeSheetService taskService = new TimeSheetServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
-            List<TimeSheet> allTasks = taskService.getAllTasks();
+            List<TimeSheet> allTasks = taskService.getAllEntries();
             modelAndView.addObject("allTasks", allTasks);
             modelAndView.setViewName("tasks");
         } catch (AppException appException) {

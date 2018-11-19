@@ -13,11 +13,11 @@ import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.TimeSheet;
 import com.ideas2it.hrms.session.HibernateSession;
 
-import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_CREATE_TASK;
-import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_DELETE_TASK;
-import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_RETRIEVE_TASK;
-import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_RETRIEVE_TASKS;
-import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_UPDATE_TASK;
+import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_CREATE_ENTRY;
+import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_DELETE_ENTRY;
+import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_RETRIEVE_ENTRIES;
+import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_RETRIEVE_ENTRY;
+import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_UPDATE_ENTRY;
 
 /**
  * <p>
@@ -29,91 +29,94 @@ import static com.ideas2it.hrms.common.TimeSheetConstants.ERROR_UPDATE_TASK;
 public class TimeSheetDaoImpl implements TimeSheetDao {
     
     @Override
-    public TimeSheet createTask(TimeSheet task) throws AppException {
+    public TimeSheet createEntry(TimeSheet entry) throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            session.save(task);
+            session.save(entry);
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_CREATE_ENTRY, e);
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ERROR_CREATE_TASK, e);
-            throw new AppException(ERROR_CREATE_TASK );
+            throw new AppException(ERROR_CREATE_ENTRY);
         }
-        return task;
+        return entry;
     }
     
     @Override
-    public TimeSheet getTaskById(Integer id) throws AppException {
+    public TimeSheet getEntryById(Integer id) throws AppException {
         Transaction transaction = null;
-        TimeSheet task = null;
+        TimeSheet entry = null;
         
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            task = (TimeSheet) session.get(TimeSheet.class, id);            
+            entry = (TimeSheet) session.get(TimeSheet.class, id);            
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_RETRIEVE_ENTRY, e);
             if (null != transaction) {
                 transaction.rollback();
             }  
-            AppLogger.error(ERROR_RETRIEVE_TASK , e);
-            throw new AppException(ERROR_RETRIEVE_TASK );
+            throw new AppException(ERROR_RETRIEVE_ENTRY);
         }
-        return task;
+        return entry;
     }
     
     @Override
-    public List<TimeSheet> getAllTasks() throws AppException {
+    public List<TimeSheet> getAllEntries() throws AppException {
         Transaction transaction = null;
-        List<TimeSheet> tasks = new ArrayList<TimeSheet>();
+        List<TimeSheet> consolidatedTimeSheet = new ArrayList<TimeSheet>();
         
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            tasks = session.createQuery("from TimeSheet").list();
+            consolidatedTimeSheet = session.createQuery("from TimeSheet").list();
             transaction.commit();
         } catch (HibernateException e) {
-            AppLogger.error(ERROR_RETRIEVE_TASKS, e);
-            throw new AppException(ERROR_RETRIEVE_TASKS);
+            AppLogger.error(ERROR_RETRIEVE_ENTRIES, e);
+            if (null != transaction) {
+                transaction.rollback();
+            }  
+            throw new AppException(ERROR_RETRIEVE_ENTRIES);
         } 
-        return tasks;
+        return consolidatedTimeSheet;
     }
     
     @Override
-    public TimeSheet updateTask(TimeSheet task) throws AppException {
+    public TimeSheet updateEntry(TimeSheet entry) throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            session.update(task);
+            session.update(entry);
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_UPDATE_ENTRY, e);
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ERROR_UPDATE_TASK , e);
-            throw new AppException(ERROR_UPDATE_TASK );
+            throw new AppException(ERROR_UPDATE_ENTRY);
         } 
-        return task;
+        return entry;
     }
     
     @Override
-    public TimeSheet removeTask(TimeSheet task) throws AppException {
+    public TimeSheet removeEntry(TimeSheet entry) throws AppException {
         Transaction transaction = null;
 
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            session.delete(task);
+            session.delete(entry);
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_DELETE_ENTRY, e);
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ERROR_DELETE_TASK, e);
-            throw new AppException(ERROR_DELETE_TASK);
+            throw new AppException(ERROR_DELETE_ENTRY);
         } 
-        return task;
+        return entry;
     }        
 }

@@ -66,7 +66,7 @@
         <form method="post">
           <td>
             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#${timeSheet.id}" >Update</button>
-            <button type="submit" class="btn btn-danger btn-sm" formaction="/hrms/projectTask/delete">Delete</button>
+            <button type="submit" class="btn btn-danger btn-sm" formaction="/hrms/timeSheet/deleteEntry">Delete</button>
             <div class="modal fade" id="${timeSheet.id}">
             <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -93,7 +93,7 @@
               <input type="text" class="form-control" name="workedHours" value= "${timeSheet.workedHours}" required="required">
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block btn-lg" formaction="/hrms/projectTask/update">Update</button>
+              <button type="submit" class="btn btn-primary btn-block btn-lg" formaction="/hrms/timeSheet/updateEntry">Update</button>
               <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Cancel</button>
               <input type="hidden" name="id" value = "${timeSheet.id}">            
             </div>

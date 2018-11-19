@@ -37,10 +37,10 @@ public class ProjectDaoImpl implements ProjectDao {
             session.save(project);
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_CREATE_PROJECT + project.getName(), e);
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ERROR_CREATE_PROJECT + project.getName(), e);
             throw new AppException(ERROR_CREATE_PROJECT + project.getName());
         }
         return project;
@@ -56,10 +56,10 @@ public class ProjectDaoImpl implements ProjectDao {
             project = (Project) session.get(Project.class, id);            
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_RETRIEVE_PROJECT + project.getName(), e);
             if (null != transaction) {
                 transaction.rollback();
             }  
-            AppLogger.error(ERROR_RETRIEVE_PROJECT + project.getName(), e);
             throw new AppException(ERROR_RETRIEVE_PROJECT + project.getName());
         }
         return project;
@@ -76,6 +76,9 @@ public class ProjectDaoImpl implements ProjectDao {
             transaction.commit();
         } catch (HibernateException e) {
             AppLogger.error(ERROR_RETRIEVE_PROJECTS, e);
+            if (null != transaction) {
+                transaction.rollback();
+            } 
             throw new AppException(ERROR_RETRIEVE_PROJECTS);
         } 
         return projects;
@@ -90,10 +93,10 @@ public class ProjectDaoImpl implements ProjectDao {
             session.update(project);
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_UPDATE_PROJECT + project.getName(), e);
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ERROR_UPDATE_PROJECT + project.getName(), e);
             throw new AppException(ERROR_UPDATE_PROJECT + project.getName());
         } 
         return project;
@@ -108,10 +111,10 @@ public class ProjectDaoImpl implements ProjectDao {
             session.delete(project);
             transaction.commit();
         } catch (HibernateException e) {
+            AppLogger.error(ERROR_DELETE_PROJECT + project.getName(), e);
             if (null != transaction) {
                 transaction.rollback();
             }
-            AppLogger.error(ERROR_DELETE_PROJECT + project.getName(), e);
             throw new AppException(ERROR_DELETE_PROJECT + project.getName());
         } 
         return project;

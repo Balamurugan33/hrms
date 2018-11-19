@@ -20,9 +20,9 @@ public interface ProjectDao {
      * Creates a new project 
      * 
      * @param project
-     *       new project
+     *        new project
      * @return 
-     *       new project, if added, null otherwise
+     *        new project, if added, null otherwise
      */
     Project createProject(Project project) throws AppException; 
     
@@ -37,18 +37,20 @@ public interface ProjectDao {
     Project getProjectById(Integer id) throws AppException;
      
     /**
-     * Gets all the projects allocated to company
+     * Gets all the projects allocated to the company
      * 
      * @return
-     *        list of all projects
+     *        all projects allocated to the company
      */
     List<Project> getAllProjects() throws AppException;
     
     /**
-     * Updates a project's details
+     * Updates a project's info
      * 
      * @param project
-     *       project to update
+     *        a project, with updated info 
+     * @return
+     *        the updated project
      */
     Project updateProject(Project project) throws AppException;
     
@@ -56,7 +58,9 @@ public interface ProjectDao {
      * Removes a project
      * 
      * @param project
-     *       project to remove
+     *        a project
+     * @return
+     *        the project that was removed
      */
     Project removeProject(Project project) throws AppException;
 }

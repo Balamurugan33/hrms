@@ -42,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     
     public List<Attendance> applyLeave(Employee employee, String message, String dateString) throws AppException {      
-        //Setting up configurations for the email connection to the Google SMTP server using TLS
+        // Set configurations for the email connection to Google's SMTP server using TLS
         Properties props = new Properties();
 
         props.put("mail.smtp.host", "true");
@@ -51,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", "true");
 
-        //Establishing a session with required user details
+        // Getting a session with authentication information of sender 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication("ganeshvenkat@ideas2it.com", "venkat007");
@@ -59,23 +59,18 @@ public class EmployeeServiceImpl implements EmployeeService{
         });
 
         try {
-            //Creating a Message object to set the email content
             MimeMessage msg = new MimeMessage(session);
-            //Storing the comma seperated values to email addresses
-            String to = "arunkarthick@ideas2it.com";
-            //Setting the recepient from the address variable
+            String to = "ganeshvenkat@ideas2it.com";
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            //String timeStamp = new SimpleDateFormat("yyyymmdd").format(new Date());
             msg.setSubject("Applying for leave : " + dateString);
             msg.setSentDate(new Date());
             msg.setText(message);
             msg.setHeader("XPriority", "1");
             Transport.send(msg);
             System.out.println("Mail has been sent successfully");
-        } catch (MessagingException mex) {
-            System.out.println("Unable to send an email" + mex);
+        } catch (MessagingException msgEx) {
+            System.out.println("Unable to send an email" + msgEx);
         }
-
         return getAttendanceSheet(employee);
     }
     
@@ -128,11 +123,12 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     
     /** {@inheritDoc}*/
-    public List<Project> getEmpProjects(List<TimeSheet> tasks) {
+    public List<Project> getEmpProjects(List<TimeSheet> entries) {
         List<Project> projects = new ArrayList<Project>();
-        for(TimeSheet task:tasks) {
-            if(! projects.contains(task.getProject())) {
-                projects.add(task.getProject());
+        
+        for(TimeSheet entry:entries) {
+            if(! projects.contains(entry.getProject())) {
+                projects.add(entry.getProject());
             }
         }
         return projects;
@@ -153,7 +149,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     /** {@inheritDoc}*/
     public boolean createTask(TimeSheet task) throws AppException {
         TimeSheetService sheetService = new TimeSheetServiceImpl();
-        return (null != sheetService.createTask(task));
+        return (null != sheetService.createEntry(task));
     }
     
     /** {@inheritDoc}*/

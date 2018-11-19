@@ -27,12 +27,16 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
 /**
  * Provides functionality to manage projects delegated to the company
  * And calculate netProfit for company from a project, between a startDate and an endDate
+ * 
  * @author Ganesh Venkat S
  */
 @Controller 
 @RequestMapping("project") 
 public class ProjectController {
-            
+    
+    /**
+     * Creates a new project
+     */
     @PostMapping("create")
     public ModelAndView createProject(
             @ModelAttribute("project") Project project, 
@@ -52,6 +56,9 @@ public class ProjectController {
         return modelAndView;
     }
     
+    /**
+     * Updates a project
+     */
     @PostMapping("update")
     public ModelAndView updateProject(
         @ModelAttribute("project") Project project, 
@@ -70,7 +77,10 @@ public class ProjectController {
         }
         return displayAllProjects(modelAndView);
     }
-        
+     
+    /**
+     * Deletes a project
+     */
     @PostMapping("delete")
     public ModelAndView deleteProject(HttpServletRequest request) {
         ProjectService projectService = new ProjectServiceImpl();
@@ -90,13 +100,16 @@ public class ProjectController {
         return displayAllProjects(modelAndView);
     }
     
+    /**
+     * Displays all projects
+     */
     @GetMapping("displayAll")
     public ModelAndView displayAllProjects(ModelAndView modelAndView) {
         ProjectService projectService = new ProjectServiceImpl();
 
         try {
             modelAndView.addObject("allClients", 
-                    projectService.displayClients());
+                    projectService.getAllClients());
             List<Project> allProjects = projectService.getAllProjects();
             modelAndView.addObject("projects", allProjects);
             modelAndView.setViewName("adminHome");
@@ -106,6 +119,9 @@ public class ProjectController {
         return modelAndView;
     }
     
+    /**
+     * Gets the netProfit from a project, within a time interval
+     */
     @PostMapping("netProfit")
     public ModelAndView getNetProfit(HttpServletRequest request) {
         ProjectService projectService = new ProjectServiceImpl();

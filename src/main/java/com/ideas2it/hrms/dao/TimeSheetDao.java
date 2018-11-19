@@ -8,8 +8,8 @@ import com.ideas2it.hrms.model.TimeSheet;
 /**
  * <p>
  * Provides an interface for basic CRUD operations on the TimeSheet Model:
- * Add new task, Get task, Get all tasks,
- * Update task, Remove task
+ * Add new entry, Get entry, Get all entries,
+ * Update entry, Remove entry
  * </p>
  *
  * @author Ganesh Venkat S
@@ -17,46 +17,46 @@ import com.ideas2it.hrms.model.TimeSheet;
 public interface TimeSheetDao {
     
     /**
-     * Creates a new task 
+     * Creates a new timesheet entry 
      * 
-     * @param task
-     *       new task
+     * @param entry
+     *        new entry
      * @return 
-     *       new task, if added, null otherwise
+     *        new entry, if added, null otherwise
      */
-    TimeSheet createTask(TimeSheet task) throws AppException; 
+    TimeSheet createEntry(TimeSheet entry) throws AppException; 
     
     /**
-     * Gets a task
+     * Gets an entry
      *
      * @param id
-     *        id of the requested task
+     *        id of the requested entry
      * @return
-     *        requested task, if exists, null otherwise
+     *        requested entry, if exists, null otherwise
      */
-    TimeSheet getTaskById(Integer id) throws AppException;
+    TimeSheet getEntryById(Integer id) throws AppException;
      
     /**
-     * Gets all the tasks allocated to company
+     * Gets all the entries in the timesheet
      * 
      * @return
-     *        list of all tasks
+     *        list of all entries in the timesheet
      */
-    List<TimeSheet> getAllTasks() throws AppException;
+    List<TimeSheet> getAllEntries() throws AppException;
     
     /**
-     * Updates a task's details
+     * Updates an entry
      * 
-     * @param task
-     *       task to update
+     * @param entry
+     *        an entry 
      */
-    TimeSheet updateTask(TimeSheet task) throws AppException;
+    TimeSheet updateEntry(TimeSheet entry) throws AppException;
     
     /**
-     * Removes a task
+     * Removes an entry
      * 
-     * @param task
-     *       task to remove
+     * @param entry
+     *        an entry 
      */
-    TimeSheet removeTask(TimeSheet task) throws AppException;
+    TimeSheet removeEntry(TimeSheet entry) throws AppException;
 }

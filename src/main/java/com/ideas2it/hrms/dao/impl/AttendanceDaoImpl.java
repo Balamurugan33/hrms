@@ -48,8 +48,7 @@ public class AttendanceDaoImpl implements AttendanceDao {
             if (null != transaction) {
                 transaction.rollback();
             }
-            throw new AppException(ERROR_CREATE_ATTENDANCE 
-                + attendance.getId());
+            throw new AppException(ERROR_CREATE_ATTENDANCE + attendance.getId());
         }
         return attendance;
     }
@@ -57,9 +56,10 @@ public class AttendanceDaoImpl implements AttendanceDao {
     public Attendance getAttendance(Employee employee, LocalDate attendDate) throws AppException {
         Transaction transaction = null;
         Attendance attendance = null;
-        List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         
         try (Session session = HibernateSession.getSession()) {
+            List<Attendance> attendanceSheet = new ArrayList<Attendance>();
+            
             transaction = session.beginTransaction();            
             CriteriaBuilder builder = session.getCriteriaBuilder();
             CriteriaQuery<Attendance> criteria = builder.createQuery(Attendance.class);
@@ -75,22 +75,23 @@ public class AttendanceDaoImpl implements AttendanceDao {
             }            
             transaction.commit();
         } catch (HibernateException e) {
-            AppLogger.error(ERROR_RETRIEVE_ATTENDANCE + attendance.getId(), e);
+            AppLogger.error(ERROR_RETRIEVE_ATTENDANCE + employee.getId(), e);
             if (null != transaction) {
                 transaction.rollback();
             }  
             throw new AppException(ERROR_RETRIEVE_ATTENDANCE 
-                + attendance.getId());
+                + employee.getId());
         }
         return attendance;
     }
     
     public List<Attendance> getAttendanceSheet(Employee employee) throws AppException {
         Transaction transaction = null;
-        Integer empId = employee.getId();
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         
         try (Session session = HibernateSession.getSession()) {
+            Integer empId = employee.getId();
+
             transaction = session.beginTransaction();            
             String getAttendanceSheet = "from Attendance where employee.id = :employee_id";            
             attendanceSheet = session.createQuery(getAttendanceSheet).setParameter("employee_id", empId).getResultList();            
