@@ -42,9 +42,9 @@ public class UserServiceImpl implements UserService {
             md.update(password.getBytes());
                   BigInteger hash = new BigInteger(1, md.digest());
                   hashedPassword = hash.toString(16);                 
-                  } catch (NoSuchAlgorithmException e) { 
+        } catch (NoSuchAlgorithmException e) { 
             e.printStackTrace();
-           }
+        }
         user.setPassword(hashedPassword);
         
         return userDao.createUser(user);

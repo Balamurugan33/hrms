@@ -22,6 +22,8 @@ import com.ideas2it.hrms.service.impl.ProjectServiceImpl;
 import static com.ideas2it.hrms.common.ProjectConstants.MSG_CREATED;
 import static com.ideas2it.hrms.common.ProjectConstants.MSG_DELETED;
 import static com.ideas2it.hrms.common.ProjectConstants.MSG_UPDATED;
+import static com.ideas2it.hrms.common.ProjectConstants.USER_ALERT;
+
 
 
 /**
@@ -44,14 +46,15 @@ public class ProjectController {
         ProjectService projectService = new ProjectServiceImpl();
         ModelAndView modelAndView = new ModelAndView("redirect:"+"displayAll");
         HttpSession session = request.getSession(false);
+        
         try {
             Client client = new Client();
             client.setId(Integer.parseInt(request.getParameter("clientId")));
             project.setClient(client);
             project = projectService.createProject(project);   
-            session.setAttribute("Success", MSG_CREATED);
+            session.setAttribute(USER_ALERT, MSG_CREATED);
         } catch (AppException appException) {
-            session.setAttribute("Error", appException.getMessage());
+            session.setAttribute(USER_ALERT, appException.getMessage());
         }
         return modelAndView;
     }
@@ -66,14 +69,14 @@ public class ProjectController {
         ProjectService projectService = new ProjectServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
+        modelAndView.setViewName("projects");
         try {
             Client client = new Client();
             client.setId(Integer.parseInt(request.getParameter("clientId")));
             project.setClient(client);
             project = projectService.updateProject(project);   
-            modelAndView.setViewName("projects");
         } catch (AppException appException) {
-            modelAndView.addObject("Error", MSG_UPDATED);
+            modelAndView.addObject(USER_ALERT, MSG_UPDATED);
         }
         return displayAllProjects(modelAndView);
     }

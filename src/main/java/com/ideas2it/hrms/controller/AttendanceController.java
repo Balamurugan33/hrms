@@ -18,6 +18,7 @@ import com.ideas2it.hrms.service.impl.AttendanceServiceImpl;
 
 import static com.ideas2it.hrms.common.AttendanceConstants.MSG_CREATED;
 import static com.ideas2it.hrms.common.AttendanceConstants.MSG_UPDATED;
+import static com.ideas2it.hrms.common.AttendanceConstants.USER_ALERT;
 
 
 /**
@@ -39,14 +40,14 @@ public class AttendanceController {
         AttendanceService attendanceService = new AttendanceServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
+        modelAndView.setViewName("attendance");
         try {
             attendance = attendanceService.createAttendance(attendance);   
-            modelAndView.addObject("Success", MSG_CREATED);
-            modelAndView.setViewName("attendance");
+            modelAndView.addObject(USER_ALERT, MSG_CREATED);
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
+            modelAndView.addObject(USER_ALERT, appException.getMessage());
         }
-       return modelAndView;
+        return modelAndView;
     }    
     
     /**
@@ -59,12 +60,12 @@ public class AttendanceController {
         AttendanceService attendanceService = new AttendanceServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
+        modelAndView.setViewName("attendance");
         try {
             attendance = attendanceService.updateAttendance(attendance);
-            modelAndView.addObject("Success", MSG_UPDATED);
-            modelAndView.setViewName("attendance");
+            modelAndView.addObject(USER_ALERT, MSG_UPDATED);
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
+            modelAndView.addObject(USER_ALERT, appException.getMessage());
         }
         return modelAndView;
     }
@@ -77,12 +78,12 @@ public class AttendanceController {
         AttendanceService attendanceService = new AttendanceServiceImpl();
         ModelAndView modelAndView = new ModelAndView(); 
 
+        modelAndView.setViewName("attendance");
         try {
             List<Attendance> allAttendances = attendanceService.getAllAttendances();
             modelAndView.addObject("allAttendances", allAttendances);
-            modelAndView.setViewName("attendance");
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
+            modelAndView.addObject(USER_ALERT, appException.getMessage());
         }
         return modelAndView;
     }
