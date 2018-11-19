@@ -121,12 +121,13 @@ public class UserController {
             session.setAttribute(UserConstants.LABEL_ROLE, role);
             if (role.equals(LABEL_ADMIN)) {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
+
                 companyRevenue = userService.getCompanyRevenue(startDate, endDate);
                 companyExpenditure = userService.getCompanyExpenditure(startDate, endDate);
                 companyNetProfit = userService.getCompanyNetProfit(startDate, endDate);
                 /* ClientService clientService = new ClientServiceImpl();
                 ModelAndView modelAndView = new ModelAndView(ADMIN_JSP, "profits",
-                    clientService.getClientProfits());
+                        userService.getClientProfits());
                 return modelAndView.addObject("names", 
                         clientService.getClientNames());
                 */
@@ -134,7 +135,6 @@ public class UserController {
                 modelAndView.addObject("companyExpenditure", companyExpenditure);                 
                 modelAndView.addObject("companyNetProfit", companyNetProfit);                
                 modelAndView.setViewName(ADMIN_JSP);
-
             } else { 
                 Employee employee 
                     = userService.checkEmployeeDetail(user.getUserName());

@@ -20,7 +20,7 @@
 
 <div class="sidenav">
 	  
-	  
+	  <a href="/hrms/client/revenue"><img class="img" title="View Revenue" src="<c:url value='/resources/img/clientRvenue.png' />"></a>
 	  <a href="/hrms/employee/displayEmployee"><img class="img" title="View Employees" src="<c:url value='/resources/img/employees.png' />"></a>
 	  <a href="/hrms/project/displayAll"><img class="img" title="View Projects" src="<c:url value='/resources/img/projects.png' />"></a>
 	  <a href="/hrms/client/displayClient"><img class="img" title="View Clients" src="<c:url value='/resources/img/clients.png' />"></a>

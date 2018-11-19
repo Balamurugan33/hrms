@@ -88,18 +88,19 @@ public class ClientServiceImpl implements ClientService {
         return netProfit;
     }
     
-    public ArrayList getClientNames() throws AppException {
-        ArrayList names = new ArrayList();
+    public ArrayList<String> getClientNames() throws AppException {
+        ArrayList<String> names = new ArrayList<String>();
         for (Client client : clientDao.retrieveClients()) {
             names.add(client.getName());
         }
         return names;
     }
     
-    public ArrayList getClientProfits() throws AppException {
-        ArrayList profits = new ArrayList();
+    public ArrayList<Integer> getClientProfits() throws AppException {
+        ArrayList<Integer> profits = new ArrayList<Integer>();
         for (Client client : clientDao.retrieveClients()) {
-            profits.add(calculateNetProfit(client, LocalDate.parse("2018-11-09"), LocalDate.now()));
+            profits.add(calculateNetProfit(client, 
+                LocalDate.parse("2018-11-09"), LocalDate.now()));
         }
         return profits;
     }    

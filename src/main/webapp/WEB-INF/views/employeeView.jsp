@@ -13,7 +13,7 @@
 <div id="view" style="transition: margin-left .5s; padding: 16px;">
 <c:if test="${not empty employeeDetail}">
   <div class="emp">
-  <table class="table table-striped table-inverse">
+  <table class="table table-striped ">
     <tr>
         <td>Employee ID</td><td>:</td>
         <td>${employee.id}</td>  
@@ -47,7 +47,7 @@
 
 <c:if test="${not empty timeSheets}">
  <div id="taskInfo" align="center">
-     <button type="button" class="btn btn-outline-success btn-lg pull-right" 
+     <button type="button" class="btn btn-info btn-lg pull-right btn-space" 
        data-toggle="modal" data-target="#TimeSheetCreate">Add Entry</button>
     <br>
     <br>
@@ -148,7 +148,7 @@
 <c:if test="${not empty projects}">
     <h4 align="center"> <b> History of Projects Worked On </b> </h4> 
     <div id=projectInfo align="center">
-    <table class="table table-striped text-center">
+    <table class="table table-striped text-center table-bordered">
     <tr>
         <th class="text-center">Project</th>
         <th class="text-center">Client</th>
@@ -166,7 +166,7 @@
 <c:if test="${not empty currentProjects}">
     <h4 align="center"><b>Current Projects</b>  </h4> 
     <div id=projectInfo align="center">
-    <table class="table table-striped text-center">
+    <table class="table table-striped text-center ">
     <tr>
         <th class="text-center">Project</th>
         <th class="text-center">Client</th>
@@ -291,6 +291,8 @@
 <script>
     alert ("${message}");
 </script>
+<c:remove var="message" scope="session" />
+<c:remove var="message" scope="page" />
 </c:if>
 <script>
     function checkAttendance(checkbox)

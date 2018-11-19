@@ -28,7 +28,6 @@ import com.ideas2it.hrms.model.TimeSheet;
 import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
 
-import static com.ideas2it.hrms.common.EmpConstants.MSG_CREATE_SUCCESS;
 
 /**
  * Used to perform the different action on employee using employee service class
@@ -44,6 +43,9 @@ public class EmployeeController {
     private String ERROR_PAGE = "error";
     private EmployeeService employeeService = new EmployeeServiceImpl();
     
+    /**
+     * Used to view the employee menu page
+     */
     @GetMapping("employee/viewProfile")
     public ModelAndView viewProfile(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -109,12 +111,12 @@ public class EmployeeController {
 
         try {
             attendanceSheet = employeeService.markPresent(employee);
-            modelAndView.addObject("Success", MSG_CREATE_SUCCESS);
             modelAndView.addObject("attendance", attendanceSheet);
             modelAndView.addObject("isChecked", true);
             modelAndView.setViewName("employeeView");
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
+            modelAndView.addObject(EmpConstants.LABEL_MESSAGE,
+                appException.getMessage());
         }
 
         return modelAndView;
@@ -133,17 +135,23 @@ public class EmployeeController {
 
         try {
             attendanceSheet = employeeService.markAbsent(employee);
-            modelAndView.addObject("Success", MSG_CREATE_SUCCESS);
             modelAndView.addObject("attendance", attendanceSheet);
             modelAndView.addObject("isChecked", false);
             modelAndView.setViewName("employeeView");
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
+            modelAndView.addObject(EmpConstants.LABEL_MESSAGE,
+                appException.getMessage());
         }
 
         return modelAndView;
     }
-
+    
+    /**
+     * Used to update the employee details
+     * 
+     * @param employee
+     *        Get the employee detail
+     */
     @PostMapping("employee/updateEmployee")
     public ModelAndView updateEmployee(
             @ModelAttribute("employee") Employee employee,
@@ -168,7 +176,10 @@ public class EmployeeController {
                     appException.getMessage());
         }
     }
-
+    
+    /**
+     * Used to remove the employee from company 
+     */
     @PostMapping("employee/deleteEmployee")
     public ModelAndView deleteEmployee(HttpServletRequest request,
             ModelMap model) {
@@ -192,7 +203,10 @@ public class EmployeeController {
                     appException.getMessage());
         }
     }
-
+    
+    /**
+     * Used to display the all employee 
+     */
     @GetMapping("employee/displayEmployee")
     public ModelAndView displayEmployees(ModelMap model) {
         try {
@@ -228,9 +242,12 @@ public class EmployeeController {
 
         return modelAndView;
     }
-
-    @GetMapping("employee/empTasks")
-    public ModelAndView employeesTasks(HttpServletRequest request,
+    
+    /**
+     * Get the employee time sheet details
+     */
+    @GetMapping("employee/empTimesheet")
+    public ModelAndView employeesTimesheet(HttpServletRequest request,
             Model model) {
         HttpSession session = request.getSession(false);
         Employee employee = (Employee) session.getAttribute("employee");
@@ -258,7 +275,6 @@ public class EmployeeController {
 
         try {
             attendanceSheet = employeeService.getAttendanceSheet(employee);
-            modelAndView.addObject("Success", "Attendance has been created");
             modelAndView.addObject(EmpConstants.LABEL_ATTENDANCE, attendanceSheet);
         } catch (AppException e) {
             modelAndView.addObject("Error", e.getMessage());
@@ -277,7 +293,6 @@ public class EmployeeController {
         ModelAndView modelAndView = new ModelAndView();
         HttpSession session1 = request.getSession(false);        
         Employee employee = (Employee) session1.getAttribute("employee");
-        Integer empId = 0;
                 
         LocalDate leaveDate = LocalDate.parse(request.getParameter("leaveDate"));
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
@@ -300,27 +315,9 @@ public class EmployeeController {
         return modelAndView;
     }
     
-    @PostMapping("employee/createTask")
-    public ModelAndView createTask(@ModelAttribute("task") TimeSheet task,
-            HttpServletRequest request, ModelMap model) {
-        try {
-            Project project = new Project();
-            project.setId(Integer.parseInt(request.getParameter("projectId")));
-            Employee employee = new Employee();
-            employee.setId(Integer.parseInt(request.getParameter("empId")));
-            task.setProject(project);
-            task.setEmployee(employee);
-            if (employeeService.createTask(task)) {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE,
-                        "Attendance has been created");
-            }
-            return displayEmployees(model);
-        } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
-                    appException.getMessage());
-        }
-    }
-
+    /**
+     * Get the particular employee net profit 
+     */
     @PostMapping("employee/profit")
     public ModelAndView calculateNetProfit(HttpServletRequest request,
             ModelMap model) {
@@ -346,19 +343,14 @@ public class EmployeeController {
                     appException.getMessage());
         }
     }
-
-    @PostMapping("employee/revenue")
-    public ModelAndView viewRevenue(HttpServletRequest request) {
-        try {
-            Employee employee = employeeService
-                    .searchEmployee(request.getParameter("emailId"));
-            return new ModelAndView("revenue", "employeeDetail", employee);
-        } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
-                    appException.getMessage());
-        }
-    }
-
+    
+    /**
+     * Get the employee new salary detail
+     * And create new salary tracker for employee
+     * 
+     * @param salaryTracker
+     *        get the employee new salary detail
+     */
     @PostMapping("employee/increment")
     public ModelAndView SalaryIncrement(
             @ModelAttribute("salaryTracker") SalaryTracker salaryTracker,
@@ -381,7 +373,10 @@ public class EmployeeController {
                     appException.getMessage());
         }
     }
-
+    
+    /**
+     * Used to add the new project for employee 
+     */
     @PostMapping("employee/assignProject")
     public ModelAndView assignProject(HttpServletRequest request,
             ModelMap model) {

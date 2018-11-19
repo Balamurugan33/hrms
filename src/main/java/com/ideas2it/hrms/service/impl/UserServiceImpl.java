@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
         return employeeService.searchEmployee(mailId);
     }
 
-    @Override
+    /** {@inheritDoc}*/
     public boolean createEmpLogin(Employee employee) throws AppException {
         EmployeeService employeeService = new EmployeeServiceImpl();
         return employeeService.updateEmployee(employee);
@@ -98,5 +98,17 @@ public class UserServiceImpl implements UserService {
 
         allClients = getAllClients();   
         return clientService.calculateCompanyNetProfit(allClients, startDate, endDate);
+    }    
+
+    /** {@inheritDoc}*/
+    public ArrayList<String> getClientNames() throws AppException {
+        ClientService clientService = new ClientServiceImpl();
+        return clientService.getClientNames();
+    }
+
+    /** {@inheritDoc}*/
+    public ArrayList<Integer> getClientProfits() throws AppException {
+        ClientService clientService = new ClientServiceImpl();
+        return clientService.getClientProfits();
     }
 }

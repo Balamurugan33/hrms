@@ -30,12 +30,16 @@ import static com.ideas2it.hrms.common.ProjectConstants.MSG_CREATED;
 @Controller 
 public class ClientController {
     
-    private String CLIENT_VIEW = "clientDisplay";;
     private String ADMINMENU = "adminHome";
-    private String CLIENTCREATE = "clientCreateForm";
     private String ERROR_PAGE = "error";
     private ClientService clientService = new ClientServiceImpl();
     
+    /**
+     * Used to crate the new client 
+     * 
+     * @param client
+     *        Get the client detail
+     */
     @PostMapping("client/createClient")
     public ModelAndView createClient(@ModelAttribute("client") Client client, 
             HttpServletRequest request) {
@@ -62,6 +66,12 @@ public class ClientController {
         }
     }
     
+    /**
+     * Used to update the client details
+     * 
+     * @param client
+     *        Get the updated client detail 
+     */
     @PostMapping("client/updateClient")
     public ModelAndView updateClient(@ModelAttribute("client") Client client,
             ModelMap model) {
@@ -80,6 +90,9 @@ public class ClientController {
         }
     }
     
+    /**
+     * Used to remove the client
+     */
     @PostMapping("client/deleteClient")
     public ModelAndView deleteClient(HttpServletRequest request, 
             ModelMap model) {
@@ -99,6 +112,9 @@ public class ClientController {
         }
     }
     
+    /**
+     * Used to display the all clients in the company
+     */
     @GetMapping("client/displayClient")
     public ModelAndView displayClients(ModelMap model) {
         try {
@@ -112,6 +128,9 @@ public class ClientController {
         }
     }
     
+    /**
+     * Find the particular client using client id 
+     */
     @PostMapping("client/searchClient")
     public ModelAndView serchClient(HttpServletRequest request, ModelMap model) {
         try {
@@ -124,31 +143,42 @@ public class ClientController {
         }
     }
     
+    /**
+     * Used to calculate the net profit of the client
+     */
     @PostMapping("client/netProfit")
-    public ModelAndView getNetProfit(HttpServletRequest request) {
-        ClientService clientService = new ClientServiceImpl();
-        ModelAndView modelAndView = new ModelAndView(); 
-   
+    public ModelAndView getNetProfit(HttpServletRequest request, 
+            ModelMap model) {
         try {
             Integer clientId = Integer.parseInt(request.getParameter("clientId"));
             LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
             LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));            
-            Integer netProfit;
-            Integer billableAmount;
-            Integer costToCompany;
-            Client client;
-
-            client = clientService.getClientById(clientId);
+            Client client = clientService.getClientById(clientId);
+            Integer netProfit 
+                = clientService.calculateNetProfit(client, startDate, endDate);
+            model.addAttribute("clientProfit", netProfit);
+            model.addAttribute("name", client.getName());
             
-            netProfit = clientService.calculateNetProfit(client, startDate, endDate);
-            modelAndView.addObject("clientProfit", netProfit);
-            modelAndView.addObject("Success", MSG_CREATED);
-            modelAndView.setViewName("adminHome");
-
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
+            model.addAttribute(ClientConstants.LABEL_MESSAGE, 
+                 appException.getMessage());
         }
-        
-        return modelAndView;
+        return displayClients(model);
+    }
+    
+    /**
+     * Get the all client net profit details 
+     */
+    @GetMapping("client/revenue")
+    public ModelAndView getClientProfits(HttpServletRequest request) {
+        try {
+            ModelAndView modelAndView = new ModelAndView(ADMINMENU, "profits",
+                    clientService.getClientProfits());
+            return modelAndView.addObject("names", 
+                    clientService.getClientNames());
+        } catch (AppException appException) {
+             return new ModelAndView(ERROR_PAGE, ClientConstants.LABEL_MESSAGE, 
+                 appException.getMessage());
+        }
     }
 }
