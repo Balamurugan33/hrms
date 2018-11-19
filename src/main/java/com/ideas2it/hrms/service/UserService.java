@@ -54,11 +54,41 @@ public interface UserService {
      *        Employee details
      */
     boolean createEmpLogin(Employee employee) throws AppException;
-            
+    
+    /**
+     * Calculate the company's net profit, over a time interval
+     * 
+     * @param startDate
+     *        starting date of the interval
+     * @param endDate
+     *        ending date of the interval
+     * @return
+     *        company's net profit, over the given time interval       
+     */            
     Integer getCompanyNetProfit(LocalDate startDate, LocalDate endDate) throws AppException;
     
+    /**
+     * Calculate the company's net revenue, over a time interval
+     * 
+     * @param startDate
+     *        starting date of the interval
+     * @param endDate
+     *        ending date of the interval
+     * @return
+     *        company's net revenue, over the given time interval       
+     */
     Integer getCompanyRevenue(LocalDate startDate, LocalDate endDate) throws AppException;
 
+    /**
+     * Calculate the company's net expenditure, over a time interval
+     * 
+     * @param startDate
+     *        starting date of the interval
+     * @param endDate
+     *        ending date of the interval
+     * @return
+     *        company's net expenditure, over the given time interval       
+     */
     Integer getCompanyExpenditure(LocalDate startDate, LocalDate endDate) throws AppException;
 
     /**

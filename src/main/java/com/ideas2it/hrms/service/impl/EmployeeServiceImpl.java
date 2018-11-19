@@ -54,7 +54,9 @@ public class EmployeeServiceImpl implements EmployeeService{
         // Getting a session with authentication information of sender 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("ganeshvenkat@ideas2it.com", "venkat007");
+                String passwordJumble = "company123admin23ganesh23venkat007789jhihello7sideas23";
+                String password = passwordJumble.substring(25, 34);
+                return new PasswordAuthentication("ganeshvenkat@ideas2it.com", password);
             }
         });
 

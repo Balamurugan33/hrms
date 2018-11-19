@@ -187,7 +187,7 @@
             <td>${project.client.name}</td>
         <form method="post">
             <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}a" >View Net Profit</button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}" >Update</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}">Update</button>
                 <button type="submit" class="btn btn-danger" 
                     formaction="delete">Delete</button>
      <div class="modal fade" id="${project.id}" >
