@@ -20,4 +20,5 @@ public class ProjectConstants {
     public static String MSG_DELETED = "Project has been deleted";
     public static String MSG_ALREADY_EXIST = "Already exists: ";
 
+    public static String USER_ALERT = "message";
 }

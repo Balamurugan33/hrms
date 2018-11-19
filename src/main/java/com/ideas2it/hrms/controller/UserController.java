@@ -2,8 +2,6 @@ package com.ideas2it.hrms.controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,12 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ideas2it.hrms.common.UserConstants;
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.User;
-import com.ideas2it.hrms.service.ClientService;
 import com.ideas2it.hrms.service.UserService;
-import com.ideas2it.hrms.service.impl.ClientServiceImpl;
 import com.ideas2it.hrms.service.impl.UserServiceImpl;
 
 /**
@@ -111,7 +106,12 @@ public class UserController {
      */
     private ModelAndView setUserRole(User user, HttpServletRequest request) {
         UserService userService = new UserServiceImpl();
-        
+        Integer companyRevenue;
+        Integer companyExpenditure;
+        Integer companyNetProfit;        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MMM-dd");
+        LocalDate startDate = LocalDate.parse("2018-Aug-16", formatter);
+        LocalDate endDate = LocalDate.now();
         try {
             String role = user.getRole();
             HttpSession session = request.getSession(Boolean.TRUE);
@@ -121,8 +121,14 @@ public class UserController {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
                 ModelAndView modelAndView = new ModelAndView(ADMIN_JSP, 
                     "profits", userService.getClientProfits());
+                companyRevenue = userService.getCompanyRevenue(startDate, endDate);
+                companyExpenditure = userService.getCompanyExpenditure(startDate, endDate);
+                companyNetProfit = userService.getCompanyNetProfit(startDate, endDate);
+                modelAndView.addObject("companyRevenue", companyRevenue);
+                modelAndView.addObject("companyExpenditure", companyExpenditure);                 
+                modelAndView.addObject("companyNetProfit", companyNetProfit);
                 return modelAndView.addObject("names", 
-                    userService.getClientNames());
+                        userService.getClientNames());
             } else { 
                 Employee employee 
                     = userService.checkEmployeeDetail(user.getUserName());
@@ -130,12 +136,13 @@ public class UserController {
                 return new ModelAndView(EMPLOYEE_VIEW, 
                         "employeeDetail", employee);
             }
-        } catch (AppException appException) {
+        } catch (AppException appException) {            
             return new ModelAndView(ERROR_JSP, UserConstants.LABEL_MESSAGE, 
                 appException.getMessage());
         }
+        return modelAndView;
     }
-               
+
     // Used to invalidate the session
     @GetMapping("user/logout")
     public ModelAndView logOut(HttpServletRequest request) {

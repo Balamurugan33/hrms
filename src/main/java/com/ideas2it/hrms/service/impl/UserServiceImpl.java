@@ -12,11 +12,9 @@ import com.ideas2it.hrms.dao.impl.UserDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Employee;
-import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.User;
 import com.ideas2it.hrms.service.ClientService;
 import com.ideas2it.hrms.service.EmployeeService;
-import com.ideas2it.hrms.service.ProjectService;
 import com.ideas2it.hrms.service.UserService;
 
 /**
@@ -43,11 +41,10 @@ public class UserServiceImpl implements UserService {
             md.update(password.getBytes());
                   BigInteger hash = new BigInteger(1, md.digest());
                   hashedPassword = hash.toString(16);                 
-                  } catch (NoSuchAlgorithmException e) { 
+        } catch (NoSuchAlgorithmException e) { 
             e.printStackTrace();
-           }
-        user.setPassword(hashedPassword);
-        
+        }
+        user.setPassword(hashedPassword);        
         return userDao.createUser(user);
     }
     
@@ -74,6 +71,35 @@ public class UserServiceImpl implements UserService {
         return employeeService.updateEmployee(employee);
     }
     
+    public List<Client> getAllClients() throws AppException {
+        ClientService clientService = new ClientServiceImpl();
+        return clientService.displayClients();
+    }
+        
+    public Integer getCompanyRevenue(LocalDate startDate, LocalDate endDate) throws AppException {
+        ClientService clientService = new ClientServiceImpl();
+        List<Client> allClients = new ArrayList<Client>();
+
+        allClients = getAllClients();             
+        return clientService.calculateCompanyRevenue(allClients, startDate, endDate);
+    }
+    
+    public Integer getCompanyExpenditure(LocalDate startDate, LocalDate endDate) throws AppException {
+        ClientService clientService = new ClientServiceImpl();
+        List<Client> allClients = new ArrayList<Client>();
+
+        allClients = getAllClients();                     
+        return clientService.calculateCompanyExpenditure(allClients, startDate, endDate);
+    }
+    
+    public Integer getCompanyNetProfit(LocalDate startDate, LocalDate endDate) throws AppException {      
+        ClientService clientService = new ClientServiceImpl();
+        List<Client> allClients = new ArrayList<Client>();
+
+        allClients = getAllClients();   
+        return clientService.calculateCompanyNetProfit(allClients, startDate, endDate);
+    }    
+
     /** {@inheritDoc}*/
     public ArrayList<String> getClientNames() throws AppException {
         ClientService clientService = new ClientServiceImpl();
