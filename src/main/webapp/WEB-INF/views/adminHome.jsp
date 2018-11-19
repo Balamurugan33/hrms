@@ -25,46 +25,50 @@
             <td>${client.name}</td>
             <td>${client.mobileNo}</td>
             <td>${client.emailId}</td>
-            <form method="post">
-            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${client.id}" >Update</button>
+            <td>
+            <form method="post" action="/hrms/client/deleteClient">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${client.id}" >Update</button>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${client.mobileNo}" >View Net Profit</button>
-                <button type="submit" class="btn btn-danger" 
-                    formaction="/hrms/client/deleteClient">Delete</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <input type="hidden" name="id" value = "${client.id}">
+            </form>
+            
+     <!-- used to show the client update form -->    
      <div class="modal fade" id="${client.id}" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4>Enter Client Detail</h4>
                 </div>
+                <form method="post" action="/hrms/client/updateClient">
                 <div class="modal-body">
-                        <div class="form-group">
-                                <input type="text" class="form-control tt" name="name"
-                                    value= "${client.name}" placeholder="Client Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
-                        </div>
-                        <div class="form-group">
-                                <input type="text" class="form-control tt" name="mobileNo" value= "${client.mobileNo}" 
-                                    placeholder="Mobile Number" pattern="[6789]{1}[0-9]{9}" maxlength="10" required="required">
-                        </div>
-                        <div class="form-group">
-                                <input type="text" class="form-control tt" name="emailId"
-                                   value= "${client.emailId}" placeholder="Email Id" required="required">
-                        </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control tt" name="name" value= "${client.name}" 
+                            placeholder="Client Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
+                    </div>
+                    <div class="form-group">
+                       <input type="text" class="form-control tt" name="mobileNo" value= "${client.mobileNo}" 
+                           placeholder="Mobile Number" pattern="[6789]{1}[0-9]{9}" maxlength="10" required="required">
+                    </div>
+                    <div class="form-group">
+                       <input type="text" class="form-control tt" name="emailId"
+                          value= "${client.emailId}" placeholder="Email Id" required="required">
+                    </div>
                  <div class="modal-footer">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg" 
-                                formaction="/hrms/client/updateClient">Update</button>
-                            <button type="button" class="btn btn-danger btn-block btn-lg" 
-                                    data-dismiss="modal">Cancel</button>
-                            <input type="hidden" name="id" value = "${client.id}">
-                        </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">Update</button>
+                        <button type="button" class="btn btn-danger btn-block btn-lg" 
+                             data-dismiss="modal">Cancel</button>
+                        <input type="hidden" name="id" value = "${client.id}">
+                    </div>
                 </div>
                 </div>
+                </form>
             </div>
         </div>
-     </div></td>
-            </form>
-        </tr>
-        <tr><td>
+     </div>
+            
+       <!-- used to client profit form -->
         <div class="modal fade" id="${client.mobileNo}" >
            <div class="modal-dialog modal-sm">
                <div class="modal-content">
@@ -117,6 +121,8 @@
             <td>${designation.name}</td>
         <form method="post">
             <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${designation.id}" >Update</button>
+     
+     <!-- used to show the designation update form -->
      <div class="modal fade" id="${designation.id}" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -124,17 +130,17 @@
                     <h4>Enter Designation Detail</h4>
                 </div>
                 <div class="modal-body">
-                        <div class="form-group">
-                                <input type="text" class="form-control" name="name"
-                                    value= "${designation.name}" placeholder="Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg" 
-                                formaction="/hrms/designation/updateDesignation">Update</button>
-                            <button type="button" class="btn btn-danger btn-block btn-lg" 
-                                data-dismiss="modal">Cancel</button>
-                            <input type="hidden" name="id" value = "${designation.id}">
-                        </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" value= "${designation.name}" 
+                           placeholder="Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
+                    </div>
+                    <div class="form-group">
+                       <button type="submit" class="btn btn-primary btn-block btn-lg" 
+                           formaction="/hrms/designation/updateDesignation">Update</button>
+                       <button type="button" class="btn btn-danger btn-block btn-lg" 
+                           data-dismiss="modal">Cancel</button>
+                        <input type="hidden" name="id" value = "${designation.id}">
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,6 +153,8 @@
         </div>
     </div></td>
     <td>
+    
+    <!-- used to show the designation create form -->
     <div class="dsn-left">
         <header>
         <h3>Enter The New Designation</h3>
@@ -156,15 +164,15 @@
             <input type="text" class="form-control" name="name"
                 placeholder="Designation Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
        </div>
-        <footer>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block btn-lg" 
-                formaction="/hrms/designation/createDesignation">Save</button>
-            <button type="button" class="btn btn-danger btn-block btn-lg" 
-                data-dismiss="modal">Cancel</button>
+        <div class="modal-footer">
+	       <div class="form-group">
+	           <button type="submit" class="btn btn-primary btn-block btn-lg" 
+	               formaction="/hrms/designation/createDesignation">Save</button>
+	           <button type="button" class="btn btn-danger btn-block btn-lg" 
+	               data-dismiss="modal">Cancel</button>
+	       </div>
         </div>
         </form>
-        </footer>
     </div>
     <td></tr>
     </table>
@@ -185,76 +193,78 @@
         <tr>
             <td>${project.name}</td>
             <td>${project.client.name}</td>
+            <td>
         <form method="post">
-            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}a" >View Net Profit</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}a" >View Net Profit</button>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${project.id}" >Update</button>
-                <button type="submit" class="btn btn-danger" 
-                    formaction="delete">Delete</button>
-     <div class="modal fade" id="${project.id}" >
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Enter Project Detail</h4>
-                </div>
-                <div class="modal-body">
+            <button type="submit" class="btn btn-danger" formaction="delete">Delete</button>
+     
+		     <!-- used to show the project update modal -->
+		     <div class="modal fade" id="${project.id}" >
+		        <div class="modal-dialog modal-sm">
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <h4>Enter Project Detail</h4>
+		                </div>
+		                <div class="modal-body">
+		                    <div class="form-group">
+	                            <label>Project Name</label>
+	                            <input type="text" class="form-control" name="name" value= "${project.name}" 
+	                                required="required" pattern="[A-Za-z0-9\s]+" maxlength="30">
+		                    </div>
+		                    <div class="form-group">
+		                        <label>Client Name</label>
+	                            <input type="text" class="form-control" name="clientname"
+	                                value= "${project.client.name}" required="required" readonly="readonly">
+		                    </div>
+		                    <div class="modal-footer">
+		                    <div class="form-group">
+		                        <button type="submit" class="btn btn-primary btn-block btn-lg" 
+		                            formaction="update">Update</button>
+		                        <button type="button" class="btn btn-danger btn-block btn-lg" 
+		                            data-dismiss="modal">Cancel</button>
+		                        <input type="hidden" name="id" value = "${project.id}">
+		                        <input type="hidden" name="clientId" value = "${project.client.id}">
+		                    </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		     </div>
+         </form>
+        
+       <!-- used to show the project profit modal -->
+        <div class="modal fade" id="${project.id}a" >31px
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Enter The Dates</h4>
+                    </div>
+                    <form method="post" action="netProfit">
+                    <div class="modal-body">
+                       <div class="form-group">
+                           <label>Start Date</label>
+                           <input type="date" class="form-control" name="startDate"
+                               required="required" max="<%= java.time.LocalDate.now() %>" >
+                       </div>
+                       <div class="form-group">
+                          <label>End Date</label>
+                          <input type="date" class="form-control" name="endDate"
+                              required="required" max="<%= java.time.LocalDate.now() %>" >
+                       </div>
+                        <input type="hidden" name="projectId" value="${project.id}">
+                        <input type="hidden" name="projectClientId" value="${project.client.id}">                             
+                    </div>
+                    <div class="modal-footer">
                         <div class="form-group">
-                                <label>Project Name</label>
-                                <input type="text" class="form-control" name="name"
-                                    value= "${project.name}" required="required" pattern="[A-Za-z0-9\s]+" maxlength="30">
+                           <button type="submit" class="btn btn-primary btn-block btn-lg">Show</button>
+                           <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Close</button>
                         </div>
-                        <div class="form-group">
-                            <label>Client Name</label>
-                                <input type="text" class="form-control" name="clientname"
-                                    value= "${project.client.name}" required="required" readonly="readonly">
-                        </div>
-                        <div class="modal-footer">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg" 
-                                formaction="update">Update</button>
-                            <button type="button" class="btn btn-danger btn-block btn-lg" 
-                                    data-dismiss="modal">Cancel</button>
-                            <input type="hidden" name="id" value = "${project.id}">
-                            <input type="hidden" name="clientId" value = "${project.client.id}">
-                        </div>
-                        </div>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-     </div></td>
-            </form>
-        
-        <td>
-        <div class="modal fade" id="${project.id}a" >31px
-                 <div class="modal-dialog modal-sm">
-                     <div class="modal-content">
-                         <div class="modal-header">
-                             <h4>Enter The Dates</h4>
-                         </div>
-                         <form method="post" action="netProfit">
-                         <div class="modal-body">
-                            <div class="form-group">
-                                    <label>Start Date</label>
-                                    <input type="date" class="form-control" name="startDate"
-                                        required="required" max="<%= java.time.LocalDate.now() %>" >
-                            </div>
-                            <div class="form-group">
-                                    <label>End Date</label>
-                                    <input type="date" class="form-control" name="endDate"
-                                        required="required" max="<%= java.time.LocalDate.now() %>" >
-                            </div>
-                             <input type="hidden" name="projectId" value="${project.id}">
-                             <input type="hidden" name="projectClientId" value="${project.client.id}">                             
-                         </div>
-                         <div class="modal-footer">
-                             <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block btn-lg">Show</button>
-                                    <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Close</button>
-                             </div>
-                         </div>
-                         </form>
-                     </div>
-                 </div>
-              </div>
               </td>
         </tr>
         
@@ -314,9 +324,8 @@
 						  </div>
 				  </div>
 				</div>
-            </td>
-        </tr>
-        <tr> 
+        
+            <!-- used to show the employee salary increment modal -->
              <td><div class="modal fade" id="${employee.id}" >
                  <div class="modal-dialog modal-sm">
                      <div class="modal-content">
@@ -350,9 +359,8 @@
                          </div>
                      </div>
                  </div>
-              </td>
               
-              <td>
+              <!-- used to show the employee profit modal -->
               <div class="modal fade" id="${employee.mobileNo}" >
                  <div class="modal-dialog modal-sm">
                      <div class="modal-content">
@@ -396,15 +404,14 @@
                  </div>
               </div>
               </td>
-          </tr>
-              
-              
+              </tr>
         </c:forEach>
         </table>
         
     </div>
 </c:if>
-    
+
+    <!-- used to show the client create page -->
     <div class="modal fade" id="ClientCreate" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -437,6 +444,7 @@
         </div>
      </div>
      
+     <!-- used to show the project create page -->
      <div class="modal fade" id="ProjectCreate" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -469,6 +477,7 @@
         </div>
      </div>
      
+     <!-- used to show the employee create page -->
      <div class="modal fade" id="EmployeeCreate">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -522,6 +531,7 @@
         </div>
      </div>
      
+  <!-- used to show the profit -->
   <c:if test="${not empty Profit}">
      <div class="revenue">
         <table class="table table-striped text-center">
@@ -539,6 +549,7 @@
      </div>
   </c:if>
   
+      <!-- used to show the client profit -->
      <div class="modal fade" id="clientProfit" >
            <div class="modal-dialog modal-sm">
                <div class="modal-content">
@@ -559,6 +570,7 @@
            </div>
         </div>
   
+  <!-- used to show the company profit based on client -->
   <c:if test="${not empty names}">
 	<div id="chartContainer" style="height: 300px; width: 75%; margin-left:145px;"></div>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

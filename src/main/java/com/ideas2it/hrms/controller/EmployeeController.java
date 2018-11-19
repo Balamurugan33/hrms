@@ -235,9 +235,13 @@ public class EmployeeController {
         ModelAndView modelAndView = new ModelAndView();
 
         Employee employee = (Employee) session.getAttribute("employee");
+        if (employee.getProjects().isEmpty()) {
+            modelAndView.addObject("projectEmpty","NO PROJECTS FOUND");
+            System.out.println("projectEmpty");
+        }
         modelAndView.addObject("currentProjects", employee.getProjects());
         modelAndView.addObject("projects",
-                employeeService.getEmpProjects(employee.getTimeSheet()));
+            employeeService.getEmpProjects(employee.getTimeSheet()));
         modelAndView.setViewName(EMPLOYEE_MENU);
 
         return modelAndView;
@@ -252,13 +256,15 @@ public class EmployeeController {
         HttpSession session = request.getSession(false);
         Employee employee = (Employee) session.getAttribute("employee");
         ModelAndView modelAndView = new ModelAndView();
-
+        
         modelAndView.addObject("command", new TimeSheet());
         modelAndView.addObject("empProjects", employee.getProjects());
+        if (employee.getTimeSheet().isEmpty()) {
+            modelAndView.addObject("timesheetEmpty","NO ENTRIES FOUND");
+        }
         modelAndView.addObject(EmpConstants.LABEL_TIMESHEETS,
-                employee.getTimeSheet());
+            employee.getTimeSheet());
         modelAndView.setViewName(EMPLOYEE_MENU);
-
         return modelAndView;
     }
     
@@ -268,17 +274,13 @@ public class EmployeeController {
     @GetMapping("employee/empAttendance")
     public ModelAndView employeesAttendance(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        EmployeeService employeeService = new EmployeeServiceImpl();
         Employee employee = (Employee) session.getAttribute("employee");
-        List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         ModelAndView modelAndView = new ModelAndView();
-
-        try {
-            attendanceSheet = employeeService.getAttendanceSheet(employee);
-            modelAndView.addObject(EmpConstants.LABEL_ATTENDANCE, attendanceSheet);
-        } catch (AppException e) {
-            modelAndView.addObject("Error", e.getMessage());
-        }   
+        if (employee.getAttendance().isEmpty()) {
+            modelAndView.addObject("attendanEmpty"," PUT ATTENDANCE");
+        }
+        modelAndView.addObject(EmpConstants.LABEL_ATTENDANCE, 
+                employee.getAttendance());
         modelAndView.setViewName(EMPLOYEE_MENU);        
         return modelAndView;        
     }
@@ -356,7 +358,7 @@ public class EmployeeController {
             @ModelAttribute("salaryTracker") SalaryTracker salaryTracker,
             HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(
-                "redirect:" + "employee/displayEmployee");
+                "redirect:" + "/employee/displayEmployee");
         try {
             HttpSession session = request.getSession(false);
             String emailId = request.getParameter("emailId");
@@ -381,7 +383,6 @@ public class EmployeeController {
     public ModelAndView assignProject(HttpServletRequest request,
             ModelMap model) {
         try {
-
             String emailId = request.getParameter("emailId");
             Integer id = Integer.parseInt(request.getParameter("projectId"));
             Employee employee = employeeService.searchEmployee(emailId);

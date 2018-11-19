@@ -47,10 +47,8 @@
 
 <c:if test="${not empty timeSheets}">
  <div id="taskInfo" align="center">
-     <button type="button" class="btn btn-info btn-lg pull-right btn-space" 
+     <button type="button" class="btn btn-info btn-lg pull-right " style="margin-bottom: 1%;"
        data-toggle="modal" data-target="#TimeSheetCreate">Add Entry</button>
-    <br>
-    <br>
     <table class="table table-striped text-center">
     <tr>
         <th class="text-center">Date</th>
@@ -86,11 +84,6 @@
               <label>Project Name</label>
                 <input type="hidden" name="projectId" value = "${timeSheet.project.id}">   
                 <input type="text" class="form-control" name="projectName" value= "${timeSheet.project.name}" required="required">
-                <select class="form-control" name="projectId">
-                <c:forEach var="project" items="${employee.projects}">
-                     <option value="${project.id}" <c:if test="">selected="selected"</c:if>>${project.name}</option>
-                </c:forEach>
-            </select>
             </div>
             </div>
             <div class="form-group">
@@ -111,45 +104,18 @@
     </tr>
     </c:forEach>
     </table>
-        <div class="modal fade" id="TimeSheetCreate">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Add entry</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="/hrms/timeSheet/createEntry" method="post">
-                        <div class="form-group">
-                            <label>Date</label>
-                              <input type="date" class="form-control" name="entryDate" value="<%= java.time.LocalDate.now() %>" readonly>
-                        </div>
-                        <div class="form-group">
-                                <label>Project Name</label>
-                                <select class="form-control" name="projectId">
-							        <c:forEach var="project" items="${employee.projects}">
-							             <option value="${project.id}">${project.name}</option>
-							        </c:forEach>
-						        </select>
-                        </div>
-                       <div class="form-group">
-                            <label>Hours Worked</label>
-                            <div class="form-group">
-                              <input type="text" class="form-control" name="workedHours" required="required" maxlength="2">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg">Save</button>
-                            <button type="button" class="btn btn-danger btn-block btn-lg" 
-                                data-dismiss="modal">Cancel</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-     </div>
+        
  </div>
 </c:if>
-    
+
+<c:if test="${not empty timesheetEmpty}">
+    <div align="center">
+        <h4>${timesheetEmpty}</h4>
+        <button type="button" class="btn btn-info btn-lg " 
+            data-toggle="modal" data-target="#TimeSheetCreate">Add Entry</button>
+    </div>
+</c:if>
+
 <c:if test="${not empty projects}">
     <h4 align="center"> <b> History of Projects Worked On </b> </h4> 
     <div id=projectInfo align="center">
@@ -183,6 +149,29 @@
     </tr>
     </c:forEach>
     </table>
+    </div>
+</c:if>
+    
+<c:if test="${not empty projectEmpty}">
+    <div align="center">
+        <h4>${projectEmpty}</h4>
+    </div>
+</c:if>
+    
+<c:if test="${not empty attendanEmpty}">
+    <div align="center">
+        <h4>${attendanEmpty}</h4>
+            <c:choose>
+		    <c:when test="${isChecked=='true'}">
+		      <input class="toggle" type="checkbox" name="checkAttendance" checked="checked" onclick="checkAttendance(this)" />
+		    </c:when>    
+		    <c:when test="${isChecked=='false'}">
+		      <input class="toggle" type="checkbox" name="checkAttendance" onclick="checkAttendance(this)" />
+		    </c:when>  
+		    <c:otherwise>
+		      <input class="toggle" type="checkbox" name="checkAttendance" onclick="checkAttendance(this)" />
+		    </c:otherwise>
+		  </c:choose>
     </div>
 </c:if>
     
@@ -221,6 +210,7 @@
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ApplyLeave" >Apply Leave</button>        
  </div>
 </c:if>   
+       
        <div class="modal fade" id="ApplyLeave" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -238,10 +228,12 @@
                             <input type="text" class="form-control" name="employeeName"
                               value= "${employee.name}" readonly="readonly">
                           </div>
-                          <input type="date" class="form-control" name="leaveDate"
-                                required="required" max="<%= java.time.LocalDate.now() %>" >                            
                           <div class="form-group">
-                              <input style="height:200px;" type="text" class="form-control" name="leaveReason" placeholder="Reason for applying leave" required="required">
+	                           <input type="date" class="form-control" name="leaveDate"
+	                              required="required" value="<%= java.time.LocalDate.now() %>" >   
+                          </div>                         
+                          <div class="form-group">
+                              <input style="height:200px" type="text" class="form-control" name="leaveReason" placeholder="Reason for applying leave" required="required">
                           </div>
                           <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Apply Leave</button>
@@ -289,7 +281,44 @@
             </div>
         </div>
      </div>
- </div>
+     
+     <div class="modal fade" id="TimeSheetCreate">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Add entry</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="/hrms/timeSheet/createEntry" method="post">
+                        <div class="form-group">
+                            <label>Date</label>
+                              <input type="date" class="form-control" name="entryDate" value="<%= java.time.LocalDate.now() %>" readonly>
+                        </div>
+                        <div class="form-group">
+                                <label>Project Name</label>
+                                <select class="form-control" name="projectId">
+                                    <c:forEach var="project" items="${employee.projects}">
+                                         <option value="${project.id}">${project.name}</option>
+                                    </c:forEach>
+                                </select>
+                        </div>
+                       <div class="form-group">
+                            <label>Hours Worked</label>
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="workedHours" required="required" maxlength="2">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Save</button>
+                            <button type="button" class="btn btn-danger btn-block btn-lg" 
+                                data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
+     
 </body>
 
 <c:if test="${not empty message}">
