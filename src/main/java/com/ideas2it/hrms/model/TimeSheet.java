@@ -16,6 +16,7 @@ import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
+ * Represents an employee's timesheet entry.
  * Used to track the number of hours worked and the projects worked on by an employee in a single day.
  * An employee has many daily timesheet entries, which together form the employee's timesheet history.
  * It contains: all projects he's worked on and number of hours worked on each project, 

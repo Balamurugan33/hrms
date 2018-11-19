@@ -55,10 +55,8 @@ public class ProjectServiceImpl implements ProjectService {
         Integer netProfit = 0;
         
         billableAmount = calculateBillableAmount(project, startDate, endDate);            
-        costToCompany = calculateCostToCompany(project, startDate, endDate);
-        
+        costToCompany = calculateCostToCompany(project, startDate, endDate);        
         netProfit = billableAmount - costToCompany;
-
         return netProfit;
     }
     
@@ -68,31 +66,29 @@ public class ProjectServiceImpl implements ProjectService {
         List<TimeSheet> timeSheetEntries = new ArrayList<TimeSheet>();
         Integer billableAmount = 0;
 
-        timeSheetEntries = sheetService.getTimeSheetEntries(projectTimeSheet, startDate, endDate);
-        billableAmount = calculateTotalBill(timeSheetEntries);
-                
+        timeSheetEntries = sheetService.getEntriesInInterval(projectTimeSheet, startDate, endDate);
+        billableAmount = calculateTotalBill(timeSheetEntries);                
         return billableAmount;
     }
     
     public Integer calculateTotalBill(List<TimeSheet> timeSheetEntries) {
         SalaryTrackerServiceImpl salaryService = new SalaryTrackerServiceImpl();
-        List<SalaryTracker> salaryTrackers = new ArrayList<SalaryTracker>();
         Integer totalBill = 0;
         
         for (TimeSheet entry: timeSheetEntries) {
             Integer hourlyRate;
             Integer numHoursWorkedEntry;
             Integer entryBill;
+            List<SalaryTracker> salaryEntries = new ArrayList<SalaryTracker>();
             
-            salaryTrackers = entry.getEmployee().getSalaryTrackers();
+            salaryEntries = entry.getEmployee().getSalaryTrackers();
             SalaryTracker entrySalary = salaryService.getSalaryTrackerOnDate(
-                entry.getEntryDate(), salaryTrackers);
+                entry.getEntryDate(), salaryEntries);
             hourlyRate = entrySalary.getHourlyRate();
             numHoursWorkedEntry = entry.getWorkedHours();
             entryBill = hourlyRate * numHoursWorkedEntry;
             totalBill = totalBill + entryBill;
         }        
-
         return totalBill;
     }
     
@@ -102,22 +98,19 @@ public class ProjectServiceImpl implements ProjectService {
         List<Employee> projectEmployees = new ArrayList<Employee>();
         Integer costToCompany = 0;
 
-        // Get the list of unique employees working on this project
+        // Get the list of employees working on this project
         for (TimeSheet entry: projectTimeSheet) {
             if (!projectEmployees.contains(entry.getEmployee())) {
                 projectEmployees.add(entry.getEmployee());
             }
-        }
-        
+        }        
         for (Employee employee: projectEmployees) {
             costToCompany = costToCompany + empService.calculateCostToCompany(startDate, endDate, employee);
-        }
-        
+        }        
         return costToCompany;
     }
     
-    /** {@inheritDoc}*/
-    public List<Client> displayClients() throws AppException {
+    public List<Client> getAllClients() throws AppException {
         ClientService clientService = new ClientServiceImpl();
         return clientService.displayClients();
     }

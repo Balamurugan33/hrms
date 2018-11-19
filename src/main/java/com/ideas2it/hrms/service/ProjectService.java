@@ -14,6 +14,13 @@ import com.ideas2it.hrms.model.Project;
  * Update Project, Remove project
  * </p>
  *
+ * <p>
+ * Provides additional functionality to:
+ * Calculate the company's netProfit from a project, over a time interval
+ * Calculate the company's revenue from a project, over a time interval
+ * Calculate the company's expenditure, in terms of salary paid to employees for a project, over a time interval
+ * </p>
+ * 
  * @author Ganesh Venkat S
  */
 public interface ProjectService {
@@ -39,18 +46,20 @@ public interface ProjectService {
     Project getProjectById(Integer id) throws AppException;
     
     /**
-     * Gets all the projects allocated to company
+     * Gets all the projects allocated to the company
      * 
      * @return
-     *        list of all projects
+     *        all projects allocated to the company
      */
     List<Project> getAllProjects() throws AppException;
     
     /**
-     * Updates a project's details
+     * Updates a project's info
      * 
      * @param project
-     *        project to update
+     *        a project, with updated info 
+     * @return
+     *        the updated project
      */
     Project updateProject(Project project) throws AppException;
     
@@ -58,38 +67,59 @@ public interface ProjectService {
      * Removes a project
      * 
      * @param project
-     *        project to remove
+     *        a project
+     * @return
+     *        the project that was removed
      */
     Project removeProject(Project project) throws AppException;
     
     /**
-     * Calculates the net profit of the company, for current month,
-     * from a single project
-     * @param employee
-     *        company project
-     * @throws AppException 
+     * Calculates the company's netProfit from a project, over a time interval
+     * 
+     * @param project
+     *        a project
+     * @param startDate
+     *        starting date of the interval
+     * @param endDate
+     *        ending date of the interval
+     * @return
+     *        company's netProfit from the project, over the given time interval                      
      */
     Integer calculateNetProfit(Project project, LocalDate startDate, LocalDate endDate) throws AppException;
     
     /**
-     * Calculates the total billable amount for a project, for current month
+     * Calculate the company's revenue from a project, over a time interval
      * 
      * @param project
-     *        billable project 
+     *        a project 
+     * @param startDate
+     *        starting date of the interval
+     * @param endDate
+     *        ending date of the interval
+     * @return
+     *        company's revenue from the project, over the given time interval       
      */
     Integer calculateBillableAmount(Project project, LocalDate startDate, LocalDate endDate);
         
     /**
-     * Calculates the total amount paid to employees, working on a project, for current month
+     * Calculate the company's expenditure, in terms of salary paid to employees for a project, over a time interval
      * 
      * @param project
-     *        project
-     * @throws AppException 
+     *        a project 
+     * @param startDate
+     *        starting date of the interval
+     * @param endDate
+     *        ending date of the interval
+     * @return
+     *        company's expenditure for the project, over the given time interval       
      */
     Integer calculateCostToCompany(Project project, LocalDate startDate, LocalDate endDate) throws AppException;
     
     /**
-     * Used to get all clients
+     * Gets all the clients of the company
+     * 
+     * @return
+     *        all clients of the company
      */
-    List<Client> displayClients() throws AppException;
+    List<Client> getAllClients() throws AppException;
 }

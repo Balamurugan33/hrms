@@ -11,7 +11,7 @@ import com.ideas2it.hrms.model.Employee;
  * <p>
  * Provides an interface for basic CRUD operations on the Attendance Model:
  * Add new attendance, Get attendance, Get all attendances,
- * Update attendance, Remove attendance, Get attendanceSheet of an employee
+ * Update attendance, Remove attendance, Get an employee's attendanceSheet 
  * </p>
  *
  * @author Ganesh Venkat S
@@ -19,49 +19,53 @@ import com.ideas2it.hrms.model.Employee;
 public interface AttendanceDao {
     
     /**
-     * Creates a new attendance 
+     * Creates a new attendance entry
      *       
      * @param attendance
-     *       new attendance
+     *        new attendance entry
      * @return 
-     *       new attendance, if added, null otherwise
+     *        new attendance entry, if added, null otherwise
      */
     Attendance createAttendance(Attendance attendance) throws AppException; 
     
     /**
-     * Gets a today's attendance entry of an employee
+     * Gets an attendance entry of an employee
      *
      * @param employee
-     *        employee
+     *        an employee
      * @param entryDate       
-     *        an entry date of an employee's attendance history
+     *        a date
      * @return
-     *        requested attendance, if exists, null otherwise
+     *        requested attendance entry, if exists, null otherwise
      */
     Attendance getAttendance(Employee employee, LocalDate entryDate) throws AppException;
     
     /**
      * Gets the attendance sheet of an employee
      * 
+     * @param employee
+     *        an employee
      * @return
-     *        attendance sheet
+     *        an employee's attendance sheet
      */
     List<Attendance> getAttendanceSheet(Employee employee) throws AppException;
 
      
     /**
-     * Gets the attendances of all employees in company
+     * Gets the consolidated attendance sheet of all employees in the company
      * 
      * @return
-     *        list of all attendances
+     *        consolidated attendance sheet of all employees
      */
     List<Attendance> getAllAttendances() throws AppException;
     
     /**
-     * Updates a attendance's details
+     * Updates an attendance entry 
      * 
      * @param attendance
-     *       attendance to update
+     *        an attendance entry, with updated info
+     * @return 
+     *        the updated attendance entry        
      */
     Attendance updateAttendance(Attendance attendance) throws AppException;            
 }

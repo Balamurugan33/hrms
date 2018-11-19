@@ -6,7 +6,6 @@ import java.util.List;
 import com.ideas2it.hrms.dao.AttendanceDao;
 import com.ideas2it.hrms.dao.impl.AttendanceDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.logger.AppLogger;
 import com.ideas2it.hrms.model.Attendance;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.service.AttendanceService;
@@ -36,7 +35,6 @@ public class AttendanceServiceImpl implements AttendanceService {
             attendance.setStatus(true);
             attendance = createAttendance(attendance);
         }
-
         return attendanceDao.getAttendanceSheet(employee);
     }
     
