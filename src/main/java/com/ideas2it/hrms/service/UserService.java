@@ -1,12 +1,9 @@
 package com.ideas2it.hrms.service;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
-import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Employee;
-import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.model.User;
 
 /**
@@ -57,16 +54,10 @@ public interface UserService {
      * @return
      */
     boolean createEmpLogin(Employee employee) throws AppException;
+            
+    Integer getCompanyNetProfit(LocalDate startDate, LocalDate endDate) throws AppException;
     
-    List<Client> getAllClients() throws AppException;
-    
-    List<Project> getAllProjects() throws AppException;
-    
-    List<Employee> getAllEmployees() throws AppException;
-    
-    Integer getCompanyNetProfit(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
-    
-    Integer getCompanyRevenue(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
+    Integer getCompanyRevenue(LocalDate startDate, LocalDate endDate) throws AppException;
 
-    Integer getCompanyExpenditure(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
+    Integer getCompanyExpenditure(LocalDate startDate, LocalDate endDate) throws AppException;
 }
