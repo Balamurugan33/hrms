@@ -31,17 +31,15 @@ import com.ideas2it.hrms.service.impl.EmployeeServiceImpl;
 import static com.ideas2it.hrms.common.EmpConstants.MSG_CREATE_SUCCESS;
 
 /**
- * Used to perform the different action on employee 
- * using employee service class 
+ * Used to perform the different action on employee using employee service class
  * 
  * @version 1
  * @author Balamurugan M
  */
 @Controller
 public class EmployeeController {
-    
+
     private String EMPLOYEE_MENU = "employeeView";
-    private String EMPLOYEE_CREATE = "empCreate";
     private String ADMINMENU = "adminHome";
     private String ERROR_PAGE = "error";
     private EmployeeService employeeService = new EmployeeServiceImpl();
@@ -54,48 +52,48 @@ public class EmployeeController {
             "employeeDetail", employee);
     }
     
-    @GetMapping("employee/createProfile")
-    public ModelAndView viewCreateForm() {
-        try {
-            ModelAndView modelAndView 
-                = new ModelAndView(EMPLOYEE_CREATE, "command", new Employee());
-            return modelAndView.addObject("designations", 
-                employeeService.getDesignations());
-        } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
-                appException.getMessage());
-       }
-    }
-    
+    /**
+     * Used to create the employee  
+     *  
+     * @param employee
+     *        Get the the employee details  
+     * @param salaryTracker
+     *        Used to get the employee salary detail
+     */
     @PostMapping("employee/createEmployee")
-    public ModelAndView createEmployee(@ModelAttribute("employee") 
-            Employee employee, @ModelAttribute("salaryTracker") SalaryTracker 
-            salaryTracker, HttpServletRequest request, ModelMap model) {
+    public ModelAndView createEmployee(
+            @ModelAttribute("employee") Employee employee,
+            @ModelAttribute("salaryTracker") SalaryTracker salaryTracker,
+            HttpServletRequest request, ModelMap model) {
+        ModelAndView modelAndView = new ModelAndView(
+                "redirect:" + "employee/displayEmployee");
         try {
+            HttpSession session = request.getSession(false);
             List<SalaryTracker> trackers = new ArrayList<SalaryTracker>();
             salaryTracker.setEmployee(employee);
             trackers.add(salaryTracker);
-            Integer id = Integer.parseInt(request.getParameter("designationId"));
+            Integer id = Integer
+                    .parseInt(request.getParameter("designationId"));
             Designation designation = new Designation();
             designation.setId(id);
             employee.setDesignation(designation);
             employee.setSalaryTrackers(trackers);
-            if(employeeService.isEmployeeExist(employee.getEmailId())) {
+            if (employeeService.isEmployeeExist(employee.getEmailId())) {
                 if (employeeService.createEmployee(employee)) {
-                    model.addAttribute(EmpConstants.LABEL_MESSAGE, 
-                        EmpConstants.MSG_CREATE_SUCCESS);
+                    session.setAttribute(EmpConstants.LABEL_MESSAGE,
+                            EmpConstants.MSG_CREATE_SUCCESS);
                 } else {
-                    model.addAttribute(EmpConstants.LABEL_MESSAGE, 
-                        EmpConstants.MSG_CREATE_FAIL);
+                    session.setAttribute(EmpConstants.LABEL_MESSAGE,
+                            EmpConstants.MSG_CREATE_FAIL);
                 }
             } else {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
-                    EmpConstants.MSG_ALREADY_EXIST);
+                session.setAttribute(EmpConstants.LABEL_MESSAGE,
+                        EmpConstants.MSG_ALREADY_EXIST);
             }
-            return displayEmployees(model);
+            return modelAndView;
         } catch (AppException appException) {
-             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
-                 appException.getMessage());
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
+                    appException.getMessage());
         }
     }
     
@@ -104,13 +102,13 @@ public class EmployeeController {
      */
     @GetMapping("/employee/markPresent")
     public ModelAndView markPresent(HttpServletRequest request) {
-        HttpSession session = request.getSession();        
+        HttpSession session = request.getSession();
         Employee employee = (Employee) session.getAttribute("employee");
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
-        ModelAndView modelAndView = new ModelAndView(); 
-        
+        ModelAndView modelAndView = new ModelAndView();
+
         try {
-            attendanceSheet = employeeService.markPresent(employee);   
+            attendanceSheet = employeeService.markPresent(employee);
             modelAndView.addObject("Success", MSG_CREATE_SUCCESS);
             modelAndView.addObject("attendance", attendanceSheet);
             modelAndView.addObject("isChecked", true);
@@ -118,8 +116,8 @@ public class EmployeeController {
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
         }
-        
-        return modelAndView;       
+
+        return modelAndView;
     }
     
     /**
@@ -127,14 +125,14 @@ public class EmployeeController {
      */
     @GetMapping("/employee/markAbsent")
     public ModelAndView markAbsent(HttpServletRequest request) {
-        HttpSession session = request.getSession();        
+        HttpSession session = request.getSession();
         Employee employee = (Employee) session.getAttribute("employee");
 
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
-        ModelAndView modelAndView = new ModelAndView(); 
-        
+        ModelAndView modelAndView = new ModelAndView();
+
         try {
-            attendanceSheet = employeeService.markAbsent(employee);   
+            attendanceSheet = employeeService.markAbsent(employee);
             modelAndView.addObject("Success", MSG_CREATE_SUCCESS);
             modelAndView.addObject("attendance", attendanceSheet);
             modelAndView.addObject("isChecked", false);
@@ -142,66 +140,75 @@ public class EmployeeController {
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
         }
-        
-        return modelAndView;       
+
+        return modelAndView;
     }
-    
+
     @PostMapping("employee/updateEmployee")
-    public ModelAndView updateEmployee(@ModelAttribute("employee") 
-            Employee employee, HttpServletRequest request) {
+    public ModelAndView updateEmployee(
+            @ModelAttribute("employee") Employee employee,
+            HttpServletRequest request) {
         try {
             HttpSession session = request.getSession(false);
             Employee oldEmployee = (Employee) session.getAttribute("employee");
             employee.setDesignation(oldEmployee.getDesignation());
-            AppLogger.error("check3"+employee.getEmailId());
+            AppLogger.error("check3" + employee.getEmailId());
             if (employeeService.updateEmployee(employee)) {
-                ModelAndView modelAndView = new ModelAndView(EMPLOYEE_MENU, 
-                    EmpConstants.LABEL_MESSAGE, EmpConstants.MSG_UPDATE_SUCCESS);
+                ModelAndView modelAndView = new ModelAndView(EMPLOYEE_MENU,
+                        EmpConstants.LABEL_MESSAGE,
+                        EmpConstants.MSG_UPDATE_SUCCESS);
                 return modelAndView.addObject("employeeDetail", employee);
             } else {
-                return new ModelAndView("createProfile", 
-                    EmpConstants.LABEL_MESSAGE, EmpConstants.MSG_UPDATE_FAIL);
+                return new ModelAndView("createProfile",
+                        EmpConstants.LABEL_MESSAGE,
+                        EmpConstants.MSG_UPDATE_FAIL);
             }
         } catch (AppException appException) {
-             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
-                 appException.getMessage());
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
+                    appException.getMessage());
         }
     }
-    
+
     @PostMapping("employee/deleteEmployee")
-    public ModelAndView deleteEmployee(HttpServletRequest request, 
+    public ModelAndView deleteEmployee(HttpServletRequest request,
             ModelMap model) {
+        ModelAndView modelAndView = new ModelAndView(
+                "redirect:" + "employee/displayEmployee");
         try {
-            if (employeeService.deleteEmployee(Integer.parseInt(
-                    request.getParameter("id")))) {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
+            HttpSession session = request.getSession(false);
+            session.setAttribute(EmpConstants.LABEL_MESSAGE, 
+                    EmpConstants.MSG_DELETE_SUCCESS);
+            if (employeeService.deleteEmployee(
+                    Integer.parseInt(request.getParameter("id")))) {
+                session.setAttribute(EmpConstants.LABEL_MESSAGE, 
                     EmpConstants.MSG_DELETE_SUCCESS);
             } else {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE,
-                    EmpConstants.MSG_DELETE_FAIL);
+                session.setAttribute(EmpConstants.LABEL_MESSAGE,
+                        EmpConstants.MSG_DELETE_FAIL);
             }
-            return displayEmployees(model);
+            return modelAndView;
         } catch (AppException appException) {
-             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
-                 appException.getMessage());
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
+                    appException.getMessage());
         }
     }
-    
+
     @GetMapping("employee/displayEmployee")
     public ModelAndView displayEmployees(ModelMap model) {
         try {
-            ModelAndView modelAndView 
-                = new ModelAndView(ADMINMENU, "command", new TimeSheet());
-            modelAndView.addObject("allProjects", employeeService.getAllProjects());
+            ModelAndView modelAndView = new ModelAndView(ADMINMENU, "command",
+                    new TimeSheet());
             modelAndView.addObject("command", new Employee());
             modelAndView.addObject("command", new SalaryTracker());
-            modelAndView.addObject("allDesignation", 
-                employeeService.getDesignations());
-            return modelAndView.addObject(EmpConstants.LABEL_EMPLOYEES, 
-                employeeService.displayEmployees());
+            modelAndView.addObject("allProjects",
+                    employeeService.getAllProjects());
+            modelAndView.addObject("allDesignation",
+                    employeeService.getDesignations());
+            return modelAndView.addObject(EmpConstants.LABEL_EMPLOYEES,
+                    employeeService.displayEmployees());
         } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
-                appException.getMessage());
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
+                    appException.getMessage());
         }
     }
     
@@ -211,27 +218,30 @@ public class EmployeeController {
     @GetMapping("employee/empProjects")
     public ModelAndView employeesProjects(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        ModelAndView modelAndView = new ModelAndView(); 
+        ModelAndView modelAndView = new ModelAndView();
 
         Employee employee = (Employee) session.getAttribute("employee");
         modelAndView.addObject("currentProjects", employee.getProjects());
-        modelAndView.addObject("projects", employeeService.getEmpProjects(employee.getTimeSheet()));
+        modelAndView.addObject("projects",
+                employeeService.getEmpProjects(employee.getTimeSheet()));
         modelAndView.setViewName(EMPLOYEE_MENU);
-        
+
         return modelAndView;
     }
-    
+
     @GetMapping("employee/empTasks")
-    public ModelAndView employeesTasks(HttpServletRequest request, Model model) {
+    public ModelAndView employeesTasks(HttpServletRequest request,
+            Model model) {
         HttpSession session = request.getSession(false);
         Employee employee = (Employee) session.getAttribute("employee");
-        ModelAndView modelAndView = new ModelAndView(); 
+        ModelAndView modelAndView = new ModelAndView();
 
         modelAndView.addObject("command", new TimeSheet());
         modelAndView.addObject("empProjects", employee.getProjects());
-        modelAndView.addObject(EmpConstants.LABEL_TIMESHEETS, employee.getTimeSheet());
+        modelAndView.addObject(EmpConstants.LABEL_TIMESHEETS,
+                employee.getTimeSheet());
         modelAndView.setViewName(EMPLOYEE_MENU);
-        
+
         return modelAndView;
     }
     
@@ -240,12 +250,12 @@ public class EmployeeController {
      */
     @GetMapping("employee/empAttendance")
     public ModelAndView employeesAttendance(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);        
+        HttpSession session = request.getSession(false);
         EmployeeService employeeService = new EmployeeServiceImpl();
         Employee employee = (Employee) session.getAttribute("employee");
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
-        ModelAndView modelAndView = new ModelAndView(); 
-                
+        ModelAndView modelAndView = new ModelAndView();
+
         try {
             attendanceSheet = employeeService.getAttendanceSheet(employee);
             modelAndView.addObject("Success", "Attendance has been created");
@@ -290,9 +300,8 @@ public class EmployeeController {
         return modelAndView;
     }
     
-    
     @PostMapping("employee/createTask")
-    public ModelAndView createTask(@ModelAttribute("task") TimeSheet task, 
+    public ModelAndView createTask(@ModelAttribute("task") TimeSheet task,
             HttpServletRequest request, ModelMap model) {
         try {
             Project project = new Project();
@@ -302,95 +311,93 @@ public class EmployeeController {
             task.setProject(project);
             task.setEmployee(employee);
             if (employeeService.createTask(task)) {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE, "Attendance has been created");
+                model.addAttribute(EmpConstants.LABEL_MESSAGE,
+                        "Attendance has been created");
             }
             return displayEmployees(model);
         } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
-                appException.getMessage());
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
+                    appException.getMessage());
         }
     }
-    
+
     @PostMapping("employee/profit")
-    public ModelAndView calculateNetProfit(HttpServletRequest request, 
+    public ModelAndView calculateNetProfit(HttpServletRequest request,
             ModelMap model) {
         try {
-            Employee employee = employeeService.
-                    searchEmployee(request.getParameter("empEmailId"));
-            LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
-            LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));
-            Integer billAmount = employeeService.
-                calculateBillAmount(startDate, endDate, employee);
-            Integer costToCompany = employeeService.
-                calculateCostToCompany(startDate, endDate, employee);
-            Integer profit = employeeService.
-                calculateNetProfit(startDate, endDate, employee);
+            Employee employee = employeeService
+                    .searchEmployee(request.getParameter("empEmailId"));
+            LocalDate startDate = LocalDate
+                    .parse(request.getParameter("startDate"));
+            LocalDate endDate = LocalDate
+                    .parse(request.getParameter("endDate"));
+            Integer billAmount = employeeService.calculateBillAmount(startDate,
+                    endDate, employee);
+            Integer costToCompany = employeeService
+                    .calculateCostToCompany(startDate, endDate, employee);
+            Integer profit = employeeService.calculateNetProfit(startDate,
+                    endDate, employee);
             model.addAttribute("BilAmount", billAmount);
             model.addAttribute("CostToCompany", costToCompany);
             model.addAttribute("Profit", profit);
             return displayEmployees(model);
         } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
-                appException.getMessage());
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
+                    appException.getMessage());
         }
     }
-    
+
     @PostMapping("employee/revenue")
     public ModelAndView viewRevenue(HttpServletRequest request) {
         try {
-            Employee employee = employeeService.
-                searchEmployee(request.getParameter("emailId"));
+            Employee employee = employeeService
+                    .searchEmployee(request.getParameter("emailId"));
             return new ModelAndView("revenue", "employeeDetail", employee);
         } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
                     appException.getMessage());
         }
     }
-    
+
     @PostMapping("employee/increment")
-    public ModelAndView SalaryIncrement(@ModelAttribute("salaryTracker") 
-            SalaryTracker salaryTracker, HttpServletRequest request, 
-            ModelMap model) {
+    public ModelAndView SalaryIncrement(
+            @ModelAttribute("salaryTracker") SalaryTracker salaryTracker,
+            HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView(
+                "redirect:" + "employee/displayEmployee");
         try {
-            
+            HttpSession session = request.getSession(false);
             String emailId = request.getParameter("emailId");
             if (employeeService.salaryIncrement(emailId, salaryTracker)) {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
-                     EmpConstants.MSG_UPDATE_SUCCESS);
+                session.setAttribute(EmpConstants.LABEL_MESSAGE,
+                        EmpConstants.MSG_UPDATE_SUCCESS);
             } else {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
+                session.setAttribute(EmpConstants.LABEL_MESSAGE,
                         EmpConstants.MSG_UPDATE_FAIL);
             }
-            return displayEmployees(model);
+            return modelAndView;
         } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
                     appException.getMessage());
         }
     }
-    
+
     @PostMapping("employee/assignProject")
-    public ModelAndView assignProject(HttpServletRequest request, 
+    public ModelAndView assignProject(HttpServletRequest request,
             ModelMap model) {
         try {
-            
+
             String emailId = request.getParameter("emailId");
             Integer id = Integer.parseInt(request.getParameter("projectId"));
             Employee employee = employeeService.searchEmployee(emailId);
-            Project project = new Project();
-            project.setId(id);
-            
-            if (!employee.getProjects().contains(project)) {
-                employee.getProjects().add(project);
-                employeeService.updateEmployee(employee);
-                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
-                        EmpConstants.MSG_UPDATE_SUCCESS);
-            } else {
-                model.addAttribute(EmpConstants.LABEL_MESSAGE, 
-                        EmpConstants.MSG_ALREADY_ASSIGN);
-            }
+            Project project = employeeService.getProjectById(id);
+            employee.getProjects().add(project);
+            employeeService.updateEmployee(employee);
+            model.addAttribute(EmpConstants.LABEL_MESSAGE,
+                 EmpConstants.MSG_UPDATE_SUCCESS);
             return displayEmployees(model);
         } catch (AppException appException) {
-            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE, 
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
                     appException.getMessage());
         }
     }

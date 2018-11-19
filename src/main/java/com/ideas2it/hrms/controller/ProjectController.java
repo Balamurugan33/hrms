@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,18 +42,18 @@ public class ProjectController {
             @ModelAttribute("project") Project project, 
             HttpServletRequest request) {
         ProjectService projectService = new ProjectServiceImpl();
-        ModelAndView modelAndView = new ModelAndView(); 
-
+        ModelAndView modelAndView = new ModelAndView("redirect:"+"displayAll");
+        HttpSession session = request.getSession(false);
         try {
             Client client = new Client();
             client.setId(Integer.parseInt(request.getParameter("clientId")));
             project.setClient(client);
             project = projectService.createProject(project);   
-            modelAndView.addObject("Success", MSG_CREATED);
+            session.setAttribute("Success", MSG_CREATED);
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
+            session.setAttribute("Error", appException.getMessage());
         }
-        return displayAllProjects(modelAndView);
+        return modelAndView;
     }
     
     /**

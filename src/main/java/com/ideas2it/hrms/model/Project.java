@@ -3,6 +3,7 @@ package com.ideas2it.hrms.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,14 +50,8 @@ public class Project {
     @OneToMany(mappedBy = "project", fetch=FetchType.EAGER)
     private List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();    
 
-    @ManyToMany
+    @ManyToMany(mappedBy="projects")
     @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinTable(
-        name = "project_employee", 
-        joinColumns = { @JoinColumn(name = "project_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "employee_id") }
-    )
-
     private List<Employee> employees = new ArrayList<Employee>();
     
     public Integer getId() {

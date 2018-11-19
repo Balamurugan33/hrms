@@ -19,7 +19,9 @@ import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.User;
+import com.ideas2it.hrms.service.ClientService;
 import com.ideas2it.hrms.service.UserService;
+import com.ideas2it.hrms.service.impl.ClientServiceImpl;
 import com.ideas2it.hrms.service.impl.UserServiceImpl;
 
 /**
@@ -108,11 +110,33 @@ public class UserController {
      *       Used to get the user class reference
      */
     private ModelAndView setUserRole(User user, HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView();
         UserService userService = new UserServiceImpl();
         
         try {
-             String role = user.getRole();
+            String role = user.getRole();
+            HttpSession session = request.getSession(Boolean.TRUE);
+            //session.setMaxInactiveInterval(60); 
+            session.setAttribute(UserConstants.LABEL_ROLE, role);
+            if (role.equals(LABEL_ADMIN)) {
+                session.setAttribute(UserConstants.LABEL_ID, user.getId());
+                ClientService clientService = new ClientServiceImpl();
+                ModelAndView modelAndView = new ModelAndView(ADMIN_JSP, "profits",
+                    clientService.getClientProfits());
+                return modelAndView.addObject("names", 
+                        clientService.getClientNames());
+            } else { 
+                Employee employee 
+                    = userService.checkEmployeeDetail(user.getUserName());
+                session.setAttribute(UserConstants.LABEL_EMPLOYEE, employee);
+                return new ModelAndView(EMPLOYEE_VIEW, 
+                        "employeeDetail", employee);
+            }
+        } catch (AppException appException) {
+            return new ModelAndView(ERROR_JSP, UserConstants.LABEL_MESSAGE, 
+                appException.getMessage());
+        }
+    }
+             /*String role = user.getRole();
              HttpSession session = request.getSession(Boolean.TRUE);
              //session.setMaxInactiveInterval(60); 
              session.setAttribute(UserConstants.LABEL_ROLE, role);
@@ -158,7 +182,7 @@ public class UserController {
              modelAndView.setViewName(ERROR_JSP);
          }
          return modelAndView;
-     }
+     }*/
     
     // Used to invalidate the session
     @GetMapping("user/logout")

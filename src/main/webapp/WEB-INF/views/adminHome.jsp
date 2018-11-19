@@ -8,29 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <jsp:include page='adminHeader.jsp'/>
-<style>
-
-.pulse:hover,
-.pulse:focus {
-          animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
-}
-
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--hover);
-  }
-}
-
-.pulse {
-  --color: #ef6eae;
-  --hover: #ef8f6e;
-}
-
-</style>
 </head>
-<body style="    margin-left: 78px;">
+<body style="margin-left: 80px;">
 <c:if test="${not empty clients}">
     <div>
         <center><button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-success btn-lg pulse">Add Client</button></center>
@@ -123,10 +102,12 @@
 </c:if>
 
 <c:if test="${not empty designations}">
-    <div>
-        <button type="button" class="btn btn-outline-success btn-lg" 
-            data-toggle="modal" data-target="#DesignationCreate">Add Designation</button>
-        <table class="table table-striped text-center">
+    <table class="table text-center">
+    <tr><td>
+    <div class="dsn-right">
+        <h3>Designations</h3>
+        <div class="scroll">
+        <table class="table table-striped text-center ">
         <tr>
             <th class="text-center">Name</th>
             <th class="text-center">Action</th>
@@ -157,12 +138,37 @@
                 </div>
             </div>
         </div>
-     </div></td>
+     </div>
+     </td>
             </form>
         </tr>
         </c:forEach>
         </table>
+        </div>
+    </div></td>
+    <td>
+    <div class="dsn-left">
+        <header>
+        <h3>Enter The New Designation</h3>
+        </header>
+        <form action="hrms/client/createClient" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" name="name"
+                placeholder="Designation Name" required="required">
+       </div>
+        <footer>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block btn-lg" 
+                formaction="/hrms/designation/createDesignation">Save</button>
+            <button type="button" class="btn btn-danger btn-block btn-lg" 
+                data-dismiss="modal">Cancel</button>
+        </div>
+        </form>
+        </footer>
     </div>
+    <td></tr>
+    </table>
+    
 </c:if>
 
 <c:if test="${not empty projects}">
@@ -217,7 +223,7 @@
             </form>
         
         <td>
-        <div class="modal fade" id="${project.id}a" >
+        <div class="modal fade" id="${project.id}a" >31px
                  <div class="modal-dialog modal-sm">
                      <div class="modal-content">
                          <div class="modal-header">
@@ -281,13 +287,12 @@
             <td><div class="actiondropdown">
 				  <button class="btn btn-success">Select Action</button>
 				  <div class="dropdown-content">
-						     <form action="/hrms/employee/deleteEmployee" method="post">
-							    
+						     <form action="/hrms/employee/deleteEmployee" class="dropdown-content-form" method="post">
 		                        <a href="#" data-toggle="modal" data-target="#${employee.id}">
 		                         <img class="img" title="Put Increment" src="<c:url value = '/resources/img/salary.svg' />"></a>
 		                        <a href="#" data-toggle="modal" data-target="#${employee.mobileNo}">
 		                        <img class="img" title="View Employee Revenue" src="<c:url value = '/resources/img/revenue.svg' />"></a>
-		                        <button type="submit"><img class="img" title="Delete Employee" src="<c:url value='/resources/img/deleteEmp.svg'/>"></button>
+		                        <button class="dropdown-content-btn" type="submit"><img class="img" title="Delete Employee" src="<c:url value='/resources/img/deleteEmp.svg'/>"></button>
 		                        <input type="hidden" name="id" value="${employee.id}">
 		                    </form>
 						    <div class="dropdown">
@@ -431,30 +436,6 @@
         </div>
      </div>
      
-     <div class="modal fade" id="DesignationCreate" >
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Enter Designation Detail</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="hrms/client/createClient" method="post">
-                    <div class="form-group">
-                            <input type="text" class="form-control" name="name"
-                                placeholder="Designation Name" required="required">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-lg" 
-                            formaction="/hrms/designation/createDesignation">Save</button>
-                        <button type="button" class="btn btn-danger btn-block btn-lg" 
-                            data-dismiss="modal">Cancel</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-     </div>
-     
      <div class="modal fade" id="ProjectCreate" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -556,12 +537,53 @@
         </table>
      </div>
   </c:if>
-     
+  
+  <c:if test="${not empty names}">
+	<div id="chartContainer" style="height: 300px; width: 75%; margin-left: 78px;"></div>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<c:forEach var = "name"  items="${names}">
+    <input type="text" name="a" value="${name}" style="display:none">
+    </c:forEach>
+    
+    <c:forEach var = "profit"  items="${profits}">
+    <input type="number" name="b" value="${profit}" style="display:none">
+    </c:forEach>
+ </c:if>
+
 <body/>
 <c:if test="${not empty message}">
 <script>
     alert ("${message}");
 </script>
-
 </c:if>
-</html>
+
+<script>
+    window.onload = function () {
+        
+        var dps = []; // dataPoints
+        var a = document.getElementsByName("a");
+        var b = document.getElementsByName("b");
+        var count = a.length;
+        for (var j = 0; j < count; j++) {
+            dps.push({
+                label: a[j].value,
+                y: parseInt(b[j].value)
+            });
+        }
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title :{
+                text:"Revenue Of Company Based On Client"
+            },
+            axisY: {
+                includeZero: false
+            },      
+            data: [{
+                type: "line",
+                dataPoints: dps
+            }]
+        });
+
+        chart.render();
+        }
+</script>
+</html> 

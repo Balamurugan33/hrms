@@ -1,6 +1,7 @@
 package com.ideas2it.hrms.service.impl;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ideas2it.hrms.dao.ClientDao;
@@ -85,6 +86,22 @@ public class ClientServiceImpl implements ClientService {
             netProfit = netProfit + projectService.calculateNetProfit(project, startDate, endDate); 
         }        
         return netProfit;
+    }
+    
+    public ArrayList getClientNames() throws AppException {
+        ArrayList names = new ArrayList();
+        for (Client client : clientDao.retrieveClients()) {
+            names.add(client.getName());
+        }
+        return names;
+    }
+    
+    public ArrayList getClientProfits() throws AppException {
+        ArrayList profits = new ArrayList();
+        for (Client client : clientDao.retrieveClients()) {
+            profits.add(calculateNetProfit(client, LocalDate.parse("2018-11-09"), LocalDate.now()));
+        }
+        return profits;
     }    
     
     public Integer calculateBillableAmount(Client client, LocalDate startDate, LocalDate endDate) throws AppException {

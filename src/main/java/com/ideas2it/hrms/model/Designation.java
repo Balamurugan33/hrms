@@ -19,8 +19,6 @@ import org.hibernate.annotations.Where;
  * Used to get the Designation of the employee
  * Not a list of designation, only it's store the single designation detail
  * And used to get the list of employee have a same designation
- * Also get the employee salary and hourly rate based on the designation 
- * it's means the salary and hourly rate varied based on the designation  
  * 
  * @author Balamurugan M
  *

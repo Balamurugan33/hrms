@@ -9,39 +9,39 @@
  <link rel = "stylesheet" type = "text/css" href = "<c:url value='/resources/bootstrap.css'/>"/>
 </head>
 <jsp:include page='empHeader.jsp'/>
-<body>
+<body >
 <div id="view" style="transition: margin-left .5s; padding: 16px;">
 <c:if test="${not empty employeeDetail}">
-  <div align="center">
-  <table style="float:center">
+  <div class="emp">
+  <table class="table table-striped table-inverse">
     <tr>
-        <td>Employee ID:</td> 
+        <td>Employee ID</td><td>:</td>
         <td>${employee.id}</td>  
     </tr>
     <tr>
-        <td>Name:</td> 
+        <td>Name</td> <td>:</td>
         <td>${employee.name}</td>  
     </tr>
     <tr>
-        <td>MobileNo:</td>
+        <td>MobileNo</td><td>:</td>
         <td>${employee.mobileNo}</td>
     </tr>
     <tr>  
-        <td>Mail:</td>
+        <td>Mail</td><td>:</td>
         <td>${employee.emailId}</td>
     </tr>
     <tr>
-         <td>Designation</td>
+         <td>Designation</td><td>:</td>
          <td>${employee.designation.name}</td>
     </tr>
     <tr>
-         <td>Salary</td>
+         <td>Salary</td><td>:</td>
          <td>${employee.salary}</td>
     </tr>
    </table>        
    <br>
    <br>
-   <a href="#" onclick="openUpdate()"><button type="submit" class="btn btn-success">Edit Profile</button></a>                  
+   <center><button type="button" data-toggle="modal" data-target="#Update"class="btn btn-success">Edit Profile</button></a></center>                  
  </div>
 </c:if>
 
@@ -65,8 +65,8 @@
         <td>${timeSheet.workedHours}</td>
         <form method="post">
           <td>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#${timeSheet.id}" >Update</button>
-            <button type="submit" class="btn btn-danger" formaction="/hrms/timeSheet/deleteEntry">Delete</button>
+            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#${timeSheet.id}" >Update</button>
+            <button type="submit" class="btn btn-danger btn-sm" formaction="/hrms/timeSheet/deleteEntry">Delete</button>
             <div class="modal fade" id="${timeSheet.id}">
             <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -224,22 +224,25 @@
                 </div>
                 <div class="modal-body">
                     <form action="/hrms/employee/applyLeave" method="post">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="leaveEmpId"
-                                    value= "${employee.id}" required="required">
-                            </div>
-                            <div class="input-group">
-                              <input type="text" class="form-control" name="employeeName"
-                                value= "${employee.name}" required="required">
-                            </div>
-                            <input type="date" class="form-control" name="leaveDate"
-                                  required="required" max="<%= java.time.LocalDate.now() %>">                            
-                            <div class="input-group">
-                                <input style="height:200px;" type="text" class="form-control" name="leaveReason" placeholder="Reason for applying leave" required="required">
-                            </div>
+                          <div class="form-group">
+                              <input type="text" class="form-control" name="leaveEmpId"
+                                  value= "${employee.id}" readonly="readonly">
+                          
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="employeeName"
+                              value= "${employee.name}" readonly="readonly">
+                          </div>
+                          <input type="date" class="form-control" name="leaveDate"
+                                required="required" max="<%= java.time.LocalDate.now() %>" >                            
+                          <div class="form-group">
+                              <input style="height:200px;" type="text" class="form-control" name="leaveReason" placeholder="Reason for applying leave" required="required">
+                          </div>
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Apply Leave</button>
+                            <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">
+                                Cancel</button>
                         </div>
-                       <button type="submit" name = "apply"> Apply Leave</button>       
                     </form>
                 </div>
             </div>
@@ -257,26 +260,20 @@
                 <div class="modal-body">
                     <form action="/hrms/employee/updateEmployee" method="post">
                         <div class="form-group">
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="name"
                                     value= "${employee.name}" placeholder="Name" pattern="[A-Za-z\s]+" maxlength=30 required="required">
-                            </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="mobileNo"
                                    value= "${employee.mobileNo}" placeholder="Mobile Number" pattern="[6789]{1}[0-9]{9}" maxlength=10 required="required">
-                            </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
                                 <input type="text" class="form-control" name="emailId"
                                    value= "${employee.emailId}" placeholder="Email Id" required="required">
-                            </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Update</button>
-                            <button type="button" class="btn btn-danger btn-block btn-lg" onclick="closeUpdate()">
+                            <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">
                                 Cancel</button>
                             <input type="hidden" name="id" value = "${employee.id}">
                             <input type="hidden" name="salary" value = "${employee.salary}">
@@ -296,13 +293,6 @@
 </script>
 </c:if>
 <script>
-	function openUpdate(event) {
-	    $("#Update").modal("show");
-	}
-	
-	function closeUpdate(event) {
-	    $("#Update").modal("hide");
-	}
     function checkAttendance(checkbox)
     {
       if (checkbox.checked)

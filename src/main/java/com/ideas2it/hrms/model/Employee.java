@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,9 +25,10 @@ import org.hibernate.annotations.Where;
 
 /**
  * Used to get the employee details it's means single employee details
- * And also used to get the designation, 
- * from designation to get the employee salary and role 
- * Used to get the List of attendance it's single employee present and absent dates
+ * And also get the employee salary and hourly rate details 
+ * Here hourly rate means per hour billable amount from client
+ * Used to get the List of attendance 
+ * It's hold single employee present and absent dates
  * 
  * @author Balamurugan M
  *
@@ -69,8 +71,13 @@ public class Employee {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<SalaryTracker> salaryTrackers = new ArrayList<SalaryTracker>();
     
-    @ManyToMany(mappedBy="employees")
+    @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinTable(
+        name = "project_employee", 
+        joinColumns = { @JoinColumn(name = "employee_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "project_id") }
+    )
     private List<Project> projects = new ArrayList<Project>();
     
     @OneToOne
