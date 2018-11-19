@@ -10,6 +10,7 @@ import com.ideas2it.hrms.exception.AppException;
 import com.ideas2it.hrms.model.Client;
 import com.ideas2it.hrms.model.Project;
 import com.ideas2it.hrms.service.ClientService;
+import com.ideas2it.hrms.service.SalaryTrackerService;
 
 public class ClientServiceImpl implements ClientService {
     
@@ -97,10 +98,12 @@ public class ClientServiceImpl implements ClientService {
     }
     
     public ArrayList<Integer> getClientProfits() throws AppException {
+        SalaryTrackerService salaryService = new SalaryTrackerServiceImpl();
         ArrayList<Integer> profits = new ArrayList<Integer>();
+        LocalDate startDate 
+            = salaryService.displaySalaryTrackers().get(0).getUpdateDate();
         for (Client client : clientDao.retrieveClients()) {
-            profits.add(calculateNetProfit(client, 
-                LocalDate.parse("2018-11-09"), LocalDate.now()));
+            profits.add(calculateNetProfit(client, startDate, LocalDate.now()));
         }
         return profits;
     }    

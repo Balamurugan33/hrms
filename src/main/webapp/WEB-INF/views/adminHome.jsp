@@ -39,11 +39,11 @@
                 <div class="modal-body">
                         <div class="form-group">
                                 <input type="text" class="form-control tt" name="name"
-                                    value= "${client.name}" placeholder="Client Name" required="required">
+                                    value= "${client.name}" placeholder="Client Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
                         </div>
                         <div class="form-group">
-                                <input type="text" class="form-control tt" name="mobileNo"
-                                   value= "${client.mobileNo}" placeholder="Mobile Number" required="required">
+                                <input type="text" class="form-control tt" name="mobileNo" value= "${client.mobileNo}" 
+                                    placeholder="Mobile Number" pattern="[6789]{1}[0-9]{9}" maxlength="10" required="required">
                         </div>
                         <div class="form-group">
                                 <input type="text" class="form-control tt" name="emailId"
@@ -126,7 +126,7 @@
                 <div class="modal-body">
                         <div class="form-group">
                                 <input type="text" class="form-control" name="name"
-                                    value= "${designation.name}" placeholder="Name" required="required">
+                                    value= "${designation.name}" placeholder="Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-lg" 
@@ -154,7 +154,7 @@
         <form action="hrms/client/createClient" method="post">
         <div class="form-group">
             <input type="text" class="form-control" name="name"
-                placeholder="Designation Name" required="required">
+                placeholder="Designation Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
        </div>
         <footer>
         <div class="form-group">
@@ -200,12 +200,12 @@
                         <div class="form-group">
                                 <label>Project Name</label>
                                 <input type="text" class="form-control" name="name"
-                                    value= "${project.name}" required="required">
+                                    value= "${project.name}" required="required" pattern="[A-Za-z0-9\s]+" maxlength="30">
                         </div>
                         <div class="form-group">
                             <label>Client Name</label>
-                                <input type="text" class="form-control" name="name"
-                                    value= "${project.client.name}" required="required">
+                                <input type="text" class="form-control" name="clientname"
+                                    value= "${project.client.name}" required="required" readonly="readonly">
                         </div>
                         <div class="modal-footer">
                         <div class="form-group">
@@ -214,6 +214,7 @@
                             <button type="button" class="btn btn-danger btn-block btn-lg" 
                                     data-dismiss="modal">Cancel</button>
                             <input type="hidden" name="id" value = "${project.id}">
+                            <input type="hidden" name="clientId" value = "${project.client.id}">
                         </div>
                         </div>
                 </div>
@@ -414,11 +415,11 @@
                     <form action="hrms/client/createClient" method="post">
                         <div class="form-group">
                                 <input type="text" class="form-control" name="name"
-                                    placeholder="Client Name" required="required">
+                                    placeholder="Client Name" required="required" pattern="[A-Za-z\s]+" maxlength="30">
                         </div>
                         <div class="form-group">
                                 <input type="text" class="form-control" name="mobileNo"
-                                   placeholder="Mobile Number" required="required">
+                                   placeholder="Mobile Number" required="required" pattern="[6789]{1}[0-9]{9}" maxlength="10">
                         </div>
                         <div class="form-group">
                                 <input type="text" class="form-control" name="emailId"
@@ -447,7 +448,7 @@
                         <div class="form-group">
                             <label>Project Name</label>
                                 <input type="text" class="form-control" name="name"
-                                    required="required">
+                                   pattern="[A-Za-z0-9\s]+" maxlength="30" required="required">
                         </div>
                         <div class="form-group">
                               <label>Client Name</label>
@@ -478,13 +479,13 @@
                     <form action="/hrms/employee/createEmployee" method="post">
                         <div class="form-group">
                             <label>Employee Name</label>
-                                <input type="text" class="form-control" name="name"
-                                    required="required">
+                                <input type="text" class="form-control" name="name" 
+                                   pattern="[A-Za-z\s]+" maxlength="30" required="required">
                         </div>
                         <div class="form-group">
                             <label>Mobile Number</label>
                                 <input type="text" class="form-control" name="mobileNo"
-                                    required="required">
+                                   pattern="[6789]{1}[0-9]{9}" maxlength="10" required="required">
                         </div>
                         <div class="form-group">
                             <label>Email id</label>
@@ -500,7 +501,7 @@
                                 </select>
                         </div>
                         <div class="form-group">
-                            <label>salary</label>
+                            <label>Salary</label>
                                 <input type="text" class="form-control" name="salary"
                                     required="required">
                         </div>
