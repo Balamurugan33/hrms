@@ -77,7 +77,7 @@
             <div class="form-group">
             <div class="input-group">
               <label>Date</label>
-              <input type="text" class="form-control" name="entryDate" value= "${timeSheet.entryDate}" required="required">
+              <input type="text" class="form-control" name="entryDate" value= "${timeSheet.entryDate}" readonly="readonly" required="required">
             </div>
             </div>
             <div class="modal-body">
@@ -86,11 +86,16 @@
               <label>Project Name</label>
                 <input type="hidden" name="projectId" value = "${timeSheet.project.id}">   
                 <input type="text" class="form-control" name="projectName" value= "${timeSheet.project.name}" required="required">
+                <select class="form-control" name="projectId">
+                <c:forEach var="project" items="${employee.projects}">
+                     <option value="${project.id}" <c:if test="">selected="selected"</c:if>>${project.name}</option>
+                </c:forEach>
+            </select>
             </div>
             </div>
             <div class="form-group">
               <label>Hours Worked</label>
-              <input type="text" class="form-control" name="workedHours" value= "${timeSheet.workedHours}" required="required">
+              <input type="text" class="form-control" name="workedHours" value= "${timeSheet.workedHours}" maxlength="30" required="required">
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block btn-lg" formaction="/hrms/timeSheet/updateEntry">Update</button>
@@ -129,7 +134,7 @@
                        <div class="form-group">
                             <label>Hours Worked</label>
                             <div class="form-group">
-                              <input type="text" class="form-control" name="workedHours" required="required">
+                              <input type="text" class="form-control" name="workedHours" required="required" maxlength="2">
                             </div>
                         </div>
                         <div class="form-group">
@@ -261,11 +266,11 @@
                     <form action="/hrms/employee/updateEmployee" method="post">
                         <div class="form-group">
                                 <input type="text" class="form-control" name="name"
-                                    value= "${employee.name}" placeholder="Name" pattern="[A-Za-z\s]+" maxlength=30 required="required">
+                                    value= "${employee.name}" placeholder="Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
                         </div>
                         <div class="form-group">
                                 <input type="text" class="form-control" name="mobileNo"
-                                   value= "${employee.mobileNo}" placeholder="Mobile Number" pattern="[6789]{1}[0-9]{9}" maxlength=10 required="required">
+                                   value= "${employee.mobileNo}" placeholder="Mobile Number" pattern="[6789]{1}[0-9]{9}" maxlength="10" required="required">
                         </div>
                         <div class="form-group">
                                 <input type="text" class="form-control" name="emailId"

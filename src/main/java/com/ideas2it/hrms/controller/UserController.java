@@ -119,10 +119,10 @@ public class UserController {
             session.setAttribute(UserConstants.LABEL_ROLE, role);
             if (role.equals(LABEL_ADMIN)) {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
-                ModelAndView modelAndView = new ModelAndView(ADMIN_JSP, "profits",
-                        userService.getClientProfits());
+                ModelAndView modelAndView = new ModelAndView(ADMIN_JSP, 
+                    "profits", userService.getClientProfits());
                 return modelAndView.addObject("names", 
-                        userService.getClientNames());
+                    userService.getClientNames());
             } else { 
                 Employee employee 
                     = userService.checkEmployeeDetail(user.getUserName());

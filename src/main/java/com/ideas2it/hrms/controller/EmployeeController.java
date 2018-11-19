@@ -68,7 +68,7 @@ public class EmployeeController {
             @ModelAttribute("salaryTracker") SalaryTracker salaryTracker,
             HttpServletRequest request, ModelMap model) {
         ModelAndView modelAndView = new ModelAndView(
-                "redirect:" + "employee/displayEmployee");
+                "redirect:" + "/employee/displayEmployee");
         try {
             HttpSession session = request.getSession(false);
             List<SalaryTracker> trackers = new ArrayList<SalaryTracker>();
@@ -184,7 +184,7 @@ public class EmployeeController {
     public ModelAndView deleteEmployee(HttpServletRequest request,
             ModelMap model) {
         ModelAndView modelAndView = new ModelAndView(
-                "redirect:" + "employee/displayEmployee");
+                "redirect:" + "/employee/displayEmployee");
         try {
             HttpSession session = request.getSession(false);
             session.setAttribute(EmpConstants.LABEL_MESSAGE, 
