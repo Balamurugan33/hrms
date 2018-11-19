@@ -119,11 +119,10 @@ public class UserController {
             session.setAttribute(UserConstants.LABEL_ROLE, role);
             if (role.equals(LABEL_ADMIN)) {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
-                ClientService clientService = new ClientServiceImpl();
                 ModelAndView modelAndView = new ModelAndView(ADMIN_JSP, "profits",
-                    clientService.getClientProfits());
+                        userService.getClientProfits());
                 return modelAndView.addObject("names", 
-                        clientService.getClientNames());
+                        userService.getClientNames());
             } else { 
                 Employee employee 
                     = userService.checkEmployeeDetail(user.getUserName());
@@ -136,54 +135,7 @@ public class UserController {
                 appException.getMessage());
         }
     }
-             /*String role = user.getRole();
-             HttpSession session = request.getSession(Boolean.TRUE);
-             //session.setMaxInactiveInterval(60); 
-             session.setAttribute(UserConstants.LABEL_ROLE, role);
-             Integer numOfClients;
-             Integer numOfProjects;
-             Integer numOfEmployees;
-             Integer companyRevenue;
-             Integer companyExpenditure;
-             Integer companyNetProfit;
-             List<Client> allClients = new ArrayList<Client>();
-             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MMM-dd");
-             LocalDate startDate = LocalDate.parse("2018-Aug-16", formatter);
-             LocalDate endDate = LocalDate.now();
-             
-             if (role.equals(LABEL_ADMIN)) {
-                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
-                 
-                 allClients = userService.getAllClients();             
-                 
-                 numOfClients = allClients.size();               
-                 numOfProjects = userService.getAllProjects().size();
-                 numOfEmployees = userService.getAllEmployees().size();
-                 companyRevenue = userService.getCompanyRevenue(allClients, startDate, endDate);
-                 companyExpenditure = userService.getCompanyExpenditure(allClients, startDate, endDate);
-                 companyNetProfit = userService.getCompanyNetProfit(allClients, startDate, endDate);
-                 
-                 modelAndView.addObject("numOfClients", numOfClients);
-                 modelAndView.addObject("numOfProjects", numOfProjects);
-                 modelAndView.addObject("numOfEmployees", numOfEmployees);                 
-                 modelAndView.addObject("companyRevenue", companyRevenue);
-                 modelAndView.addObject("companyExpenditure", companyExpenditure);                 
-                 modelAndView.addObject("companyNetProfit", companyNetProfit);                
-                 modelAndView.setViewName(ADMIN_JSP);
-             } else { 
-                 Employee employee 
-                     = userService.checkEmployeeDetail(user.getUserName());
-                 session.setAttribute(UserConstants.LABEL_EMPLOYEE, employee);
-                 modelAndView.addObject("employeeDetail", employee);
-                 modelAndView.setViewName(EMPLOYEE_VIEW);
-             }
-         } catch (AppException appException) {
-             modelAndView.addObject(UserConstants.LABEL_MESSAGE, appException.getMessage());
-             modelAndView.setViewName(ERROR_JSP);
-         }
-         return modelAndView;
-     }*/
-    
+               
     // Used to invalidate the session
     @GetMapping("user/logout")
     public ModelAndView logOut(HttpServletRequest request) {

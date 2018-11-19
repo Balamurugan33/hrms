@@ -30,6 +30,12 @@ public class DesignationController {
     private String ERROR_PAGE = "error";
     private DesignationService designationService = new DesignationServiceImpl();
     
+    /**
+     * Used to create the new designation of employee
+     * 
+     * @param designation
+     *        Get the designation information
+     */
     @PostMapping("designation/createDesignation")
     public ModelAndView createDesignation(@ModelAttribute("designation") 
             Designation designation, HttpServletRequest request) {
@@ -56,6 +62,12 @@ public class DesignationController {
         }
     }
     
+    /**
+     * Used to update the designation
+     * 
+     * @param designation
+     *        Get the designation information
+     */
     @PostMapping("designation/updateDesignation")
     public ModelAndView updateDesignation(@ModelAttribute("designation") 
             Designation designation, ModelMap model) {
@@ -74,6 +86,9 @@ public class DesignationController {
         }
     }
     
+    /**
+     * Used to delete the designation 
+     */
     @PostMapping("designation/deleteDesignation")
     public ModelAndView deleteDesignation(HttpServletRequest request, 
             ModelMap model) {
@@ -93,6 +108,9 @@ public class DesignationController {
         }
     }
     
+    /**
+     * Used to display the all designations
+     */
     @GetMapping("designation/displayDesignation")
     public ModelAndView displayDesignations(ModelMap model) {
         try {
@@ -106,6 +124,9 @@ public class DesignationController {
         }
     }
     
+    /**
+     * Used to display the employees have a same designation 
+     */
     @GetMapping("designation/getEmployees")
     public ModelAndView displayEmployees(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(); 

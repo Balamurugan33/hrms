@@ -74,6 +74,7 @@ public interface ClientService {
     Integer calculateCompanyExpenditure(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
     
     Integer calculateCompanyNetProfit(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
+    
     /**
      * Find an existing client 
      */
@@ -82,10 +83,10 @@ public interface ClientService {
     /**
      * Used to get all client names in company 
      */
-    ArrayList getClientNames() throws AppException;
+    ArrayList<String> getClientNames() throws AppException;
     
     /**
      * Used to get all client profits in company 
      */
-    ArrayList getClientProfits() throws AppException;
+    ArrayList<Integer> getClientProfits() throws AppException;
 }

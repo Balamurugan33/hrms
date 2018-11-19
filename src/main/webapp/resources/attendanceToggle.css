@@ -50,9 +50,10 @@
     margin-left: 26%;
     }
     
-    body {
-        margin:0;
-	    color:#157d92;
-	    background-image: linear-gradient(#3ecac5, #0a1625);
-	    font:600 16px/18px 'Open Sans',sans-serif;
+    .btn-space {
+    margin-bottom: 1%;
+    }
+    
+    .table {
+    background-color: #00000014;
     }

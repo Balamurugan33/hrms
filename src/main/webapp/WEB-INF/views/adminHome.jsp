@@ -12,7 +12,7 @@
 <body style="margin-left: 80px;">
 <c:if test="${not empty clients}">
     <div>
-        <center><button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-success btn-lg pulse">Add Client</button></center>
+        <button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-info btn-lg pull-right btn-space">Add Client</button>
         <table class="table table-striped table-dark text-center">
         <tr>
 	        <th class="text-center">Name</th>
@@ -173,7 +173,7 @@
 
 <c:if test="${not empty projects}">
     <div>
-        <button type="button" class="btn btn-outline-success btn-lg pull-right" 
+        <button type="button" class="btn btn-info btn-lg pull-right btn-space" 
             data-toggle="modal" data-target="#ProjectCreate">Add Project</button>
         <table class="table table-striped text-center">
         <tr>
@@ -265,7 +265,7 @@
 <c:if test="${not empty employees}">
     <div>
         <form method="get">
-        <button type="button" class="btn btn-outline-success btn-lg" 
+        <button type="button" class=" btn btn-info btn-lg pull-right btn-space" 
             data-toggle="modal" data-target="#EmployeeCreate">Add Employee</button>
         </form>
         <table class="table table-striped text-center">
@@ -538,8 +538,28 @@
      </div>
   </c:if>
   
+     <div class="modal fade" id="clientProfit" >
+           <div class="modal-dialog modal-sm">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <center><h4>${name} Profit</h4></center>
+                   </div>
+                   <div class="modal-body">
+                      <div class="form-group">
+                              <center><h3>${clientProfit}</h3></center>
+                          </div>
+                   </div>
+                   <div class="modal-footer">
+                       <div class="form-group">
+                              <button type="button" class="btn btn-danger  btn-block btn-lg" data-dismiss="modal">Close</button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+  
   <c:if test="${not empty names}">
-	<div id="chartContainer" style="height: 300px; width: 75%; margin-left: 78px;"></div>
+	<div id="chartContainer" style="height: 300px; width: 75%; margin-left:145px;"></div>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 	<c:forEach var = "name"  items="${names}">
     <input type="text" name="a" value="${name}" style="display:none">
@@ -552,9 +572,16 @@
 
 <body/>
 <c:if test="${not empty message}">
-<script>
-    alert ("${message}");
-</script>
+	<script>
+	    alert ("${message}");
+	</script>
+	<c:remove var="message" scope="session" />
+</c:if>
+
+<c:if test="${not empty clientProfit}">
+	<script>
+		$("#clientProfit").modal("show");
+	</script>
 </c:if>
 
 <script>
@@ -578,7 +605,7 @@
                 includeZero: false
             },      
             data: [{
-                type: "line",
+                type: "column",
                 dataPoints: dps
             }]
         });

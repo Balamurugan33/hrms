@@ -7,8 +7,8 @@
 <body>
 <div class="navbar" id="main">
   <a href="#" onclick="openNav()">&#9776;</a>
-  <div style="margin-left:40%">
-      <a href="#" >Welcome ${employee.name}</a>
+  <div style="margin-left:42%">
+      <a href="#"><strong>Welcome ${employee.name}</strong></a>
   </div>
   <div style="float:right">
       <a href="/hrms/user/logout">Sign Out</a>
@@ -19,7 +19,7 @@
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="/hrms/employee/viewProfile">My Profile</a>
       <a href="/hrms/employee/empProjects">Projects</a>
-      <a href="/hrms/employee/empTasks">Time Sheet</a>
+      <a href="/hrms/employee/empTimesheet">Time Sheet</a>
       <a href="/hrms/employee/empAttendance">Attendance</a>
 </div>
 </body>

@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ideas2it.hrms.dao.UserDao;
@@ -67,39 +68,21 @@ public class UserServiceImpl implements UserService {
         return employeeService.searchEmployee(mailId);
     }
 
-    @Override
+    /** {@inheritDoc}*/
     public boolean createEmpLogin(Employee employee) throws AppException {
         EmployeeService employeeService = new EmployeeServiceImpl();
         return employeeService.updateEmployee(employee);
     }
     
-    public List<Client> getAllClients() throws AppException {
+    /** {@inheritDoc}*/
+    public ArrayList<String> getClientNames() throws AppException {
         ClientService clientService = new ClientServiceImpl();
-        return clientService.displayClients();
+        return clientService.getClientNames();
     }
-    
-    public List<Project> getAllProjects() throws AppException {
-        ProjectService projectService = new ProjectServiceImpl();
-        return projectService.getAllProjects();
-    }
-    
-    public List<Employee> getAllEmployees() throws AppException {
-        EmployeeService employeeService = new EmployeeServiceImpl();
-        return employeeService.displayEmployees();
-    }
-    
-    public Integer getCompanyRevenue(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException {
+
+    /** {@inheritDoc}*/
+    public ArrayList<Integer> getClientProfits() throws AppException {
         ClientService clientService = new ClientServiceImpl();
-        return clientService.calculateCompanyRevenue(clients, startDate, endDate);
-    }
-    
-    public Integer getCompanyExpenditure(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException {
-        ClientService clientService = new ClientServiceImpl();
-        return clientService.calculateCompanyExpenditure(clients, startDate, endDate);
-    }
-    
-    public Integer getCompanyNetProfit(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException {      
-        ClientService clientService = new ClientServiceImpl();
-        return clientService.calculateCompanyNetProfit(clients, startDate, endDate);
+        return clientService.getClientProfits();
     }
 }

@@ -98,6 +98,12 @@
     
 }
 
+.btn-space {
+    margin-right: 1%;
+    margin-bottom: 1%;
+    
+}
+
 .dropdown li:hover {background-color: gray;}
 
 .actiondropdown:hover .dropdown-content {display: block;}
