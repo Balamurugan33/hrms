@@ -61,16 +61,20 @@
         <td>${timeSheet.entryDate}</td>
         <td>${timeSheet.project.name}</td>
         <td>${timeSheet.workedHours}</td>
-        <form method="post">
+        
           <td>
+            <form method="post" action="/hrms/timeSheet/deleteEntry">
             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#${timeSheet.id}" >Update</button>
-            <button type="submit" class="btn btn-danger btn-sm" formaction="/hrms/timeSheet/deleteEntry">Delete</button>
+            <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
+            <input type="hidden" name="id" value = "${timeSheet.id}">   
+            </form>
             <div class="modal fade" id="${timeSheet.id}">
             <div class="modal-dialog modal-sm">
             <div class="modal-content">
             <div class="modal-header">
               <h4>Update TimeSheet Entry</h4>
             </div>
+            <form method="post" action="/hrms/timeSheet/updateEntry">
             <div class="modal-body">
             <div class="form-group">
             <div class="input-group">
@@ -91,16 +95,16 @@
               <input type="text" class="form-control" name="workedHours" value= "${timeSheet.workedHours}" maxlength="30" required="required">
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block btn-lg" formaction="/hrms/timeSheet/updateEntry">Update</button>
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Update</button>
               <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Cancel</button>
-              <input type="hidden" name="id" value = "${timeSheet.id}">            
+              <input type="hidden" name="id" value = "${timeSheet.id}">   
             </div>
             </div>
             </div>
+            </form>
             </div>
             </div>
           </td>
-        </form>
     </tr>
     </c:forEach>
     </table>

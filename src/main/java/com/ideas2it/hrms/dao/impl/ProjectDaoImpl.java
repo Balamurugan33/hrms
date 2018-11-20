@@ -3,6 +3,8 @@ package com.ideas2it.hrms.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -53,7 +55,10 @@ public class ProjectDaoImpl implements ProjectDao {
         
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            project = (Project) session.get(Project.class, id);            
+           // project = (Project) session.get(Project.class, id); 
+            Query query = session.createSQLQuery("select * from project p where p.id = :id")
+                    .addEntity(Project.class).setParameter("id", id);
+                project = (Project) query.getSingleResult();
             transaction.commit();
         } catch (HibernateException e) {
             AppLogger.error(ERROR_RETRIEVE_PROJECT + project.getName(), e);
