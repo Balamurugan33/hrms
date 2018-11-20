@@ -12,8 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 /**
  * Used to get the client details it's means contact details
@@ -25,7 +26,8 @@ import org.hibernate.annotations.Where;
 @Entity
 @Table(name="client")
 @SQLDelete(sql="update client set expired_date = current_date() where id=?")
-@Where(clause = "expired_date is null")
+@FilterDef(name = "clientFilter", defaultCondition=" expired_date is null")
+@Filter(name = "clientFilter")   
 public class Client {
     @Id  
     @Column(name="id")

@@ -11,8 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -27,7 +28,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="timesheet")
 @SQLDelete(sql="update timesheet set expired_date = current_date() where id=?")
-@Where(clause = "expired_date is null")
+@FilterDef(name = "timesheetFilter", defaultCondition=" expired_date is null")
+@Filter(name = "timesheetFilter")   
 public class TimeSheet {
     
     @Id  
