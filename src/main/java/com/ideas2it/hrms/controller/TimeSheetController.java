@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,24 +44,32 @@ public class TimeSheetController {
         TimeSheetService sheetService = new TimeSheetServiceImpl();
         ModelAndView modelAndView = new ModelAndView();                
         HttpSession session = request.getSession();        
-        Employee employee = (Employee) session.getAttribute("employee");
+        Employee currentEmployee = (Employee) session.getAttribute("employee");
         List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
                 
         try {
             Project project = new Project();
             project.setId(Integer.parseInt(request.getParameter("projectId")));
             entry.setProject(project);
-            entry.setEmployee(employee);
+            entry.setEmployee(currentEmployee);
             entry = sheetService.createEntry(entry);       
-            timeSheet = sheetService.getAllEntries();
-            modelAndView.addObject("timeSheets", timeSheet);
-            modelAndView.addObject("Success", MSG_CREATED);
-            modelAndView.setViewName("employeeView");
+            Employee employee
+                = sheetService.searchEmployee(request.getParameter("empEmail"));
+            session.setAttribute("employee", employee);
+            modelAndView.setViewName("redirect:"+"/timeSheet/viewProfile");
         } catch (AppException appException) {
             modelAndView.addObject("Error", appException.getMessage());
         }
         return modelAndView;
     } 
+    
+    @GetMapping("timeSheet/viewProfile")
+    public ModelAndView viewTimeSheet(HttpServletRequest request) {
+        HttpSession session = request.getSession();        
+        Employee employee = (Employee) session.getAttribute("employee");
+        return new ModelAndView("employeeView", "timeSheets", 
+            employee.getTimeSheet());
+    }
 
     /**
      * Updates a timesheet entry
@@ -77,13 +86,12 @@ public class TimeSheetController {
             Employee currentEmployee = (Employee) session.getAttribute("employee");
             Integer projectId = Integer.parseInt(request.getParameter("projectId"));
             Project project = projectService.getProjectById(projectId);
-            AppLogger.error("Project" + project.getName());
             task.setProject(project);
             task.setEmployee(currentEmployee);
             task = sheetService.updateEntry(task);
-            currentEmployee.getTimeSheet().remove(task);
-            currentEmployee.getTimeSheet().add(task);
-            timeSheet = currentEmployee.getTimeSheet();
+            Employee employee
+                = sheetService.searchEmployee(request.getParameter("empEmail"));
+            timeSheet = employee.getTimeSheet();
 
             modelAndView.addObject("Success", MSG_UPDATED);
             modelAndView.addObject("timeSheets", timeSheet);
@@ -137,4 +145,6 @@ public class TimeSheetController {
         }
         return modelAndView;
     }
+    
+    
 }

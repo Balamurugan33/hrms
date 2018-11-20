@@ -53,3 +53,7 @@
     .table {
     background-color: #00000014;
     }
+    
+    .table form {
+        display: inline;
+    }

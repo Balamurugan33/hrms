@@ -3,6 +3,10 @@ package com.ideas2it.hrms.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -103,6 +107,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
             String query = "FROM Employee WHERE emailId = :email";
             return (Employee)session.createQuery(query).
                 setParameter("email", email ).uniqueResult();
+        } catch (HibernateException e) {
+            AppLogger.error(EmpConstants.ERROR_RETRIEVE_EMPLOYEE, e);
+            throw new AppException(EmpConstants.ERROR_RETRIEVE_EMPLOYEE);
+        } finally {
+            session.close(); 
+        }
+    }
+
+    /** {@inheritDoc} */
+    public List<Employee> searchEmployeeByName(String name)
+            throws AppException {
+        try {
+            session = HibernateSession.getSession();
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+            CriteriaQuery<Employee> query = criteriaBuilder.createQuery(Employee.class);
+            Root<Employee> root = query.from(Employee.class);
+            query.select(root).where(criteriaBuilder.like(root.get("name"), 
+                "%"+name+"%"));        
+            AppLogger.error("##@$@ " +  name  + session.createQuery(query).list());
+            return session.createQuery(query).list();
         } catch (HibernateException e) {
             AppLogger.error(EmpConstants.ERROR_RETRIEVE_EMPLOYEE, e);
             throw new AppException(EmpConstants.ERROR_RETRIEVE_EMPLOYEE);

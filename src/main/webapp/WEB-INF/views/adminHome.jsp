@@ -43,15 +43,15 @@
                 <form method="post" action="/hrms/client/updateClient">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control tt" name="name" value= "${client.name}" 
+                        <input type="text" class="form-control" name="name" value= "${client.name}" 
                             placeholder="Client Name" pattern="[A-Za-z\s]+" maxlength="30" required="required">
                     </div>
                     <div class="form-group">
-                       <input type="text" class="form-control tt" name="mobileNo" value= "${client.mobileNo}" 
+                       <input type="text" class="form-control" name="mobileNo" value= "${client.mobileNo}" 
                            placeholder="Mobile Number" pattern="[6789]{1}[0-9]{9}" maxlength="10" required="required">
                     </div>
                     <div class="form-group">
-                       <input type="text" class="form-control tt" name="emailId"
+                       <input type="text" class="form-control" name="emailId"
                           value= "${client.emailId}" placeholder="Email Id" required="required">
                     </div>
                  <div class="modal-footer">
@@ -107,7 +107,7 @@
 
 <c:if test="${not empty designations}">
     <table class="table text-center">
-    <tr><td>
+    <tr class="table-border"><td class="table-border">
     <div class="dsn-right">
         <h3>Designations</h3>
         <div class="scroll">
@@ -152,7 +152,7 @@
         </table>
         </div>
     </div></td>
-    <td>
+    <td class="table-border">
     
     <!-- used to show the designation create form -->
     <div class="dsn-left">
@@ -290,7 +290,7 @@
         </tr>
         <c:forEach var="employee" items="${employees}">
         <tr>
-            <td>${employee.name}</td>
+            <td><a href="#" data-toggle="modal" data-target="#${employee.id}a" title="View Projects">${employee.name}</a></td>
             <td>${employee.mobileNo}</td>
             <td>${employee.emailId}</td>
             <td>${employee.designation.name}</td>
@@ -403,6 +403,33 @@
                      </div>
                  </div>
               </div>
+              
+              <!-- Employee projects -->
+              <div class="modal fade" id="${employee.id}a" >
+                 <div class="modal-dialog modal-lg">
+                     <div class="modal-content">
+			              <div class="modal-header">
+                             <h4>Employee Projects</h4>
+                         </div>
+                         <div class="modal-body">
+				              <table class="table table-striped text-center">
+						        <tr>
+						            <th class="text-center">Project</th>
+						            <th class="text-center">Client</th>
+						        </tr>
+						        <c:forEach var="project" items="${employee.projects}">
+						        <tr>
+						            <td>${project.name}</td>
+						            <td>${project.client.name}</td>
+						        </tr>
+						        </c:forEach>
+						      </table>
+					      </div>
+					 </div>
+				 </div>
+			  </div>
+              
+              
               </td>
               </tr>
         </c:forEach>

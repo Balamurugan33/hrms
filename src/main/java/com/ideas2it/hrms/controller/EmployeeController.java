@@ -66,7 +66,7 @@ public class EmployeeController {
     public ModelAndView createEmployee(
             @ModelAttribute("employee") Employee employee,
             @ModelAttribute("salaryTracker") SalaryTracker salaryTracker,
-            HttpServletRequest request, ModelMap model) {
+            HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(
                 "redirect:" + "/employee/displayEmployee");
         try {
@@ -392,6 +392,30 @@ public class EmployeeController {
             model.addAttribute(EmpConstants.LABEL_MESSAGE,
                  EmpConstants.MSG_UPDATE_SUCCESS);
             return displayEmployees(model);
+        } catch (AppException appException) {
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
+                    appException.getMessage());
+        }
+    }
+    
+    /**
+     * Used to find the employees by name  
+     */
+    @PostMapping("employee/searchByName")
+    public ModelAndView searchEmployeeByName(HttpServletRequest request) {
+        try {
+            String name = request.getParameter("name");
+            ModelAndView modelAndView = new ModelAndView(ADMINMENU, "command",
+                    new TimeSheet());
+            modelAndView.addObject("command", new Employee());
+            modelAndView.addObject("command", new SalaryTracker());
+            modelAndView.addObject("allProjects",
+                    employeeService.getAllProjects());
+            modelAndView.addObject("allDesignation",
+                    employeeService.getDesignations());
+            AppLogger.error("arun"+employeeService.searchEmployeeByName(name));
+            return modelAndView.addObject(EmpConstants.LABEL_EMPLOYEES,
+                    employeeService.searchEmployeeByName(name));
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
                     appException.getMessage());

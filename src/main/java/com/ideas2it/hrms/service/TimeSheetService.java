@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.TimeSheet;
 
 /**
@@ -92,5 +93,7 @@ public interface TimeSheetService {
      * @return
      *        true if the entry is in the specified interval, false otherwise
      */
-    boolean isEntryInInterval(TimeSheet entry, LocalDate startDate, LocalDate endDate);    
+    boolean isEntryInInterval(TimeSheet entry, LocalDate startDate, LocalDate endDate);
+
+    Employee searchEmployee(String emailId) throws AppException;   
 }

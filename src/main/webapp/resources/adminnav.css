@@ -9,10 +9,15 @@
 	
 }
 
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    z-index: 2;
+    margin-left: -1px;
+    height: 34px;
+}
 
 .navbar-default .navbar-text {
     color: #319298;
-    margin-left: 35%;
+    margin-left: 30%;
     font-weight: bold;
 }
 

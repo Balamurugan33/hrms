@@ -68,7 +68,10 @@ public class HRMSFilter implements Filter {
         String uri = httpRequest.getRequestURI();
         Boolean employeeUri = uri.endsWith("viewProfile") || 
             uri.endsWith("empProjects") || uri.endsWith("empTimesheet") || 
-            uri.endsWith("empAttendance");
+            uri.endsWith("empAttendance") || uri.endsWith("updateEmployee") 
+            || uri.endsWith("updateEntry") || uri.endsWith("empTimesheet") || 
+            uri.endsWith("markPresent") || uri.endsWith("markAbsent") || 
+            uri.endsWith("createEntry") || uri.endsWith("applyLeave");
         
         if (uri.endsWith(HRMSURI) || uri.startsWith(RESOURCES) || 
                 uri.startsWith(USERURI)){
@@ -82,25 +85,30 @@ public class HRMSFilter implements Filter {
                 httpRequest.getRequestDispatcher(EMP_VIEW_JSP).
                     forward(request, response);
             } else {
+                System.out.println("1="+uri);
                 chain.doFilter(request, response);
             }
         
         } else if (Boolean.TRUE == employee && (employeeUri)) {
+            System.out.println("2="+uri);
             chain.doFilter(request, response);
             
         } else if ((Boolean.TRUE == admin)) {
+            System.out.println("3="+uri);
             chain.doFilter(request, response); 
             
             
         } else if (null == session) {
             httpRequest.setAttribute(FilterConstants.LABEL_MESSAGE, 
                     FilterConstants.TIMEOUT_MESSAGE);
+            System.out.println("4="+uri);
             httpRequest.getRequestDispatcher(LOGIN_JSP).
                 forward(request, response);
             
         } else {
             session.setAttribute(FilterConstants.LABEL_MESSAGE, 
                     FilterConstants.UNAUTHORITY_MESSAGE);
+            System.out.println("5="+uri);
             httpResponse.sendRedirect(HRMSURI);
         }
     }

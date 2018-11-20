@@ -49,5 +49,10 @@ public interface EmployeeDao {
      * Get all the existing employee 
      */
     List<Employee> retrieveEmployees() throws AppException;
+
+    /**
+     * Get all the existing employees by same name
+     */
+    List<Employee> searchEmployeeByName(String name) throws AppException;
     
 }

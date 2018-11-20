@@ -7,7 +7,9 @@ import java.util.List;
 import com.ideas2it.hrms.dao.TimeSheetDao;
 import com.ideas2it.hrms.dao.impl.TimeSheetDaoImpl;
 import com.ideas2it.hrms.exception.AppException;
+import com.ideas2it.hrms.model.Employee;
 import com.ideas2it.hrms.model.TimeSheet;
+import com.ideas2it.hrms.service.EmployeeService;
 import com.ideas2it.hrms.service.TimeSheetService;
 
 /**
@@ -64,5 +66,11 @@ public class TimeSheetServiceImpl implements TimeSheetService {
             isValidEntry = true;
         }        
         return isValidEntry;
+    }
+
+    @Override
+    public Employee searchEmployee(String emailId) throws AppException {
+        EmployeeService employeeService = new EmployeeServiceImpl();
+        return employeeService.searchEmployee(emailId);
     }
 }

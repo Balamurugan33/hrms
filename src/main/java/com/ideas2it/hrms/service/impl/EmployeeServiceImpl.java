@@ -37,8 +37,6 @@ public class EmployeeServiceImpl implements EmployeeService{
     /** {@inheritDoc}*/
     public Boolean createEmployee(Employee employee) throws AppException {
         return employeeDao.createEmployee(employee);
-        
-
     }
     
     public List<Attendance> applyLeave(Employee employee, String message, String dateString) throws AppException {      
@@ -267,5 +265,11 @@ public class EmployeeServiceImpl implements EmployeeService{
         employee.setSalary(salaryTracker.getSalary());
         employee.getSalaryTrackers().add(salaryTracker);
         return employeeDao.updateEmployee(employee);
+    }
+
+    @Override
+    public List<Employee> searchEmployeeByName(String name)
+            throws AppException {
+        return employeeDao.searchEmployeeByName(name);
     }
 }

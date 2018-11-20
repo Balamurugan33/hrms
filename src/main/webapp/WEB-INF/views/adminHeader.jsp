@@ -15,6 +15,19 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/hrms/user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>
+    
+    <c:if test="${not empty employees}">
+    <form class="navbar-form navbar-right" action="/hrms/employee/searchByName" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Enter Employee Name" name="name">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    </c:if>
   </div>
 </nav>
 

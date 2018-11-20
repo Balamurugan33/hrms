@@ -186,5 +186,10 @@ public interface EmployeeService {
     *        project id
     */
    Project getProjectById(Integer id) throws AppException;
+
+   /**
+    * Get all the existing employees by same name
+    */
+   List<Employee> searchEmployeeByName(String name) throws AppException;
    
 }

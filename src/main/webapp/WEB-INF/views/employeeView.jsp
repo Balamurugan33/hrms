@@ -65,7 +65,6 @@
           <td>
             <form method="post" action="/hrms/timeSheet/deleteEntry">
             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#${timeSheet.id}" >Update</button>
-            <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
             <input type="hidden" name="id" value = "${timeSheet.id}">   
             </form>
             <div class="modal fade" id="${timeSheet.id}">
@@ -77,18 +76,13 @@
             <form method="post" action="/hrms/timeSheet/updateEntry">
             <div class="modal-body">
             <div class="form-group">
-            <div class="input-group">
               <label>Date</label>
               <input type="text" class="form-control" name="entryDate" value= "${timeSheet.entryDate}" readonly="readonly" required="required">
             </div>
-            </div>
-            <div class="modal-body">
             <div class="form-group">
-            <div class="input-group">
               <label>Project Name</label>
                 <input type="hidden" name="projectId" value = "${timeSheet.project.id}">   
-                <input type="text" class="form-control" name="projectName" value= "${timeSheet.project.name}" required="required">
-            </div>
+                <input type="text" class="form-control" name="projectName" value= "${timeSheet.project.name}" readonly="readonly" required="required">
             </div>
             <div class="form-group">
               <label>Hours Worked</label>
@@ -98,7 +92,7 @@
               <button type="submit" class="btn btn-primary btn-block btn-lg">Update</button>
               <button type="button" class="btn btn-danger btn-block btn-lg" data-dismiss="modal">Cancel</button>
               <input type="hidden" name="id" value = "${timeSheet.id}">   
-            </div>
+              <input type="hidden" name="empEmail" value="${employee.emailId}">
             </div>
             </div>
             </form>
@@ -108,9 +102,10 @@
     </tr>
     </c:forEach>
     </table>
-        
  </div>
 </c:if>
+
+<c:remove var="timeSheets"/>
 
 <c:if test="${not empty timesheetEmpty}">
     <div align="center">
@@ -316,6 +311,7 @@
                             <button type="submit" class="btn btn-primary btn-block btn-lg">Save</button>
                             <button type="button" class="btn btn-danger btn-block btn-lg" 
                                 data-dismiss="modal">Cancel</button>
+                            <input type="hidden" name="empEmail" value="${employee.emailId}">
                         </div>
                     </form>
                 </div>
