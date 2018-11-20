@@ -356,7 +356,7 @@ public class EmployeeController {
             @ModelAttribute("salaryTracker") SalaryTracker salaryTracker,
             HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(
-                "redirect:" + "employee/displayEmployee");
+                "redirect:" + "/employee/displayEmployee");
         try {
             HttpSession session = request.getSession(false);
             String emailId = request.getParameter("emailId");

@@ -140,7 +140,6 @@ public class UserController {
             return new ModelAndView(ERROR_JSP, UserConstants.LABEL_MESSAGE, 
                 appException.getMessage());
         }
-        return modelAndView;
     }
 
     // Used to invalidate the session

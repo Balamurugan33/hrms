@@ -3,6 +3,8 @@ package com.ideas2it.hrms.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -52,8 +54,60 @@ public class ProjectDaoImpl implements ProjectDao {
         Project project = null;
         
         try (Session session = HibernateSession.getSession()) {
-            transaction = session.beginTransaction();
-            project = (Project) session.get(Project.class, id);            
+            transaction = session.beginTransaction();            
+            
+            
+            
+            
+            
+            //Query query = session.getNamedQuery("getProjectById").setParameter(1, id);
+            /* 
+             *@NamedNativeQuery(
+    name = "getProjectById",
+    query = "select * from project where id = ?"
+    ) 
+             */
+            
+            //query.executeQuery();
+            //project = (Project) session.get(Project.class, id);            
+          /*  Query query = session.createSQLQuery(
+                "select * from stock s where s.stock_code = :stockCode")
+                .addEntity(Stock.class)
+                .setParameter("stockCode", "7277");
+                List result = query.list();
+            
+            
+            String sql = "select * from project where id = ";
+            SQLQuery query = session.createSQLQuery(sql);
+            query.addEntity(Employee.class);
+            List employees = query.list();
+
+            for (Iterator iterator = employees.iterator(); iterator.hasNext();){
+               Employee employee = (Employee) iterator.next(); 
+               System.out.print("First Name: " + employee.getFirstName()); 
+               System.out.print("  Last Name: " + employee.getLastName()); 
+               System.out.println("  Salary: " + employee.getSalary()); 
+            }
+            
+            
+            
+            String sqlQuery = "select * from project where id = :id";
+            SQLQuery getProject = session.createSQLQuery(sqlQuery);
+            
+            Query query = session.createSQLQuery(
+                
+                ) */
+            
+            //Book b = (Book) em.createNativeQuery("SELECT * FROM book b WHERE id = 1", Book.class).getSingleResult();
+            //Project p = (Project) session.createNativeQuery("select * from project p where id = id", Project.class).getSingleResult();
+            
+            Query query = session.createSQLQuery("select * from project p where p.id = :id")
+                .addEntity(Project.class).setParameter("id", id);
+            project = (Project) query.getSingleResult();
+            
+            
+            //project = (Project) session.get(Project.class, id);            
+            
             transaction.commit();
         } catch (HibernateException e) {
             AppLogger.error(ERROR_RETRIEVE_PROJECT + project.getName(), e);
@@ -72,6 +126,7 @@ public class ProjectDaoImpl implements ProjectDao {
         
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
+            // Gets only the active projects
             projects = session.createQuery("from Project").list();
             transaction.commit();
         } catch (HibernateException e) {

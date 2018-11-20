@@ -72,14 +72,15 @@ public class TimeSheetController {
         ModelAndView modelAndView = new ModelAndView(); 
 
         try {
-            AppLogger.error("bhgih"+task.getEntryDate());
             List<TimeSheet> timeSheet = new ArrayList<TimeSheet>();
             HttpSession session = request.getSession();
             Employee currentEmployee = (Employee) session.getAttribute("employee");
             Integer projectId = Integer.parseInt(request.getParameter("projectId"));
             String projectName = request.getParameter("projectName");            
-            
+            // You're trying to get a project that doesn't exist
+            // Get project by id - runs on active projects
             Project project = projectService.getProjectById(projectId);
+            AppLogger.error("Project" + project.getName());
             task.setProject(project);
             task.setEmployee(currentEmployee);
             task.getProject().setName(projectName);
