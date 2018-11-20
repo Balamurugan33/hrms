@@ -31,8 +31,8 @@ public class HRMSFilter implements Filter {
     private String LOGIN = "login";
     private String RESOURCES = "/hrms/resources/";
     private String LOGIN_JSP = "/";
-    private String ADMIN_MENU_JSP = "adminHome";
-    private String EMP_VIEW_JSP = "/employeeView";
+    private String ADMIN_MENU_JSP = "/client/revenue";
+    private String EMP_VIEW_JSP = "/employee/viewProfile";
 
     /** Used to initializing the filter */
     public void init(FilterConfig config) throws ServletException {
@@ -66,27 +66,31 @@ public class HRMSFilter implements Filter {
         }
         
         String uri = httpRequest.getRequestURI();
-        Boolean employeeUri = uri.startsWith(HRMSURI) || 
-                uri.endsWith("viewProfile") || uri.endsWith("empProjects") || uri.endsWith("empTimesheet") || uri.endsWith("empAttendance");
+        Boolean employeeUri = uri.endsWith("viewProfile") || 
+            uri.endsWith("empProjects") || uri.endsWith("empTimesheet") || 
+            uri.endsWith("empAttendance");
         
         if (uri.endsWith(HRMSURI) || uri.startsWith(RESOURCES) || 
                 uri.startsWith(USERURI)){
             
             if ((uri.endsWith(HRMSURI) || uri.endsWith(LOGIN)) && 
                     (Boolean.TRUE == admin)) {
-                httpResponse.sendRedirect(ADMIN_MENU_JSP);
+                httpRequest.getRequestDispatcher(ADMIN_MENU_JSP).
+                    forward(request, response);
             } else if ((uri.endsWith(HRMSURI) || uri.endsWith(LOGIN)) && 
                     (Boolean.TRUE == employee)) {
-                httpResponse.sendRedirect(EMP_VIEW_JSP);
+                httpRequest.getRequestDispatcher(EMP_VIEW_JSP).
+                    forward(request, response);
             } else {
                 chain.doFilter(request, response);
             }
         
+        } else if (Boolean.TRUE == employee && (employeeUri)) {
+            chain.doFilter(request, response);
+            
         } else if ((Boolean.TRUE == admin)) {
             chain.doFilter(request, response); 
             
-        } else if (Boolean.TRUE == employee && (employeeUri)) {
-            chain.doFilter(request, response);
             
         } else if (null == session) {
             httpRequest.setAttribute(FilterConstants.LABEL_MESSAGE, 

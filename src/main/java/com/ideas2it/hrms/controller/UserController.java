@@ -115,7 +115,7 @@ public class UserController {
         try {
             String role = user.getRole();
             HttpSession session = request.getSession(Boolean.TRUE);
-            //session.setMaxInactiveInterval(60); 
+            session.setMaxInactiveInterval(60); 
             session.setAttribute(UserConstants.LABEL_ROLE, role);
             if (role.equals(LABEL_ADMIN)) {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
