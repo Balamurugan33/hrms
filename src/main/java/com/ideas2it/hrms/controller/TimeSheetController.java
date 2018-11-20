@@ -76,16 +76,14 @@ public class TimeSheetController {
             HttpSession session = request.getSession();
             Employee currentEmployee = (Employee) session.getAttribute("employee");
             Integer projectId = Integer.parseInt(request.getParameter("projectId"));
-            String projectName = request.getParameter("projectName");            
-            // You're trying to get a project that doesn't exist
-            // Get project by id - runs on active projects
             Project project = projectService.getProjectById(projectId);
             AppLogger.error("Project" + project.getName());
             task.setProject(project);
             task.setEmployee(currentEmployee);
-            task.getProject().setName(projectName);
-            task = sheetService.updateEntry(task);   
-            timeSheet = sheetService.getAllEntries();
+            task = sheetService.updateEntry(task);
+            currentEmployee.getTimeSheet().remove(task);
+            currentEmployee.getTimeSheet().add(task);
+            timeSheet = currentEmployee.getTimeSheet();
 
             modelAndView.addObject("Success", MSG_UPDATED);
             modelAndView.addObject("timeSheets", timeSheet);

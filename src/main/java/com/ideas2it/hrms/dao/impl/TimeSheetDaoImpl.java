@@ -91,7 +91,6 @@ public class TimeSheetDaoImpl implements TimeSheetDao {
     @Override
     public TimeSheet updateEntry(TimeSheet entry) throws AppException {
         Transaction transaction = null;
-
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
             session.update(entry);
