@@ -77,6 +77,7 @@ public class ProjectDaoImpl implements ProjectDao {
         
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
+            // Gets only the active projects
             projects = session.createQuery("from Project").list();
             transaction.commit();
         } catch (HibernateException e) {

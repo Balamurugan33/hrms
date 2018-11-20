@@ -77,6 +77,7 @@ public class TimeSheetController {
             Employee currentEmployee = (Employee) session.getAttribute("employee");
             Integer projectId = Integer.parseInt(request.getParameter("projectId"));
             Project project = projectService.getProjectById(projectId);
+            AppLogger.error("Project" + project.getName());
             task.setProject(project);
             task.setEmployee(currentEmployee);
             task = sheetService.updateEntry(task);

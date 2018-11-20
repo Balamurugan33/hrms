@@ -72,7 +72,11 @@ public class TimeSheetDaoImpl implements TimeSheetDao {
         
         try (Session session = HibernateSession.getSession()) {
             transaction = session.beginTransaction();
-            consolidatedTimeSheet = session.createQuery("from TimeSheet").list();
+            //consolidatedTimeSheet = session.createQuery("from TimeSheet").list();
+            //em.createNativeQuery("SELECT * FROM book b WHERE id = 1", "BookMapping").getSingleResult();
+            consolidatedTimeSheet = session.createNativeQuery("select * from timesheet").getResultList();
+            //System.out.println(consolidatedTimeSheet);
+            AppLogger.error("consolidated timesheet" + consolidatedTimeSheet);
             transaction.commit();
         } catch (HibernateException e) {
             AppLogger.error(ERROR_RETRIEVE_ENTRIES, e);
