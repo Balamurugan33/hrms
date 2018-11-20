@@ -15,10 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 /**
  * Represents a project allocated by a client to the company.
@@ -30,7 +31,8 @@ import org.hibernate.annotations.Where;
 @Entity
 @Table(name="project")
 @SQLDelete(sql="update project set expired_date = current_date() where id=?")
-@Where(clause = "expired_date is null")
+@FilterDef(name = "projectFilter", defaultCondition=" expired_date is null")
+@Filter(name = "projectFilter")   
 public class Project {
     
     @Id  

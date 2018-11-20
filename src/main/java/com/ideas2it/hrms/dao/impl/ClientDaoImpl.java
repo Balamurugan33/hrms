@@ -85,6 +85,7 @@ public class ClientDaoImpl implements ClientDao {
         List<Client> clients = new ArrayList<Client>();
         try {
             session = HibernateSession.getSession();
+            session.enableFilter("clientFilter");
             clients = session.createQuery("FROM Client").list();
             return clients;
         } catch (HibernateException e) {

@@ -27,8 +27,9 @@ import static com.ideas2it.hrms.common.ProjectConstants.USER_ALERT;
 
 
 /**
- * Provides functionality to manage projects delegated to the company
- * And calculate netProfit for company from a project, between a startDate and an endDate
+ * Provides functionality to: 
+ * Manage projects delegated to the company,
+ * Calculate netProfit for company from a project, between a startDate and an endDate
  * 
  * @author Ganesh Venkat S
  */

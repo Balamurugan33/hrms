@@ -66,6 +66,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         List<Employee> employees = new ArrayList<Employee>();
         try {
             session = HibernateSession.getSession();
+            session.enableFilter("employeeFilter");
             employees = session.createQuery("FROM Employee").list();
             return employees;
         } catch (HibernateException e) {

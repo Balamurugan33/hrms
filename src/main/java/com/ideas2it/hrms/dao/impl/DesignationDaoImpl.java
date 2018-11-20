@@ -68,6 +68,7 @@ public class DesignationDaoImpl implements DesignationDao {
         List<Designation> designations = new ArrayList<Designation>();
         try {
             session = HibernateSession.getSession();
+            session.enableFilter("designationFilter");
             designations = session.createQuery("FROM Designation").list();
             return designations;
         } catch (HibernateException e) {
