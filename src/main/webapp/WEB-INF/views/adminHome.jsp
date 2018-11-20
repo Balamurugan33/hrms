@@ -615,7 +615,7 @@
 	<script>
 	    alert ("${message}");
 	</script>
-	<c:remove var="message" scope="session" />
+	<c:remove var="message"/>
 </c:if>
 
 <c:if test="${not empty clientProfit}">

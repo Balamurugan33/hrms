@@ -15,8 +15,8 @@
 </div>
 <%} else {%>
 <div align="center">
-   <img src="<c:url value = '/resources/img/404.jpg' />" width="600px" height="400px"> <br>
-   <a href="/hrms">Go to Home Page</a>
+   <img src="<c:url value = '/resources/img/405.png' />" width="600px" height="400px"> <br>
+   <a href="/hrms">Go to Login Page</a>
 </div>
 <%} %>
 </body>

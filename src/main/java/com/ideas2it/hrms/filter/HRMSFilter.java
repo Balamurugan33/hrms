@@ -17,7 +17,7 @@ import com.ideas2it.hrms.common.FilterConstants;
 /**
  * <p>
  * Is used to prevent the unauthorized access in 
- * the admin page and customer page 
+ * the admin page and employee page 
  * And also handle the login activities user using session
  * </p>
  *
@@ -40,7 +40,7 @@ public class HRMSFilter implements Filter {
     }
     
     /**
-     * Is used to asign the access authentication to user
+     * Is used to assign the access authentication to user
      * It's means user access to admin page or employee page
      */
     public void doFilter(ServletRequest request, ServletResponse response, 
@@ -50,7 +50,7 @@ public class HRMSFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession(Boolean.FALSE);  
         
-        httpResponse.setHeader("Cache-Control", "no-cache no-store");
+        httpResponse.setHeader("Cache-Control", "no-cache, no-store");
         httpResponse.setHeader("Pragma","no-cache"); //HTTP 1.0 implementation
         
         Boolean admin = Boolean.FALSE;
@@ -85,30 +85,25 @@ public class HRMSFilter implements Filter {
                 httpRequest.getRequestDispatcher(EMP_VIEW_JSP).
                     forward(request, response);
             } else {
-                System.out.println("1="+uri);
                 chain.doFilter(request, response);
             }
         
         } else if (Boolean.TRUE == employee && (employeeUri)) {
-            System.out.println("2="+uri);
             chain.doFilter(request, response);
             
         } else if ((Boolean.TRUE == admin)) {
-            System.out.println("3="+uri);
             chain.doFilter(request, response); 
             
             
         } else if (null == session) {
             httpRequest.setAttribute(FilterConstants.LABEL_MESSAGE, 
                     FilterConstants.TIMEOUT_MESSAGE);
-            System.out.println("4="+uri);
             httpRequest.getRequestDispatcher(LOGIN_JSP).
                 forward(request, response);
             
         } else {
             session.setAttribute(FilterConstants.LABEL_MESSAGE, 
                     FilterConstants.UNAUTHORITY_MESSAGE);
-            System.out.println("5="+uri);
             httpResponse.sendRedirect(HRMSURI);
         }
     }
