@@ -106,29 +106,17 @@ public class UserController {
      */
     private ModelAndView setUserRole(User user, HttpServletRequest request) {
         UserService userService = new UserServiceImpl();
-        Integer companyRevenue;
-        Integer companyExpenditure;
-        Integer companyNetProfit;        
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MMM-dd");
-        LocalDate startDate = LocalDate.parse("2018-Aug-16", formatter);
-        LocalDate endDate = LocalDate.now();
         try {
             String role = user.getRole();
             HttpSession session = request.getSession(Boolean.TRUE);
-            session.setMaxInactiveInterval(60); 
+            //session.setMaxInactiveInterval(60); 
             session.setAttribute(UserConstants.LABEL_ROLE, role);
             if (role.equals(LABEL_ADMIN)) {
                 session.setAttribute(UserConstants.LABEL_ID, user.getId());
                 ModelAndView modelAndView = new ModelAndView(ADMIN_JSP, 
                     "profits", userService.getClientProfits());
-                companyRevenue = userService.getCompanyRevenue(startDate, endDate);
-                companyExpenditure = userService.getCompanyExpenditure(startDate, endDate);
-                companyNetProfit = userService.getCompanyNetProfit(startDate, endDate);
-                modelAndView.addObject("companyRevenue", companyRevenue);
-                modelAndView.addObject("companyExpenditure", companyExpenditure);                 
-                modelAndView.addObject("companyNetProfit", companyNetProfit);
                 return modelAndView.addObject("names", 
-                        userService.getClientNames());
+                    userService.getClientNames());
             } else { 
                 Employee employee 
                     = userService.checkEmployeeDetail(user.getUserName());
