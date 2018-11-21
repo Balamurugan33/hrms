@@ -17,10 +17,10 @@
 
 <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="/hrms/employee/viewProfile">My Profile</a>
-      <a href="/hrms/employee/empProjects">Projects</a>
-      <a href="/hrms/employee/empTimesheet">Time Sheet</a>
-      <a href="/hrms/employee/empAttendance">Attendance</a>
+      <a class="cta" href="/hrms/employee/viewProfile"><img src="<c:url value='/resources/img/user.png' />"><span>My Profile</span></a>
+      <a class="cta" href="/hrms/employee/empProjects"><img src="<c:url value='/resources/img/project.png' />"><span>Projects</span></a>
+      <a class="cta" href="/hrms/employee/empTimesheet"><img src="<c:url value='/resources/img/timesheet.png' />"><span>Time Sheet</span></a>
+      <a class="cta" href="/hrms/employee/empAttendance"><img src="<c:url value='/resources/img/attendance.svg' />"><span>Attendance</span></a>
 </div>
 </body>
 </html>

@@ -275,7 +275,8 @@
 
 <c:if test="${not empty employees}">
     <div>
-        <form method="get">
+        <form method="get" action="/hrms/employee/InactiveEmp">
+         <button type="submit">Show Inactive Employee</button>
         <button type="button" class=" btn btn-info btn-lg pull-right btn-space" 
             data-toggle="modal" data-target="#EmployeeCreate">Add Employee</button>
         </form>
@@ -435,6 +436,33 @@
         </c:forEach>
         </table>
         
+    </div>
+</c:if>
+
+<c:if test="${not empty inactiveEmp}">
+    <div>
+        <form method="get" action="/hrms/employee/displayEmployee">
+        <button type="button" class=" btn btn-info btn-lg pull-right btn-space" 
+            data-toggle="modal" data-target="#EmployeeCreate">Show Active Employee</button>
+        </form>
+        <table class="table table-striped text-center">
+        <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Mobile No</th>
+            <th class="text-center">Email Id</th>
+            <th class="text-center">Designation</th>
+            <th class="text-center">Salary</th>
+        </tr>
+        <c:forEach var="employee" items="${employees}">
+	        <tr>
+	            <td><a href="#" data-toggle="modal" data-target="#${employee.id}a" title="View Projects">${employee.name}</a></td>
+	            <td>${employee.mobileNo}</td>
+	            <td>${employee.emailId}</td>
+	            <td>${employee.designation.name}</td>
+	            <td>${employee.salary}</td>
+	        </tr>
+        </c:forEach>
+        </table>
     </div>
 </c:if>
 
