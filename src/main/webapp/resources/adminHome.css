@@ -35,6 +35,7 @@
 
 .scroll {
     height:300px;
+    width:100%;
     overflow-y:auto;'
 }
      
@@ -47,11 +48,11 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #ffffff;
+    background-color: beige;
     min-width: 260px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right:60px;
+    right:-43%;
 }
 
 .dropdown-content a {
@@ -81,6 +82,12 @@
     transform:scale(1.5);
 }
 
+img {
+    vertical-align: middle;
+    width: 12px;
+    margin-right: 12px;
+}
+
 .dropdown {
     margin-top: 12px;
 }
@@ -100,6 +107,11 @@
 
 .btn-space {
     margin-right: 1%;
+    margin-bottom: 1%;
+    
+}
+.btn-space-left {
+    margin-left: 1%;
     margin-bottom: 1%;
     
 }

@@ -5,7 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <link rel = "stylesheet" type = "text/css" href = "<c:url value='/resources/attendanceToggle.css'/>"/>
+ <link rel = "stylesheet" type = "text/css" href = "<c:url value='/resources/employeeView.css'/>"/>
  <link rel = "stylesheet" type = "text/css" href = "<c:url value='/resources/bootstrap.css'/>"/>
 </head>
 <jsp:include page='empHeader.jsp'/>
@@ -46,9 +46,11 @@
 </c:if>
 
 <c:if test="${not empty timeSheets}">
- <div id="taskInfo" align="center">
+ <div id="taskInfo" align="center" >
+     <center><strong><h3>TimeSheets</h3></strong></center>
      <button type="button" class="btn btn-info btn-lg pull-right " style="margin-bottom: 1%;"
        data-toggle="modal" data-target="#TimeSheetCreate">Add Entry</button>
+    <div class="scroll">
     <table class="table table-striped text-center">
     <tr>
         <th class="text-center">Date</th>
@@ -102,6 +104,7 @@
     </tr>
     </c:forEach>
     </table>
+    </div>
  </div>
 </c:if>
 
@@ -176,6 +179,7 @@
     
 <c:if test="${not empty attendance}">
  <div id=attendanceInfo align="center">
+  <center><strong><h3>Attendance</h3></strong></center>
   <c:choose>
     <c:when test="${isChecked=='true'}">
       <input class="toggle" type="checkbox" name="checkAttendance" checked="checked" onclick="checkAttendance(this)" />
@@ -189,6 +193,7 @@
   </c:choose>
     <br>
     <br>
+    <div class="scroll">
     <table class="table table-striped text-center">
     <tr>
         <th class="text-center">Date</th>
@@ -206,6 +211,7 @@
     </tr>
     </c:forEach>
     </table>
+    </div>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ApplyLeave" >Apply Leave</button>        
  </div>
 </c:if>   

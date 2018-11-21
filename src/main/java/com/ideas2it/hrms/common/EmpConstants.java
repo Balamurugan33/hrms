@@ -26,7 +26,8 @@ public class EmpConstants {
     public static String MSG_DELETE_SUCCESS = "Successfully deleted";
     public static String MSG_DELETE_FAIL = "Delete operation failed";
     public static String MSG_ALREADY_EXIST = "Already exist->";
-    public static String MSG_ALREADY_ASSIGN = "Employee already assigned";
+    public static String MSG_ASSIGN = "Successfully assigned";
+    public static String INCREMENT = "Successfully incremented";
     
     // Labels
     public static String LABEL_MESSAGE = "message";

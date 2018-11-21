@@ -229,7 +229,8 @@ public class EmployeeController {
     @GetMapping("employee/InactiveEmp")
     public ModelAndView displayInactiveEmployees() {
         try {
-            return new ModelAndView(ADMINMENU, EmpConstants.LABEL_EMPLOYEES,
+            AppLogger.error("@@@"+employeeService.getInactiveEmployees());
+            return new ModelAndView(ADMINMENU, "inactiveEmp",
                     employeeService.getInactiveEmployees());
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
@@ -375,7 +376,7 @@ public class EmployeeController {
             String emailId = request.getParameter("emailId");
             if (employeeService.salaryIncrement(emailId, salaryTracker)) {
                 session.setAttribute(EmpConstants.LABEL_MESSAGE,
-                        EmpConstants.MSG_UPDATE_SUCCESS);
+                        EmpConstants.INCREMENT);
             } else {
                 session.setAttribute(EmpConstants.LABEL_MESSAGE,
                         EmpConstants.MSG_UPDATE_FAIL);
@@ -401,7 +402,7 @@ public class EmployeeController {
             employee.getProjects().add(project);
             employeeService.updateEmployee(employee);
             model.addAttribute(EmpConstants.LABEL_MESSAGE,
-                 EmpConstants.MSG_UPDATE_SUCCESS);
+                 EmpConstants.MSG_ASSIGN);
             return displayEmployees(model);
         } catch (AppException appException) {
             return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,

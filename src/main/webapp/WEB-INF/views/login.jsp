@@ -15,10 +15,10 @@
                 
                 <form method="post">
                 <div class="group">
-                    <input type="text" title="please enter emailId" placeholder="Email Address" name="userName" class="input" required>
+                    <input type="text" title="please enter emailId" placeholder="Email Address" name="userName" class="input" maxlength="30" required>
                 </div>
                 <div class="group">
-                    <input type="password" title="please enter password" placeholder="Password" name="password" class="input" required >
+                    <input type="password" title="please enter password" placeholder="Password" name="password" class="input" maxlength="30" required >
                     <button type="button" class="eye-button" onclick="showPassword(this.form)"><i id ="eyeslash" class="fa fa-eye-slash"></i></button>
                  </div>
                 <div class="group">
@@ -35,11 +35,11 @@
                     <input type="text" title="please enter already register emailId" placeholder="Email Address" name="userName" class="input" required>
                 </div>
                 <div class="group">
-                    <input type="password" title="please enter password" placeholder="Password" id="psw" name="password" class="input" required>
+                    <input type="password" title="please enter password" placeholder="Password" id="psw" name="password" class="input" maxlength="30" required>
                     <button type="button" class="eye-button" onclick="showPassword(this.form)"><i id ="eye" class="fa fa-eye-slash"></i></button>
                 </div>
                 <div class="group">
-                    <input type="password" name="confirmpassword" placeholder="Repeat Password" title="please repeat password" id="con-psw" class="input" onkeyup="checkPassword()" required><p id="error"></p>
+                    <input type="password" name="confirmpassword" placeholder="Repeat Password" title="please repeat password" id="con-psw" class="input" maxlength="30" onkeyup="checkPassword()" required><p id="error"></p>
                 </div>
                 <div class="group">
                     <input type="submit" formaction="/hrms/user/register" class="button" value="Sign Up">

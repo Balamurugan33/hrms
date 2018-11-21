@@ -41,6 +41,7 @@
     text-decoration: none;
     color: inherit;
     display:block;
+    transition: margin-left .5s;
 }
 
 .cta {
@@ -74,7 +75,7 @@
 
 .cta:hover:before {
   width: 100%;
-  background: #d3adf1;
+  background: #eeeeec;
 }
 
 

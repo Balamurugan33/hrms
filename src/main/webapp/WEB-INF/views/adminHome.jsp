@@ -11,8 +11,10 @@
 </head>
 <body style="margin-left: 80px;">
 <c:if test="${not empty clients}">
-    <div>
+    
+        <center><strong><h3>Clients</h3></strong></center>
         <button type="button" data-toggle="modal" data-target="#ClientCreate" class="btn btn-info btn-lg pull-right btn-space">Add Client</button>
+        <div>
         <table class="table table-striped table-dark text-center">
         <tr>
 	        <th class="text-center">Name</th>
@@ -168,8 +170,7 @@
 	       <div class="form-group">
 	           <button type="submit" class="btn btn-primary btn-block btn-lg" 
 	               formaction="/hrms/designation/createDesignation">Save</button>
-	           <button type="button" class="btn btn-danger btn-block btn-lg" 
-	               data-dismiss="modal">Cancel</button>
+	           <button type="reset" class="btn btn-danger btn-block btn-lg">Reset</button>
 	       </div>
         </div>
         </form>
@@ -181,6 +182,7 @@
 
 <c:if test="${not empty projects}">
     <div>
+        <center><h3>Projects</h3></center>
         <button type="button" class="btn btn-info btn-lg pull-right btn-space" 
             data-toggle="modal" data-target="#ProjectCreate">Add Project</button>
         <table class="table table-striped text-center">
@@ -275,8 +277,9 @@
 
 <c:if test="${not empty employees}">
     <div>
+        <center><h3>Employees</h3></center>
         <form method="get" action="/hrms/employee/InactiveEmp">
-         <button type="submit">Show Inactive Employee</button>
+         <button type="submit" class=" btn btn-info btn-lg btn-space-left ">Show Inactive Employees</button>
         <button type="button" class=" btn btn-info btn-lg pull-right btn-space" 
             data-toggle="modal" data-target="#EmployeeCreate">Add Employee</button>
         </form>
@@ -441,9 +444,9 @@
 
 <c:if test="${not empty inactiveEmp}">
     <div>
+        <center><h3>Inactive Employees</h3></center>
         <form method="get" action="/hrms/employee/displayEmployee">
-        <button type="button" class=" btn btn-info btn-lg pull-right btn-space" 
-            data-toggle="modal" data-target="#EmployeeCreate">Show Active Employee</button>
+        <button type="submit" class=" btn btn-info btn-lg pull-right btn-space" >Show Active Employees</button>
         </form>
         <table class="table table-striped text-center">
         <tr>
@@ -453,7 +456,7 @@
             <th class="text-center">Designation</th>
             <th class="text-center">Salary</th>
         </tr>
-        <c:forEach var="employee" items="${employees}">
+        <c:forEach var="employee" items="${inactiveEmp}">
 	        <tr>
 	            <td><a href="#" data-toggle="modal" data-target="#${employee.id}a" title="View Projects">${employee.name}</a></td>
 	            <td>${employee.mobileNo}</td>
@@ -596,9 +599,9 @@
 	           <th class="text-center">Net Profit</th>
             </tr>
             <tr>
-                <td>${CostToCompany}</td>
-                <td>${BilAmount}</td>
-                <td>${Profit}</td>
+                <td><img src="<c:url value='/resources/img/indianRup.jpg' />">${CostToCompany}</td>
+                <td><img src="<c:url value='/resources/img/indianRup.jpg' />">${BilAmount}</td>
+                <td><img src="<c:url value='/resources/img/indianRup.jpg' />">${Profit}</td>
             </tr>
         </table>
      </div>
@@ -613,7 +616,7 @@
                    </div>
                    <div class="modal-body">
                       <div class="form-group">
-                              <center><h3>${clientProfit}</h3></center>
+                              <center><h3><img src="<c:url value='/resources/img/indianRup.jpg' />">${clientProfit}</h3></center>
                           </div>
                    </div>
                    <div class="modal-footer">
@@ -627,7 +630,7 @@
   
   <!-- used to show the company profit based on client -->
   <c:if test="${not empty names}">
-	<div id="chartContainer" style="height: 300px; width: 75%; margin-left:145px;"></div>
+	<div id="chartContainer" style="height: 300px; width: 75%; margin-left:145px; margin-top:90px;"></div>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 	<c:forEach var = "name"  items="${names}">
     <input type="text" name="a" value="${name}" style="display:none">

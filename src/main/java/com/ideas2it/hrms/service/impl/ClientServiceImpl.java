@@ -51,6 +51,7 @@ public class ClientServiceImpl implements ClientService {
         return clientDao.searchClient(email);
     }
     
+    /** {@inheritDoc}*/
     public Integer calculateCompanyRevenue(LocalDate startDate, LocalDate endDate) throws AppException {
         Integer companyRevenue = 0;
         List<Client> clients = displayClients();
@@ -61,6 +62,7 @@ public class ClientServiceImpl implements ClientService {
         return companyRevenue;
     }
     
+    /** {@inheritDoc}*/
     public Integer calculateCompanyExpenditure(LocalDate startDate, LocalDate endDate) throws AppException {
         Integer companyExpenditure = 0;
         List<Client> clients = displayClients();
@@ -71,6 +73,7 @@ public class ClientServiceImpl implements ClientService {
         return companyExpenditure;
     }
     
+    /** {@inheritDoc}*/
     public Integer calculateCompanyNetProfit(LocalDate startDate, LocalDate endDate) throws AppException {
         Integer companyNetProfit = 0;
         List<Client> clients = displayClients();
@@ -81,6 +84,7 @@ public class ClientServiceImpl implements ClientService {
         return companyNetProfit;
     }
     
+    /** {@inheritDoc}*/
     public Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate) throws AppException {
         ProjectServiceImpl projectService = new ProjectServiceImpl();
         List<Project> clientProjects = client.getProjects();
