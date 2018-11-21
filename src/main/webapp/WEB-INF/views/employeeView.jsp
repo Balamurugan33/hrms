@@ -325,8 +325,7 @@
 <script>
     alert ("${message}");
 </script>
-<c:remove var="message" scope="session" />
-<c:remove var="message" scope="page" />
+<c:remove var="message"/>
 </c:if>
 <script>
     function checkAttendance(checkbox)

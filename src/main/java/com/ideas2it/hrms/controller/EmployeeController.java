@@ -224,6 +224,20 @@ public class EmployeeController {
     }
     
     /**
+     * Used to display the all inactive employee 
+     */
+    @GetMapping("employee/InactiveEmp")
+    public ModelAndView displayInactiveEmployees() {
+        try {
+            return new ModelAndView(ADMINMENU, EmpConstants.LABEL_EMPLOYEES,
+                    employeeService.getInactiveEmployees());
+        } catch (AppException appException) {
+            return new ModelAndView(ERROR_PAGE, EmpConstants.LABEL_MESSAGE,
+                    appException.getMessage());
+        }
+    }
+    
+    /**
      * Gets the projects an employee has worked on
      */
     @GetMapping("employee/empProjects")
