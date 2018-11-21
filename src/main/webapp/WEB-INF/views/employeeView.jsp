@@ -77,7 +77,7 @@
             <div class="modal-body">
             <div class="form-group">
               <label>Date</label>
-              <input type="text" class="form-control" name="entryDate" value= "${timeSheet.entryDate}" readonly="readonly" required="required">
+              <input type="text" class="form-control" name="entryDate" value= "${timeSheet.entryDate}" required="required">
             </div>
             <div class="form-group">
               <label>Project Name</label>

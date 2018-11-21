@@ -56,7 +56,7 @@ public interface UserService {
     boolean createEmpLogin(Employee employee) throws AppException;
     
     /**
-     * Calculate the company's net profit, over a time interval
+     * Gets the company's net profit, over a time interval
      * 
      * @param startDate
      *        starting date of the interval
@@ -68,7 +68,7 @@ public interface UserService {
     Integer getCompanyNetProfit(LocalDate startDate, LocalDate endDate) throws AppException;
     
     /**
-     * Calculate the company's net revenue, over a time interval
+     * Gets the company's net revenue, over a time interval
      * 
      * @param startDate
      *        starting date of the interval
@@ -80,7 +80,7 @@ public interface UserService {
     Integer getCompanyRevenue(LocalDate startDate, LocalDate endDate) throws AppException;
 
     /**
-     * Calculate the company's net expenditure, over a time interval
+     * Gets the company's net expenditure, over a time interval
      * 
      * @param startDate
      *        starting date of the interval

@@ -49,6 +49,12 @@ public interface EmployeeDao {
      * Get all the existing employee 
      */
     List<Employee> retrieveEmployees() throws AppException;
+    
+    /**
+     * Gets all the employees that have been terminated from the company 
+     */
+    List<Employee> getInactiveEmployees() throws AppException;
+
 
     /**
      * Get all the existing employees by same name

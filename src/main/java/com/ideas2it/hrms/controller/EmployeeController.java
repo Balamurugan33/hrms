@@ -118,7 +118,6 @@ public class EmployeeController {
             modelAndView.addObject(EmpConstants.LABEL_MESSAGE,
                 appException.getMessage());
         }
-
         return modelAndView;
     }
     
@@ -129,7 +128,6 @@ public class EmployeeController {
     public ModelAndView markAbsent(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Employee employee = (Employee) session.getAttribute("employee");
-
         List<Attendance> attendanceSheet = new ArrayList<Attendance>();
         ModelAndView modelAndView = new ModelAndView();
 
@@ -142,7 +140,6 @@ public class EmployeeController {
             modelAndView.addObject(EmpConstants.LABEL_MESSAGE,
                 appException.getMessage());
         }
-
         return modelAndView;
     }
     

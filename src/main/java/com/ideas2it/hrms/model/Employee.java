@@ -20,6 +20,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.FilterDefs;
+import org.hibernate.annotations.Filters;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.SQLDelete;
@@ -37,8 +39,14 @@ import org.hibernate.annotations.SQLDelete;
 @Entity
 @Table(name="employee")
 @SQLDelete(sql="update employee set expired_date = current_date() where id=?")
-@FilterDef(name = "employeeFilter", defaultCondition=" expired_date is null")
-@Filter(name = "employeeFilter")   
+@Filters({
+    @Filter(name = "employeeFilter"),
+    @Filter(name = "inactiveEmpFilter") 
+})
+@FilterDefs({
+    @FilterDef(name = "employeeFilter", defaultCondition = " expired_date is null"),
+    @FilterDef(name = "inactiveEmpFilter", defaultCondition = " expired_date is not null")
+})
 public class Employee {
     
     @Id

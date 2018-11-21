@@ -81,6 +81,22 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
     }
     
+    public List<Employee> getInactiveEmployees() throws AppException {
+        List<Employee> employees = new ArrayList<Employee>();
+        
+        try {
+            session = HibernateSession.getSession();
+            session.enableFilter("inactiveEmpFilter");
+            employees = session.createQuery("FROM Employee").list();
+            return employees;
+        } catch (HibernateException e) {
+            AppLogger.error(EmpConstants.ERROR_RETRIEVE_EMPLOYEE, e);
+            throw new AppException(EmpConstants.ERROR_RETRIEVE_EMPLOYEE);
+        } finally {
+            session.close(); 
+        }
+    }
+    
     /** {@inheritDoc}*/
     public Boolean deleteEmployee(Integer id) throws AppException {
         try {

@@ -48,7 +48,9 @@ public interface TimeSheetDao {
      * Updates an entry
      * 
      * @param entry
-     *        an entry 
+     *        an entry, with updated info 
+     * @return
+     *        the updated entry 
      */
     TimeSheet updateEntry(TimeSheet entry) throws AppException;
     

@@ -69,11 +69,41 @@ public interface ClientService {
      */
     Integer calculateNetProfit(Client client, LocalDate startDate, LocalDate endDate) throws AppException;
     
-    Integer calculateCompanyRevenue(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
+    /**
+     * Calculates the company's net revenue, over a time interval
+     * 
+     * @param startDate
+     *        starting date of the interval
+     * @param endDate
+     *        ending date of the interval
+     * @return
+     *        company's net revenue, over the given time interval       
+     */
+    Integer calculateCompanyRevenue(LocalDate startDate, LocalDate endDate) throws AppException;
     
-    Integer calculateCompanyExpenditure(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
+    /**
+     * Calculates the company's expenditure, in terms of salary paid to employees, over a time interval
+     * 
+     * @param startDate
+     *        starting date of the interval
+     * @param endDate
+     *        ending date of the interval
+     * @return
+     *        company's expenditure, over the given time interval       
+     */
+    Integer calculateCompanyExpenditure(LocalDate startDate, LocalDate endDate) throws AppException;
     
-    Integer calculateCompanyNetProfit(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException;
+    /**
+     * Calculates the company's net profit, over a time interval
+     * 
+     * @param startDate
+     *        starting date of the interval
+     * @param endDate
+     *        ending date of the interval
+     * @return
+     *        company's net profit, over the given time interval       
+     */
+    Integer calculateCompanyNetProfit(LocalDate startDate, LocalDate endDate) throws AppException;
     
     /**
      * Find an existing client 

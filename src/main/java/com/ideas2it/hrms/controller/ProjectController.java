@@ -96,10 +96,10 @@ public class ProjectController {
             if (null != project) {
                 project = projectService.removeProject(project);    
             }
-            modelAndView.addObject("Success", MSG_DELETED);
+            modelAndView.addObject(USER_ALERT, MSG_DELETED);
             modelAndView.setViewName("projects");
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());  
+            modelAndView.addObject(USER_ALERT, appException.getMessage());  
         }
         return displayAllProjects(modelAndView);
     }
@@ -118,7 +118,7 @@ public class ProjectController {
             modelAndView.addObject("projects", allProjects);
             modelAndView.setViewName("adminHome");
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
+            modelAndView.addObject(USER_ALERT, appException.getMessage());
         }
         return modelAndView;
     }
@@ -151,7 +151,7 @@ public class ProjectController {
             modelAndView.addObject("Success", MSG_CREATED);
             return displayAllProjects(modelAndView);
         } catch (AppException appException) {
-            modelAndView.addObject("Error", appException.getMessage());
+            modelAndView.addObject(USER_ALERT, appException.getMessage());
             return modelAndView;
         }
     }

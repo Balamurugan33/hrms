@@ -51,17 +51,19 @@ public class ClientServiceImpl implements ClientService {
         return clientDao.searchClient(email);
     }
     
-    public Integer calculateCompanyRevenue(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException {
+    public Integer calculateCompanyRevenue(LocalDate startDate, LocalDate endDate) throws AppException {
         Integer companyRevenue = 0;
-        
+        List<Client> clients = displayClients();
+                
         for (Client client: clients) {
             companyRevenue = companyRevenue + calculateBillableAmount(client, startDate, endDate);
         }
         return companyRevenue;
     }
     
-    public Integer calculateCompanyExpenditure(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException {
+    public Integer calculateCompanyExpenditure(LocalDate startDate, LocalDate endDate) throws AppException {
         Integer companyExpenditure = 0;
+        List<Client> clients = displayClients();
         
         for (Client client: clients) {
             companyExpenditure = companyExpenditure + calculateCostToCompany(client, startDate, endDate);
@@ -69,9 +71,10 @@ public class ClientServiceImpl implements ClientService {
         return companyExpenditure;
     }
     
-    public Integer calculateCompanyNetProfit(List<Client> clients, LocalDate startDate, LocalDate endDate) throws AppException {
+    public Integer calculateCompanyNetProfit(LocalDate startDate, LocalDate endDate) throws AppException {
         Integer companyNetProfit = 0;
-        
+        List<Client> clients = displayClients();
+
         for (Client client: clients) {
             companyNetProfit = companyNetProfit + calculateNetProfit(client, startDate, endDate);    
         }        

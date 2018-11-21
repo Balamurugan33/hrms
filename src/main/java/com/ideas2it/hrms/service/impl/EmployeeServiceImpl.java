@@ -101,6 +101,10 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employeeDao.retrieveEmployees();
     }
     
+    public List<Employee> getInactiveEmployees() throws AppException {
+        return employeeDao.getInactiveEmployees();
+    }
+    
     /** {@inheritDoc}*/
     public Boolean deleteEmployee(Integer id) throws AppException {
         return employeeDao.deleteEmployee(id);

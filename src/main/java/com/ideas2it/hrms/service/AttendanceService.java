@@ -16,8 +16,8 @@ import com.ideas2it.hrms.model.Employee;
  * 
  * <p>
  * Provides additional methods to:
- * Record an employee's status (Present or Absent) on a date,
- * Get an employee's attendance entry on a date
+ * Record an employee's status (Present or Absent) for current date,
+ * Get an employee's attendance for a date
  * </p>
  *
  * @author Ganesh Venkat S

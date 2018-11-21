@@ -78,26 +78,17 @@ public class UserServiceImpl implements UserService {
         
     public Integer getCompanyRevenue(LocalDate startDate, LocalDate endDate) throws AppException {
         ClientService clientService = new ClientServiceImpl();
-        List<Client> allClients = new ArrayList<Client>();
-
-        allClients = getAllClients();             
-        return clientService.calculateCompanyRevenue(allClients, startDate, endDate);
+        return clientService.calculateCompanyRevenue(startDate, endDate);
     }
     
     public Integer getCompanyExpenditure(LocalDate startDate, LocalDate endDate) throws AppException {
         ClientService clientService = new ClientServiceImpl();
-        List<Client> allClients = new ArrayList<Client>();
-
-        allClients = getAllClients();                     
-        return clientService.calculateCompanyExpenditure(allClients, startDate, endDate);
+        return clientService.calculateCompanyExpenditure(startDate, endDate);
     }
     
     public Integer getCompanyNetProfit(LocalDate startDate, LocalDate endDate) throws AppException {      
         ClientService clientService = new ClientServiceImpl();
-        List<Client> allClients = new ArrayList<Client>();
-
-        allClients = getAllClients();   
-        return clientService.calculateCompanyNetProfit(allClients, startDate, endDate);
+        return clientService.calculateCompanyNetProfit(startDate, endDate);
     }    
 
     /** {@inheritDoc}*/

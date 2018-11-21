@@ -30,6 +30,7 @@ public interface EmployeeService {
    
    /**
     * Used by an employee to send his project manager an email, applying for leave
+    * 
     * @param employee
     *        an employee
     * @param message
@@ -43,6 +44,7 @@ public interface EmployeeService {
 
    /**
     * Marks an employee as present, for current date, in his/her attendance history
+    * 
     * @param employee
     *        an employee
     * @return
@@ -52,6 +54,7 @@ public interface EmployeeService {
    
    /**
     * Marks an employee as absent, for current date, in his/her attendance history
+    * 
     * @param employee
     *        an employee
     * @return
@@ -81,6 +84,15 @@ public interface EmployeeService {
     * Get all the existing employees
     */
    List<Employee> displayEmployees() throws AppException;
+   
+   /**
+    * Get all the employees that have been terminated from the company
+    * 
+    * @return
+    *        all the terminated employees
+
+    */
+   List<Employee> getInactiveEmployees() throws AppException;
    
    /**
     * Remove an existing employee 
